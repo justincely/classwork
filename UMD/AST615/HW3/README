@@ -1,0 +1,5 @@
+make will run both scripts.  make run_1 and make run_2 will run just the respective script.  Outputs for problem 1 include a pdf and txt file for 
+
+Note:  This code is written in python, but using only standard distributed modules so there should be no incompatibility on another system.  I have run it on 3 different OS with no problems.  These problem sets, particularly the spectral fitting and root-finding, would be useful for me to know in my native programming language so I started in python.  I have commented nearly everything that calls something non-similar to C++, and have not used any "short-cuts" i.e. built in fitting or root finding routines.
+
+If any of this is a problem for grading, please let me know, and I can rewrite in C.  I don't want to make your life harder, I just felt these would be useful for me in Python!

@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+%Put ISR Title
+{\bf\Huge Problem Set 5}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{AST615 University of Maryland College Park, MD\\}
+\vspace{0.5cm}
+% Date here below
+01 December, 2011
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+\section*{Problem 1}
+Figures 1,2, and 3 show the integration of $\frac{dx^2}{dt^2}+x=0$ using the Euler, RK4, and Leapfrog methods for various stepsizes.  The integrations are plotted with the analytical solution, $sin(t)$, and the plots include a loglog plot of the difference between the analytical and numerical solutions aa function of stepsize. 
+ 
+From the plots showing the numerical and exact solutions, we can see that the Euler method can get very wrong very quickly, and that error compounds as time goes on.  The RK4 and Leapfrog methods, however, appear to have small, non-compounding errors even with larger stepsizes.  
+
+The error of these 3 methods appear to have an exponentially decreasing relationship with stepsize, where the error with RK4 method is the smallest and the Euler method being the largers.  It is also interesting that the Euler method gets a smaller decrease in error with each smaller stepsize, Leapfrog is fairly stable in loglog space, and the gain gets much larger with each stepsize for the RK4 method.
+
+
+\section*{Problem 2}
+Given a 2D orbit described by the potential $\Phi=\frac{-1}{\sqrt{1+2x^2+2y^2}}$ and $F=-\frac{d\Phi}{dx}$, by the chain rule $F_x=ma_x=\frac{2x}{(1+2x^2+2y^2)^{3/2}}$.  Using unit mass, and repeating the procedure for the y component we get the equations:
+\begin{equation}
+\frac{d^2x}{dt^2}=\frac{2x}{(1+2x^2+2y^2)^{3/2}}
+\end{equation}
+\begin{equation}
+\frac{d^2y}{dt^2}=\frac{2y}{(1+2x^2+2y^2)^{3/2}}
+\end{equation}
+
+These then reduce down to 4 coupled first order equations:
+\begin{eqnarray}
+  \frac{dx}{dt}=Z_x(t) \\
+  \frac{dZ_x(t)}{dt}=\frac{-2x}{(1+2x^2+2y^2)^{3/2}}\\
+  \frac{dy}{dt}=Z_y(t) \\
+  \frac{dZ_y(t)}{dt}=\frac{-2y}{(1+2x^2+2y^2)^{3/2}}
+\end{eqnarray}
+
+In Figures 4 and 5, plots of X vs Y, and Energy vs Time can be seen for both the RK4 method and the Leapfrog method for stepsizes of 1,.5,.25, and .01.  The differences between the two methodes becomes very apparent when comparing these plots.  The stability of the leapfrog system keeps the body in an clean orbit, becoming more circular with smaller stepsizes, where the RK4 method has a very complicated orbit that appears to degrade with time.  This same trend is seen in the plots of Energy vs Time where the RK4 method shows the energy of the system falling to 0 with the larger stepsizes, whereas the Energy of the Leapfrog system oscillates around a nominal value even with large stepsizes. 
+
+
+
+\section*{Problem 3}
+Figure 6 shows a phase-plane plot produced with the RK4 method and stepsizes of 1,.5,.25, and .1.  In this phase-plane, A=1,B=.1,C=1.5,D=.03,d=e=0.  If we use a q$\sim$1.25, both populations drop below $10^{-9}$ before t=100, although the wolves drop below much quicker.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.6]{Euler_int.pdf}
+\caption{Euler integration for various stepsizes.  Also shown is a loglog plot of the difference between the numerical and exact solutions at the last point as a function of stepsize.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.6]{RK4_int.pdf}
+\caption{RK4 integration for various stepsizes.  Also shown is a loglog plot of the difference between the numerical and exact solutions at the last point as a function of stepsize.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.6]{Leapfrog_int.pdf}
+\caption{Leapfrog integration for various stepsizes.  Also shown is a loglog plot of the difference between the numerical and exact solutions at the last point as a function of stepsize.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.6]{RK4_orbit_int.pdf}
+\caption{RK4 orbit integration for various stepsizes.  Also shown for each stepstize is a plot of the calculated enerygy of the system with time.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.6]{Leapfrog_orbit_int.pdf}
+\caption{Leapfrog orbit integration for various stepsizes.  Also shown for each stepstize is a plot of the calculated enerygy of the system with time.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=.7]{Phase_plane.pdf}
+\caption{Phase plane diagram for Lotka-Volterra Predadtor-Prey Model where A=1,B=.1,C=1.5,D=.03,d=e=0.  RK4 integrated phase planes are shown for different timesteps.}
+\end{center}
+\end{figure}
+\end{document}

@@ -1,0 +1,1 @@
+make will run both scripts.  make run_1 and make run_2 will run just the respective script.  Outputs for both problems include pdf plots.

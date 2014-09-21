@@ -1,0 +1,55 @@
+Really sorry for the python!  I started out using my integration code from the previous assigment and really wanted to do it in c++, but after hours and hours of that code failing- I decided to get a fresh start and rewrite the entire thing.  I intitially chose python because that is more familiar, and was intending to rewrite my c++ code, but it took too long to get this one close to working so I couldn't
+
+There seems to be something wrong with either the integration code or the initial conditions.  If I use no softening parameter, the system appears to continually expand over any feasable timescale I tried.  With a softening parameter >=1 and chosen initial conditions the system behaves as I would expect and I can see the particles moving in gravitational trajectories (if I zoom in for the 1000 body program).  I wasn't able to diagnose why this is.
+
+There is a animated .gif of the 1000 body system.  I recommend opening it with a web broswer for viewing.
+
+generate_random.py generates initial conditions for 1000 particles into a txt file p2_initial.txt
+
+
+
+N_body.py does all the integration.
+
+ely:/user/ely/AST615/HW6 > python N_body.py -h
+Usage: N_body.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -f INITIAL, --file=INITIAL
+                        file containing initla conditions
+  -i INTEGRATOR, --integrator=INTEGRATOR
+                        integrator to use: lr,rk4
+  -t TMAX, --tmax=TMAX  maximum time
+  -s STEP, --step=STEP  time step
+  -o FREQUENCY, --output frequency=FREQUENCY
+                        output frequency
+  -e SOFTENING, --softening=SOFTENING
+                        softening parameter
+  -n N, --N=N           Number of particles to use from initial file
+
+
+
+plot_particles.py will plot the systems from the txt output of N_body.py 
+
+ely:/user/ely/AST615/HW6 > python plot_particles.py -h
+Usage: plot_particles.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -r RANGE, --range=RANGE
+                        maximum time
+  -n N, --N=N           Number of particles to use from initial file
+
+
+
+Commands to run all parts of the assignment are given below.  As no compiling is needed and the output from one will overwrite the others, no makefile was created.  I removed all the plotting commands as they haven't worked on your system anyway.  
+
+
+Problem 1
+python N_body.py -f p1_initial_e5.txt -t 100 -s .05 -o 10 -e 1 -n 2 -i 'rk4'
+python N_body.py -f p1_initial_e5.txt -t 100 -s .05 -o 10 -e 1 -n 2 -i 'lf'
+python N_body.py -f p1_initial_e9.txt -t 100 -s .03 -o 10 -e 1 -n 2 -i 'rk4'
+python N_body.py -f p1_initial_e9.txt -t 100 -s .03 -o 10 -e 1 -n 2 -i 'lf'
+
+Problem 2
+python N_body.py -f p2_initial.txt -t 2000 -s .1 -o 1 -e 4 -n 1000 -i 'rk4'

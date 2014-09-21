@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+%Put ISR Title
+{\bf\Huge Problem Set 5}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{AST622 University of Maryland College Park, MD\\}
+\vspace{0.5cm}
+% Date here below
+26 April, 2012
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+\section*{1) Timescales of structure formation}
+Structures of a given scale R form when:
+
+\begin{equation}
+\sigma^2(R) = \frac{1}{2\pi^2}\int P(k)W(K,R)K^2dk = 1
+\end{equation}
+
+where
+
+\begin{eqnarray}
+P = P_0(k) T^2(k) \\
+\nonumber \\ 
+T^2(k) = \frac{1}{1+\beta(\frac{k}{k_{eq}})^4} \\
+\nonumber \\
+P_0 = AK^n \\
+\nonumber \\
+W(R) = \Theta(R^{-1}-k) 
+\end{eqnarray}
+
+and $n=1$, $A = 5x10^{-5}$, and $B = 3x10^{-4}.$  The integral will be evaluated over the interval 0 to $1/R$, as the heavside step function will make the integral constant after $k = \frac{1}{R}$.
+
+\begin{equation}
+\sigma^2(R) = \frac{A}{2\pi^2} \int _o^{1/R} \frac{K^3}{1+\beta(\frac{k}{k_{eq}})^4}  dk =  \frac{A}{2\pi^2} \frac{\log(\frac{\beta}{k_{eq}^4} k^4 +1)}{\frac{4\beta}{k_{eq}}} 
+\end{equation}
+
+\begin{equation}
+\sigma^2(R) = \frac{\log(\frac{\beta}{k_{eq}^4} k^4 +1)}{\frac{r\beta}{k_{eq}}}
+\end{equation}
+
+And from here I am not sure where to go.  I don't see how to get this in terms of a time.  It seems everything is in k, which I know can also be expressed in terms of R.  But I don't see anywhere a time could come in. 
+
+\section*{2) E-Foldings of Inflation}
+Finding the number of e-foldings required to solve the horizon problem is described in section 7.8.2 of the textbook.  From $\frac{\dot{a}}{a_0}^2 = H_0^2 [ \Omega_{o,w}(\frac{a_0}{a})^{1+3w} + (1-\Omega_{o,w})]$ and by requiring that the initial co-moving radius is much greater than than the co-moving radius in the current epoch, the number of e-foldings can be determined from eqn. 7.8.17 in the book as shown below.
+
+\begin{equation}
+N = \frac{60}{|1+3w|} [2.3 + \frac{1}{30}\ln(\frac{T_f}{T_p}) - \frac{1}{60}\ln(Z_{eq})]
+\end{equation}
+
+
+With $w=1$,$ Z_{eq} = 3800$, and $T_f/T_p = \Delta E = 10^{28}$, the number of e-foldings is then given by: 
+
+\begin{equation}
+N = \frac{60}{|4|} [2.3 + \frac{1}{30}\ln(10^{28}) - \frac{1}{60}\ln(3800)] = 65.83
+\end{equation}
+
+\end{document}

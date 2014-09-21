@@ -1,0 +1,5 @@
+make will run all three problems, sending outputs to the screen and textfiles. make run_1 will run just problem 1, etc. Plots are produced with python.  
+
+integrate.c is the basis for all 3 programs, with orbit.c and pred_prey.c being modified to run just that specific problem and equations.  integrate.c takes at least 1 argument specifying which method and one argument speciying an output file name.  Other optional parameters can be passed with options:  1 is Euler, 2 is RK4 and 3 is leapfrog.  methods and outputs must be given, other parameters will default to internal values.
+
+./integrate.o 2 RK_01.txt -s .01
