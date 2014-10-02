@@ -1,3 +1,17 @@
+"""Functions and script for problems in HW2
+
+For problem 3:
+--------------
+class oblate: 
+  provides the mechanics for calulating the desired orbital values from an 
+  initilized object of a given mass, radius, and moments.
+
+function problem_3(): 
+  function to output results using the oblate class on given scenarios
+
+
+
+"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,10 +25,16 @@ c = 2.998e10
 class oblate():
     def __init__(self, mass, radius, moments=[]):
         """Initialize object
-        
-        mass can be in any units.
-        Radius must be factor of planetary radius
-        moments
+
+        Parameters:
+        -----------
+        mass : float, int
+            mass of the planet in any units
+        radius : float, int
+            radius as a factor of the planetary radius
+        moments : list, optional
+            list of the moment coefficients
+
         """
         
         self.mass = mass
@@ -23,6 +43,9 @@ class oblate():
 
     @property
     def n(self):
+        """Calculate the body's orbital frequency
+        """
+
         const = np.sqrt(G * self.mass / (self.radius**3))
 
         coeffs = [((3.0 / 2.0) * (1.0 / self.radius)**2),
@@ -37,6 +60,9 @@ class oblate():
 
     @property
     def k(self):
+        """Calculate the body's epicyclic frequency
+        """
+
         const = np.sqrt(G * self.mass / (self.radius**3))
 
         coeffs = [(-1 * (3.0 / 2.0) * (1.0 / self.radius)**2),
@@ -51,24 +77,39 @@ class oblate():
 
     @property
     def mu(self):
+        """Calculate the body's vertical frequency
+        """
+
         return np.sqrt(2 * (self.n**2) - (self.k**2))
 
     @property
     def apse_precess(self):
+        """Calculate the precession of the periapse longitude
+        """
+
         return self.n - self.k
 
     @property
     def node_regress(self):
+        """Calculate the regression of the nodes of the equitorial orbits
+        """
+
         return self.n - self.mu
 
     @property
     def period(self):
-        return 1.0/self.n
+        """Calculate the orbital period
+        """
+
+        return 1.0 / self.n
 
 #-------------------------------------------------------------------------------
 
 def problem_3():
-    
+    """Print output for problem 3 of HW4
+
+    """
+
     for moments in [[], [1.63e-2], [1.63e-2, -9e-4, 1e-4]]:
         for radius in [1.3, 3]:
             saturn = oblate(568.46e27, radius, moments)
@@ -105,7 +146,6 @@ def precession(a, e):
 def ldot(radius, msat, rplan):
 
     ldot = (3 / 4.) * (.14 / 86)
-    #ldot = (3 / 4.) * (1)
     ldot *= (G * (msat**2) * rplan**(5))
     ldot /= (radius ** 6)
 
