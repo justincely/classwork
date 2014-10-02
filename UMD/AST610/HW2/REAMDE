@@ -1,0 +1,8 @@
+The equation, along with the plotting and txt file writing functions are included in the 
+file hw2.py.  This is also the script to generate the output.
+
+To run in the terminal:
+
+$ python hw2.py
+
+A PDF plot and a txt file will be produced as output.
