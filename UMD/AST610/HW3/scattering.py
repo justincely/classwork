@@ -1,18 +1,93 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
-#np.rad2deg((np.pi/2. + theta) - np.cos(np.cos(theta) * phi) * np.arccos(r/(np.sqrt(r**2 + 1**2))))
-#angle = np.pi - (np.arccos(float(radius)/(np.sqrt(radius**2 + 1**2))) + (np.pi/2. - theta))
+#-------------------------------------------------------------------------------
 
 def scatter(radius, theta, phi):
-    radius = float(radius)
-    radius *= np.cos(phi)
+    """compute the scattering angle
+
+    Parameters
+    ----------
+    radius : float, int
+        radius to the scattering point
+    theta : flot, int
+        angle in radians of the observer to the plane
+    phi : float, int
+        azimuth angle of r in radians
+
+    Returns
+    -------
+    angle : float
+        the photon's scattering angle
+    
+    """
+
+    radius = float(radius) * np.cos(phi)
 
     hyp = np.sqrt(radius**2 + 1)
 
-    angle = np.pi/2. - (np.arccos(1/hyp) + theta)
+    angle = (np.pi / 2.0) - (np.arccos(1 / hyp) + theta)
 
     return angle
 
+#-------------------------------------------------------------------------------
+
+def polarization(alpha):
+    """compute the fractional polarization
+    
+    Parameters
+    ----------
+    alpha : float, int
+        scattering angle in radians
+
+    Returns
+    -------
+    frac_pol : float
+        the fractional polarization
+    """
+
+    return (1 - np.cos(alpha)**2) / (1 + np.cos(alpha)**2)
+       
+#-------------------------------------------------------------------------------
+ 
+def cross_section(alpha):
+    """compute the new cross_section
+    
+    Parameters
+    ----------
+    alpha : float, int
+        scattering angle in radians
+
+    Returns
+    -------
+    cross : float
+        new cross section based on scattering
+    """
+
+    return 1
+       
+#-------------------------------------------------------------------------------
+
+def intensity(R0, radius):
+    """calulate the intensity"""
+
+    p = np.exp(-1 * np.sqrt(radius**2 + 1))
+
+    n = (R0 * p) / (4 * np.pi * r**2)
+
+#-------------------------------------------------------------------------------
+
+def problem_2():
+    """Produce output for problem 2 of HW3
+    """
+
+    all_theta = np.linspace(0, np.pi, 100)
+
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(1, 1, 1)
+    
+
+#-------------------------------------------------------------------------------
 
 if __name__ == "__main__":
 
