@@ -1,0 +1,28 @@
+HW3, problem2
+=============
+
+Run script with simply:
+
+```
+$ python scattering.py
+```
+
+I've not used the packages that caused an issue the first go around on your
+system, so it *should* work fine.
+
+Notes
+=====
+My plot and values are clearly wrong, and I believe the major flaw is in the 
+final determination of net polarization.  I'm pretty confident in my procedures
+for determining the scattering angle, the fractional polarization, along with
+the overall methodology.  Less confident in, but likely not the overall problem,are the intensity and cross section calculations.
+
+I know, however, that i'm calculating the net polarization correctly after 
+the double integral over radius and phi; i needed to find a way to add the the
+fractional polarization in such a way as to account for directionality, and
+i wasn't able to work my way through that before i ran out of time.
+
+Additionally, my apologies for not handing in a hard copy of the plot.  
+Apparently if my printer is out of any one color, it won't let me print
+anything.  A "feature" I just discovered.  Apologies again, the PDF will the 
+recreated with each run. 

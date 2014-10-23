@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import integrate
 
 #-------------------------------------------------------------------------------
 
@@ -64,16 +65,62 @@ def cross_section(alpha):
         new cross section based on scattering
     """
 
-    return 1
+    sigma_t = .66524574e-25
+
+    r0 = 2.8e-13
+    sigma = abs((1/8.0) * r0**2 * (6 * alpha + np.sin(2 * alpha)))
+
+
+    return sigma / sigma_t
        
 #-------------------------------------------------------------------------------
 
-def intensity(R0, radius):
-    """calulate the intensity"""
+def intensity(R0, radius, prob=None):
+    """calulate the intensity reaching a section of the slab
+    """
 
-    p = np.exp(-1 * np.sqrt(radius**2 + 1))
+    distance = np.sqrt(radius**2 + 1)
 
-    n = (R0 * p) / (4 * np.pi * r**2)
+    if prob is None:
+        prob = np.exp(-1 * distance)
+
+    i = ((R0 * prob) / (4 * np.pi * distance**2)) * (radius)
+
+    return i
+
+#-------------------------------------------------------------------------------
+
+def calculate_polarization(r, phi, theta, return_dir=False):
+    #-- Scattering angle
+    alpha = scatter(r, theta, phi)
+
+    #-- intensity with modified cross section
+    I = intensity(1, r) * cross_section(alpha)
+    
+    #-- Fractional polarization is weighted by intensity
+    frac_pol = polarization(alpha) * I
+    pol_dir = 1# pol_direction(r)
+
+    return frac_pol
+
+#-------------------------------------------------------------------------------
+
+def pol_direction(r):
+    """Calculate the polarization direction
+
+    computes the polarization direction as perpendicular
+    to the the initial ray and scattered ray
+
+    a value of 0 indicates left-right,
+    a value of 1 indicates up-down.
+
+    ### This function is wrong and needs modification
+    ### It needs to oscillate from -1 to 1 to allow directionalites
+    ### to cancel out.
+
+    """
+
+    return np.sin(np.arccos(1 / np.sqrt(r**2 + 1)) - np.pi/4.)
 
 #-------------------------------------------------------------------------------
 
@@ -81,15 +128,48 @@ def problem_2():
     """Produce output for problem 2 of HW3
     """
 
-    all_theta = np.linspace(0, np.pi, 100)
+    all_theta = np.linspace(0, np.pi/2, 50)
 
+    all_pol = []
+
+    out_table = open('polarization_table.txt', 'w')
+    out_table.write("Theta   Net-Polarization\n")
+    out_table.write("------------------------\n")
+
+    print "Theta   Net-Polarization"
+    print "------------------------"
+    for theta in all_theta:
+
+        #-- Integrate the calculate_polarization function
+        #-- from r=0 to r=10, and from phi=0 to phi = 2 PI
+        integral, err = integrate.nquad(calculate_polarization,
+                                        [[0, 20],
+                                         [0, 2 * np.pi]],
+                                        args=(theta,))
+
+
+        out_table.write("%3.3f   %3.3e" % (theta, integral))
+        print "%3.3f   %3.3e" % (theta, integral)
+
+        all_pol.append(integral)
+    
+
+    #-- Plot figure
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(1, 1, 1)
-    
+
+    all_theta = map(np.rad2deg, all_theta)
+    ax.plot(all_theta, all_pol)
+ 
+    ax.set_xlabel('Degrees')
+    ax.set_ylabel('Polarization Fraction')
+    ax.grid(True)
+
+    fig.savefig('polarization.pdf')
 
 #-------------------------------------------------------------------------------
 
-if __name__ == "__main__":
+def run_tests():
 
     #-- zero scattering scenarios
     assert scatter(0, np.pi/2., 0) == 0
@@ -111,3 +191,10 @@ if __name__ == "__main__":
     assert scatter(1, 0, np.pi/2.) == np.pi/2.
 
 
+#-------------------------------------------------------------------------------
+
+if __name__ == "__main__":
+
+    run_tests()
+
+    problem_2()
