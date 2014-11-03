@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 #-------------------------------------------------------------------------------
 
-def saha(ionization=.5, rho=1, T=1, precision=.0001):
+def saha(ionization=.5, rho=1.0, T=1.0, precision=.0001):
     """Solve the saha equation for temperature
 
     The equation will be solved by recursively calling the saha function, 
@@ -58,7 +58,7 @@ def problem_4():
     """
 
     #-- 1000 evenly spaced densities from 1e-31 to 1e-16
-    densities = np.linspace(1e-31, 1e-16, 1000)
+    densities = np.linspace(1e-31, 1e-16, 100000)
     temperatures = [saha(.5, density) for density in densities]
 
     #-- Plotting begins here
@@ -76,11 +76,16 @@ def problem_4():
     fig.savefig('ely_hw2.pdf')
 
     #-- Write out the values to a file
-    with open('ely_hw2_table.txt', 'w') as out_txt:
-        out_txt.write('Log10 Density    Temperature\n')
-        out_txt.write('----------------------------\n')
-        for d, t in zip(densities, temperatures):
-            out_txt.write('{:.4f}         {:.4f}\n'.format(np.log10(d), t))
+    #with open('ely_hw2_table.txt', 'w') as out_txt:
+    #    out_txt.write('Log10 Density    Temperature\n')
+    #    out_txt.write('----------------------------\n')
+    #    for d, t in zip(densities, temperatures):
+    #        out_txt.write('{:.4f}         {:.4f}\n'.format(np.log10(d), t))
+
+    #-- python2.6 compatibilty
+    out_txt = open('ely_hw2_table.txt', 'w') 
+    for d, t in zip(densities, temperatures):
+        out_txt.write('%3.4f         %3.4f\n' % (np.log10(d), t))
 
 #-------------------------------------------------------------------------------
 
