@@ -19,30 +19,23 @@ Justin Ely \\
 %Put Author's affiliations
 \footnotesize{AST630 University of Maryland College Park, MD\\}
 \vspace{0.1cm}
-% Date here below
-13 October, 2014
 \end{flushright}
 
 \noindent\rule{\linewidth}{1.0pt}
 \section*{Abstract}
-Exoplanet discovery has exploded in recent decades.  After detections of 
-hundreds of extrasolar planets around many different types of stars and stellar
-remnants, we can conclude that planetary systems exist in abundance in 
-the galaxy in various states of evolution.  Arguments for the existense of planetary systems surviving main sequence 
-evolution and existing around white dwarfs (WD) have been 
-supported by observations of WD stars with heavy metal enrichment and infra-red
-excess indicative of dust.  Further studies of the chemical abundances  and 
-dynamics of these
-enrichments concluded that the material is reminiscent of terrestrial planets 
-which had been tidally disrupted. 
-
+Observations of white dwarfs (WD) that show metal enrichment and dusty disks are thought to
+be caused by planetesimals that survive main sequence evolution and are subsequently 
+disrupted by the central star. 
+Studies of the chemical abundances and 
+dynamics of these observed enrichments suggest that the material is consistent with 
+terrestrial bodies, which links the dusty disk to the dynamical evolution of the 
+planetary system, though the precise physical mechanism is not well understood.  
 The recent study by Debes et al. 2012 used numerical N-body simulations to 
 demonstrate that the dusty disk around white dwarfs can be produced by 
-interior mean motion resonances (IMMRs) between surviving planetesimals and
- a giant planet.  The IMMR 
-perturbs the planitesimals from the asteroid belt into highly eccentric orbits 
+interior mean motion resonances (IMMRs) between a giant planet and surviving planetesimals.  The IMMR 
+perturbs the planetesimals from the asteroid belt into highly eccentric orbits 
 that eventually cross close enough to the central star to be tidally disrupted. 
-This method appears to be most efficient at the 2:1 resonance, and can be shown
+This method appears to be most efficient at the 2:1 IMMR, and can be shown
 to provide material to the disk over timescales comparable to what is needed
 to fit observations.
 
@@ -54,10 +47,13 @@ In particular, this method can be used to estimate the frequency and mass of
 asteroid belts as well as the characteristics of large surviving planets in WD
 systems.
 
-The question of whether or not the disruption of the planitesimal eventually 
-forms a disk that matches the observed properties of dusty white dwarfs was left
- out of this study as too computationally intensive.  I will expand on this 
-work to simulate the end evolution of the dusty disk.
+The Debes et al. article explored the ability of IMMR to produce the observed WD 
+characteristics starting with initial conditions found in our solar system.  To fully understand the broad-scale applicability
+of this phenomenon as a whole requires understanding how it would behave in other solar systems beyond our own.  
+Following the methods used by Debes et al., I wil use the MERCURY n-body simulation code to repeat the mass accretion
+simulation over a wider parameter space.  By varying characteristics such as the mass of the central star, mass and semi-major axis of the large planet, and initial distribution of planitesimals, we will understand more about where IMMR is efficient at supplying mass to the central WD and to what type of systems we would expect this to be a significant factor. 
 
+\section*{References}
+Debes, J. H. and Walsh, K. J., Stark, C., 2012, ApJ, 747, 148 \\
 
 \end{document}
