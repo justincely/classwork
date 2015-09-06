@@ -1,0 +1,10 @@
+Telescope - as I work for a space agency, it seemed like a logical choice!
+
+The basic functionality of a telescope is to provide the ability to point to and capture photons of distant objects.
+
+How one would implimentationt this is a permutation of a few significant aspects, each with trade-offs:
+
+space-based, ground-based, on an airplane, in a baloon, in a rocket
+size range (1-30 meters)
+sensitive to radio, IR, visible, UV, x-ray, gamma-ray
+camera for images, spectrograph for spectra, rapid counter for transients

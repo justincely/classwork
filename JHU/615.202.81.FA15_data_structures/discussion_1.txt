@@ -1,0 +1,9 @@
+Algo1 - Theta(n^3)  (no better, no worse than n^3)
+Algo2 - O(n^4), Omega(n^2)  (No worse than n^4, no better than n^2)
+
+Given the premise of the question:  Algorithm 1 will do no better and no worse than n^3.  Algorithm 2, however, could be as bad as n^4 or as good as n^2.  With just this information, I would choose algorithm 1 to implement.
+
+The main motivation of my choice is the ability to predict performance in a real-world setting.  Algorithm 1's performance is understood and easy to predict, while Algorithm 2 has a huge difference in potential run-time.  Though performance could be fast, it could also be very slow.  
+
+More information (of both the regions in which Algo 2 behaves as n^2 vs n^4, as well as the range over which it will typically be used) may potentially change this answer.  However, with just the information given, Algo 1 is my choice. 
+
