@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 2}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.204.81.FA15 Computer Organization\\}
+\vspace{0.5cm}
+% Date here below
+15 September, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.1)}
+$5ED4 - 07A4 = 5730$.  The subtraction here was straightforward, as there were no carries.  In base 16:
+\begin{verbatim}
+4-4=0
+D-A=3
+E-7=7
+5-0=5
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.2)} 
+
+\begin{tabular}{| c | c | c | c | }
+  \hline			
+  5 & E & D & 4  \\
+  \hline
+  0101 & 1110 & 1101 & 0100  \\
+  \hline  
+   \hline			
+  0 & 7 & A & 4  \\
+  \hline
+  0000 & 0111 & 1010 & 0100  \\
+  \hline  
+\end{tabular} \\
+
+Using the first bit as the sign, this mathematical operation is subtracting a positive number from a larger positive number.  There will be no sign change and no underflow, and the HEX value will still end up being 5730.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.3)} 
+
+\begin{tabular}{| c | c | c | c | }
+  \hline			
+  5 & E & D & 4  \\
+  \hline
+  0101 & 1110 & 1101 & 0100  \\
+  \hline  
+\end{tabular} \\
+
+What makes hex an attractive numbering system for representing values in computers?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.4)} 
+
+$4365 - 3412 = 0753$.  
+
+\begin{verbatim}
+5-2=3
+6-1=5
+3-4 - > (carry) 11-4=7
+4-3 ->(carry) 3-3=0
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.5)} 
+
+\begin{tabular}{| c | c | c | c | }
+  \hline			
+  4 & 3 & 6 & 5  \\
+  \hline
+  100 & 011 & 110 & 101  \\
+  \hline  
+   \hline			
+  3 & 4 & 1 & 2  \\
+  \hline
+  011 & 100 & 001 & 010  \\
+  \hline  
+\end{tabular} \\
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.6)} 
+Unsigned, 8-bit integers can hold values from 0-255 ($2^8 - 1$).  185 - 122 is 63, well within this range, and would cause neither overflow nor underflow.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.9)} 
+Signed, 8-bit, integers have a range of -128 to 127.  Both 151 and 214 would exceed this maximum range, and cause overflow.  However, saturating arithmetic means to simply replace the overflow value with the max of the range.  Therefore:
+
+$151+214=127+127=127$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.10)} 
+Similar to 3.9 above:
+
+$151-214=127-127=0$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.11)} 
+Unsigned 8-bit integers can hold values from 0-255.
+
+$151+214=255$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.32)} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.33)} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.34)} 
+no
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
