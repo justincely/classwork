@@ -1,0 +1,220 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 2}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{615.202.81.FA15 Data Structures \\}
+\vspace{0.5cm}
+% Date here below
+15 September, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+Set the variable i equal to the second element from the top of the stack. Leave the stack unchanged. 
+\begin{verbatim}
+s = Stack()
+a = s.pop()
+b = s.pop()
+i = b
+
+s.push(b)
+s.push(a)
+\end{verbatim}
+
+\section*{1b)}
+Given an integer n, set the variable i equal to the nth element from the top of the stack.  Leave the stack without its top n elements
+\begin{verbatim}
+s = Stack()
+
+j = 1
+while j < n:
+    s.pop()
+i = s.pop()
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)}
+Set the variable i equal to the bottom element of the stack. Leave the stack unchanged. 
+\begin{verbatim}
+s1 = stack()
+s2 = stack()
+
+while not s1.empty():
+    s2.push(s1.pop())
+i = s2.peek()
+
+while not s2.empty():
+    s1.push(s2.pop())
+    
+\end{verbatim}
+
+\section*{2b)}
+Set the variable i equal to the third element from the bottom of the stack..
+\begin{verbatim}
+
+s1 = stack()
+s2 = stack()
+
+while not s1.empty():
+    s2.push(s1.pop())
+
+s2.pop()
+s2.pop()
+i = s2.pop()
+
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3a)} 
+\begin{tabular}{ c || l }
+  \hline			
+  Iteration & Stack \\
+  \hline
+  0 & \{      \\
+  1 & \{ [    \\
+  2 & \{    \\
+  3 & \{ [    \\
+  4 & \{ [ (   \\
+  5 & \{ [    \\
+  6 & \{    \\
+  \hline  
+\end{tabular} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3b)} 
+\begin{tabular}{ c || l }
+  \hline			
+  Iteration & Stack \\
+  \hline
+  0 & (           \\
+  1 & ( (         \\
+  2 & (           \\
+  3 & ( \{        \\
+  4 & ( \{ (      \\
+  5 & ( \{ (      \\
+  6 & ( \{ ( [    \\
+  7 & ( \{ ( [    \\
+  8 & ( \{ (      \\
+  9 & ( \{        \\
+  10 & (         \\
+  11 &           \\
+  \hline  
+\end{tabular} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4)} 
+\begin{verbatim}
+
+def check_mirror(string):
+    s = Stack()
+    second_half = False
+    
+    for letter in string:
+        if not second_half:
+            s.push(letter)
+        
+        if letter == 'c':
+            s.pop()
+            second_half = True
+           
+        if s.empty():
+            return False 
+        if letter == s.pop():
+            return False
+            
+    return True
+
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5)}
+\begin{verbatim}
+# using function definition from problem 4
+
+def pattern_match(string):
+    for letter in string:
+        s.push(letter)
+    
+        if letter == 'D':
+            s.pop()
+        
+            if not check_mirror():
+
+
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{6)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{7)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{8)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{9)}
+\subsection*{9a]}
+Prefix: \\
+Postfix:  A B + C \$ D E - F + * G -
+\subsection*{9b]}
+Prefix:  \\
+Postfix: A B C - D E - * F + G / \$ H J - +
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{10)}
+\subsection*{10a]}
+\subsection*{10b]}
+\subsection*{10c]}
+$(A - B + C) ^ (D + E - F)$
+\subsection*{10d]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{11)}
+\subsection*{11a)} 
+$((A+B)-C) - ((B+A)^C) = 0$
+\subsection*{11b)}
+$(A x (B+C)) x (C+(B-A)) = 20$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{12)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
