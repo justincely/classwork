@@ -392,18 +392,23 @@ Postfix: A B C - D E - * F + G /  H J - \$ +
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{12)}
-
-\noindent\rule{\linewidth}{0.1pt}
 \begin{verbatim}
 
-def prefix(string):
-    s = Stack()
+def prefix(in_string):
+    ops = Stack()
+    out_string = ''
     
-    for letter in string:
+    for c in in_string:
+        if isletter(c):
+            out_string = letter + out_string
+        if (isoperator(c)):
+            if (c == '(') or (ops.empty()) or (priority(c) > ops.peek()):
+                out_string = ops.pop + out_string
+            else:
+                ops.push(c)
         
-
+    return out_string
 \end{verbatim}
-\noindent\rule{\linewidth}{0.1pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
