@@ -75,10 +75,10 @@ To calculate the time for a frame to be sent over a connection, we simply need t
 \subsection*{1.10.1]}
 
 \begin{equation}
-yield = \frac{1}{(1 + \frac{defects}{area}(area_{die}))^2}
+yield = 1- \frac{area * \frac{defects}{area}}{n_{dies}}
 \end{equation}
 
-Using Equation 7, Die 1 has a yield of .049, while Die 2 has a yield of .0087.
+This equation provides an worst-case scenario to the yield, where each defect hits a different die and causes the maximum number of losses.  Using this equation, the yield for Die 1 is 95.8\% while Die 2 is 90.3\%.
 
 \subsection*{1.10.2]}
 
@@ -86,7 +86,7 @@ Using Equation 7, Die 1 has a yield of .049, while Die 2 has a yield of .0087.
 cost_{die} = \frac{cost_{wafer}}{dies\_per\_wafer * yield}
 \end{equation}
 
-Using Equations 7 and 8; Die 1 has a cost of $\frac{12}{84 * .049} = 2.92$ per die while Die 2 has a cost of $\frac{15}{100 * .0087} = 17.24$ per die.
+Using Equations 7 and 8; Die 1 has a cost of $\frac{12}{84 * .958} = .15$ per die while Die 2 has a cost of $\frac{15}{100 * .0087} = .167$ per die.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
