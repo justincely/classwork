@@ -148,15 +148,79 @@ $151+214=255$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{3.32)} 
+The first two operands have the same exponent, and they fit into the 10bit adder, so addition is straightforward without need for guard, round, or sticky bits.
+
+\noindent $ 3.984375E^{-1}_{10} = 11.111111 $ \\
+$ 3.4375E^{-1}_{10} = 11.01110$ \\
+
+\begin{tabular}{ r   }	
+   11.111111 \\
+  \hline
+  + 11.011100 \\
+  \hline
+  \hline
+  = 111.011011\\
+\end{tabular} \\
+
+\noindent Which evaluates to $7.421875E^{-1}_{10}$ as one would expect.  \\
+
+\noindent The second evaluation is more complicated.  After equalizing the exponents:
+
+\noindent $ .7421875_{10} = .10111110$ \\
+$ 1771_{10} = 11011101011. $ \\
+
+\begin{tabular}{ r   }	
+   11011101011.000 \\
+  \hline
+  + 00000000000.101 \\
+  \hline
+  \hline
+  = 11011101011.101\\
+\end{tabular} \\
+
+\noindent The guard, round, and sticky bits give a value greater than .5, so the final value must be rounded up to: $11011101100 = 1772_{10}.$  This arithmetic was confirmed using float16 precision in a python interpreter, but using a higher precision (32-bit) calculator yields $1771.7421875_{10}$ for the same operations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{3.33)} 
+After equalizing exponents of the operands:
+
+\noindent $ 1771_{10} = 11011101011. $ \\
+$ .34375_{10} = .010110$ \\
+
+\begin{tabular}{ r   }	
+   11011101011.000 \\
+  \hline
+  + 00000000000.010 \\
+  \hline
+  \hline
+  = 11011101011.010\\
+\end{tabular} \\
+
+\noindent The guard, round, and sticky bits give a value smaller than .5, so the final value must be rounded down to: $11011101011 = 1771_{10}.$  The addition was lost due to the low precision. \\
+
+\noindent The second evaluation leads to a similar result.
+
+\noindent $ 1771_{10} = 11011101011. $ \\
+$ .3984375_{10} = .01100110 $ \\
+
+\begin{tabular}{ r   }	
+   11011101011.000 \\
+  \hline
+  + 00000000000.011 \\
+  \hline
+  \hline
+  = 11011101011.011\\
+\end{tabular} \\
+
+\noindent The guard, round, and sticky bits again give a value smaller than .5, so the final value is again set to: $11011101011 = 1771_{10}.$ \\
+
+\noindent  This arithmetic was again verified by 16-bit arithmetic in python, while 32-bit arithmetic gives the result as  $1771.7421875_{10}$, which is the same as the previous order of operations given in problem 3.32.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{3.34)} 
-No,  floating point arithmetic is not associative, and the order of evaluation can change the result.  
+No,  floating point arithmetic is not associative, and the order of evaluation can change the result - as was demonstrated in the previous two problems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
