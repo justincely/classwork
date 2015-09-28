@@ -1,0 +1,205 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 3}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.204.81.FA15 Computer Organization\\}
+\vspace{0.5cm}
+% Date here below
+22 September, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.3)}
+
+\begin{verbatim}
+sub $t0, $s3, $s4    #$t0 holds (i-j)
+lw $t1, $t0($s6)     #$t1 holds A[i-j]
+sw $t1, 8($s7)       #$sets A[i-j] at B[8]
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.7)} 
+\noindent The binary representation of the hex value ABCDEF12 is shown in the table below. \\
+\\
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Hex & A & B & C & D & E & F & 1 & 2 \\  \hline  		
+  Bin & 1010 & 1011 & 1100 & 1101 & 1110 & 1111 & 0001 & 0010 \\ \hline
+\end{tabular} \\
+
+The little endian representation means that the least significant bit is stored at the lowest memory address, whereas for big endian the most significant bit is stored at the lowest memory address.  These two representations are mirrors of each other. \\
+
+\noindent \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline
+  address & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\ \hline	
+  Big Endian  & 0100 & 1000 & 1111 & 0111 & 1011 & 0011 & 1101 & 0101 \\  \hline  		
+  Little Endian & 1010 & 1011 & 1100 & 1101 & 1110 & 1111 & 0001 & 0010 \\ \hline
+\end{tabular} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.9)} 
+
+\begin{verbatim}
+sll $t0, $s3, 2      #calculate the correct memory offset for i
+sll $t1, $s4, 2      #calculate the correct memory offset for j
+lw $t2, $t1($s6)     #load A[i] into $t2
+lw $t3, $t1($s6)     #load A[j] into $t3
+
+add $t4, $t2, $t3    #add A[i] to A[j] and store in $t4
+sw $t4, 32($s7)      #set B[8] to the sum using the correct memory offset
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.14)} 
+
+\begin{tabular}{| c | c | c | c | c | c |}
+  \hline	
+  op code & source register & second source & dest. register & shift amount & function \\  \hline  		
+  000000 & 10000 & 10000 & 10000 & 00000 & 100000  \\ \hline
+  0 & 16 & 16 & 16 & 0 & 32 \\ \hline
+  R-type & \$s0 & \$s0 & \$s0 & 0 & add \\\hline
+\end{tabular} \\
+
+\noindent 0 for the op code makes this an R-type instruction which corresponds to the assembly code:
+\begin{verbatim}
+add $s0, $s0, $s0
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.15)} 
+
+\begin{verbatim}
+sw $t1, 32($t2)
+\end{verbatim}
+
+\noindent The \$t1 register's number code is $9_{10}$, and the \$t2 register's number is $10_{10}$.  The sw (store word) op code is $43_{10}$, which makes this and I-type instruction.
+\\
+
+\noindent
+\begin{tabular}{| c | c | c | c |}
+  \hline	
+  op code & source register & destination & constant or address\\  \hline  		
+  101011 & 01001 & 01010 & 0000000000100000 \\ \hline
+  43 & 9 & 10 & 32  \\ \hline
+\end{tabular} \\
+
+\noindent Converting this binary representation to hexadecimal gives the value: AD2A0020
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.16)} 
+
+\begin{tabular}{| c | c | c | c | c | c |}
+  \hline	
+  op code & source register & second source & dest. register & shift amount & function \\  \hline  		
+  000000 & 00011 & 00010 & 00011 & 00000 & 100010  \\ \hline
+  0 & 3 & 2 & 3 & 0 & 34 \\ \hline
+  R-type & \$v1 & \$v0 & \$v1 & 0 & sub \\\hline
+\end{tabular} \\
+
+\noindent The op code of 0 identifies this as an R-type instruction, and the function value of $34_{10}$ identifies this as subtraction.  The assembly instruction is then:
+
+\begin{verbatim}
+sub $v1, $v0, $v1
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3.17)} 
+ Op code $23_{hex} = 35_{10} =$ lw.  Register 1 is \$at, and register 2 is \$v0.  Op code of lw identifies this as an I-type instruction, so the const is the address for the last 16 bits of the instruction.  The binary representation and assembly instruction is then: \\
+ 
+ \noindent
+ \begin{tabular}{| c | c | c | c |}
+  \hline	
+  op code & source register & destination & constant or address\\  \hline  		
+  1000011 & 00010 & 00001 & 0000000000000100 \\ \hline
+  43 & 9 & 10 & 32  \\ \hline
+  lw & \$at & \$v0 & 4 \\ \hline
+\end{tabular} \\
+
+ 
+\begin{verbatim}
+lw $v0, 4($at)
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2.19)} 
+\noindent 
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Hex & A & A & A & A & A & A & A & A \\  \hline  		
+  Bin & 1010 &1010 & 1010& 1010 & 1010 & 1010 & 1010 & 1010 \\ \hline
+\end{tabular} \\
+
+\noindent
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Hex & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\  \hline  		
+  Bin & 0001 & 0010 & 0011 & 0100 & 0101 & 0110 & 0111 & 1000\\ \hline
+\end{tabular} \\
+
+\subsection*{2.19.1)}
+After the first command, the register \$t2 will hold the bits of AAAAAAAA shifted by 4 and filled with 0s: 
+\begin{verbatim}
+$t2 = 10101010101010101010101010100000 = 0xAAAAAAA0
+\end{verbatim}
+
+\noindent After the second instruction, the register \$t2 will hold the bitwise OR of \$t2 and \$t1, which still holds its original value.
+\begin{verbatim}
+$t2 = 10111010101111101111111011111000 = 0xBABEFEF8
+\end{verbatim}
+
+
+\subsection*{2.19.2)}
+As the problem above, after the first command, the register \$t2 will hold the bits of AAAAAAAA shifted by 4 and filled with 0s: 
+\begin{verbatim}
+$t2 = 10101010101010101010101010100000 = 0xAAAAAAA0
+\end{verbatim}
+
+\noindent The next step is to ANDs this value with -1 (11111111111111111111111111111111) and place that value in \$t2.  Since AND yields 1 only if there is a 1 in both operands, the value of \$t2 will be unchanged.
+
+\begin{verbatim}
+$t2 = 10101010101010101010101010100000 = 0xAAAAAAA0
+\end{verbatim}
+
+
+\subsection*{2.19.3)}
+After the first command, the register \$t2 will hold the bits of AAAAAAAA shifted right by 3 and filled with 0s: 
+\begin{verbatim}
+$t2 = 00010101010101010101010101010101 = 0x15555555
+\end{verbatim}
+
+\noindent The next step is to ANDs this value with 0xFFEF (00000000000000001111111111101111) and place that value in \$t2.
+
+\begin{verbatim}
+$t2 = 00000000000000000101010101000101 = 0x5545
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

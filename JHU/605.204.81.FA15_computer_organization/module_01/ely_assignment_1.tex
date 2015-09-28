@@ -1,0 +1,120 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 1}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.204.81.FA15 Computer Organization\\}
+\vspace{0.5cm}
+% Date here below
+08 September, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+
+\section*{1.2)}
+
+ \begin{enumerate}[(a)]
+   \item {\bf Performance via Pipelineing}
+   \item {\bf Dependability via Redundancy}
+   \item {\bf Performance via Predication}
+   \item {\bf Hierarchy of Memories}
+   \item {\bf Performance via Parallelization} 
+   \item {\bf Make the common case fast}
+   \item {\bf Design for Moore's law}
+   \item {\bf Use Abstraction to simplify design}
+ \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1.4)} 
+
+\subsection*{a]}
+
+\begin{eqnarray}
+   N_{bytes} = \frac{bits}{color} * n_{colors} *  n_{pixels} * \frac{bytes}{bit} \\
+   N_{bytes} = 8 * 3 * (1280 * 1024) * \frac{1}{8} \\
+   N_{bytes} = 3,932,160
+\end{eqnarray}
+
+The equations specified above yield $3,932,160$ bytes for the minimum size of the frame buffer.
+
+\subsection*{b] }
+
+\begin{eqnarray}
+   t_{sec} = \frac{\frac{bits}{color} * n_{colors} *  n_{pixels}}{ \frac{bits}{sec}} \\
+   t_{sec} = \frac{8 * 3 * (1280 * 1024)}{10^{8}} \\
+   t_{sec} = .315 s  
+\end{eqnarray}
+
+To calculate the time for a frame to be sent over a connection, we simply need to divide the total bits by the connection speed (also in bits/sec).  For the values given in the problem, it would take .315 seconds to transfer a frame.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1.10)}
+\begin{enumerate}
+  \item [Die 1] 15cm diameter, 12 cost, 84 dies, .020 defects per $cm^2$
+  \item [Die 2] 20cm diameter, 15 cost, 100 dies, .031defects per $cm^2$
+\end{enumerate}
+
+\subsection*{1.10.1]}
+
+\begin{equation}
+yield = 1- \frac{area * \frac{defects}{area}}{n_{dies}}
+\end{equation}
+
+This equation provides an worst-case scenario to the yield, where each defect hits a different die and causes the maximum number of losses.  Using this equation, the yield for Die 1 is 95.8\% while Die 2 is 90.3\%.
+
+\subsection*{1.10.2]}
+
+\begin{equation}
+cost_{die} = \frac{cost_{wafer}}{dies\_per\_wafer * yield}
+\end{equation}
+
+Using Equations 7 and 8; Die 1 has a cost of $\frac{12}{84 * .958} = .15$ per die while Die 2 has a cost of $\frac{15}{100 * .0087} = .167$ per die.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1.12)}
+
+\begin{enumerate}
+  \item [P1]: 4GHz, .9 CPI, 5E9 instructions
+  \item [P2]: 3GHz, .75 CPI, 1E9 instructions
+\end{enumerate}
+
+\subsection*{1.12.1]}
+
+\begin{equation}
+t_{cpu} = \frac{N_{instructions} * CPI}{f_{CPU}}
+\end{equation}
+
+For P1 equation 9 becomes $\frac{5E9 * .9}{4E9}$ or  1.125 seconds, while P2 becomes $\frac{1E9 * .75}{3E9}$ or .25 seconds.
+
+\subsection*{1.12.2]}
+
+The time for P1 to compute 1E9 instructions will be $\frac{1E9 * .9}{4E9}$ or .225 s.  If P2 has this long to work, it would only be able to execute $\frac{.225 * 3E9}{.75}$ = 9E8 instructions.  
+
+
+\subsection*{1.12.3]}
+\begin{equation}
+MIPS = \frac{f_{CPU}}{CPI * 10^{6}}
+\end{equation}
+
+The MIPS for P1 is $\frac{4E9}{.9 * 10**{6}} = 4444.44$, while P2 is $\frac{3E9}{.75*10**6}$ = 4000.
+
+\end{document}

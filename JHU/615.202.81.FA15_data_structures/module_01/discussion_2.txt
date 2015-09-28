@@ -1,0 +1,37 @@
+Telescope - as I work for a space agency, it seemed like a logical choice!
+
+The basic functionality of a telescope is to provide the ability to point to and capture photons of distant objects.
+
+How one would implimentationt this is a permutation of a few significant aspects, each with trade-offs:
+
+space-based, ground-based, on an airplane, in a baloon, in a rocket
+size range (1-30 meters)
+sensitive to radio, IR, visible, UV, x-ray, gamma-ray
+camera for images, spectrograph for spectra, rapid counter for transients
+
+
+#-- ADT for a longboard
+ADT Longboard
+  Data
+    position           (x, y) location on the surface of the earth
+    velocity           (speed, direction) of movement
+  Methods
+    Move 
+      Input            Speed
+      Precondition     None
+      Process          Set velocity speed to Input
+      Postcondition    None
+      Output           None
+    Turn
+       Input           Direction to turn
+       Precondition    Velocity > 0
+       Process         Set velocity direction to Input
+       Postcondition   None
+       Output          None
+    Stop
+       Input           None    
+       Precondition    None
+       Process         Set velocity to 0
+       Postcondition   None
+       Output          None
+  End ADT Longboard
