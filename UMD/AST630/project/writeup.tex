@@ -1,0 +1,37 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+%Put ISR Title
+{\bf\large Dusty White Dwarfs and the Late Stages of Planetary Systems}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.1cm}
+%Put Authors
+Justin Ely \\
+\vspace{0.1cm}
+%Put Author's affiliations
+\footnotesize{AST630 University of Maryland College Park, MD\\}
+\vspace{0.1cm}
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+\section*{Summary}
+
+Along with that shown in the presentation:
+
+\begin{itemize}
+\item Read MERCURY6 manual and ran sample simulations to understand code.  Ran small integrations in an attempt to scale runtime for final simulations.
+\item Wrote wrapper scripts to parallelize and automate simulation running after initial attempts proved single processor running would be prohibitively long.  Developed code necessary to generation random distributions of asteroids across desired parameter space, then perform the separation of 12000 total bodies into 120 different simulations over 4 different servers.  Attempted first to learn/use HTCondor infrastructure, then settled on python parallelization.
+\item Multiple times needed to restart integrations following server shutdown or complete fill of available filesystem.
+\item Tracked down an error in the libration width equation in the Debes et al. paper.  After results that didn't match the paper, tracking the equation back to it's source textbook revealed incorrect factoring of semi-major axis on the part of the authors.
+
+\end{itemize}
+
+\end{document}
