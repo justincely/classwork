@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 4}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.204.81.FA15 Computer Organization\\}
+\vspace{0.5cm}
+% Date here below
+29 September, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{MIPS Assembly Workshop)}
+
+\begin{tabular}{ | c | c | c | c | c | c | c | c | }
+  \hline
+    LC & & ADDI & \$v0 & \$zero & 0 & \# Initialize Counter & PC \\ \hline
+          & & 8 & 2 & 0 & 0 &   &   \\ \hline
+     0   &   \multicolumn{6}{|c|}{2002 0000} & 4 \\ \hline
+          & Loop: & LW & \$v1 & 0 & \$a0 & \# Read the next word &  \\ \hline
+          & & 35 & 3 & 0 & 4 &   &   \\ \hline
+     4   &   \multicolumn{6}{|c|}{2083 0000} & 8 \\ \hline
+          & & SW & \$v1 & 0 & \$a1 & \# Copy to the destination &  \\ \hline
+          & & 43 & 3 & 0 & 5 &   &   \\ \hline
+     8   &   \multicolumn{6}{|c|}{ACA3 0000} & 12 \\ \hline
+          & & ADDI & \$v0 & \$v0 & 1 & \# Count the copied word &  \\ \hline
+          & & 8 & 2 & 2 & 1 &   &   \\ \hline
+     12   &   \multicolumn{6}{|c|}{2022 0002} & 16 \\ \hline
+          & & ADDI & \$a0 & \$a0 & 4 & \# The next source word &  \\ \hline
+          & & 8 & 4 & 4 & 4 &   &   \\ \hline
+     16   &   \multicolumn{6}{|c|}{2084 0004} & 20 \\ \hline
+          & & ADDI & \$a1 & \$a1 & 4 & \# Move destination pointer &  \\ \hline
+          & & 8 & 5 & 5 & 4 &   &   \\ \hline
+     20   &   \multicolumn{6}{|c|}{2085 0005} & 24 \\ \hline
+          & & BNE& \$v1 & \$zero & loop & \# Next, if not zero value &  \\ \hline
+          & & 5 & 3 & 0 & 4 &   &   \\ \hline
+     24   &   \multicolumn{6}{|c|}{1483 0000} & 4 \\ \hline
+          & & JR & \$ra &  &  & \# Return to caller &  \\ \hline
+          & & 8 & 31 & &  &   &   \\ \hline
+     28  &   \multicolumn{6}{|c|}{2000 001F} &  \\ \hline
+\end{tabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
