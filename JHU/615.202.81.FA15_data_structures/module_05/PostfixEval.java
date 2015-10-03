@@ -27,8 +27,8 @@ public class PostfixEval{
       try{
         String line = null;
         while ((line = br.readLine()) != null) {
-          System.out.println("Found Postfix expression: " + line);
-          System.out.println("Translating into:");
+          System.out.println("  Found Postfix expression: " + line);
+          System.out.println("  Translating into:");
           translate(line);
         }
 
@@ -45,7 +45,11 @@ public class PostfixEval{
   }
 
   private static boolean isOperator(String character) {
-		return (character.equals("+") || character.equals("-") || character.equals("*") || character.equals("/"));
+		return (character.equals("+") ||
+            character.equals("-") ||
+            character.equals("*") ||
+            character.equals("/") ||
+            character.equals("$"));
 	}
 
   private static String selectCMD(String operator) {
@@ -58,6 +62,8 @@ public class PostfixEval{
       return "ML";
     } else if (operator.equals("/")) {
       return "DV";
+    } else if (operator.equals("$")) {
+      return "PW";
     } else {
       return "BadOperator";
     }
@@ -79,7 +85,7 @@ public class PostfixEval{
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
         //Check for empty stack
-
+        //Check for non-alpha characters - treat as error in expression
         command = selectCMD(expression.substring(i, i+1));
         arg1 = variables.pop();
         arg2 = variables.pop();
