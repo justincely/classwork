@@ -16,4 +16,6 @@ public abstract interface StackADT{
 
   public char pop();
 
+  public char peek();
+
 }
