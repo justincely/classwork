@@ -7,4 +7,4 @@ test:
 	java -ea TestStack
 
 run:
-	java PostfixEval 'PostfixMachineLangInput.txt'
+	java PostfixEval PostfixMachineLangInput.txt

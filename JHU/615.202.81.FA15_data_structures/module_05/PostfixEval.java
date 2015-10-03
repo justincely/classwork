@@ -1,21 +1,48 @@
+import java.io.FileReader;
+import java.io.BufferedReader;
+
 public class PostfixEval{
 
   public static void main(String[]args){
-    for (int i = 0; i < args.length; i++) {
-      System.out.println(args[i]);
+    for (int i=0; i < args.length; i++) {
+      parseFromFile(args[i]);
     }
 
-    String testing_string = "ABC*+DE-/";
+    //String testing_string = "ABC*+DE-/";
 
-    translate(testing_string);
+    //translate(testing_string);
   }
 
 
   /**Not implemented yet
     */
-  //public static String parseFromFile(String filename) {
-  //
-  //}
+  public static void parseFromFile(String filename) {
+    System.out.println("----------------");
+    System.out.println("Given file name: " + filename);
+    System.out.println("----------------");
+
+    try{
+      BufferedReader br = new BufferedReader(new FileReader(filename));
+
+      try{
+        String line = null;
+        while ((line = br.readLine()) != null) {
+          System.out.println("Found Postfix expression: " + line);
+          System.out.println("Translating into:");
+          translate(line);
+        }
+
+        br.close();
+      } catch (java.io.IOException e) {
+        System.out.println("EOF");
+      }
+
+    } catch (java.io.FileNotFoundException e) {
+      System.out.println("cannot find file: " + filename);
+      return;
+    }
+
+  }
 
   private static boolean isOperator(String character) {
 		return (character.equals("+") || character.equals("-") || character.equals("*") || character.equals("/"));
