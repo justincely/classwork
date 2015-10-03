@@ -41,6 +41,8 @@ public class PostfixEval{
     System.out.println("Input Expression: " + expression);
 
     Stack variables = new Stack();
+    Stack memory = new Stack();
+    Stack register;
     int tempNum = 1;
     String arg1;
     String arg2;
@@ -54,9 +56,14 @@ public class PostfixEval{
         command = selectCMD(expression.substring(i, i+1));
         arg1 = variables.pop();
         arg2 = variables.pop();
-        System.out.println(command + " " + arg1 + " " + arg2);
         variables.push("TEMP" + tempNum);
+
+        System.out.println("LD " + arg2);
+        System.out.println(command + " " + arg1);
+        System.out.println("ST " + "TEMP" + tempNum);
+
         tempNum++;
+        //System.out.println(command + " " + arg1 + " " + arg2);
       } else {
         variables.push(expression.substring(i, i+1));
       }
