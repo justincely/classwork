@@ -14,7 +14,7 @@ public class Stack implements StackADT{
 
   private final int MAX_SIZE = 50;
   private int top = -1;
-  private char[] data = new char[MAX_SIZE];
+  private String[] data = new String[MAX_SIZE];
 
   /**Check if the stack is empty
     */
@@ -25,7 +25,7 @@ public class Stack implements StackADT{
   /**Push a new value on to the stack
     *@param char value - item to add
     */
-  public void push(char value) throws BufferOverflowException {
+  public void push(String value) throws BufferOverflowException {
     if (top == MAX_SIZE - 1){
       throw new BufferOverflowException();
     }
@@ -36,7 +36,7 @@ public class Stack implements StackADT{
 
   /**Pop from the stack
     */
-  public char pop() throws EmptyStackException {
+  public String pop() throws EmptyStackException {
     if (isEmpty()) {
       throw new EmptyStackException();
     }
@@ -47,8 +47,8 @@ public class Stack implements StackADT{
 
   /**peek at the top of the stack
     */
-  public char peek() throws EmptyStackException {
-    char tmp;
+  public String peek() throws EmptyStackException {
+    String tmp;
 
     if (isEmpty()) {
       throw new EmptyStackException();

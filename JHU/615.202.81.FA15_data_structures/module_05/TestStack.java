@@ -15,7 +15,7 @@ public class TestStack{
 
   public static void coreFunctionality(){
     Stack tester = new Stack();
-    char[] alpha = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g'};
+    String[] alpha = new String[]{"a", "b", "c", "d", "e", "f", "g"};
     int length = 7;
 
     assert tester.isEmpty() : "New stack doesn't appear empty";
@@ -77,7 +77,7 @@ public class TestStack{
 
     try {
       for (int i=0; i<500; i++){
-        tester.push('a');
+        tester.push("a");
       }
     }
       catch (BufferOverflowException e) {

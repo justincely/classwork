@@ -12,10 +12,10 @@ public abstract interface StackADT{
 
   public boolean isEmpty();
 
-  public void push(char value);
+  public void push(String value);
 
-  public char pop();
+  public String pop();
 
-  public char peek();
+  public String peek();
 
 }

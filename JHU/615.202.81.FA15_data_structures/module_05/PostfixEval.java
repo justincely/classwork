@@ -42,9 +42,9 @@ public class PostfixEval{
 
     Stack variables = new Stack();
     int tempNum = 1;
-    char arg1;
-    char arg2;
-    char op;
+    String arg1;
+    String arg2;
+    String op;
     String command;
 
     for (int i=0; i<expression.length(); i++){
@@ -55,10 +55,10 @@ public class PostfixEval{
         arg1 = variables.pop();
         arg2 = variables.pop();
         System.out.println(command + " " + arg1 + " " + arg2);
-        variables.push(tempNum);
+        variables.push("TEMP" + tempNum);
         tempNum++;
       } else {
-        variables.push(expression.charAt(i));
+        variables.push(expression.substring(i, i+1));
       }
 
 
