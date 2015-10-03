@@ -1,8 +1,10 @@
-all: compile test
+all: compile test run
 
-compile: 
-	javac TestStack.java
+compile:
+	javac *.java
 
-test: 
+test:
 	java -ea TestStack
 
+run:
+	java PostfixEval 'PostfixMachineLangInput.txt'
