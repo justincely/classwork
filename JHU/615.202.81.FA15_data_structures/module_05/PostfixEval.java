@@ -33,8 +33,9 @@ public class PostfixEval{
           System.out.println("  Translating into:");
           try {
             translate(line);
+            System.out.println("\n");
           } catch (UnsupportedOperationException e){
-            System.err.println("ERROR: Invalid Expression encountered: exiting");
+            System.err.println("ERROR: Invalid Expression encountered: exiting \n");
           }
         }
 
@@ -96,7 +97,7 @@ public class PostfixEval{
           System.out.println("Empty Stack!");
           throw new UnsupportedOperationException();
         }
-        //Check for empty stack
+
         //Check for non-alpha characters - treat as error in expression
         command = selectCMD(expression.substring(i, i+1));
 
@@ -122,8 +123,10 @@ public class PostfixEval{
 
         tempNum++;
         //System.out.println(command + " " + arg1 + " " + arg2);
-      } else {
+      } else if (Character.isLetter(expression.charAt(i))) {
         variables.push(expression.substring(i, i+1));
+      } else {
+        throw new UnsupportedOperationException();
       }
 
 
