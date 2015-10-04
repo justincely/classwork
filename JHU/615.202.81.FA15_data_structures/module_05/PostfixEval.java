@@ -1,5 +1,7 @@
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.lang.UnsupportedOperationException;
+import java.util.EmptyStackException;
 
 public class PostfixEval{
 
@@ -29,7 +31,11 @@ public class PostfixEval{
         while ((line = br.readLine()) != null) {
           System.out.println("  Found Postfix expression: " + line);
           System.out.println("  Translating into:");
-          translate(line);
+          try {
+            translate(line);
+          } catch (UnsupportedOperationException e){
+            System.err.println("ERROR: Invalid Expression encountered: exiting");
+          }
         }
 
         br.close();
@@ -70,7 +76,9 @@ public class PostfixEval{
 
   }
 
-  public static void translate(String expression) {
+  public static void translate(String expression)
+    throws UnsupportedOperationException  {
+
     System.out.println("Input Expression: " + expression);
 
     Stack variables = new Stack();
@@ -84,11 +92,28 @@ public class PostfixEval{
 
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
+        if (variables.isEmpty()) {
+          System.out.println("Empty Stack!");
+          throw new UnsupportedOperationException();
+        }
         //Check for empty stack
         //Check for non-alpha characters - treat as error in expression
         command = selectCMD(expression.substring(i, i+1));
-        arg1 = variables.pop();
-        arg2 = variables.pop();
+
+        try {
+          arg1 = variables.pop();
+        } catch (EmptyStackException e) {
+          System.err.println("Empty stack encountered");
+          throw new UnsupportedOperationException();
+        }
+
+        try {
+          arg2 = variables.pop();
+        } catch (EmptyStackException e) {
+          System.err.println("Empty stack encountered");
+          throw new UnsupportedOperationException();
+        }
+
         variables.push("TEMP" + tempNum);
 
         System.out.println("LD " + arg2);
