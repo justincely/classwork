@@ -1,38 +1,61 @@
 import java.io.FileReader;
+import java.io.File;
 import java.io.BufferedReader;
 import java.lang.UnsupportedOperationException;
 import java.util.EmptyStackException;
 
 public class PostfixEval{
-
   public static void main(String[]args){
+    boolean isFileInput = false;
+
+    /* For each input argument, check if the supplied
+     * input string corresponds to an accesible file.
+     * If it doesn't, assume the input was an expression
+     * to be evaluated and pass directly to the translator.
+     */
     for (int i=0; i < args.length; i++) {
-      parseFromFile(args[i]);
+      isFileInput = new File(args[i]).exists();
+
+      if (isFileInput){
+        System.out.println("----------------");
+        System.out.println("Given file name: " + args[i]);
+        System.out.println("----------------");
+        parseFromFile(args[i]);
+      } else {
+        System.out.println("----------------");
+        System.out.println("Given expression: " + args[i]);
+        System.out.println("----------------");
+        translate(args[i]);
+      }
+
     }
   }
 
 
-  /**Not implemented yet
+  /**Parse expressions from a supplied file
+    *
+    *@param filename - name of file containing postfix expressions
     */
   public static void parseFromFile(String filename) {
-    System.out.println("----------------");
-    System.out.println("Given file name: " + filename);
-    System.out.println("----------------");
+    String line = null;
+    int lineCounter = 0;
 
-    try{
+    try {
       BufferedReader br = new BufferedReader(new FileReader(filename));
-
-      try{
-        String line = null;
+      try {
         while ((line = br.readLine()) != null) {
-          System.out.println("  Found Postfix expression: " + line);
-          System.out.println("  Translating into:");
+          lineCounter++;
+          System.out.println("--line " + lineCounter +
+                             " found Postfix expression: " + line);
+
           try {
             translate(line);
-            System.out.println("\n");
           } catch (UnsupportedOperationException e){
-            System.err.println("ERROR: Invalid Expression encountered: exiting \n");
+            System.err.println("ERROR: Invalid expression encountered: exiting");
+            System.err.println(e);
           }
+          System.out.println("\n");
+
         }
 
         br.close();
@@ -41,12 +64,17 @@ public class PostfixEval{
       }
 
     } catch (java.io.FileNotFoundException e) {
-      System.out.println("cannot find file: " + filename);
+      System.out.println("Cannot find file: " + filename);
       return;
     }
-
   }
 
+
+  /**Check if character is an acceptible operator
+    *
+    *@param character String - A single-element String
+    *@return Boolean - True if in +,-,*,/,$ otherwise False
+    */
   private static boolean isOperator(String character) {
 		return (character.equals("+") ||
             character.equals("-") ||
@@ -55,8 +83,13 @@ public class PostfixEval{
             character.equals("$"));
 	}
 
+  /**Select the appropriate machine instruction give the operator
+    *
+    *@param operator String - A single-element String
+    *@return operator String - the corresponding machine instruction
+    */
   private static String selectCMD(String operator) {
-
+    //###Should throw an exeption instead of BadOperator
     if (operator.equals("+")) {
       return "AD";
     } else if (operator.equals("-")) {
@@ -77,11 +110,9 @@ public class PostfixEval{
   public static void translate(String expression)
     throws UnsupportedOperationException  {
 
-    System.out.println("Input Expression: " + expression);
+    System.out.println("--Translating: " + expression + " into machine code.");
 
     Stack variables = new Stack();
-    Stack memory = new Stack();
-    Stack register;
     int tempNum = 1;
     String arg1;
     String arg2;
@@ -91,8 +122,7 @@ public class PostfixEval{
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
         if (variables.isEmpty()) {
-          System.out.println("Empty Stack!");
-          throw new UnsupportedOperationException();
+          throw new UnsupportedOperationException("Operator hit with empty stack");
         }
 
         //Check for parentheticals/other characters?
@@ -102,19 +132,22 @@ public class PostfixEval{
         try {
           arg1 = variables.pop();
         } catch (EmptyStackException e) {
-          System.err.println("Empty stack encountered");
-          throw new UnsupportedOperationException();
+          throw new UnsupportedOperationException("Empty stack on first arg");
         }
 
         try {
           arg2 = variables.pop();
         } catch (EmptyStackException e) {
-          System.err.println("Empty stack encountered");
-          throw new UnsupportedOperationException();
+          throw new UnsupportedOperationException("Empty stack on second arg");
         }
 
         variables.push("TEMP" + tempNum);
 
+        /*Sytax for machine language is alwas:
+         *load arguement 2
+         *operate on arg2 and arg1
+         *store result
+         */
         System.out.println("LD " + arg2);
         System.out.println(command + " " + arg1);
         System.out.println("ST " + "TEMP" + tempNum);
@@ -124,10 +157,11 @@ public class PostfixEval{
       } else if (Character.isLetter(expression.charAt(i))) {
         variables.push(expression.substring(i, i+1));
       } else {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Unrecognized charactor: " +
+                                                expression.charAt(i) +
+                                                " at position: " + i);
       }
-
-
     }
   }
+
 }

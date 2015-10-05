@@ -1,0 +1,44 @@
+
+
+Postfix arguments passed straight to the evaluator must be enclosed in single
+quotes to prevent the shell from expanding wildcards.
+
+Notice in the following example that the input expression is modified by the
+shell when supplied without quotes.
+
+$ java PostfixEval ABC+$CBA-+*
+----------------
+Given expression: ABC+-+*
+----------------
+--Translating: ABC+-+* into machine code.
+LD B
+AD C
+ST TEMP1
+LD A
+SB TEMP1
+ST TEMP2
+Exception in thread "main" java.lang.UnsupportedOperationException: Empty stack on second arg
+	at PostfixEval.translate(PostfixEval.java:141)
+	at PostfixEval.main(PostfixEval.java:28)
+
+
+shiney:module_05 ely$ java PostfixEval 'ABC+$CBA-+*'
+----------------
+Given expression: ABC+$CBA-+*
+----------------
+--Translating: ABC+$CBA-+* into machine code.
+LD B
+AD C
+ST TEMP1
+LD A
+PW TEMP1
+ST TEMP2
+LD B
+SB A
+ST TEMP3
+LD C
+AD TEMP3
+ST TEMP4
+LD TEMP2
+ML TEMP4
+ST TEMP5
