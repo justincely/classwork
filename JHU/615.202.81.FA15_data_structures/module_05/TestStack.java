@@ -4,7 +4,7 @@ import java.nio.BufferOverflowException;
 public class TestStack{
 
   public static void main(String[]args){
-    System.out.println("Testing the staaaaack");
+    System.out.println("Testing the stack functionality");
 
     coreFunctionality();
 

@@ -1,29 +1,32 @@
 import java.util.EmptyStackException;
 import java.nio.BufferOverflowException;
 
-/**
-  * Stack
+/** Stack
+  * The stack has a maximum number of elements of 50, all of String Type.
   *
-  * @author justincely
-  *
+  * @author Justin Ely
   * @version 0.0.1
-  *
   * @license BSD 3-clause
   */
 public class Stack implements StackADT{
-
   private final int MAX_SIZE = 50;
   private int top = -1;
   private String[] data = new String[MAX_SIZE];
 
+
   /**Check if the stack is empty
+    *
+    * @return Boolean - try if stack is empty, false otherwise
     */
   public boolean isEmpty(){
     return (top == -1) ? true : false;
   }
 
+
   /**Push a new value on to the stack
+    *
     *@param char value - item to add
+    *@throws BufferOverflowException - if maximum stack size is exceeded
     */
   public void push(String value) throws BufferOverflowException {
     if (top == MAX_SIZE - 1){
@@ -34,7 +37,11 @@ public class Stack implements StackADT{
     data[top] = value;
   }
 
+
   /**Pop from the stack
+    *
+    *@return String - value at the top of stack
+    *@throws EmptyStackException - if stack is empty
     */
   public String pop() throws EmptyStackException {
     if (isEmpty()) {
@@ -45,7 +52,11 @@ public class Stack implements StackADT{
     return data[top+1];
   }
 
+
   /**peek at the top of the stack
+    *
+    *@return String - value at the top of stack
+    *@throws EmptyStackException - if stack is empty
     */
   public String peek() throws EmptyStackException {
     String tmp;
@@ -58,6 +69,6 @@ public class Stack implements StackADT{
     push(tmp);
 
     return tmp;
-
   }
+
 }

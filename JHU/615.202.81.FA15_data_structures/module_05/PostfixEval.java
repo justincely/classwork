@@ -9,10 +9,6 @@ public class PostfixEval{
     for (int i=0; i < args.length; i++) {
       parseFromFile(args[i]);
     }
-
-    //String testing_string = "ABC*+DE-/";
-
-    //translate(testing_string);
   }
 
 
@@ -77,6 +73,7 @@ public class PostfixEval{
 
   }
 
+  //Change to boolean?  to allow easier error handling?
   public static void translate(String expression)
     throws UnsupportedOperationException  {
 
@@ -98,6 +95,7 @@ public class PostfixEval{
           throw new UnsupportedOperationException();
         }
 
+        //Check for parentheticals/other characters?
         //Check for non-alpha characters - treat as error in expression
         command = selectCMD(expression.substring(i, i+1));
 
@@ -131,8 +129,5 @@ public class PostfixEval{
 
 
     }
-
   }
-
-
 }
