@@ -23,18 +23,22 @@ public class Stack implements StackADT{
   }
 
 
-  /**Push a new value on to the stack
+  /**peek at the top of the stack
     *
-    *@param char value - item to add
-    *@throws BufferOverflowException - if maximum stack size is exceeded
+    *@return String - value at the top of stack
+    *@throws EmptyStackException - if stack is empty
     */
-  public void push(String value) throws BufferOverflowException {
-    if (top == MAX_SIZE - 1){
-      throw new BufferOverflowException();
+  public String peek() throws EmptyStackException {
+    String tmp;
+
+    if (isEmpty()) {
+      throw new EmptyStackException();
     }
 
-    top++;
-    data[top] = value;
+    tmp = pop();
+    push(tmp);
+
+    return tmp;
   }
 
 
@@ -53,22 +57,26 @@ public class Stack implements StackADT{
   }
 
 
-  /**peek at the top of the stack
+  /**Push a new value on to the stack
     *
-    *@return String - value at the top of stack
-    *@throws EmptyStackException - if stack is empty
+    *@param char value - item to add
+    *@throws BufferOverflowException - if maximum stack size is exceeded
     */
-  public String peek() throws EmptyStackException {
-    String tmp;
-
-    if (isEmpty()) {
-      throw new EmptyStackException();
+  public void push(String value) throws BufferOverflowException {
+    if (top == MAX_SIZE - 1){
+      throw new BufferOverflowException();
     }
 
-    tmp = pop();
-    push(tmp);
+    top++;
+    data[top] = value;
+  }
 
-    return tmp;
+  /**View the current size of the stack
+    *
+    *@return int - the current size of the stack
+    */
+  public int size() {
+    return top + 1;
   }
 
 }
