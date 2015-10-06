@@ -1,6 +1,12 @@
 
 
+######
+Output
+######
+As per the program requirements: the program prints the instructions to
+standard output.  Writing to a file can be done using redirection:
 
+java PostfixEval "AB+" >> simple_out.txt
 
 ###########
 Limitations
@@ -9,6 +15,9 @@ Limitations
 The Stack
 The stack is limited to Strings, and can only hold 50 elements before overflow
 occurs.
+
+
+Doesn't handle parenthesis
 
 
 Postfix arguments passed straight to the evaluator must be enclosed in single

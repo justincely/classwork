@@ -4,7 +4,13 @@ import java.nio.BufferOverflowException;
 public class TestEval{
 
   public static void main(String[]args){
-    System.out.println("Testing the evaluator");
+    System.out.println("###################################");
+    System.out.println("# Testing the Postfix Evaluator   #");
+    System.out.println("#                                 #");
+    System.out.println("# STDOUT is OK, Errors will be    #");
+    System.out.println("# raised for failing tests        #");
+    System.out.println("###################################");
+
     String[] valid = new String[] {"AB+CG*I/",
                                    "AB+",
                                    "A B + ",
@@ -16,7 +22,11 @@ public class TestEval{
                                     "   ",
                                     "*",
                                     "+-*",
-                                    "(AB+)"};
+                                    "(AB+)",
+                                    "12+",
+                                    "!",
+                                    "{}",
+                                    ""};
 
     //Run the scenario given in the problem
     givenScenario();
@@ -29,6 +39,11 @@ public class TestEval{
       assert checkValidExpression(inValid[i]) == false:
                                               i + "th expression didn't fail";
     }
+
+
+    System.out.println("####################################");
+    System.out.println("# Finished Postfix Evaluator tests #");
+    System.out.println("####################################");
   }
 
 
