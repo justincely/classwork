@@ -1,4 +1,7 @@
-all: compile doc test run
+all: clean compile doc test run
+
+clean:
+	rm -f *.class
 
 compile:
 	javac *.java
