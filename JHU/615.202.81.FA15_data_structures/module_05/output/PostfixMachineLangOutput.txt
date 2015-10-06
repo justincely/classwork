@@ -1,7 +1,7 @@
 ----------------
 Given file name: ../input/PostfixMachineLangInput.txt
 ----------------
---line 1 found Postfix expression: AB+C-
+--line 1--found Postfix expression: AB+C-
 --Translating: AB+C- into machine code.
 LD A
 AD B
@@ -11,7 +11,7 @@ SB C
 ST TEMP2
 
 
---line 2 found Postfix expression: ABC+-
+--line 2--found Postfix expression: ABC+-
 --Translating: ABC+- into machine code.
 LD B
 AD C
@@ -21,7 +21,7 @@ SB TEMP1
 ST TEMP2
 
 
---line 3 found Postfix expression: AB-C+DEF-+$
+--line 3--found Postfix expression: AB-C+DEF-+$
 --Translating: AB-C+DEF-+$ into machine code.
 LD A
 SB B
@@ -40,7 +40,7 @@ PW TEMP4
 ST TEMP5
 
 
---line 4 found Postfix expression: ABCDE-+$*EF*-
+--line 4--found Postfix expression: ABCDE-+$*EF*-
 --Translating: ABCDE-+$*EF*- into machine code.
 LD D
 SB E
@@ -62,7 +62,7 @@ SB TEMP5
 ST TEMP6
 
 
---line 5 found Postfix expression: ABC+*CBA-+*
+--line 5--found Postfix expression: ABC+*CBA-+*
 --Translating: ABC+*CBA-+* into machine code.
 LD B
 AD C
@@ -81,7 +81,7 @@ ML TEMP4
 ST TEMP5
 
 
---line 6 found Postfix expression: ABC+/CBA*+
+--line 6--found Postfix expression: ABC+/CBA*+
 --Translating: ABC+/CBA*+ into machine code.
 LD B
 AD C
@@ -97,7 +97,7 @@ AD TEMP3
 ST TEMP4
 
 
---line 7 found Postfix expression: AB-*CBA+-*
+--line 7--found Postfix expression: AB-*CBA+-*
 --Translating: AB-*CBA+-* into machine code.
 LD A
 SB B
@@ -106,7 +106,7 @@ ERROR: Invalid expression encountered: exiting
 BadPostfixExpression: Empty stack on second arg
 
 
---line 8 found Postfix expression: ABC-/BA-+/
+--line 8--found Postfix expression: ABC-/BA-+/
 --Translating: ABC-/BA-+/ into machine code.
 LD B
 SB C
@@ -124,7 +124,7 @@ ERROR: Invalid expression encountered: exiting
 BadPostfixExpression: Empty stack on second arg
 
 
---line 9 found Postfix expression: ABC+$CBA-+*
+--line 9--found Postfix expression: ABC+$CBA-+*
 --Translating: ABC+$CBA-+* into machine code.
 LD B
 AD C
@@ -143,7 +143,7 @@ ML TEMP4
 ST TEMP5
 
 
---line 10 found Postfix expression: AB0+/CBA+-/
+--line 10--found Postfix expression: AB0+/CBA+-/
 --Translating: AB0+/CBA+-/ into machine code.
 ERROR: Invalid expression encountered: exiting
 BadPostfixExpression: Unrecognized charactor: 0 at position: 2

@@ -1,8 +1,19 @@
+
+
 import java.util.EmptyStackException;
 import java.nio.BufferOverflowException;
 
-/** Stack
-  * The stack has a maximum number of elements of 50, all of String Type.
+/** A stack of <code>String</code> objects.
+  *
+  * <p>The stack is implemented as an array
+  *     with a maximum size of 50 elements.
+  *     This size limitation comes from an
+  *     conservative overestimate based on
+  *     the given in put situations and the
+  *     likely size of postfix expressions:
+  *     50 variables in an expression would
+  *     be a rather large expression.
+  * </p>
   *
   * @author Justin Ely
   * @version 0.0.1
@@ -10,12 +21,20 @@ import java.nio.BufferOverflowException;
   */
 public class Stack implements StackADT{
   private final int MAX_SIZE = 50;
-  private int top = -1;
   private String[] data = new String[MAX_SIZE];
+  //top of -1 indicates an empty stack
+  private int top = -1;
 
   /**Check if the stack is empty
     *
-    * @return Boolean - try if stack is empty, false otherwise
+    * <p>The contents of the stack are
+    *    unchanged by this call. Empty is
+    *    determined by checking the position
+    *    of the stack pointer with the bottom
+    *    of the array.
+    * </p>
+    *
+    * @return <code>true</code> if stack is empty, <code>false</code> otherwise
     */
   public boolean isEmpty(){
     return (top == -1) ? true : false;
@@ -24,7 +43,13 @@ public class Stack implements StackADT{
 
   /**peek at the top of the stack
     *
-    *@return String - value at the top of stack
+    * <p><code>peek</code> is implimented as a
+    *    <code>pop</code> followed by a
+    *    <code>push</code>, leaving the final
+    *    stack unchanged.
+    * </p>
+    *
+    *@return the item at the top of stack
     *@throws EmptyStackException - if stack is empty
     */
   public String peek() throws EmptyStackException {
@@ -58,7 +83,7 @@ public class Stack implements StackADT{
 
   /**Push a new value on to the stack
     *
-    *@param char value - item to add
+    *@param value - item to add
     *@throws BufferOverflowException - if maximum stack size is exceeded
     */
   public void push(String value) throws BufferOverflowException {
@@ -70,9 +95,9 @@ public class Stack implements StackADT{
     data[top] = value;
   }
 
-  /**View the current size of the stack
+  /**View the number of elements placed onto the stack
     *
-    *@return int - the current size of the stack
+    *@return the current size of the stack
     */
   public int size() {
     return top + 1;

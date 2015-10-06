@@ -1,5 +1,4 @@
-/** StackADT
-  * Interface for the Stack class
+/** Interface for the Stack class
   *
   * @author Justin Ely
   * @version 0.0.1

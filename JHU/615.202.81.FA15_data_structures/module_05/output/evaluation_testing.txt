@@ -4,9 +4,6 @@
 # STDOUT is OK, Errors will be    #
 # raised for failing tests        #
 ###################################
-#########################################
-# The following expressions should pass #
-#########################################
 --Translating: ABC*+DE-/ into machine code.
 LD B
 ML C
@@ -36,6 +33,9 @@ DV TEMP3
 ST TEMP4
 
 
+#########################################
+# The following expressions should pass #
+#########################################
 --Translating: AB+CG*I/ into machine code.
 LD A
 AD B

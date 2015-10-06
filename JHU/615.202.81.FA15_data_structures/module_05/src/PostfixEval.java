@@ -3,7 +3,17 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.util.EmptyStackException;
 
+
+/**Evaluate input postfix expressions into machine language
+  *
+  */
 public class PostfixEval{
+
+  /**Main driver to parse and evaluate expressions
+    *
+    *@param args[]   Holds command line arguments: filenames or
+    *                postfix strings.
+    */
   public static void main(String[]args){
     boolean isFileInput = false;
 
@@ -37,6 +47,12 @@ public class PostfixEval{
 
   /**Parse expressions from a supplied file
     *
+    *<p> Each line in the supplied file must contain a single
+    *    postfix expression or whitespace.  Whitspace will be ignored,
+    *    and each expression will be translated.  Output is printed
+    *    to STDOUT.
+    *</p>
+    *
     *@param filename - name of file containing postfix expressions
     */
   public static void parseFromFile(String filename) {
@@ -49,7 +65,7 @@ public class PostfixEval{
         while ((line = br.readLine()) != null) {
           lineCounter++;
           System.out.println("--line " + lineCounter +
-                             " found Postfix expression: " + line);
+                             "--found Postfix expression: " + line);
 
           try {
             translate(line);
@@ -57,8 +73,8 @@ public class PostfixEval{
             System.err.println("ERROR: Invalid expression encountered: exiting");
             System.err.println(e);
           }
-          System.out.println("\n");
 
+          System.out.println("\n");
         }
 
         br.close();
@@ -109,6 +125,18 @@ public class PostfixEval{
 
   }
 
+  /**Postfix to machine translator
+    *
+    *<p>input expression must be a single post-fix expression
+    *   containing operators (+,-,*,/,$) and alphabetics (A,B,C,etc).
+    *   Whitespace is ignored, integers and any other non-operand,
+    *   non-alphabetic character is considered an error, including
+    *   parentheticals and brackets.
+    *</p>
+    *@param expression - the postfix expression to be translated
+    *@throws BadPostfixExpression - if an invalid or unsupported expression
+    *                   is input.
+    */
   public static void translate(String expression)
     throws BadPostfixExpression {
 
@@ -125,10 +153,11 @@ public class PostfixEval{
       throw new BadPostfixExpression("Operator hit with empty stack");
     }
 
+
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
         if (variables.isEmpty()) {
-          throw new BadPostfixExpression("Operator hit with empty stack");
+          throw new BadPostfixExpression("Operator encountered with an empty stack");
         }
 
         command = selectCMD(expression.substring(i, i+1));
@@ -169,7 +198,8 @@ public class PostfixEval{
       }
     }
 
-    //Deal with left-over variabls that haven't been loaded into memory
+    //Deal with left-over variabls that haven't been loaded into memory,
+    //indicating an invalid expression
     if (variables.isEmpty() == false) {
       while (variables.isEmpty() == false) {
         if (variables.pop().startsWith("TEMP") == false){
