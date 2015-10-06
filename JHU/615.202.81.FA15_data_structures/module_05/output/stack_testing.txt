@@ -1,0 +1,27 @@
+###################################
+# Testing the stack functionality #
+#                                 #
+# STDOUT is OK, Errors will be    #
+# raised for failing tests        #
+###################################
+Testing empty() and size(): ok
+Running push tests
+a push ok
+b push ok
+c push ok
+d push ok
+e push ok
+f push ok
+g push ok
+Running pop tests
+g == g
+f == f
+e == e
+d == d
+c == c
+b == b
+a == a
+Running final empty tests: ok
+###################################
+#     Finished Stack Testing      #
+###################################

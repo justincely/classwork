@@ -10,7 +10,9 @@ public class TestEval{
     System.out.println("# STDOUT is OK, Errors will be    #");
     System.out.println("# raised for failing tests        #");
     System.out.println("###################################");
-
+    System.out.println("#########################################");
+    System.out.println("# The following expressions should pass #");
+    System.out.println("#########################################");
     String[] valid = new String[] {"AB+CG*I/",
                                    "AB+",
                                    "A B + ",
@@ -35,6 +37,9 @@ public class TestEval{
       assert checkValidExpression(valid[i]): i + "th expression didn't evaluate";
     }
 
+    System.out.println("#########################################");
+    System.out.println("# The following expressions should fail #");
+    System.out.println("#########################################");
     for (int i=0; i<inValid.length; i++){
       assert checkValidExpression(inValid[i]) == false:
                                               i + "th expression didn't fail";

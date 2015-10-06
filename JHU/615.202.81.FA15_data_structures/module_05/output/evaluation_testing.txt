@@ -1,0 +1,92 @@
+###################################
+# Testing the Postfix Evaluator   #
+#                                 #
+# STDOUT is OK, Errors will be    #
+# raised for failing tests        #
+###################################
+#########################################
+# The following expressions should pass #
+#########################################
+--Translating: ABC*+DE-/ into machine code.
+LD B
+ML C
+ST TEMP1
+LD A
+AD TEMP1
+ST TEMP2
+LD D
+SB E
+ST TEMP3
+LD TEMP2
+DV TEMP3
+ST TEMP4
+
+The above string should match the following:
+LD B
+ML C
+ST TEMP1
+LD A
+AD TEMP1
+ST TEMP2
+LD D
+SB E
+ST TEMP3
+LD TEMP2
+DV TEMP3
+ST TEMP4
+
+
+--Translating: AB+CG*I/ into machine code.
+LD A
+AD B
+ST TEMP1
+LD C
+ML G
+ST TEMP2
+LD TEMP2
+DV I
+ST TEMP3
+--Translating: AB+ into machine code.
+LD A
+AD B
+ST TEMP1
+--Translating: A B +  into machine code.
+LD A
+AD B
+ST TEMP1
+--Translating:  BB*C$      into machine code.
+LD B
+ML B
+ST TEMP1
+LD TEMP1
+PW C
+ST TEMP2
+--Translating: ZBFDS++++ into machine code.
+LD D
+AD S
+ST TEMP1
+LD F
+AD TEMP1
+ST TEMP2
+LD B
+AD TEMP2
+ST TEMP3
+LD Z
+AD TEMP3
+ST TEMP4
+#########################################
+# The following expressions should fail #
+#########################################
+--Translating: A into machine code.
+--Translating: AB into machine code.
+--Translating:     into machine code.
+--Translating: * into machine code.
+--Translating: +-* into machine code.
+--Translating: (AB+) into machine code.
+--Translating: 12+ into machine code.
+--Translating: ! into machine code.
+--Translating: {} into machine code.
+--Translating:  into machine code.
+####################################
+# Finished Postfix Evaluator tests #
+####################################
