@@ -1,0 +1,108 @@
+----------------
+Given file name: ../input/AdditionalValidInput.txt
+----------------
+--line 1 found Postfix expression: AB+CG*I/
+--Translating: AB+CG*I/ into machine code.
+LD A
+AD B
+ST TEMP1
+LD C
+ML G
+ST TEMP2
+LD TEMP2
+DV I
+ST TEMP3
+
+
+--line 2 found Postfix expression: AB+
+--Translating: AB+ into machine code.
+LD A
+AD B
+ST TEMP1
+
+
+--line 3 found Postfix expression: A B +
+--Translating: A B + into machine code.
+LD A
+AD B
+ST TEMP1
+
+
+--line 4 found Postfix expression:  BB*C$
+--Translating:  BB*C$ into machine code.
+LD B
+ML B
+ST TEMP1
+LD TEMP1
+PW C
+ST TEMP2
+
+
+--line 5 found Postfix expression: ZBFDS++++
+--Translating: ZBFDS++++ into machine code.
+LD D
+AD S
+ST TEMP1
+LD F
+AD TEMP1
+ST TEMP2
+LD B
+AD TEMP2
+ST TEMP3
+LD Z
+AD TEMP3
+ST TEMP4
+
+
+--line 6 found Postfix expression: ab + c*d + d d + /
+--Translating: ab + c*d + d d + / into machine code.
+LD a
+AD b
+ST TEMP1
+LD TEMP1
+ML c
+ST TEMP2
+LD TEMP2
+AD d
+ST TEMP3
+LD d
+AD d
+ST TEMP4
+LD TEMP3
+DV TEMP4
+ST TEMP5
+
+
+--line 7 found Postfix expression: ABCDEF-+/$*
+--Translating: ABCDEF-+/$* into machine code.
+LD E
+SB F
+ST TEMP1
+LD D
+AD TEMP1
+ST TEMP2
+LD C
+DV TEMP2
+ST TEMP3
+LD B
+PW TEMP3
+ST TEMP4
+LD A
+ML TEMP4
+ST TEMP5
+
+
+--line 8 found Postfix expression: ZX+DQ-*     
+--Translating: ZX+DQ-*      into machine code.
+LD Z
+AD X
+ST TEMP1
+LD D
+SB Q
+ST TEMP2
+LD TEMP1
+ML TEMP2
+ST TEMP3
+
+
+--Finished parsing all expressions--
