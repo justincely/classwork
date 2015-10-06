@@ -5,17 +5,30 @@ public class TestEval{
 
   public static void main(String[]args){
     System.out.println("Testing the evaluator");
-    String[] data = new String[] {"AB+CG*I/",
-                                  "AB+",
-                                  "A B + "};
+    String[] valid = new String[] {"AB+CG*I/",
+                                   "AB+",
+                                   "A B + ",
+                                   " BB*C$     ",
+                                   "ZBFDS++++"};
+
+   String[] inValid = new String[] {"A",
+                                    "AB",
+                                    "   ",
+                                    "*",
+                                    "+-*",
+                                    "(AB+)"};
 
     //Run the scenario given in the problem
     givenScenario();
 
-    for (int i=0; i<data.length; i++){
-      PostfixEval.translate(data[i]);
+    for (int i=0; i<valid.length; i++){
+      assert checkValidExpression(valid[i]): i + "th expression didn't evaluate";
     }
 
+    for (int i=0; i<inValid.length; i++){
+      assert checkValidExpression(inValid[i]) == false:
+                                              i + "th expression didn't fail";
+    }
   }
 
 
@@ -38,15 +51,16 @@ public class TestEval{
     System.out.println("LD TEMP2");
     System.out.println("DV TEMP3");
     System.out.println("ST TEMP4");
+    System.out.println("\n");
   }
 
   /**Check if expression is valid
     *
     */
-  public static boolean checkValidExpressions(String postfix) {
+  public static boolean checkValidExpression(String postfix) {
     try{
       PostfixEval.translate(postfix);
-    } catch (Exception e) {
+    } catch (BadPostfixExpression e) {
       return false;
     }
 

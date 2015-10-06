@@ -3,7 +3,7 @@ all: compile doc test run
 compile:
 	javac *.java
 
-test:
+test: compile
 	java -ea TestStack
 	java -ea TestEval
 

@@ -109,11 +109,8 @@ public class PostfixEval{
 
   }
 
-  //Change to boolean?  to allow easier error handling?
   public static void translate(String expression)
     throws BadPostfixExpression {
-
-    System.out.println("--Translating: " + expression + " into machine code.");
 
     Stack variables = new Stack();
     int tempNum = 1;
@@ -122,14 +119,18 @@ public class PostfixEval{
     String op;
     String command;
 
+    System.out.println("--Translating: " + expression + " into machine code.");
+
+    if (expression.trim().length() == 0) {
+      throw new BadPostfixExpression("Operator hit with empty stack");
+    }
+
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
         if (variables.isEmpty()) {
           throw new BadPostfixExpression("Operator hit with empty stack");
         }
 
-        //Check for parentheticals/other characters?
-        //Check for non-alpha characters - treat as error in expression
         command = selectCMD(expression.substring(i, i+1));
 
         try {
@@ -167,6 +168,15 @@ public class PostfixEval{
                                                 " at position: " + i);
       }
     }
-  }
 
+    //Deal with left-over variabls that haven't been loaded into memory
+    if (variables.isEmpty() == false) {
+      while (variables.isEmpty() == false) {
+        if (variables.pop().startsWith("TEMP") == false){
+          throw new BadPostfixExpression("Leftover variables after evaluation.");
+        }
+      }
+    }
+
+  }
 }
