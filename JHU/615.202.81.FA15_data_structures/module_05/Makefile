@@ -1,4 +1,4 @@
-all: compile test run doc
+all: compile doc test run
 
 compile:
 	javac *.java

@@ -11,6 +11,8 @@ public class TestStack{
     peekErrorHandling();
     popErrorHandling();
     pushErrorHandling();
+
+
   }
 
   public static void coreFunctionality(){
@@ -26,7 +28,6 @@ public class TestStack{
       tester.push(alpha[i]);
       assert tester.size() == i+1: "Size mismatch on iter: " + (i+1);
       System.out.println(tester.peek());
-      //assert tester.push(alpha[i]) : i + "th push failed";
     }
 
     System.out.println("Running pop tests");
@@ -51,9 +52,8 @@ public class TestStack{
 
     try {
       tester.peek();
-    }
-      catch (EmptyStackException e) {
-        thrownCorrect = true;
+    } catch (EmptyStackException e) {
+      thrownCorrect = true;
     }
 
     assert thrownCorrect : "Peek doesn't throw right";
@@ -66,9 +66,8 @@ public class TestStack{
 
     try {
       tester.pop();
-    }
-      catch (EmptyStackException e) {
-        thrownCorrect = true;
+    } catch (EmptyStackException e) {
+      thrownCorrect = true;
     }
 
     assert thrownCorrect : "Pop doesn't throw right";
@@ -82,9 +81,8 @@ public class TestStack{
       for (int i=0; i<500; i++){
         tester.push("a");
       }
-    }
-      catch (BufferOverflowException e) {
-        thrownCorrect = true;
+    } catch (BufferOverflowException e) {
+      thrownCorrect = true;
     }
 
     assert thrownCorrect : "Peek doesn't throw right";

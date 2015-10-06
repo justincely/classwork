@@ -13,7 +13,6 @@ public class Stack implements StackADT{
   private int top = -1;
   private String[] data = new String[MAX_SIZE];
 
-
   /**Check if the stack is empty
     *
     * @return Boolean - try if stack is empty, false otherwise

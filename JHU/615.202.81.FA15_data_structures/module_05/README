@@ -1,5 +1,16 @@
 
 
+
+
+###########
+Limitations
+###########
+
+The Stack
+The stack is limited to Strings, and can only hold 50 elements before overflow
+occurs.
+
+
 Postfix arguments passed straight to the evaluator must be enclosed in single
 quotes to prevent the shell from expanding wildcards.
 

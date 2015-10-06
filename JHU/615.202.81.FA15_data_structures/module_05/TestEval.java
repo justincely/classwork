@@ -5,12 +5,23 @@ public class TestEval{
 
   public static void main(String[]args){
     System.out.println("Testing the evaluator");
+    String[] data = new String[] {"AB+CG*I/",
+                                  "AB+",
+                                  "A B + "};
 
     //Run the scenario given in the problem
     givenScenario();
 
+    for (int i=0; i<data.length; i++){
+      PostfixEval.translate(data[i]);
+    }
+
   }
 
+
+  /**Just the given one
+    *
+    */
   public static void givenScenario(){
     String testing_string = "ABC*+DE-/";
     PostfixEval.translate(testing_string);
@@ -29,8 +40,10 @@ public class TestEval{
     System.out.println("ST TEMP4");
   }
 
+  /**Check if expression is valid
+    *
+    */
   public static boolean checkValidExpressions(String postfix) {
-
     try{
       PostfixEval.translate(postfix);
     } catch (Exception e) {

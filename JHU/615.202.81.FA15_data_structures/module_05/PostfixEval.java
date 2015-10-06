@@ -1,7 +1,6 @@
 import java.io.FileReader;
 import java.io.File;
 import java.io.BufferedReader;
-import java.lang.UnsupportedOperationException;
 import java.util.EmptyStackException;
 
 public class PostfixEval{
@@ -25,9 +24,13 @@ public class PostfixEval{
         System.out.println("----------------");
         System.out.println("Given expression: " + args[i]);
         System.out.println("----------------");
-        translate(args[i]);
+        try{
+          translate(args[i]);
+        } catch (BadPostfixExpression e) {
+          System.err.println(e);
+        }
       }
-
+    System.out.println("--Finished parsing all expressions--");
     }
   }
 
@@ -50,7 +53,7 @@ public class PostfixEval{
 
           try {
             translate(line);
-          } catch (UnsupportedOperationException e){
+          } catch (BadPostfixExpression e){
             System.err.println("ERROR: Invalid expression encountered: exiting");
             System.err.println(e);
           }
@@ -60,7 +63,7 @@ public class PostfixEval{
 
         br.close();
       } catch (java.io.IOException e) {
-        System.out.println("EOF");
+        System.out.println("EOF encountered");
       }
 
     } catch (java.io.FileNotFoundException e) {
@@ -108,7 +111,7 @@ public class PostfixEval{
 
   //Change to boolean?  to allow easier error handling?
   public static void translate(String expression)
-    throws UnsupportedOperationException  {
+    throws BadPostfixExpression {
 
     System.out.println("--Translating: " + expression + " into machine code.");
 
@@ -122,7 +125,7 @@ public class PostfixEval{
     for (int i=0; i<expression.length(); i++){
       if (isOperator(expression.substring(i, i+1))){
         if (variables.isEmpty()) {
-          throw new UnsupportedOperationException("Operator hit with empty stack");
+          throw new BadPostfixExpression("Operator hit with empty stack");
         }
 
         //Check for parentheticals/other characters?
@@ -132,13 +135,13 @@ public class PostfixEval{
         try {
           arg1 = variables.pop();
         } catch (EmptyStackException e) {
-          throw new UnsupportedOperationException("Empty stack on first arg");
+          throw new BadPostfixExpression("Empty stack on first arg");
         }
 
         try {
           arg2 = variables.pop();
         } catch (EmptyStackException e) {
-          throw new UnsupportedOperationException("Empty stack on second arg");
+          throw new BadPostfixExpression("Empty stack on second arg");
         }
 
         variables.push("TEMP" + tempNum);
@@ -151,13 +154,15 @@ public class PostfixEval{
         System.out.println("LD " + arg2);
         System.out.println(command + " " + arg1);
         System.out.println("ST " + "TEMP" + tempNum);
-
         tempNum++;
+
         //System.out.println(command + " " + arg1 + " " + arg2);
       } else if (Character.isLetter(expression.charAt(i))) {
         variables.push(expression.substring(i, i+1));
+      } else if (Character.isWhitespace(expression.charAt(i))) {
+        continue;
       } else {
-        throw new UnsupportedOperationException("Unrecognized charactor: " +
+        throw new BadPostfixExpression("Unrecognized charactor: " +
                                                 expression.charAt(i) +
                                                 " at position: " + i);
       }

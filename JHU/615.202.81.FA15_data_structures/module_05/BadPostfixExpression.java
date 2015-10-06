@@ -1,4 +1,4 @@
-public class BadPostfixExpression extends Exception {
+public class BadPostfixExpression extends Error {
     public BadPostfixExpression(String message) {
         super(message);
     }
