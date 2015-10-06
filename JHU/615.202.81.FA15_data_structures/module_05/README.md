@@ -1,11 +1,30 @@
-Usage
+Directory Contents  
+------------------
+*  analysis: Lab write-up  
+*  input: input text files to be evaluated
+*  output: output text files from runs against the included input
+*  src: raw and compiled source java code, long with Makefile for testing, compilation, documentation
+*  src/docs/: java autodoc output 
+
+Compilation/Batch Running
+-------------------------
+The src directory contains a Makefile to clean the directory, run the compile the code, run the tests, produce documentation, and finally pass the available input through the evaluator.
+
+Makefile usage is outlined below.
+```bash
+make          # run the entire stuite
+make compile  # compile the source
+make test     # compile and run the tests
+make doc      # generate documentation
+make run      # run the code against the two files supplied in the inputs directory
+```
+
+Individual Usage
 -----
-Postfix expressions to be evaluated may be given directly as arguements, as lines in a file, or any combination of the two.
+The main driver is PostfixEval.java in the src directory.  Postfix expressions to be evaluated may be given directly as arguements, as lines in a file, or any combination of the two.
 ```java
-$ java PostfixEval 'ABC+$CBA-+*'
-
-$ java PostfixEval File1.txt
-
+$ java PostfixEval 'ABC+$CBA-+*' 
+$ java PostfixEval File1.txt 
 $ java PostfixEval 'ABC+$CBA-+*' File1.txt
 ```
 
@@ -19,10 +38,8 @@ java PostfixEval "AB+" >> simple_out.txt
 
 Limitations
 -----------
-
-1.  The stack is limited to Strings  
-2.  Expressions can be only 50 characters long before overflow  
-3.  The evaluator doesn't handle parenthesis
+1.  Expressions can be only 50 characters long before overflow  will occur.
+3.  The evaluator doesn't handle parenthesis or other brackets.
 
 
 Usage Note
