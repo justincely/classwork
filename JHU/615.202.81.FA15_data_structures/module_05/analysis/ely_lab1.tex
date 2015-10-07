@@ -36,10 +36,10 @@ A stack-based implementation make sense for translating postfix expressions larg
 and robust way to evaluate postfix expressions, and a topic of previous course modules.  This ties into the current assignment, as to translate an expression into machine 
 language you first need to determine each individual operation in order.  
 
-From each expression, the translation required iterating through the input string and , the machine code is straight-forward: load argument 2, perform operation on arg2 and arg1, store result.  
+From each expression, the translation requires evaluating the postfix expression in the abstract: iterating through the input string and selecting out each operation individually.  However, instead of evaluating, the final step is to print out the machine instructions that would evaluate the operation.  The machine code is straight-forward: load argument 2, perform operation on arg2 and arg1, store result.  
 
 Providing adequate tests for the translator was integral to the final robust version of the code.  With the initial version, there had been no 
-accounting for blank strings, spaces, numbers, or unused variables.  Putting in many different test-cases with strange edge-cases caused
+accounting for things like blank strings, spaces, numbers, or unused variables.  Putting in many different test-cases with strange edge-cases caused
 new errors (or lack there of) which lead to new handling of the expressions.
 
 \subsection{Recursion}

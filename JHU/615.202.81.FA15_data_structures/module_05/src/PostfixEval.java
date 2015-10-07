@@ -118,7 +118,6 @@ public class PostfixEval{
     *@return operator String - the corresponding machine instruction
     */
   private static String selectCMD(String operator) {
-    //###Should throw an exeption instead of BadOperator
     if (operator.equals("+")) {
       return "AD";
     } else if (operator.equals("-")) {
@@ -165,6 +164,7 @@ public class PostfixEval{
 
 
     for (int i=0; i<expression.length(); i++){
+      //if operator, pop arguements and evaluate
       if (isOperator(expression.substring(i, i+1))){
         if (variables.isEmpty()) {
           throw new BadPostfixExpression("Operator encountered with an empty stack");
@@ -196,10 +196,12 @@ public class PostfixEval{
         System.out.println("ST " + "TEMP" + tempNum);
         tempNum++;
 
-        //System.out.println(command + " " + arg1 + " " + arg2);
+
       } else if (Character.isLetter(expression.charAt(i))) {
+        //if variable, push onto stack
         variables.push(expression.substring(i, i+1));
       } else if (Character.isWhitespace(expression.charAt(i))) {
+        //Ignore whitespace
         continue;
       } else {
         throw new BadPostfixExpression("Unrecognized charactor: " +
