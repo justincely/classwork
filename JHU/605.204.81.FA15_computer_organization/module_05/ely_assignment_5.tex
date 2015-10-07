@@ -35,15 +35,15 @@ Justin Ely
 
 \section*{2.25.1)}
 
-The J-type instruction would be the most appropriate format.  OR I-TYPE?  Kinda like a branch?
+Since this instruction performs a branching operation and requires more than 1 argument, the most appropriate type
+would be I-type.
 
 \section*{2.25.2)}
 \begin{verbatim}
-    sgt, $t3, $t2, $zero
-    bnq, $t3, $zero, sub
-sub:
-    addi, $t3, $t3, -1
-    j LOOP
+      slt, $t3, $zero, $t2
+      bne, $t3, $zero, sub
+sub:  addi, $t3, $t3, -1
+      j LOOP
 \end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,11 +105,12 @@ or $t7, $t2, $t1
 \end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Pseuodocode: ld  \$t5, 0(\$t8))}
-
+\section*{Pseuodocode: ld  \$t5, 0(\$t8) )}
+This seems slightly too simple, but it seems that a 64-bit word can be read in two MIPS instructions into two separate
+registors. 
 \begin{verbatim}
-
-
+lw, $t5, 0($t8)
+lw, $t6, 32($t8)
 \end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
