@@ -100,7 +100,7 @@ public class TestEval{
     System.out.println("\n");
   }
 
-  /**Check if expression is valid
+  /**Check if expression is valid by attempting to translate.
     *
     *@param postfix string expression to evaluate
     *@return <code>true</code> if no error thrown by

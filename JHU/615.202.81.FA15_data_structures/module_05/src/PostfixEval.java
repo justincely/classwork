@@ -1,3 +1,13 @@
+/**PostfixEval
+  *
+  *This program provides the interface and main translation
+  *of given postfix expressions into machine instructions.
+  *
+  *Postfix expressions can be contained as separate lines in an
+  *input file, or supplied directly by the command line.
+  */
+
+
 import java.io.FileReader;
 import java.io.File;
 import java.io.BufferedReader;
@@ -176,10 +186,10 @@ public class PostfixEval{
 
         variables.push("TEMP" + tempNum);
 
-        /*Sytax for machine language is alwas:
-         *load arguement 2
-         *operate on arg2 and arg1
-         *store result
+        /* Sytax for machine language is always:
+         * load arguement 2
+         * operate on arg2 and arg1
+         * store result
          */
         System.out.println("LD " + arg2);
         System.out.println(command + " " + arg1);

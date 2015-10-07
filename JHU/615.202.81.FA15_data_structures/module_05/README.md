@@ -1,10 +1,10 @@
 Directory Contents  
 ------------------
-*  analysis: Lab write-up  
-*  input: input text files to be evaluated
-*  output: output text files from runs against the included input
-*  src: raw and compiled source java code, long with Makefile for testing, compilation, documentation
-*  src/docs/: java autodoc output 
+*  ./analysis/: Lab write-up  
+*  ./input/: input text files to be evaluated
+*  ./output/: output text files from runs against the included input
+*  ./src/: raw and compiled source java code, long with Makefile for testing, compilation, documentation
+*  ./src/docs/: java autodoc output 
 
 Compilation/Batch Running
 -------------------------
