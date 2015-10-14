@@ -32,23 +32,26 @@ Justin Ely
 
 \begin{verbatim}
 # Nodes are initialized to Null left and right pointers
+# and can have a value
 class Node(value)
     value = value
     left = Null
     right = Null
 
 class Deque:
-    RightNode = Node(Null)
-    LeftNode = Node(Null)
+    # Right and left pointers are Null when empty
+    RightNode = Null
+    LeftNode = Null
 
     def isEmpty()
-        if RightNode.left == Null and LeftNode.right == Null:
+        if RightNode == Null and LeftNode == Null:
             return True
         else
             return False
 
     def InsertLeft(value)
-       NewNode = Node(value)
+        # initialized NewNode to null left and right
+        NewNode = Node(value)
        
         if isEmpty()
             RightNode = NewNode
@@ -57,13 +60,16 @@ class Deque:
             NewNode.right = LeftNode
             NewNode.left = LeftNode.next            
             LeftNode.left = NewNode
-
+            
+            LeftNode = NewNode
         
     def DeleteRight()
         if isEmpty()
             raise Exception
         else
+            # store the node temporarily
             tmp = RightNode
+
             RightNode.left.right = RightNode.right
             RightNode = RightNode.left
             
@@ -71,22 +77,25 @@ class Deque:
             
 \end{verbatim}
 
+\noindent\rule{\linewidth}{1.0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{2)}
 \begin{verbatim}
-
 # Nodes are initialized to Null left and right pointers
+# and can have a value
 class Node(value)
     value = value
     left = Null
     right = Null
 
 class Deque:
+    # initialize header node with Null pointers
     HeadNode = Node(Null)
     HeadNode.right = HeadNode
     HeadNode.left = HeadNode
     
+    # initialize Left and Right sides of deque
     RightNode = Header.right
     LeftNode = Header.left
 
@@ -97,6 +106,7 @@ class Deque:
             return False
 
     def InsertRight(value)
+        # initialized NewNode to null left and right
         NewNode = Node(value)
        
         RightNode.right = NewNode
@@ -104,6 +114,8 @@ class Deque:
     
         LeftNode.left = NewNode
         NewNode.right = LeftNode
+        
+        RightNode = NewNode
 	     
     def DeleteLeft()
         if isEmpty()
@@ -112,17 +124,22 @@ class Deque:
             tmp = LeftNode
             LeftNode.right.left = LeftNode.left
             LeftNode = LeftNode.right
+            RightNode.right = LeftNode
             
             return tmp.value
             
 \end{verbatim}
 
+\noindent\rule{\linewidth}{1.0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{3)} 
 
 \begin{verbatim}
+#  An array data structure that handles
+#  the sharing of resources
 class SharedArray(N_NODES)
+    # array of nodes with (value, next)
     data = Array(N_NODES)
     
     FreeIndx = Stack()
@@ -139,10 +156,10 @@ class SharedArray(N_NODES)
     def Return(index):
         FreeIndx.push(index)
 
-//-------
+//------------------------------------------
 
-class SharedStack()
-    data = SharedArray
+# Stack takes as a SharedArray instance upon instantiation
+class FriendlyStack(Sdata)
     StartNode = -1
 
     def isEmpty()
@@ -152,37 +169,56 @@ class SharedStack()
             return False
 
     def Push(value)
-        newIndex = data.Borrow()
+        newIndx = Sdata.Borrow()
         
         if startNode == -1:
-            startNode = newIndex
-        
-        data[newIndex].value = value
-        data[newIndex].next = -1
-        
-        
+            startNode = newIndx
+        Sdata.data[newIndx].value = value
+        Sdata.data[newIndx].next = -1
         
     def Pop()
-          if isEmpty()
-              raise Exception
+        if isEmpty()
+            raise Exception
         
-          node = StartNode
-          prev = Null
-          while not node.next == -1:
-              prev = node
-              node = data[node.next]
+        node = StartNode
+        while not node.next == -1:
+            prev = node
+            node = data[node.next]
               
-          data[prev.index].next = -1
-          data.Return(node.index)
+        data[prev].next = -1
+        data.Return(node)
           
-          return node.value
-//-------   
-     
-class SharedQueue(sharedArrayInstance)
-    def Insert
+        return Sdata.data[node]
+
+//------------------------------------------
+
+# Queue takes as a SharedArray instance upon instantiation
+class FriendlyQueue(Sdatae)
+    StartNode = -1
+
+    def isEmpty()
+        if StartNode == -1
+            return True
+        else
+            return False
+
+    def Insert(value)
+        newIndx = Sdata.Borrow()
+        
+        if startNode == -1:
+            startNode = newIndx    
+        Sdata.data[newIndx].value = value
+        Sdata.data[newIndx].next = -1
     
     def Delete
+         if isEmpty()
+            raise Exception
+            
+        tmp = StartNode
+        StartNode = Sdata.data[StartNode.next]
         
+        Sdata.Return(tmp)
+        return Sdata.data[tmp]       
         
 \end{verbatim}
 
