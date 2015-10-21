@@ -59,16 +59,31 @@ loop:
         addi $s0, $s0, -1
         j loop
 exit:
-
         add $a0, $zero, $s1  #set input argument to second input
         jal pfctrl
         addi $s4, $v0, 0 # k!
 
         div $s6, $t2, $s4  # n!/(n-k) / k!
 
+        #-- Probability from input
         li $v0, 4  # print string
         la $a0, out_str
         syscall
+
+        li $v0, 1  #print int
+        addi $a0, $s6, 0  #move result into sys argument
+        syscall
+        #--
+
+        #-- with the powerball
+        li $v0, 4  # print string
+        la $a0, powerball
+        syscall
+        la $a0, final
+        syscall
+
+        addi $t1, $zero, 35
+        mul $s6, $s6, $t1
 
         li $v0, 1  #print int
         addi $a0, $s6, 0  #move result into sys argument
@@ -118,3 +133,9 @@ confirm:
 
 sep:
     .asciiz ", "
+
+powerball:
+    .asciiz "\n\n If this is the Powerball Lottery, there is an additional 1/35 chance of picking the powerball correctly."
+
+final:
+    .asciiz "\n This means the total probability is 1 in "
