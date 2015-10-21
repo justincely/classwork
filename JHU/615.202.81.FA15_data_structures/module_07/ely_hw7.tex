@@ -1,0 +1,133 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 7}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{615.202.81.FA15 Data Structures \\}
+\vspace{0.5cm}
+% Date here below
+20 October, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+\begin{itemize}
+    \item The oth level (root) node has exactly 0 ancestors
+    \item the first level will have exactly 1 ancestor, the root node
+    \item the second level will have exactly 2 ancestors (1 node at level 1 and the root)
+    \item ...
+\end{itemize}
+
+Following this trend, a node at level n will have exactly n ancestors.  
+
+\section*{1b)}
+\begin{itemize}
+    \item A tree with 1 leaf has 1 node
+    \item A tree with 2 leaves has 3 total nodes
+    \item A tree with 3 leaves has 5 nodes
+    \item A tree with 4 leaves has 7 nodes
+    \item ...
+\end{itemize}
+
+Following this trend, a regular binary tree with n leaves has 2n-1 total nodes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3)} 
+For a general m-ary tree, the total number of pointers set aside will be equal to n x m.  However, each node n (apart from the root) will remove 1 null pointer from this count as the pointer will connect to it's parent.
+
+\begin{eqnarray}
+N_{null} &=& (n * m) - (n - 1) \\
+                &=& (n * m) - n + 1 \\
+                &=& n * (m - 1) + 1 
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4)}
+\begin{verbatim}
+class Tree
+    data = Array()
+    
+    def maketree(value)
+        newNode = Node()
+        
+        newNode.value = value
+        newNode.left = Null
+        newNode.right = Null
+    
+        return newNode
+	
+    
+    def traverse(Node)
+        If not Node == null:
+            traverse(Node.left)
+            print Node.value
+            traverse(Node.right)
+	
+	
+    def setleft(value, parent)
+        if parent.left != null:
+            raise Error
+            
+        child = maketree(value)
+        child.right = parent
+        
+        data[IndexOf(parent) * 2] = child
+	
+	
+    def setright(value, parent)    
+        child = maketree(value)
+        child.right = parent.right
+    
+        data[IndexOf(parent)*2 +1] = child
+    
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5a)} 
+\begin{verbatim}
+def fib(n)
+    if n = 1:
+        Here.left = 0
+    else:
+        Here.left = fib(n-1)
+        Here.right = fib(n-2)
+\end{verbatim}
+
+\section*{5b)} 
+No, the 1 node will only have an n-1 child, and not an n-2 child.
+\section*{5c)} 
+An order N fibonacci tree will have fib(n-1) + fib(n-2) leaves.
+\section*{5d)} 
+A fibonacci tree of order n has depth n.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
