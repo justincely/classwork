@@ -43,7 +43,7 @@
         syscall
 
         li $v0, 4  # separator
-        la $a0, sep 
+        la $a0, sep
         syscall
 
         li $v0, 1
@@ -51,23 +51,42 @@
         syscall
         #----
 
+        addi $t1, $s2, 0
+        addi $t2, $zero, 1
+loop:
+        li $v0, 4  # separator
+        la $a0, sep
+        syscall
 
-	#factorials
-        add $a0, $zero, $s0   # set input argument to first input
-        jal pfctrl
-	addi $s3, $v0, 0 # factorial(n)
+        li $v0, 1
+        addi $a0, $t2, 0
+        syscall
+
+
+        slt $t3, $t1, $s0
+        beq $t3, $zero, exit # exit loop
+        mul $t2, $t2, $s0 # mult
+        addi $s0, $s0, -1
+        j loop
+exit:
+
+
+	    #factorials
+        #add $a0, $zero, $s0   # set input argument to first input
+        #jal pfctrl
+	    #addi $s3, $v0, 0 # factorial(n)
 
         add $a0, $zero, $s1  #set input argument to second input
         jal pfctrl
         addi $s4, $v0, 0 # factorial(k)
-    
-        add $a0, $zero, $s2  #set input argument to n-k
-        jal pfctrl
-        addi $s5, $v0, 0 # factorial(n-k)
+
+        #add $a0, $zero, $s2  #set input argument to n-k
+        #jal pfctrl
+        #addi $s5, $v0, 0 # factorial(n-k)
 
 
-        mul $s6, $s4, $s5  # factorial(k) * factorial(n-k)
-        div $s6, $s3, $s6  # factorial(n) / prev
+        #mul $s6, $s4, $s5  # factorial(k) * factorial(n-k)
+        div $s6, $t2, $s4  # factorial(n) / prev
 
 
         li $v0, 4  # print string
