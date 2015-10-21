@@ -2,6 +2,7 @@
 
 .text
  main:
+        #-- Load arguements
         li $v0, 4  # print string
         la $a0, in_n
         syscall
@@ -17,10 +18,11 @@
         li $v0, 5 #read integer
         syscall
         addi $s1, $v0, 0
+        #--
 
-        sub $s2, $s0, $s1  # n-k
+        sub $s2, $s0, $s1  # calculate n-k
 
-        #confirmation for testing
+        #confirmation output for testing
         li $v0, 4
         la $a0, confirm
         syscall
@@ -46,6 +48,8 @@
         syscall
         #----
 
+        #-- use factorial algedbra to
+        #-- calculate n! / (n-k)!
         addi $t1, $s2, 0
         addi $t2, $zero, 1
 loop:
@@ -56,24 +60,11 @@ loop:
         j loop
 exit:
 
-
-	    #factorials
-        #add $a0, $zero, $s0   # set input argument to first input
-        #jal pfctrl
-	    #addi $s3, $v0, 0 # factorial(n)
-
         add $a0, $zero, $s1  #set input argument to second input
         jal pfctrl
-        addi $s4, $v0, 0 # factorial(k)
+        addi $s4, $v0, 0 # k!
 
-        #add $a0, $zero, $s2  #set input argument to n-k
-        #jal pfctrl
-        #addi $s5, $v0, 0 # factorial(n-k)
-
-
-        #mul $s6, $s4, $s5  # factorial(k) * factorial(n-k)
-        div $s6, $t2, $s4  # factorial(n) / prev
-
+        div $s6, $t2, $s4  # n!/(n-k) / k!
 
         li $v0, 4  # print string
         la $a0, out_str
@@ -114,7 +105,7 @@ L1:     addi $a0, $a0, -1 # n := n-1
 
 .data
 out_str:
-    .asciiz " The chance of winning is 1 in "
+    .asciiz ", the chance of winning is 1 in "
 
 in_n:
     .asciiz " Input the possible numbers: "
@@ -123,7 +114,7 @@ in_k:
     .asciiz " Input the number of items chosen: "
 
 confirm:
-    .asciiz " N, K, (N-k) are: "
+    .asciiz " With N, K, (N-k): "
 
 sep:
     .asciiz ", "
