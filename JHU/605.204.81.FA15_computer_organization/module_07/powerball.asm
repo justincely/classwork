@@ -1,8 +1,3 @@
-######### Factorial Subroutine Fall 2014
-#
-# Given n, in register $a0;
-# calculates n! and stores the result in register $v0
-
 .globl main
 
 .text
@@ -54,15 +49,6 @@
         addi $t1, $s2, 0
         addi $t2, $zero, 1
 loop:
-        li $v0, 4  # separator
-        la $a0, sep
-        syscall
-
-        li $v0, 1
-        addi $a0, $t2, 0
-        syscall
-
-
         slt $t3, $t1, $s0
         beq $t3, $zero, exit # exit loop
         mul $t2, $t2, $s0 # mult
@@ -100,6 +86,10 @@ exit:
         addi $v0, $zero, 10  #finished, exit
         syscall
 
+######### Factorial Subroutine Fall 2014
+#
+# Given n, in register $a0;
+# calculates n! and stores the result in register $v0
 
 pfctrl: sw $ra, 4($sp) # save the return address
         sw $a0, 0($sp) # save the current value of n
@@ -118,6 +108,8 @@ L1:     addi $a0, $a0, -1 # n := n-1
         lw $ra, 4($sp) # fetch return address
         mul $v0, $a0, $v0 # multiply (n)*(n-1)
         jr $ra # return value n!
+# P Snyder 22 April 2015
+######### End of the subroutine
 
 
 .data
@@ -135,5 +127,3 @@ confirm:
 
 sep:
     .asciiz ", "
-# P Snyder 22 April 2015
-######### End of the subroutine
