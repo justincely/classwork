@@ -42,29 +42,33 @@ public class Matrix{
     }
   }
 
-  public Matrix Minor(int[][] a, int i, int j){
-    int insize = a.length;
-    int outsize = insize--;
-    int[][] out = new int[outsize][outsize];
-
+  public Matrix Minor(int i, int j){
+    int insize = data.length;
+    int outsize = insize - 1;
+    int[] out_data = new int[outsize*outsize];
+    System.out.println("Finding the minor of matrix");
     //FIX
     for (int x=0; x<insize; x++){
       for (int y=0; y<insize; y++){
         if ((x == i) || (y == j)){
           continue;
-        } else {
-          out[i][j] = a[i][j];
         }
+
+        int tmp_x = x;
+        int tmp_y = y;
+
+        if (x > i){
+          tmp_x--;
+        }
+        if (y > j){
+          tmp_y--;
+        }
+
+        out_data[tmp_x + tmp_y*outsize] = data[x][y];
       }
     }
 
-    int[] out_1d = new int[outsize * outsize];
-    for (int x=0; x<insize; x++){
-      for (int y=0; y<insize; y++){
-        out_1d[y*insize + x] = out[x][y];
-      }
-    }
-    return new Matrix(outsize, out_1d);
+    return new Matrix(outsize, out_data);
   }
 
 }
