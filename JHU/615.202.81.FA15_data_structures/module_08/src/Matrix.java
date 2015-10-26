@@ -16,8 +16,19 @@ public class Matrix{
     this(1);
   }
 
-  public void Determinate(){
-
+  public static int Determinate(Matrix mat){
+    int[][] subData = mat.getData();
+    if (subData.length == 1){
+      return subData[0][0];
+    } else {
+      int sum = 0;
+      int y = 0;
+      for (int x=0; x<subData.length; x++){
+        Matrix minorMatrix = mat.Minor(x, y);
+        sum = sum + ((int) Math.pow(-1, x+y) * subData[x][y] * Determinate(minorMatrix));
+      }
+      return sum;
+    }
   }
 
   public void Print(){
