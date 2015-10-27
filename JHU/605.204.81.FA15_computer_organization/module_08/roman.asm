@@ -110,7 +110,10 @@ loop:
 
         addi $t7, $zero, 5
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #-- if value = 1, next = 10
         addi $t7, $zero, 1
@@ -118,7 +121,10 @@ loop:
 
         addi $t7, $zero, 10
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #-- if value = 10, next = 50
         addi $t7, $zero, 10
@@ -126,7 +132,10 @@ loop:
 
         addi $t7, $zero, 50
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #-- if value = 10, next = 100
         addi $t7, $zero, 10
@@ -134,7 +143,10 @@ loop:
 
         addi $t7, $zero, 100
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #-- if value = 100, next = 500
         addi $t7, $zero, 100
@@ -142,7 +154,10 @@ loop:
 
         addi $t7, $zero, 500
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #-- if value = 100, next = 1000
         addi $t7, $zero, 100
@@ -150,7 +165,10 @@ loop:
 
         addi $t7, $zero, 1000
         seq $t2, $s5, $t7
-        beq $t1, $t2, subadd
+
+        and $t3, $t1, $t2
+        addi $t4, $zero, 1
+        beq $t3, $t4, subadd
 
         #else
         j justadd
