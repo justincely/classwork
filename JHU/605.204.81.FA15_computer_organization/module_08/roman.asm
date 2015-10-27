@@ -26,6 +26,18 @@
         li $v0, 4
         syscall
 
+        addi $t1, $s0, 0 #tmp store location
+remove:
+        lb $a3, 0($s0)    # Load character at index
+        addi $s0, $s0, 1      # Increment index
+        bnez $a3, remove     # Loop until the end of string is reached
+        beq $a1, $s0, skip    # Do not remove \n when string = maxlength
+        addi $s0, $s0, -2     # If above not true, Backtrack index to '\n'
+        sb $0, 0($s0)    # Add the terminating character in its place
+skip:
+
+        addi $s0, $t1, 0 #restore location
+
         #-- convert
         addi $s1, $zero, 0 #counter
 loop:
@@ -42,13 +54,13 @@ loop:
         #--
 
         addi $a0, $s2, 0
-        jal arabic
         #li $v0, 1
         #addi $a0, $s0, 0
         #syscall
 
         #-- check for null and exit
         beq $s2, $zero, exit
+        jal arabic
         addi $s1, $s1, 1 # Count = Count + 1
         addi $s0, $s0, 1
         j loop
