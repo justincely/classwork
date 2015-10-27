@@ -32,12 +32,17 @@ loop:
         lb $s2, 0($s0)  # character
 
         #-- print character
-        li $v0, 11 #print character
-        addi $a0, $s2, 0
-        syscall
+        #li $v0, 11 #print character
+        #addi $a0, $s2, 0
+        #syscall
+
+        #li $v0, 4  # print string
+        #la $a0, sep
+        #syscall
         #--
 
-        #jal arabic
+        addi $a0, $s2, 0
+        jal arabic
         #li $v0, 1
         #addi $a0, $s0, 0
         #syscall
@@ -65,25 +70,56 @@ arabic:
         sw $a0, 0($sp)
         addi $sp, $sp, -8
 
+
+        move $s7, $a0  #store argument
         la $t0, numerals
         la $t1, values
 
 next:
         lb $t2, 0($t0)  #grab next roman numeral
+        lb $t3, 0($t1)  #grab numeric value
 
         #-- print character
-        li $v0, 11 #print character
-        addi $a0, $t2, 0
-        syscall
+        #li $v0, 11
+        #addi $a0, $s7, 0
+        #syscall
+
+        #li $v0, 4
+        #la $a0, sep
+        #syscall
+
+        #li $v0, 11
+        #addi $a0, $t2, 0
+        #syscall
         #--
 
-        beq $t2, $a0, return
+        #-- print int
+        #li $v0, 1
+        #addi $a0, $t1, 0
+        #syscall
+        #--
+
+        beq $t2, $s7, return
         addi $t0, $t0, 1
         addi $t1, $t1, 1
         j next
 
 return:
-        lb $v0, 0($t1)  #grab numeric value
+
+        #-- print character
+        li $v0, 11
+        addi $a0, $s7, 0
+        syscall
+
+        li $v0, 4
+        la $a0, sep
+        syscall
+
+        li $v0, 1
+        addi $a0, $t3, 0
+        syscall
+        #---
+
         jr $ra   # return
 
 
@@ -105,3 +141,9 @@ final:
 
 verify:
     .asciiz "\nYou have input:"
+
+sep:
+    .asciiz " "
+
+newline:
+    .asciiz "\n"
