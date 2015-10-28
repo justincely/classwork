@@ -9,6 +9,9 @@
         li $v0, 4
         la $a0, greeting
         syscall
+
+read:
+        li $v0, 4
         la $a0, ask
         syscall
 
@@ -52,7 +55,7 @@ skip:
 loop:
         lb $s2, 0($s0)              # character
 
-        beq $s2, $zero, exit        # check for null and exit
+        beq $s2, $zero, finish      # check for null and exit
 
         addi $a0, $s2, 0            # load character as argument
         jal arabic                  # calculate first numeric
@@ -156,10 +159,11 @@ subadd:
         addi $s0, $s0, 2
         j loop
 
-exit:
-        #------------------------
-        #-- Print values and exit
-        #------------------------
+
+finish:
+        #--------------------------
+        #-- Print values and cycle
+        #--------------------------
         li $v0, 4                   # print result string
         la $a0, decimal
         syscall
@@ -168,6 +172,25 @@ exit:
         addi $a0, $s3, 0
         syscall
 
+        li $v0, 4
+        la $a0, repeat
+        syscall
+
+        #-- read Input string
+        li $v0, 8
+        la $a0, buffer
+        li $a1, 20
+        move $s0, $a0
+        syscall
+
+        lb $t1, 0($s0)              # read character
+        beq $t1, 'y', read          # go back to beginning
+
+
+exit:
+        #------------------------
+        #--exit
+        #------------------------
         li $v0, 4                   # print final message
         la $a0, final
         syscall
@@ -210,12 +233,12 @@ buffer:
 
 numerals:
     .asciiz "IVXLCDMivxlcdm"
-    
+
 values:
     .word 1, 5, 10, 50, 100, 500, 1000, 1, 5, 10, 50, 100, 500, 1000
 
 greeting:
-    .asciiz "#-- Roman to Arabia converter --#\nInput values may be in either upper or lower case \nand should be no more than 20 characters long.\n"
+    .asciiz "#-- Roman to Arabia converter --#\nInput values may be in either upper or lower case \nand should be no more than 20 characters long.\n\n"
 
 ask:
     .asciiz "What would you like to convert?\n"
@@ -228,3 +251,6 @@ final:
 
 verify:
     .asciiz "\nYou have input:"
+
+repeat:
+    .asciiz "\nWould you like to input another value? y/n: "
