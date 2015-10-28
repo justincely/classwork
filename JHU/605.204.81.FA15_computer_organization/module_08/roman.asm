@@ -183,22 +183,22 @@ arabic:
         sw $a0, 0($sp)
         addi $sp, $sp, -8
 
-        move $s7, $a0  #store argument
-        la $t0, numerals
-        la $t1, values
+        move $s7, $a0               # store argument
+        la $t0, numerals            # load character array
+        la $t1, values              # load value array
 
 next:
-        lb $t2, 0($t0)  #grab next roman numeral
-        lw $t3, 0($t1)  #grab numeric value
+        lb $t2, 0($t0)              # grab next roman numeral
+        lw $t3, 0($t1)              # grab numeric value
 
-        beq $t2, $s7, return
-        addi $t0, $t0, 1
-        addi $t1, $t1, 4
+        beq $t2, $s7, return        # return if character match is found
+        addi $t0, $t0, 1            # advance character pointer
+        addi $t1, $t1, 4            # advance value pointer
         j next
 
 return:
-        move $v0, $t3
-        jr $ra   # return
+        move $v0, $t3               # move value to output
+        jr $ra                      # return
 
 
 #--------------#
@@ -208,8 +208,11 @@ return:
 buffer:
     .space 20
 
-numerals: .asciiz "IVXLCDMivxlcdm"
-values: .word 1, 5, 10, 50, 100, 500, 1000, 1, 5, 10, 50, 100, 500, 1000
+numerals:
+    .asciiz "IVXLCDMivxlcdm"
+    
+values:
+    .word 1, 5, 10, 50, 100, 500, 1000, 1, 5, 10, 50, 100, 500, 1000
 
 greeting:
     .asciiz "#-- Roman to Arabia converter --#\nInput values may be in either upper or lower case \nand should be no more than 20 characters long.\n"
