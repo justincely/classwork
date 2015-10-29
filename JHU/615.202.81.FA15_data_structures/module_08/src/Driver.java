@@ -1,3 +1,9 @@
+/**Driver
+  *
+  *Main program to drive matrix determinate calculations.  Input must be
+  *from named files supplied via STDIN.
+  */
+
 import java.util.Scanner;
 import java.io.File;
 
@@ -5,27 +11,23 @@ public class Driver{
 
 /**Main driver to parse and evaluate expressions
   *
-  *@param args[]   Holds command line arguments: filenames or
-  *                postfix strings.
+  *@param args[]   Holds command line arguments: filename.
   */
  public static void main(String[]args){
-   boolean isFileInput = false;
    int matrixSize = 0;
    int[] inData = new int[1];
-   /* For each input argument, check if the supplied
-    * input string corresponds to an accesible file.
-    * If it doesn't, assume the input was an expression
-    * to be evaluated and pass directly to the translator.
-    */
+
    for (int i=0; i < args.length; i++) {
-     //isFileInput = new File(args[i]).exists();
      try{
        Scanner scanner = new Scanner(new File(args[i]));
        System.out.println("Reading file " + args[i]);
        int j = 0;
-       //int x = 0;
-       //int y = 0;
 
+       /* Loop over integers in the input file.  First integer is
+        * interpreted as the order (n) of the subsequent matrix data.
+        * the next n*n integers are parsed and used as input data
+        * to the matrix.
+        */
        while(scanner.hasNextInt()){
          if (j==0){
            matrixSize = scanner.nextInt();
@@ -33,13 +35,13 @@ public class Driver{
            inData = new int[matrixSize*matrixSize];
            j++;
          } else{
-           //x = (j-1)%matrixSize;
-           //y = (j-1)/matrixSize;
-           //System.out.println(j + " (X,Y)" + x + "," + y);
            inData[j-1] = scanner.nextInt();
            j++;
          }
 
+         /* After the data has been filled, initialize a matrix and
+          * calculate the determinate.
+          */
          if (j-1 == matrixSize*matrixSize){
            Matrix myMatrix = new Matrix(matrixSize, inData);
            long startTime = System.nanoTime();
@@ -50,16 +52,15 @@ public class Driver{
            System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate.");
            System.out.println("a determinate of: " + det);
            System.out.println("#--------------#\n");
+           // Reset counter
            j = 0;
-           //x = 0;
-           //y = 0;
          }
        }
 
-
        if (j!=0){
          //Raise error or something, only happens if matrix doesn't fully eval
-         System.err.println("Error happened");
+         System.err.println("Halting execution, check formatting of array data'");
+         return;
        }
      } catch (java.io.FileNotFoundException e){
        System.out.println("Cannot find file: " + args[i]);

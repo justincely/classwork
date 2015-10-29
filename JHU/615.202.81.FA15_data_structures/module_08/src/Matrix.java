@@ -1,3 +1,5 @@
+import java.lang.Exception;
+
 /** A Matrix of <code>int</code> precision.
   *
   * <p>The matrix is implemented as an array
@@ -20,7 +22,11 @@ public class Matrix{
     */
   public Matrix(int order, int[] values){
     data = new int[order][order];
-    loadData(values);
+    try{
+      loadData(values);
+    } catch (Exception e){
+      System.err.println(e);
+    }
   }
 
   /**Construct matrix with just order argument
@@ -60,7 +66,8 @@ public class Matrix{
         Matrix minorMatrix = mat.Minor(x, y);
         sum = sum + ((long) Math.pow(-1, x+y) * (long) subData[x][y] * Determinate(minorMatrix));
       }
-      return sum;
+
+    return sum;
     }
   }
 
@@ -100,11 +107,19 @@ public class Matrix{
     *
     *@param int[] values - the 1d representation of the 2d input array.
     */
-  public void loadData(int[] values){
+  public void loadData(int[] values) throws Exception{
     // needs error checking
     int size = data.length;
-    for (int i=0; i<values.length; i++){
-      data[i%size][i/size] = values[i];
+    int inSize = values.length;
+
+    if (size*size > inSize){
+      System.out.println("WARNING: not enough values provided, padding with 0");
+    } else if (size*size < inSize){
+      throw new Exception("Too many values provided to matrix");
+    } else{
+      for (int i=0; i<values.length; i++){
+        data[i%size][i/size] = values[i];
+      }
     }
   }
 

@@ -77,8 +77,12 @@ public class TestMatrix {
      System.out.println("Testing the print method");
      Matrix myMatrix = new Matrix(3);
      int[] data = {1, 1, 1, 2, 2, 2, 3, 3, 3};
-     myMatrix.loadData(data);
-     myMatrix.Print();
+     try{
+       myMatrix.loadData(data);
+       myMatrix.Print();
+     } catch (Exception e){
+       org.junit.Assert.fail();
+     }
    }
 
 }
