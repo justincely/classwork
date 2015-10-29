@@ -43,12 +43,12 @@ public class Driver{
          if (j-1 == matrixSize*matrixSize){
            Matrix myMatrix = new Matrix(matrixSize, inData);
            long startTime = System.nanoTime();
-           int det = Matrix.Determinate(myMatrix);
+           long det = Matrix.Determinate(myMatrix);
            long estimatedTime = System.nanoTime() - startTime;
            System.out.println("\n#----Matrix----#");
            myMatrix.Print();
-           System.out.println("Has determinate: " + det);
-           System.out.println("And took " + estimatedTime + "ns to calculate.");
+           System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate.");
+           System.out.println("a determinate of: " + det);
            System.out.println("#--------------#\n");
            j = 0;
            //x = 0;

@@ -17,7 +17,7 @@ public class TestMatrix {
      int[] data = {1, 1, 1, 1, 1, 1, 1, 1, 1};
      Matrix myMatrix = new Matrix(3, data);
 
-     int det = Matrix.Determinate(myMatrix);
+     long det = Matrix.Determinate(myMatrix);
      System.out.println("The determinate is " + det);
 
 
@@ -26,6 +26,14 @@ public class TestMatrix {
      myMatrix = new Matrix(2, data);
 
      det = Matrix.Determinate(myMatrix);
+     System.out.println("The determinate is " + det);
+
+     data = new int[6];
+     myMatrix = new Matrix(6, data);
+     long startTime = System.nanoTime();
+     det = Matrix.Determinate(myMatrix);
+     long estimatedTime = System.nanoTime() - startTime;
+     System.out.println("And took " + estimatedTime + "ns to calculate.");
      System.out.println("The determinate is " + det);
    }
 
