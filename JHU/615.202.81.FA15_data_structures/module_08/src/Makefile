@@ -11,6 +11,7 @@ test: compile
 	java -ea TestRunner &> ../output/TestOut.txt
 
 run:
+	java Driver ../inputs/lab2-input.txt
 
 doc:
 	javadoc *.java -d docs

@@ -4,12 +4,12 @@ public class Matrix{
   public Matrix(int order, int[] values){
     data = new int[order][order];
     loadData(values);
-    System.out.println("Matrix of order " + data.length + " initialized.");
+    //System.out.println("Matrix of order " + data.length + " initialized.");
   }
 
   public Matrix(int order){
     data = new int[order][order];
-    System.out.println("Matrix of order " + data.length + " initialized to 0.");
+    //System.out.println("Matrix of order " + data.length + " initialized to 0.");
   }
 
   public Matrix(){
@@ -57,8 +57,8 @@ public class Matrix{
     int insize = data.length;
     int outsize = insize - 1;
     int[] out_data = new int[outsize*outsize];
-    System.out.println("Finding the minor of matrix");
-    //FIX
+    //System.out.println("Finding the minor of matrix");
+
     for (int x=0; x<insize; x++){
       for (int y=0; y<insize; y++){
         if ((x == i) || (y == j)){
