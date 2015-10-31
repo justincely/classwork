@@ -12,6 +12,12 @@ public class TestMatrix {
    }
 
    @Test
+   public void testMatrixException(){
+     System.out.println("Testing the matrix creation errors");
+     Matrix myMatrix = new Matrix(-6);
+   }
+
+   @Test
    public void testDeterminate(){
      System.out.println("Testing the determinate");
      int[] data = {1, 1, 1, 1, 1, 1, 1, 1, 1};

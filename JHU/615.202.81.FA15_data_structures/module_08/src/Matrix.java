@@ -21,8 +21,12 @@ public class Matrix{
     *@param int[] values - a 1D array of input values (flattened from 2d array)
     */
   public Matrix(int order, int[] values){
+    if (order < 0) {
+      throw new BadMatrix("Negative order given.");
+    }
+
     data = new int[order][order];
-    try{
+    try {
       loadData(values);
     } catch (Exception e){
       System.err.println(e);
@@ -38,6 +42,9 @@ public class Matrix{
     *@param int order - the order n of the nxn matrix
     */
   public Matrix(int order){
+    if (order < 0) {
+      throw new BadMatrix("Negative order given.");
+    }
     data = new int[order][order];
   }
 
@@ -156,7 +163,6 @@ public class Matrix{
         out_data[tmp_x + tmp_y*outsize] = data[x][y];
       }
     }
-
     return new Matrix(outsize, out_data);
   }
 

@@ -49,6 +49,25 @@ public class Driver{
           * calculate the determinate.
           */
          if (j-1 == matrixSize*matrixSize){
+           try {
+             Matrix myMatrix = new Matrix(matrixSize, inData);
+             long startTime = System.nanoTime();
+             long det = Matrix.Determinate(myMatrix);
+             long estimatedTime = System.nanoTime() - startTime;
+
+             System.out.println("\n#----Matrix----#");
+             myMatrix.Print();
+             System.out.println("#----------------#");
+             System.out.println("#------Stats-----#");
+             System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate");
+             System.out.println("a determinate of " + det + ".");
+             System.out.println("#----------------#\n");
+
+           } catch (BadMatrix e) {
+             System.err.println(e);
+             validMatrix = false;
+           }
+
            if (validMatrix == false) {
              System.out.println("\n#----Matrix----#");
              System.out.println("No valid matrix found.");
@@ -60,18 +79,6 @@ public class Driver{
              continue;
            }
 
-           System.out.println("Matrix found is: " + validMatrix);
-
-           Matrix myMatrix = new Matrix(matrixSize, inData);
-           long startTime = System.nanoTime();
-           long det = Matrix.Determinate(myMatrix);
-           long estimatedTime = System.nanoTime() - startTime;
-
-           System.out.println("\n#----Matrix----#");
-           myMatrix.Print();
-           System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate.");
-           System.out.println("a determinate of: " + det);
-           System.out.println("#--------------#\n");
 
            //Reset counter
            j = 0;
