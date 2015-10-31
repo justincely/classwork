@@ -1,0 +1,40 @@
+Reading file ../inputs/invalid_input.txt
+Found matrix of size -2
+BadMatrix: Negative order given.
+Found matrix of size 1
+Non-int found, execution will halt: d
+
+#----Matrix----#
+No valid matrix found.
+#--------------#
+
+Found matrix of size 1
+Non-int found, execution will halt: 2.0
+
+#----Matrix----#
+No valid matrix found.
+#--------------#
+
+Found matrix of size 2
+Non-int found, execution will halt: m
+
+#----Matrix----#
+No valid matrix found.
+#--------------#
+
+Found matrix of size 3
+Non-int found, execution will halt: -1.0
+Non-int found, execution will halt: m
+
+#----Matrix----#
+No valid matrix found.
+#--------------#
+
+Found matrix of size 4
+Non-int found, execution will halt: 3.14
+
+#----Matrix----#
+No valid matrix found.
+#--------------#
+
+--Finished calculating all determinates--

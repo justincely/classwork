@@ -1,3 +1,7 @@
+/**TestRunner
+  *
+  * Run all unittests defined in TestMatrix
+  */
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;

@@ -1,91 +1,95 @@
+/**TestMatrix
+  *
+  *@author Justin Ely
+  */
+
+
 import org.junit.Test;
 import org.junit.Ignore;
 import static org.junit.Assert.assertEquals;
+import java.lang.IndexOutOfBoundsException;
 
+/**Test the Matrix object
+  *
+  * <p>Tests are performed using the JUnit testing framework.
+  *    A final output to STDOUT of true, indicates that all tests passed.
+  *    Final output of false indicates a failing test.
+  * </p>
+  */
 public class TestMatrix {
+
    @Test
    public void testMatrixCreation() {
-      System.out.println("Testing the matrix instantiation");
       Matrix myMatrix = new Matrix(6);
       myMatrix = new Matrix(3);
       myMatrix = new Matrix();
    }
-
-   @Test
+   
+   @Test(expected=BadMatrix.class)
    public void testMatrixException(){
-     System.out.println("Testing the matrix creation errors");
      Matrix myMatrix = new Matrix(-6);
+     myMatrix.Print();
    }
 
    @Test
    public void testDeterminate(){
-     System.out.println("Testing the determinate");
      int[] data = {1, 1, 1, 1, 1, 1, 1, 1, 1};
      Matrix myMatrix = new Matrix(3, data);
-
      long det = Matrix.Determinate(myMatrix);
-     System.out.println("The determinate is " + det);
+     assertEquals(det, 0);
 
-
-     System.out.println("Testing the determinate");
      data = new int[] {2, 3, 5, 9};
      myMatrix = new Matrix(2, data);
-
      det = Matrix.Determinate(myMatrix);
-     System.out.println("The determinate is " + det);
+     assertEquals(det, 3);
 
      data = new int[6];
      myMatrix = new Matrix(6, data);
-     long startTime = System.nanoTime();
      det = Matrix.Determinate(myMatrix);
-     long estimatedTime = System.nanoTime() - startTime;
-     System.out.println("And took " + estimatedTime + "ns to calculate.");
-     System.out.println("The determinate is " + det);
+     assertEquals(det, 0);
+
+     data = new int[1];
+     data[0] = 4;
+     myMatrix = new Matrix(1, data);
+     det = Matrix.Determinate(myMatrix);
+     assertEquals(det, 4);
    }
 
    @Test
    public void testMatrixMinor() {
-     System.out.println("Testing the minor method");
      int[] data = {1, 1, 1, 2, 2, 2, 3, 3, 3};
 
      Matrix myMatrix = new Matrix(3, data);
-     myMatrix.Print();
 
      Matrix smallMatrix = myMatrix.Minor(0, 0);
-     //smallMatrix.Print();
      int[][] checkData = new int[][] {{2, 3}, {2, 3}};
      assertEquals(smallMatrix.getData(), checkData);
 
 
      smallMatrix = myMatrix.Minor(1, 1);
-     //smallMatrix.Print()
      checkData = new int[][] {{1, 3}, {1, 3}};
      assertEquals(smallMatrix.getData(), checkData);
+   }
 
-
-     data = new int[] {1};
-     myMatrix = new Matrix(1, data);
-     smallMatrix = myMatrix.Minor(0, 0);
-     checkData = new int[][] {{1}};
-     smallMatrix.Print();
-     //assertEquals(smallMatrix.getData(), checkData);
+   @Test(expected = IndexOutOfBoundsException.class)
+   public void testMatrixMinorError() {
+     int[] data = new int[] {1};
+     Matrix myMatrix = new Matrix(1, data);
+     Matrix smallMatrix = myMatrix.Minor(1, 2);
    }
 
    @Test
    public void testPrint() {
-     System.out.println("Testing the print method");
      Matrix myMatrix = new Matrix(6);
      myMatrix.Print();
    }
 
    @Test
    public void testLoad() {
-     System.out.println("Testing the print method");
      Matrix myMatrix = new Matrix(3);
      int[] data = {1, 1, 1, 2, 2, 2, 3, 3, 3};
      try{
        myMatrix.loadData(data);
-       myMatrix.Print();
      } catch (Exception e){
        org.junit.Assert.fail();
      }

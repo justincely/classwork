@@ -1,6 +1,6 @@
-all: clean compile doc test
+all: clean compile doc unittest test lab
 
-notest: clean compile doc
+nounittest: clean compile doc test lab
 
 clean:
 	rm -f *.class
@@ -9,10 +9,13 @@ clean:
 compile:
 	javac *.java
 
-test: compile
+lab:
 	java -ea Driver ../inputs/lab2-input.txt &> ../output/labOutput.txt
+
+test: compile
 	java -ea Driver ../inputs/blank_input.txt &> ../output/blankOutput.txt
 	java -ea Driver ../inputs/invalid_input.txt &> ../output/invalidOutput.txt
+	java -ea Driver ../inputs/random_input.txt &> ../output/randomOutput.txt
 
 unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt

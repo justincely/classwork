@@ -7,9 +7,13 @@
 import java.util.Scanner;
 import java.io.File;
 
+
+/**Parse matrices and calculate determinates.
+  */
 public class Driver{
 
-/**Main driver to parse and evaluate expressions
+/**Main driver to open files, parse data, calculated derminates and
+  *handle errors.
   *
   *@param args[]   Holds command line arguments: filename.
   */
@@ -17,6 +21,7 @@ public class Driver{
    int matrixSize = 0;
    int[] inData = new int[1];
 
+   /* Loop over input files */
    for (int i=0; i < args.length; i++) {
      try{
        Scanner scanner = new Scanner(new File(args[i]));
@@ -24,12 +29,14 @@ public class Driver{
        int j = 0;
        boolean validMatrix = true;
 
-       /* Loop over integers in the input file.  First integer is
+       /* Loop over tokens in the input file.  The first integer is
         * interpreted as the order (n) of the subsequent matrix data.
-        * the next n*n integers are parsed and used as input data
-        * to the matrix.
+        * The next n*n integers are parsed and used as input data
+        * to the matrix.  Any non-int (such as float, char) found in
+        * the data will cause the entire matrix to not be evaluated.
         */
        while(scanner.hasNext()){
+         /* if first element and is an int, treat as order (n) */
          if ((j==0) && (scanner.hasNextInt())){
            matrixSize = scanner.nextInt();
            System.out.println("Found matrix of size " + matrixSize);
@@ -45,53 +52,52 @@ public class Driver{
            j++;
          }
 
-         /* After the data has been filled, initialize a matrix and
+         /* After nxn data has been parsed, initialize a matrix and
           * calculate the determinate.
           */
          if (j-1 == matrixSize*matrixSize){
-           try {
-             Matrix myMatrix = new Matrix(matrixSize, inData);
-             long startTime = System.nanoTime();
-             long det = Matrix.Determinate(myMatrix);
-             long estimatedTime = System.nanoTime() - startTime;
 
-             System.out.println("\n#----Matrix----#");
-             myMatrix.Print();
-             System.out.println("#----------------#");
-             System.out.println("#------Stats-----#");
-             System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate");
-             System.out.println("a determinate of " + det + ".");
-             System.out.println("#----------------#\n");
-
-           } catch (BadMatrix e) {
-             System.err.println(e);
-             validMatrix = false;
-           }
-
+           /* print to user if the matrix is invalid*/
            if (validMatrix == false) {
              System.out.println("\n#----Matrix----#");
              System.out.println("No valid matrix found.");
              System.out.println("#--------------#\n");
-             //Reset counter
+
+             //Reset counter for next matrix
              j = 0;
              validMatrix = true;
+           } else{
+             try {
+               Matrix myMatrix = new Matrix(matrixSize, inData);
+               long startTime = System.nanoTime();
+               long det = Matrix.Determinate(myMatrix);
+               long estimatedTime = System.nanoTime() - startTime;
 
-             continue;
+               System.out.println("\n#----Matrix----#");
+               myMatrix.Print();
+               System.out.println("#----------------#");
+               System.out.println("#------Stats-----#");
+               System.out.println("Order " + matrixSize + " took " + estimatedTime + "ns to calculate");
+               System.out.println("a determinate of " + det + ".");
+               System.out.println("#----------------#\n");
+
+             } catch (BadMatrix e) {
+               System.err.println(e);
+               validMatrix = false;
+             }
+
+             //Reset counter for next matrix
+             j = 0;
+             validMatrix = true;
            }
-
-
-           //Reset counter
-           j = 0;
-           validMatrix = true;
          }
-
        }
 
-       if (j!=0){
-         //Raise error or something, only happens if matrix doesn't fully eval
-         System.err.println("Halting execution, check formatting of array data'");
+       if (j != 0){
+         System.err.println("WARNING: Not enough data found to fill final matrix, exiting.");
          return;
        }
+       
      } catch (java.io.FileNotFoundException e){
        System.out.println("Cannot find file: " + args[i]);
        return;

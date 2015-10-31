@@ -12,11 +12,13 @@ The src directory contains a Makefile to clean the directory, run the compile th
 
 Makefile usage is outlined below.
 ```bash
-make          # run the entire stuite
-make compile  # compile the source
-make test     # compile and run the tests
-make doc      # generate documentation
-make run      # run the code against the two files supplied in the inputs directory
+make             # run the entire suite
+make nounittest  # run the entire suite without the unittests
+make compile     # compile the source
+make test        # compile and run the tests
+make unittest    # compile and tun the unit tests with the JUnit framework
+make doc         # generate documentation
+make lab         # run the code against the input file specified in the lab
 ```
 
 Individual Usage
@@ -38,5 +40,5 @@ java Driver File1.txt >> simple_out.txt
 
 Limitations
 -----------
-1.  Floating-point numbers are not supported.
+1.  Matrix values are limited to integers.
 2.  Precision higher than the standard int is not supported.

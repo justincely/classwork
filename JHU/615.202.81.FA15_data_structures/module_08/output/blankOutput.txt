@@ -1,0 +1,2 @@
+Reading file ../inputs/blank_input.txt
+--Finished calculating all determinates--
