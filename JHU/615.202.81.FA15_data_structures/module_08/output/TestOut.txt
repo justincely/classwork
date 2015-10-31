@@ -1,0 +1,24 @@
+Testing the matrix instantiation
+Testing the determinate
+The determinate is 0
+Testing the determinate
+The determinate is 3
+WARNING: not enough values provided, padding with 0
+And took 1198000ns to calculate.
+The determinate is 0
+Testing the minor method
+ 1  1  1 
+ 2  2  2 
+ 3  3  3 
+Testing the print method
+ 0  0  0  0  0  0 
+ 0  0  0  0  0  0 
+ 0  0  0  0  0  0 
+ 0  0  0  0  0  0 
+ 0  0  0  0  0  0 
+ 0  0  0  0  0  0 
+Testing the print method
+ 1  1  1 
+ 2  2  2 
+ 3  3  3 
+true
