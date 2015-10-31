@@ -53,6 +53,9 @@ public class Matrix{
 
   /**Calculate Determinate of a matrix
     *
+    *<p> Need the explanation of the algorithm here
+    *</p>
+    *
     *@param Matrix mat - matrix object on which to calculate determinate.
     */
   public static long Determinate(Matrix mat){
