@@ -16,7 +16,7 @@ Found matrix of size 2
  5  9 
 #----------------#
 #------Stats-----#
-Order 2 took 32000ns to calculate
+Order 2 took 34000ns to calculate
 a determinate of 3.
 #----------------#
 
@@ -28,7 +28,7 @@ Found matrix of size 3
  -3  6  4 
 #----------------#
 #------Stats-----#
-Order 3 took 12000ns to calculate
+Order 3 took 19000ns to calculate
 a determinate of 64.
 #----------------#
 
@@ -41,7 +41,7 @@ Found matrix of size 4
  0  0  0  5 
 #----------------#
 #------Stats-----#
-Order 4 took 43000ns to calculate
+Order 4 took 42000ns to calculate
 a determinate of 270.
 #----------------#
 
@@ -54,7 +54,7 @@ Found matrix of size 4
  0  0  0  5 
 #----------------#
 #------Stats-----#
-Order 4 took 43000ns to calculate
+Order 4 took 42000ns to calculate
 a determinate of 0.
 #----------------#
 
@@ -67,7 +67,7 @@ Found matrix of size 4
  0  0  0  5 
 #----------------#
 #------Stats-----#
-Order 4 took 43000ns to calculate
+Order 4 took 41000ns to calculate
 a determinate of 270.
 #----------------#
 
@@ -95,7 +95,7 @@ Found matrix of size 6
  1  1  1  1  1  1 
 #----------------#
 #------Stats-----#
-Order 6 took 2062000ns to calculate
+Order 6 took 1253000ns to calculate
 a determinate of 0.
 #----------------#
 

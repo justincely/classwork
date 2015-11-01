@@ -6,7 +6,7 @@ Found matrix of size 2
  24  0 
 #----------------#
 #------Stats-----#
-Order 2 took 33000ns to calculate
+Order 2 took 32000ns to calculate
 a determinate of -288.
 #----------------#
 
@@ -31,7 +31,7 @@ Found matrix of size 4
  13  -40  -6  -14 
 #----------------#
 #------Stats-----#
-Order 4 took 43000ns to calculate
+Order 4 took 44000ns to calculate
 a determinate of -6276288.
 #----------------#
 
@@ -45,7 +45,7 @@ Found matrix of size 5
  -8  19  -38  19  -44 
 #----------------#
 #------Stats-----#
-Order 5 took 218000ns to calculate
+Order 5 took 215000ns to calculate
 a determinate of 147814741.
 #----------------#
 
@@ -60,7 +60,7 @@ Found matrix of size 6
  -7  40  -1  -27  34  -28 
 #----------------#
 #------Stats-----#
-Order 6 took 1293000ns to calculate
+Order 6 took 1291000ns to calculate
 a determinate of -8558492466.
 #----------------#
 
@@ -76,7 +76,7 @@ Found matrix of size 7
  -37  -46  7  -12  9  16  -16 
 #----------------#
 #------Stats-----#
-Order 7 took 12015000ns to calculate
+Order 7 took 11743000ns to calculate
 a determinate of 156696743507.
 #----------------#
 
@@ -93,7 +93,7 @@ Found matrix of size 8
  -40  24  -33  -17  -19  -25  -16  -45 
 #----------------#
 #------Stats-----#
-Order 8 took 16530000ns to calculate
+Order 8 took 27254000ns to calculate
 a determinate of -3745817814102.
 #----------------#
 
@@ -111,7 +111,7 @@ Found matrix of size 9
  6  -32  -18  -29  -48  32  -44  20  26 
 #----------------#
 #------Stats-----#
-Order 9 took 109022000ns to calculate
+Order 9 took 99900000ns to calculate
 a determinate of -532754396714412.
 #----------------#
 
@@ -132,7 +132,7 @@ Found matrix of size 2
  -42  -35 
 #----------------#
 #------Stats-----#
-Order 2 took 1000ns to calculate
+Order 2 took 0ns to calculate
 a determinate of -1393.
 #----------------#
 
@@ -171,7 +171,7 @@ Found matrix of size 5
  -32  -42  -8  -25  -41 
 #----------------#
 #------Stats-----#
-Order 5 took 32000ns to calculate
+Order 5 took 31000ns to calculate
 a determinate of 2753571.
 #----------------#
 
@@ -186,7 +186,7 @@ Found matrix of size 6
  -50  0  -45  -5  -25  -14 
 #----------------#
 #------Stats-----#
-Order 6 took 211000ns to calculate
+Order 6 took 182000ns to calculate
 a determinate of -7495507985.
 #----------------#
 
@@ -202,7 +202,7 @@ Found matrix of size 7
  -42  -22  -25  -19  19  25  32 
 #----------------#
 #------Stats-----#
-Order 7 took 1384000ns to calculate
+Order 7 took 1296000ns to calculate
 a determinate of 226404937072.
 #----------------#
 
@@ -219,7 +219,7 @@ Found matrix of size 8
  40  -12  -6  -20  -24  1  -39  45 
 #----------------#
 #------Stats-----#
-Order 8 took 13615000ns to calculate
+Order 8 took 10443000ns to calculate
 a determinate of -207320963153416.
 #----------------#
 
@@ -237,7 +237,7 @@ Found matrix of size 9
  -20  3  37  30  3  15  13  -4  36 
 #----------------#
 #------Stats-----#
-Order 9 took 110668000ns to calculate
+Order 9 took 97642000ns to calculate
 a determinate of -22915793886035584.
 #----------------#
 
@@ -270,7 +270,7 @@ Found matrix of size 3
  -35  -5  27 
 #----------------#
 #------Stats-----#
-Order 3 took 2000ns to calculate
+Order 3 took 1000ns to calculate
 a determinate of -55462.
 #----------------#
 
@@ -283,7 +283,7 @@ Found matrix of size 4
  45  -23  28  6 
 #----------------#
 #------Stats-----#
-Order 4 took 20000ns to calculate
+Order 4 took 7000ns to calculate
 a determinate of 162010.
 #----------------#
 
@@ -297,7 +297,7 @@ Found matrix of size 5
  45  20  -46  7  29 
 #----------------#
 #------Stats-----#
-Order 5 took 38000ns to calculate
+Order 5 took 32000ns to calculate
 a determinate of -81640940.
 #----------------#
 
@@ -312,7 +312,7 @@ Found matrix of size 6
  29  -9  -25  38  -4  -17 
 #----------------#
 #------Stats-----#
-Order 6 took 206000ns to calculate
+Order 6 took 192000ns to calculate
 a determinate of -15426989896.
 #----------------#
 
@@ -328,7 +328,7 @@ Found matrix of size 7
  -33  -22  -33  -9  42  -36  12 
 #----------------#
 #------Stats-----#
-Order 7 took 1354000ns to calculate
+Order 7 took 1276000ns to calculate
 a determinate of -449762706445.
 #----------------#
 
@@ -345,7 +345,7 @@ Found matrix of size 8
  40  29  37  -40  2  -45  46  45 
 #----------------#
 #------Stats-----#
-Order 8 took 10781000ns to calculate
+Order 8 took 10483000ns to calculate
 a determinate of 149065280495614.
 #----------------#
 
@@ -363,7 +363,7 @@ Found matrix of size 9
  10  -30  34  -30  33  -43  -47  -48  -29 
 #----------------#
 #------Stats-----#
-Order 9 took 106002000ns to calculate
+Order 9 took 101504000ns to calculate
 a determinate of -260175028516114.
 #----------------#
 
@@ -384,7 +384,7 @@ Found matrix of size 2
  46  23 
 #----------------#
 #------Stats-----#
-Order 2 took 0ns to calculate
+Order 2 took 1000ns to calculate
 a determinate of 1449.
 #----------------#
 
@@ -423,7 +423,7 @@ Found matrix of size 5
  -5  -23  31  48  -10 
 #----------------#
 #------Stats-----#
-Order 5 took 32000ns to calculate
+Order 5 took 33000ns to calculate
 a determinate of -78735480.
 #----------------#
 
@@ -438,7 +438,7 @@ Found matrix of size 6
  48  36  28  -22  18  -2 
 #----------------#
 #------Stats-----#
-Order 6 took 377000ns to calculate
+Order 6 took 193000ns to calculate
 a determinate of 19194013262.
 #----------------#
 
@@ -454,7 +454,7 @@ Found matrix of size 7
  39  5  43  0  12  -10  23 
 #----------------#
 #------Stats-----#
-Order 7 took 2022000ns to calculate
+Order 7 took 1343000ns to calculate
 a determinate of -667330958628.
 #----------------#
 
@@ -471,7 +471,7 @@ Found matrix of size 8
  -18  -19  -39  25  -37  34  -8  12 
 #----------------#
 #------Stats-----#
-Order 8 took 11946000ns to calculate
+Order 8 took 10816000ns to calculate
 a determinate of 19262642943945.
 #----------------#
 
@@ -489,7 +489,7 @@ Found matrix of size 9
  8  49  -46  -26  -14  31  -42  -11  17 
 #----------------#
 #------Stats-----#
-Order 9 took 100526000ns to calculate
+Order 9 took 100071000ns to calculate
 a determinate of 4452294136085766.
 #----------------#
 
@@ -510,7 +510,7 @@ Found matrix of size 2
  27  -41 
 #----------------#
 #------Stats-----#
-Order 2 took 0ns to calculate
+Order 2 took 1000ns to calculate
 a determinate of 1278.
 #----------------#
 
@@ -564,7 +564,7 @@ Found matrix of size 6
  45  2  -16  -50  35  22 
 #----------------#
 #------Stats-----#
-Order 6 took 190000ns to calculate
+Order 6 took 182000ns to calculate
 a determinate of -15950905816.
 #----------------#
 
@@ -580,7 +580,7 @@ Found matrix of size 7
  4  -23  -15  -48  -24  -35  -5 
 #----------------#
 #------Stats-----#
-Order 7 took 1399000ns to calculate
+Order 7 took 1312000ns to calculate
 a determinate of 319504592920.
 #----------------#
 
@@ -597,7 +597,7 @@ Found matrix of size 8
  -9  26  28  12  7  26  -25  -14 
 #----------------#
 #------Stats-----#
-Order 8 took 13967000ns to calculate
+Order 8 took 10577000ns to calculate
 a determinate of -6707003497368.
 #----------------#
 
@@ -615,7 +615,7 @@ Found matrix of size 9
  -19  -17  -16  9  -30  -42  -4  8  25 
 #----------------#
 #------Stats-----#
-Order 9 took 104529000ns to calculate
+Order 9 took 100057000ns to calculate
 a determinate of -2965111903156130.
 #----------------#
 
@@ -636,7 +636,7 @@ Found matrix of size 2
  6  -36 
 #----------------#
 #------Stats-----#
-Order 2 took 1000ns to calculate
+Order 2 took 0ns to calculate
 a determinate of 1482.
 #----------------#
 
@@ -648,7 +648,7 @@ Found matrix of size 3
  15  -8  18 
 #----------------#
 #------Stats-----#
-Order 3 took 3000ns to calculate
+Order 3 took 1000ns to calculate
 a determinate of -39020.
 #----------------#
 
@@ -661,7 +661,7 @@ Found matrix of size 4
  41  -38  26  -9 
 #----------------#
 #------Stats-----#
-Order 4 took 9000ns to calculate
+Order 4 took 7000ns to calculate
 a determinate of -9402762.
 #----------------#
 
@@ -675,7 +675,7 @@ Found matrix of size 5
  -44  12  0  30  -27 
 #----------------#
 #------Stats-----#
-Order 5 took 43000ns to calculate
+Order 5 took 34000ns to calculate
 a determinate of -54331765.
 #----------------#
 
