@@ -60,6 +60,15 @@ Justin Ely
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Optimization Workshop}
+The calculation (3L - 1) was done twice for each iteration of the loop.  Since the calculation doesn't vary, this was moved
+outside the loop.  Additionally, the 10(I-1) calculation was duplicated in the loop, so this was optimized to be done only 
+once.  The new code has many fewer total operations performed.  
+
+Other thoughts that came to mind to optimize where looping from 0-6 instead of 1-7.  Since I was only used as an index
+and always required subtraction by 1, this would save 1 operation per loop.  Alternatively, I is only ever used as (10I-1), 
+so the loop could begin at 0 and increase by 10 every iteration.  This would save two operations per loop.  However, 
+these types of changes weren't mentioned in the notes, so I was not sure if this was a type of optimization done.  It seems, 
+at first glance, like a rather risky strategy that may be very hard for compilers to accomplish.  \\
 
 \begin{tabular}{ | c | c | r | r | r |}
   \hline
