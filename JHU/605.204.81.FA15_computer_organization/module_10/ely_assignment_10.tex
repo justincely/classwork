@@ -60,9 +60,27 @@ Justin Ely
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Optimization Workshop}
+
 \begin{tabular}{ | c | c | r | r | r |}
   \hline
     LC & Operation & Op1 & Op2 & Result  \\ \hline
+    (1) & := & \#1 & & I \\ \hline
+    (2) & * & \#3 & L & i1 \\ \hline
+    (3) & - & i1 & \#1 & i2 \\ \hline
+    (4) & BGT & I & \#7 & (16) \\ \hline
+    (5) & - & I & \#1 & i3 \\ \hline
+    (6) & * & i3 & \#10 & i4 \\ \hline
+    (7) & - & i2 & \#1 & i5 \\ \hline
+    (8) & + & i4 & i5 & i6 \\ \hline
+    (9) & * & i6 & \#4 & i7 \\ \hline
+  (10) & + & i2 & i4 & i8 \\ \hline
+   (11) & * & i8 & \#4 & i9 \\ \hline
+   (12) & := & Y[i9] &   & Y[i7] \\ \hline
+   (13) & + & \#1 & I & i10 \\ \hline
+   (14) & := & i10 &  & I \\ \hline
+   (15) & JMP &  &  & (4) \\ \hline
+   (16) &   &   &   &  \\ \hline
+
 \end{tabular}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
