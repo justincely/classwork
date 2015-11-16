@@ -15,16 +15,13 @@ compile_no_junit:
 	javac Matrix.java
 
 lab:
-	java -ea Driver ../inputs/lab2-input.txt &> ../output/labOutput.txt
 
-test: 
-	java -ea Driver ../inputs/blank_input.txt &> ../output/blankOutput.txt
-	java -ea Driver ../inputs/invalid_input.txt &> ../output/invalidOutput.txt
-	java -ea Driver ../inputs/random_input.txt &> ../output/randomOutput.txt
 
-unittest: 
+test:
+
+
+unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt
 
 doc:
 	javadoc *.java -d docs
-

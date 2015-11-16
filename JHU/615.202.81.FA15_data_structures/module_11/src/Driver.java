@@ -15,8 +15,8 @@ public class Driver{
   *@param args[]   Holds command line arguments: filename.
   */
  public static void main(String[]args){
-   int matrixSize = 0;
-   int[] inData = new int[1];
+
+   
 
    /* Loop over input files */
    for (int i=0; i < args.length; i++) {
