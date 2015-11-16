@@ -1,8 +1,12 @@
 import java.util.Hashtable;
 import java.util.Enumeration;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+import java.util.Map;
 
 public class HuffmanTranslator{
   private Hashtable frequencies = new Hashtable();
+  private Tree encoder = new Tree();
 
   public HuffmanTranslator() {
     frequencies.put("A", 19);
@@ -45,4 +49,16 @@ public class HuffmanTranslator{
     System.out.println();
   }
 
+  public void buildEncoderTree() {
+    Enumeration names;
+    String str;
+
+    encoder = new Tree();
+    int i = 1;
+    names = frequencies.keys();
+    while(names.hasMoreElements()) {
+      str = (String) names.nextElement();
+      
+    }
+  }
 }

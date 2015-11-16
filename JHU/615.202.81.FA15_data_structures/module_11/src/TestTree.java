@@ -25,23 +25,23 @@ public class TestTree {
 
     @Test
     public void testTreeValueCreation() {
-      Tree myTree = new Tree("S");
+      Tree myTree = new Tree("S", 1);
     }
 
     @Test
     public void testTreeChildCreation() {
-      Tree myTree = new Tree("A", new Tree("B"), new Tree("C"));
+      Tree myTree = new Tree("A", 1, new Tree("B", 2), new Tree("C", 3));
     }
 
     @Test
     public void testInOrderTraversal() {
-      Tree myTree = new Tree("A", new Tree("B"), new Tree("C"));
+      Tree myTree = new Tree("A", 1, new Tree("B", 2), new Tree("C", 3));
       myTree.inOrderTraverse();
     }
 
     @Test
     public void testPreeOrderTraversal() {
-      Tree myTree = new Tree("A", new Tree("B"), new Tree("C"));
+      Tree myTree = new Tree("A", 1, new Tree("B", 2), new Tree("C", 3));
       myTree.preOrderTraverse();
     }
 

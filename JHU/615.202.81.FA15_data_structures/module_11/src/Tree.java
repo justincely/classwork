@@ -3,6 +3,7 @@ public class Tree<T> {
     private Tree<T> parent = null;
     private Tree<T> right = null;
     private Tree<T> left = null;
+    private int priority = 0;
 
     public Tree() {
     }
@@ -11,14 +12,34 @@ public class Tree<T> {
         this.data = value;
     }
 
-    public Tree(T value, Tree<T> rightChild, Tree<T> leftChild) {
+    public Tree(T value, int priority) {
+        this.data = value;
+        this.priority = priority;
+    }
+
+    public Tree(T value, int priority, Tree<T> rightChild, Tree<T> leftChild) {
       this.data = value;
+      this.priority = priority;
 
       this.right = rightChild;
       rightChild.parent = this;
 
       this.left = leftChild;
       leftChild.parent = this;
+    }
+
+    public isLeaf() {
+      if (right == null) && (left == null){
+        return true;
+      }
+      return false;
+    }
+
+    public isRoot() {
+      if (parent == null) {
+        return true;
+      }
+      return false;
     }
 
     public void inOrderTraverse() {
