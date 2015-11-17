@@ -6,10 +6,9 @@ import java.util.Map;
 
 public class HuffmanTranslator{
   private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
-  private Tree encoder = new Tree();
+  private Tree<String> encoder = new Tree<String>();
 
   public HuffmanTranslator() {
-    /*
     frequencies.put("A", 19);
     frequencies.put("B", 16);
     frequencies.put("C", 17);
@@ -36,10 +35,11 @@ public class HuffmanTranslator{
     frequencies.put("X", 2);
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
-    */
+    /*
     frequencies.put("X", 3);
     frequencies.put("Y", 1);
     frequencies.put("Z", 2);
+    */
   }
 
   public void printFrequencies() {
@@ -63,7 +63,7 @@ public class HuffmanTranslator{
     names = frequencies.keys();
     while(names.hasMoreElements()) {
       str = (String) names.nextElement();
-      val = (int) (int) frequencies.get(str);
+      val = (int) frequencies.get(str);
       queue.insert(str, val, new Tree(str, val));
     }
 
@@ -109,6 +109,35 @@ public class HuffmanTranslator{
       }
     }
     System.out.println("Secret message is: " + message);
+  }
+
+  public void encode(String input) {
+    String message = "";
+    Tree<String> tmpTree = encoder;
+    for (int i=0; i<input.length(); i++) {
+      String letter = input.substring(i, i+1).toLowerCase();
+      //System.out.println("For letter: " + letter);
+      while (tmpTree.isLeaf() == false) {
+        //System.out.println(tmpTree.data);
+        if (tmpTree.left.data.toLowerCase().contains(letter)) {
+          tmpTree = tmpTree.left;
+          message = message + "0";
+        } else if (tmpTree.right.data.toLowerCase().contains(letter)) {
+          tmpTree = tmpTree.right;
+          message = message + "1";
+        } //Error handling here
+      }
+
+      //more Error handling
+      if (tmpTree.data.toLowerCase().equals(letter)) {
+        tmpTree = encoder;
+      } else {
+        System.out.println("SOMETHING BAD HAPPENED " + letter + " - " + tmpTree.data.toLowerCase());
+        System.out.println("SOMETHING BAD HAPPENED " + letter == tmpTree.data.toLowerCase());
+      }
+
+    }
+    System.out.println("The encoded message is: " + message);
   }
 
 }
