@@ -28,14 +28,14 @@ public class Tree<T> {
       leftChild.parent = this;
     }
 
-    public isLeaf() {
-      if (right == null) && (left == null){
+    public boolean isLeaf() {
+      if ((right == null) && (left == null)) {
         return true;
       }
       return false;
     }
 
-    public isRoot() {
+    public boolean isRoot() {
       if (parent == null) {
         return true;
       }

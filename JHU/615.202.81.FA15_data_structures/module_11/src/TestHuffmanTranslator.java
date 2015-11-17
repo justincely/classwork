@@ -24,4 +24,10 @@ public class TestHuffmanTranslator {
       translator.printFrequencies();
     }
 
+    @Test
+    public void testTreeCreation() {
+      HuffmanTranslator translator = new HuffmanTranslator();
+      translator.buildEncoderTree();
+    }
+
 }

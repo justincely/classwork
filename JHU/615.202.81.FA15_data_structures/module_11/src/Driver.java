@@ -16,7 +16,10 @@ public class Driver{
   */
  public static void main(String[]args){
 
-   
+   System.out.println("aa".compareTo("f"));
+
+   HuffmanTranslator translator = new HuffmanTranslator();
+   translator.buildEncoderTree();
 
    /* Loop over input files */
    for (int i=0; i < args.length; i++) {

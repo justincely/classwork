@@ -1,13 +1,18 @@
-public class QueueNode<T>{
-  public T value = null;
+public class QueueNode {
+  public String value = null;
   public int priority = 0;
-  public next = null;
-  public previous = null;
+  public QueueNode next = null;
 
-  public QueueNode(T value, Integer priority){
+  public QueueNode(String value, Integer priority){
       this.value = value;
       this.priority = priority;
   }
 
+  public boolean isEnd() {
+    if (this.next == null) {
+      return true;
+    }
+    return false;
+  }
 
 }

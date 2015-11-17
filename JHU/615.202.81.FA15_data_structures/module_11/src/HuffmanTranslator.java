@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Map;
 
 public class HuffmanTranslator{
-  private Hashtable frequencies = new Hashtable();
+  private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
   private Tree encoder = new Tree();
 
   public HuffmanTranslator() {
@@ -52,13 +52,17 @@ public class HuffmanTranslator{
   public void buildEncoderTree() {
     Enumeration names;
     String str;
+    MinQueue queue = new MinQueue();
 
-    encoder = new Tree();
-    int i = 1;
     names = frequencies.keys();
     while(names.hasMoreElements()) {
       str = (String) names.nextElement();
-      
+      queue.insert(str, (int) frequencies.get(str));
+      //queue.print();
+      //System.out.println();
     }
+
+    queue.print();
+
   }
 }
