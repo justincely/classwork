@@ -22,14 +22,7 @@ public class MinQueue {
     } else {
       QueueNode current = top.next;
       QueueNode last = top;
-      //while ((current != null) && (current.isEnd() != true)) {
-      //  System.out.println(node.value + ": " + node.priority + " is less than " + current.value + ": " + current.priority);
-      //}
-
-      //while (current.isEnd() != true) {
-      //  System.out.println(node.value + ": " + node.priority + " is less than " + current.value + ": " + current.priority);
-      //}
-
+      
       while ((current != null) && (goesBefore(node, current) == false)) {
         last = current;
         current = current.next;
@@ -51,12 +44,8 @@ public class MinQueue {
   private boolean goesBefore(QueueNode a, QueueNode b) {
     if (a.priority < b.priority) {
       return true;
-    } else if (a.value.length() < b.value.length()) {
+    } else if ((a.priority == b.priority) && (a.value.compareTo(b.value) < 0)) {
       return true;
-    } else if (a.value.length() == b.value.length()) {
-      if (a.value.compareTo(b.value) > 0) {
-        return true;
-      }
     }
     return false;
   }
