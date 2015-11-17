@@ -32,10 +32,7 @@ public class MinQueue {
 
       last.next = node;
       node.next = current;
-
-
     }
-
   }
 
   private boolean goesBefore(QueueNode a, QueueNode b) {
@@ -50,6 +47,8 @@ public class MinQueue {
     }
     return false;
   }
+
+
 
   public QueueNode pop() {
     QueueNode tmp = top;

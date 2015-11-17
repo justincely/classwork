@@ -1,12 +1,12 @@
 /**TestRunner
   *
-  * Run all unittests defined in TestMatrix
+  * Run all unittests
   */
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-/**Run all tests in the TestMatrix class
+/**Run all tests in the TestTree and TestHuffmanTranslator classes
   */
 public class TestRunner {
    public static void main(String[] args) {

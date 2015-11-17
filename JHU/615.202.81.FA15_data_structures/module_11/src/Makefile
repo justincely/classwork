@@ -10,12 +10,14 @@ compile:
 	javac *.java
 
 compile_no_junit:
-	javac BadMatrix.java
+	javac Tree.java
+	javac MinQueue.java
+	javac QueueNode.java
 	javac Driver.java
-	javac Matrix.java
+	javac HuffmanTranslator.java
 
 lab:
-
+	java Driver ../input/LabInput.txt > ../output/LabOutput.txt
 
 test:
 

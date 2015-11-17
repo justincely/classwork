@@ -42,6 +42,14 @@ public class HuffmanTranslator{
     */
   }
 
+
+  /**Print frequency content to STDOUT
+    *
+    *<p> Convenience function to display frequency information
+    *    To the screen.  Each character will be on a new line, and the
+    *    frequency for each will be : delimited.
+    *</p>
+    */
   public void printFrequencies() {
     Enumeration names;
     String str;
@@ -67,17 +75,14 @@ public class HuffmanTranslator{
       queue.insert(str, val, new Tree(str, val));
     }
 
-    System.out.println("The sorted queue: ");
-    queue.print();
-
-    System.out.println("Building the tree: ");
+    //System.out.println("Building the tree: ");
     Tree huffTree = new Tree();
     QueueNode left = new QueueNode();
     QueueNode right = new QueueNode();
     while ((queue.count > 1)) {
       left = queue.pop();
       right = queue.pop();
-      System.out.println(left.value + ": " + left.priority + " and " + right.value + ": " + right.priority);
+      //System.out.println(left.value + ": " + left.priority + " and " + right.value + ": " + right.priority);
       String newval = left.value + right.value;
       int newpriority = right.priority + left.priority;
       huffTree = new Tree(newval,
@@ -85,15 +90,19 @@ public class HuffmanTranslator{
                           right.tree,
                           left.tree);
       queue.insert(newval, newpriority, huffTree);
-      System.out.println("Tree at this point: ");
-      queue.print();
     }
-    System.out.println("Going through the tree: ");
-    huffTree.preOrderTraverse();
+    //System.out.println("Going through the tree: ");
+    //huffTree.preOrderTraverse();
 
     encoder = huffTree;
   }
 
+
+  /**Main decoder function.
+    *
+    *<p>
+    *</p>
+    */
   public String decode(String input){
     String message = "";
     Tree tmpTree = encoder;
@@ -111,6 +120,11 @@ public class HuffmanTranslator{
     return message;
   }
 
+  /**Main decoder function.
+    *
+    *<p>
+    *</p>
+    */
   public String encode(String input) {
     String message = "";
     Tree<String> tmpTree = encoder;
