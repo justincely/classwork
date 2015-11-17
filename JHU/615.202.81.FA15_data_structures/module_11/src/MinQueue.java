@@ -1,4 +1,5 @@
 public class MinQueue {
+  public int count = 0;
   public QueueNode top = null;
 
   public MinQueue(){
@@ -11,8 +12,9 @@ public class MinQueue {
     return false;
   }
 
-  public void insert(String element, int priority){
-    QueueNode node = new QueueNode(element, priority);
+  public void insert(String element, int priority, Tree tree){
+    QueueNode node = new QueueNode(element, priority, tree);
+    count++;
 
     if (isEmpty()){
       top = node;
@@ -22,7 +24,7 @@ public class MinQueue {
     } else {
       QueueNode current = top.next;
       QueueNode last = top;
-      
+
       while ((current != null) && (goesBefore(node, current) == false)) {
         last = current;
         current = current.next;
@@ -44,8 +46,12 @@ public class MinQueue {
   private boolean goesBefore(QueueNode a, QueueNode b) {
     if (a.priority < b.priority) {
       return true;
-    } else if ((a.priority == b.priority) && (a.value.compareTo(b.value) < 0)) {
-      return true;
+    } else if (a.priority == b.priority) {
+      if (a.value.length() < b.value.length()) {
+        return true;
+      } else if ((a.value.length() == b.value.length()) && (a.value.compareTo(b.value) < 0)){
+        return true;
+      }
     }
     return false;
   }
@@ -53,6 +59,7 @@ public class MinQueue {
   public QueueNode pop() {
     QueueNode tmp = top;
     top = tmp.next;
+    count--;
     return tmp;
   }
 

@@ -52,17 +52,35 @@ public class HuffmanTranslator{
   public void buildEncoderTree() {
     Enumeration names;
     String str;
+    int val;
     MinQueue queue = new MinQueue();
 
     names = frequencies.keys();
     while(names.hasMoreElements()) {
       str = (String) names.nextElement();
-      queue.insert(str, (int) frequencies.get(str));
-      //queue.print();
-      //System.out.println();
+      val = (int) (int) frequencies.get(str);
+      queue.insert(str, val, new Tree(str, val));
     }
 
     queue.print();
 
+    Tree huffTree = new Tree();
+    QueueNode left = new QueueNode();
+    QueueNode right = new QueueNode();
+    while ((queue.count > 1)) {
+      left = queue.pop();
+      right = queue.pop();
+      System.out.println(left.value + ": " + left.priority + " and " + right.value + ": " + right.priority);
+      String newval = left.value + right.value;
+      int newpriority = left.priority + right.priority;
+      huffTree = new Tree(newval,
+                          newpriority,
+                          right.tree,
+                          left.tree);
+      queue.insert(left.value + right.value, left.priority + right.priority, huffTree);
+      queue.print();
+    }
+    System.out.println("Going through the tree: ");
+    huffTree.preOrderTraverse();
   }
 }

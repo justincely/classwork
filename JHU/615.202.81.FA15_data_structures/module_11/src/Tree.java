@@ -46,14 +46,14 @@ public class Tree<T> {
       if (this.left != null)
          this.left.inOrderTraverse();
 
-      System.out.println(this.data);
+      System.out.println(this.data + ": " + this.priority);
 
       if (this.right != null)
          this.right.inOrderTraverse();
     }
 
     public void preOrderTraverse() {
-      System.out.println(this.data);
+      System.out.println(this.data + ": " + this.priority);
 
       if (this.left != null)
          this.left.inOrderTraverse();
@@ -69,7 +69,7 @@ public class Tree<T> {
       if (this.right != null)
          this.right.inOrderTraverse();
 
-      System.out.println(this.data);
+      System.out.println(this.data + ": " + this.priority);
     }
 
 }
