@@ -9,6 +9,7 @@ public class HuffmanTranslator{
   private Tree encoder = new Tree();
 
   public HuffmanTranslator() {
+    /*
     frequencies.put("A", 19);
     frequencies.put("B", 16);
     frequencies.put("C", 17);
@@ -35,6 +36,10 @@ public class HuffmanTranslator{
     frequencies.put("X", 2);
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
+    */
+    frequencies.put("X", 3);
+    frequencies.put("Y", 1);
+    frequencies.put("Z", 2);
   }
 
   public void printFrequencies() {
@@ -62,8 +67,10 @@ public class HuffmanTranslator{
       queue.insert(str, val, new Tree(str, val));
     }
 
+    System.out.println("The sorted queue: ");
     queue.print();
 
+    System.out.println("Building the tree: ");
     Tree huffTree = new Tree();
     QueueNode left = new QueueNode();
     QueueNode right = new QueueNode();
@@ -72,12 +79,13 @@ public class HuffmanTranslator{
       right = queue.pop();
       System.out.println(left.value + ": " + left.priority + " and " + right.value + ": " + right.priority);
       String newval = left.value + right.value;
-      int newpriority = left.priority + right.priority;
+      int newpriority = right.priority + left.priority;
       huffTree = new Tree(newval,
                           newpriority,
                           right.tree,
                           left.tree);
-      queue.insert(left.value + right.value, left.priority + right.priority, huffTree);
+      queue.insert(newval, newpriority, huffTree);
+      System.out.println("Tree at this point: ");
       queue.print();
     }
     System.out.println("Going through the tree: ");

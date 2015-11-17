@@ -29,11 +29,6 @@ public class MinQueue {
         last = current;
         current = current.next;
       }
-      if (current != null){
-        System.out.println(node.value + ": " + node.priority + " is less than " + current.value + ": " + current.priority);
-      } else {
-        System.out.println(node.value + ": " + node.priority + " is the highest value");
-      }
 
       last.next = node;
       node.next = current;
