@@ -94,7 +94,7 @@ public class HuffmanTranslator{
     encoder = huffTree;
   }
 
-  public void decode(String input){
+  public String decode(String input){
     String message = "";
     Tree tmpTree = encoder;
     for (int i=0; i<input.length(); i++) {
@@ -108,14 +108,19 @@ public class HuffmanTranslator{
         tmpTree = encoder;
       }
     }
-    System.out.println("Secret message is: " + message);
+    return message;
   }
 
-  public void encode(String input) {
+  public String encode(String input) {
     String message = "";
     Tree<String> tmpTree = encoder;
     for (int i=0; i<input.length(); i++) {
       String letter = input.substring(i, i+1).toLowerCase();
+      char c = letter.charAt(0);
+      if (Character.isLetter(c) == false) {
+        continue;
+      }
+
       //System.out.println("For letter: " + letter);
       while (tmpTree.isLeaf() == false) {
         //System.out.println(tmpTree.data);
@@ -137,7 +142,7 @@ public class HuffmanTranslator{
       }
 
     }
-    System.out.println("The encoded message is: " + message);
+    return message;
   }
 
 }
