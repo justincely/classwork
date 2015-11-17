@@ -1,9 +1,9 @@
 public class Tree<T> {
-    private T data;
-    private Tree<T> parent = null;
-    private Tree<T> right = null;
-    private Tree<T> left = null;
-    private int priority = 0;
+    public T data;
+    public Tree<T> parent = null;
+    public Tree<T> right = null;
+    public Tree<T> left = null;
+    public int priority = 0;
 
     public Tree() {
     }

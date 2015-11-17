@@ -90,5 +90,25 @@ public class HuffmanTranslator{
     }
     System.out.println("Going through the tree: ");
     huffTree.preOrderTraverse();
+
+    encoder = huffTree;
   }
+
+  public void decode(String input){
+    String message = "";
+    Tree tmpTree = encoder;
+    for (int i=0; i<input.length(); i++) {
+      if (input.charAt(i) == '0') {
+        tmpTree = tmpTree.left;
+      } else if (input.charAt(i) == '1') {
+        tmpTree = tmpTree.right;
+      } // Error checking here
+      if (tmpTree.isLeaf()) {
+        message = message + tmpTree.data;
+        tmpTree = encoder;
+      }
+    }
+    System.out.println("Secret message is: " + message);
+  }
+
 }

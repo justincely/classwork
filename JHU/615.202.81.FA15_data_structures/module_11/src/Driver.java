@@ -19,6 +19,8 @@ public class Driver{
    HuffmanTranslator translator = new HuffmanTranslator();
    translator.buildEncoderTree();
 
+   translator.decode("1111110100");
+
    /* Loop over input files */
    for (int i=0; i < args.length; i++) {
      try{
