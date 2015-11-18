@@ -24,7 +24,8 @@ make lab         # run the code against the input files
 
 Individual Usage
 -----
-```java Driver File1.txt
+```java 
+java Driver File1.txt
 ```
 
 Output
