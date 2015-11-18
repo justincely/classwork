@@ -1,36 +1,116 @@
+Huffman Tree
+ABCDEFGHIJKLMNOPQRSTUVWXYZ: 413
+DEFJKLMNVW: 169
+JKLMVW: 80
+LM: 39
+M: 19
+L: 20
+JKVW: 41
+JKV: 20
+K: 10
+JV: 10
+J: 5
+V: 5
+W: 21
+DEFN: 89
+E: 42
+DFN: 47
+DF: 23
+D: 11
+F: 12
+N: 24
+ABCGHIOPQRSTUXYZ: 244
+GPQRTUXYZ: 106
+RT: 50
+R: 25
+T: 25
+GPQUXYZ: 56
+GP: 27
+P: 13
+G: 14
+QUXYZ: 29
+QXYZ: 14
+QXZ: 6
+Z: 3
+QX: 3
+Q: 1
+X: 2
+Y: 8
+U: 15
+ABCHIOS: 138
+BCHI: 66
+BI: 32
+B: 16
+I: 16
+CH: 34
+C: 17
+H: 17
+AOS: 72
+S: 35
+AO: 37
+O: 18
+A: 19
+Encoding Code
+a = 11111
+b = 11000
+c = 11010
+d = 01100
+e = 010
+f = 01101
+g = 10101
+h = 11011
+i = 11001
+j = 001010
+k = 00100
+l = 0001
+m = 0000
+n = 0111
+o = 11110
+p = 10100
+q = 10110010
+r = 1000
+s = 1110
+t = 1001
+u = 10111
+v = 001011
+w = 0011
+x = 10110011
+y = 101101
+z = 1011000
+
 #-----------------------#
 Reading file ../input/LabInput.txt
 #-----------------------#
 Encoded message found: 01011001010110011111011011
 Decoded version is   : EIEIOH
-Ecoding was 1.884615421295166% smaller than plaintext.
+Ecoding was 45.83333206176758% smaller than plaintext.
 
 Encoded message found: 10110000101010011011101101100010110010101100010111000110111
 Decoded version is   : ZEPHYRQZULU
-Ecoding was 1.3305084705352783% smaller than plaintext.
+Ecoding was 32.95454406738281% smaller than plaintext.
 
 Encoded message found: 11111110001000111111101011111011001111111000100011111000001010000001110010111
 Decoded version is   : ABRACADABRAMERLIN
-Ecoding was 1.7597402334213257% smaller than plaintext.
+Ecoding was 43.382354736328125% smaller than plaintext.
 
 Encoded message found: 1101101000010001111100011111101000000101100
 Decoded version is   : HELLOWORLD
-Ecoding was 1.9069766998291016% smaller than plaintext.
+Ecoding was 46.25% smaller than plaintext.
 
 Plain-text message found: Sally sells seashells by the seashore.
 Encoded version is      : 11101111100010001101101111001000010001111011100101111111101101101000010001111011000101101100111011010111001011111111011011111101000010
-Ecoding was 43.078948974609375% smaller than plaintext.
+Ecoding was 55.921051025390625% smaller than plaintext.
 
 Plain-text message found: Peter Piper picked a peck of pickled peppers a peck of pickled peppers Peter Piper picked.
 Encoded version is      : 10100010100101010001010011001101000101000101001100111010001000100110011111101000101101000100111100110110100110011101000100000101001100101000101010010100010100011101111110100010110100010011110011011010011001110100010000010100110010100010101001010001010001110101000101001010100010100110011010001010001010011001110100010001001100
-Ecoding was 44.27777862548828% smaller than plaintext.
+Ecoding was 54.72222137451172% smaller than plaintext.
 
 Plain-text message found: Houston, the Eagle has landed.
 Encoded version is      : 11011111101011111101001111100111100111011010010111111010100010101101111111111000011111101110110001001100
-Ecoding was 42.33333206176758% smaller than plaintext.
+Ecoding was 56.66666793823242% smaller than plaintext.
 
 Plain-text message found: Is that your final answer?
 Encoded version is      : 1100111101001110111111110011011011111010111100001101110010111111110001111110111111000110101000
-Ecoding was 44.19230651855469% smaller than plaintext.
+Ecoding was 54.80769348144531% smaller than plaintext.
 
 --Finished all translations--

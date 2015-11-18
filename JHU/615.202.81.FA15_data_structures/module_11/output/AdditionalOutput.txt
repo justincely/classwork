@@ -1,0 +1,142 @@
+Huffman Tree
+ABCDEFGHIJKLMNOPQRSTUVWXYZ: 413
+DEFJKLMNVW: 169
+JKLMVW: 80
+LM: 39
+M: 19
+L: 20
+JKVW: 41
+JKV: 20
+K: 10
+JV: 10
+J: 5
+V: 5
+W: 21
+DEFN: 89
+E: 42
+DFN: 47
+DF: 23
+D: 11
+F: 12
+N: 24
+ABCGHIOPQRSTUXYZ: 244
+GPQRTUXYZ: 106
+RT: 50
+R: 25
+T: 25
+GPQUXYZ: 56
+GP: 27
+P: 13
+G: 14
+QUXYZ: 29
+QXYZ: 14
+QXZ: 6
+Z: 3
+QX: 3
+Q: 1
+X: 2
+Y: 8
+U: 15
+ABCHIOS: 138
+BCHI: 66
+BI: 32
+B: 16
+I: 16
+CH: 34
+C: 17
+H: 17
+AOS: 72
+S: 35
+AO: 37
+O: 18
+A: 19
+Encoding Code
+a = 11111
+b = 11000
+c = 11010
+d = 01100
+e = 010
+f = 01101
+g = 10101
+h = 11011
+i = 11001
+j = 001010
+k = 00100
+l = 0001
+m = 0000
+n = 0111
+o = 11110
+p = 10100
+q = 10110010
+r = 1000
+s = 1110
+t = 1001
+u = 10111
+v = 001011
+w = 0011
+x = 10110011
+y = 101101
+z = 1011000
+
+#-----------------------#
+Reading file ../input/AdditionalInput.txt
+#-----------------------#
+Plain-text message found: Me thinks she doth protest too much!
+Encoded version is      : 0000010100111011110010111001001110111011011010011001111010011101110100100011110100101011101001100111110111100000101111101011011
+Ecoding was 55.90277862548828% smaller than plaintext.
+
+Plain-text message found: Make it so
+Encoded version is      : 00001111100100010110011001111011110
+Ecoding was 56.25% smaller than plaintext.
+
+Plain-text message found: luminiferous aether
+Encoded version is      : 00011011100001100101111100101101010100011110101111110111110101001110110101000
+Ecoding was 49.342105865478516% smaller than plaintext.
+
+Plain-text message found: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Encoded version is      : 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+Ecoding was 37.5% smaller than plaintext.
+
+Plain-text message found: abcdefghijklmnopqrstuvwxyz
+Encoded version is      : 111111100011010011000100110110101110111100100101000100000100000111111101010010110010100011101001101110010110011101100111011011011000
+Ecoding was 36.53845977783203% smaller than plaintext.
+
+Plain-text message found: q
+Encoded version is      : 10110010
+Ecoding was 0.0% smaller than plaintext.
+
+Plain-text message found: qqqqqqqqqq
+Encoded version is      : 10110010101100101011001010110010101100101011001010110010101100101011001010110010
+Ecoding was 0.0% smaller than plaintext.
+
+Plain-text message found: e
+Encoded version is      : 010
+Ecoding was 62.5% smaller than plaintext.
+
+Plain-text message found: eeeeeeeeee
+Encoded version is      : 010010010010010010010010010010
+Ecoding was 62.5% smaller than plaintext.
+
+Plain-text message found: ......................
+Encoded version is      : 
+Ecoding was 100.0% smaller than plaintext.
+
+Plain-text message found: . . . hello $
+Encoded version is      : 110110100001000111110
+Ecoding was 79.80769348144531% smaller than plaintext.
+
+Plain-text message found: Help
+Encoded version is      : 11011010000110100
+Ecoding was 46.875% smaller than plaintext.
+
+Plain-text message found: Help1234
+Encoded version is      : 11011010000110100
+Ecoding was 73.4375% smaller than plaintext.
+
+Plain-text message found: $%#010010010
+Encoded version is      : 
+Ecoding was 100.0% smaller than plaintext.
+
+Encoded message found: 0101010101012
+Decoding Failed: BadDecoding: Non-zero found in encoded message
+--Finished all translations--

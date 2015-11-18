@@ -163,7 +163,7 @@ public class HuffmanTranslator{
       } else if (input.charAt(i) == '1') {
         tmpTree = tmpTree.right;
       } else {
-        throw new BadEncoding("Non-zero found in encoded message");
+        throw new BadDecoding("Non-zero found in encoded message");
       }
 
       if (tmpTree.isLeaf()) {

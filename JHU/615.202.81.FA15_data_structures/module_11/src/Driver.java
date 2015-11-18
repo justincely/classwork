@@ -5,8 +5,6 @@
   */
 
 
-  */
-
 import java.util.Scanner;
 import java.io.File;
 
@@ -55,7 +53,7 @@ public class Driver{
              double compRatio = translator.compression(translated, phrase);
              System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
              System.out.println();
-           } catch (BadEncoding e) {
+           } catch (BadDecoding e) {
              System.out.println("Decoding Failed: " + e);
            }
 
