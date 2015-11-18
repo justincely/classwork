@@ -3,7 +3,9 @@ Make it so
 luminiferous aether
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 abcdefghijklmnopqrstuvwxyz
+q
 qqqqqqqqqq
+e
 eeeeeeeeee
 ......................
 . . . hello $

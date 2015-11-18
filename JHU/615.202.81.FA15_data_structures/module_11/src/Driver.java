@@ -26,33 +26,47 @@ public class Driver{
        System.out.println("#-----------------------#");
        System.out.println("Reading file " + args[i]);
        System.out.println("#-----------------------#");
+
        while(scanner.hasNext()){
          String phrase = scanner.nextLine();
          String translated;
+
+         //Skip blank lines
          if (phrase.length() == 0) {
            continue;
          }
 
+         //If O's or 1's, assume encoded message and attempt to decode
          if ((phrase.substring(0, 1).equals("0")) || (phrase.substring(0, 1).equals("1"))){
-           System.out.println("Encoded message found: " + phrase);
-           translated = translator.decode(phrase);
-           System.out.println("Decoded version is   : " + translated);
+           try{
+             System.out.println("Encoded message found: " + phrase);
+             translated = translator.decode(phrase);
+             System.out.println("Decoded version is   : " + translated);
+             double compRatio = translator.compression(phrase, translated);
+             System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
+             System.out.println();
+           } catch (BadEncoding e) {
+             System.out.println("Decoding Failed: " + e);
+           }
+
+         //If not O's or 1's, assume text and attempt to encode
          } else {
            System.out.println("Plain-text message found: " + phrase);
-           translated = translator.encode(phrase);
-           System.out.println("Encoded version is      : " + translated);
+           try {
+             translated = translator.encode(phrase);
+             System.out.println("Encoded version is      : " + translated);
+             double compRatio = translator.compression(phrase, translated);
+             System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
+             System.out.println();
+           } catch (EncodingError e) {
+             System.out.println("Encoding Failed: " + e);
+           }
          }
-         double compRatio = translator.compression(phrase, translated);
-         System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
-         System.out.println();
-
        }
-
      } catch (java.io.FileNotFoundException e){
        System.out.println("Cannot find file: " + args[i]);
        return;
      }
-
    }
    System.out.println("--Finished all translations--");
  }

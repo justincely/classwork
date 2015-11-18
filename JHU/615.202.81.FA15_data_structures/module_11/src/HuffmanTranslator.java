@@ -8,6 +8,10 @@ public class HuffmanTranslator{
   private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
   private Tree<String> encoder = new Tree<String>();
 
+  /**Default constructor
+    *
+    *<p> Frequencies are initialized to given lab inputs. </p>
+    */
   public HuffmanTranslator() {
     frequencies.put("A", 19);
     frequencies.put("B", 16);
@@ -35,11 +39,6 @@ public class HuffmanTranslator{
     frequencies.put("X", 2);
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
-    /*
-    frequencies.put("X", 3);
-    frequencies.put("Y", 1);
-    frequencies.put("Z", 2);
-    */
   }
 
 
@@ -62,12 +61,24 @@ public class HuffmanTranslator{
     System.out.println();
   }
 
+  /**Print frequency content to STDOUT
+    *
+    *<p> Convenience function to display frequency information
+    *    To the screen.  Each character will be on a new line, and the
+    *    frequency for each will be : delimited.
+    *</p>
+    */
+  public void printTree() {
+    encoder.preOrderTraverse();
+  }
+
   public void buildEncoderTree() {
     Enumeration names;
     String str;
     int val;
     MinQueue queue = new MinQueue();
 
+    //Populate MinQueue with Trees of given priority
     names = frequencies.keys();
     while(names.hasMoreElements()) {
       str = (String) names.nextElement();
@@ -75,25 +86,26 @@ public class HuffmanTranslator{
       queue.insert(str, val, new Tree(str, val));
     }
 
-    //System.out.println("Building the tree: ");
+    //Build up the tree
     Tree huffTree = new Tree();
     QueueNode left = new QueueNode();
     QueueNode right = new QueueNode();
     while ((queue.count > 1)) {
+      //Pull out 2 trees at min frequency
       left = queue.pop();
       right = queue.pop();
-      //System.out.println(left.value + ": " + left.priority + " and " + right.value + ": " + right.priority);
+
+      //Combine values and priority, create new parent tree
       String newval = left.value + right.value;
       int newpriority = right.priority + left.priority;
       huffTree = new Tree(newval,
                           newpriority,
                           right.tree,
                           left.tree);
+
+      //Push back onto queue at combined priority.
       queue.insert(newval, newpriority, huffTree);
     }
-    //System.out.println("Going through the tree: ");
-    //huffTree.preOrderTraverse();
-
     encoder = huffTree;
   }
 
@@ -106,6 +118,7 @@ public class HuffmanTranslator{
   public String decode(String input){
     String message = "";
     Tree tmpTree = encoder;
+
     for (int i=0; i<input.length(); i++) {
       if (input.charAt(i) == '0') {
         tmpTree = tmpTree.left;
@@ -119,6 +132,7 @@ public class HuffmanTranslator{
         message = message + tmpTree.data;
         tmpTree = encoder;
       }
+
     }
     return message;
   }
@@ -138,24 +152,23 @@ public class HuffmanTranslator{
         continue;
       }
 
-      //System.out.println("For letter: " + letter);
       while (tmpTree.isLeaf() == false) {
-        //System.out.println(tmpTree.data);
         if (tmpTree.left.data.toLowerCase().contains(letter)) {
           tmpTree = tmpTree.left;
           message = message + "0";
         } else if (tmpTree.right.data.toLowerCase().contains(letter)) {
           tmpTree = tmpTree.right;
           message = message + "1";
-        } //Error handling here
+        } else {
+          throw new EncodingError("No child contains letter: " + letter);
+        }
       }
 
       //more Error handling
       if (tmpTree.data.toLowerCase().equals(letter)) {
         tmpTree = encoder;
       } else {
-        System.out.println("SOMETHING BAD HAPPENED " + letter + " - " + tmpTree.data.toLowerCase());
-        System.out.println("SOMETHING BAD HAPPENED " + letter == tmpTree.data.toLowerCase());
+        throw new EncodingError("Found leaf, but does not contain: " + letter);
       }
 
     }
@@ -163,7 +176,7 @@ public class HuffmanTranslator{
   }
 
   public double compression(String plaintext, String codedtext) {
-    return (100 * (float) codedtext.length() - (8*plaintext.length())) / (8*plaintext.length());
+    return 100 * ((float) codedtext.length() - (8*plaintext.length())) / (8*plaintext.length());
   }
 
 }
