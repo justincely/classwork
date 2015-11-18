@@ -4,7 +4,8 @@
 
 import java.util.Scanner;
 import java.io.File;
-
+//Used just for sorting strings of nodes - prettier output
+import java.util.Arrays;
 
 /**Parse matrices and calculate determinates.
   */
@@ -18,6 +19,12 @@ public class Driver{
    HuffmanTranslator translator = new HuffmanTranslator();
    translator.buildEncoderTree();
 
+   System.out.println("Huffman Tree");
+   translator.printTree();
+
+   System.out.println("Encoding Code");
+
+   translator.printCode();
    /* Loop over input files */
    for (int i=0; i < args.length; i++) {
      try{

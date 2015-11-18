@@ -1,8 +1,8 @@
 import java.util.Hashtable;
 import java.util.Enumeration;
-import java.util.PriorityQueue;
-import java.util.Comparator;
-import java.util.Map;
+
+//Used just for sorting strings of nodes - prettier output
+import java.util.Arrays;
 
 public class HuffmanTranslator{
   private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
@@ -72,6 +72,16 @@ public class HuffmanTranslator{
     encoder.preOrderTraverse();
   }
 
+  public void printCode() {
+    String alpha = "abcdefghijklmnopqrstuvwxyz";
+
+    for (int i=0; i<alpha.length(); i++) {
+      System.out.println(alpha.substring(i, i+1) + " = " + encode(alpha.substring(i, i+1)));
+    }
+    System.out.println();
+
+  }
+
   public void buildEncoderTree() {
     Enumeration names;
     String str;
@@ -96,7 +106,13 @@ public class HuffmanTranslator{
       right = queue.pop();
 
       //Combine values and priority, create new parent tree
-      String newval = left.value + right.value;
+      String newval = right.value + left.value;
+
+      //resort for pretty output
+      char[] chars = newval.toCharArray();
+      Arrays.sort(chars);
+      newval = new String(chars);
+
       int newpriority = right.priority + left.priority;
       huffTree = new Tree(newval,
                           newpriority,
@@ -176,7 +192,7 @@ public class HuffmanTranslator{
   }
 
   public double compression(String plaintext, String codedtext) {
-    return 100 * ((float) codedtext.length() - (8*plaintext.length())) / (8*plaintext.length());
+    return 100 * ((float) (8*plaintext.length() - codedtext.length())) / (8*plaintext.length());
   }
 
 }
