@@ -4,8 +4,6 @@
 
 import java.util.Scanner;
 import java.io.File;
-//Used just for sorting strings of nodes - prettier output
-import java.util.Arrays;
 
 /**Parse matrices and calculate determinates.
   */
@@ -49,7 +47,7 @@ public class Driver{
              System.out.println("Encoded message found: " + phrase);
              translated = translator.decode(phrase);
              System.out.println("Decoded version is   : " + translated);
-             double compRatio = translator.compression(phrase, translated);
+             double compRatio = translator.compression(translated, phrase);
              System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
              System.out.println();
            } catch (BadEncoding e) {
