@@ -22,7 +22,7 @@ public class MinQueue {
   /**Test if the queue is empty
     *
     *<p> test emptiness by checking if top == null </p>
-    *@returns true/false
+    *@returns boolean true/false
     */
   public boolean isEmpty(){
     if (top == null) {
@@ -33,7 +33,9 @@ public class MinQueue {
 
   /**Insert a new node into queue
     *
-    *<p></p>
+    *<p>New nodes must be inserted with a priority and an associated
+    *   binary tree.  The new node will be inserted at the appropriate
+    *   position in the queue to maintain the minqueue property.</p>
     *
     *@param String element
     *@param int priority
@@ -44,11 +46,14 @@ public class MinQueue {
     count++;
 
     if (isEmpty()){
+      //if empty, insert at front
       top = node;
     } else if (goesBefore(node, top)) {
+      //If lowest priority, insert at front
       node.next = top;
       top = node;
     } else {
+      //search through nodes until proper order is found.
       QueueNode current = top.next;
       QueueNode last = top;
 
@@ -63,6 +68,10 @@ public class MinQueue {
   }
 
   /**Enforce rules for precedence in queue
+    *
+    *<p> comparison here enforces the ruling for the paricular huffman tree.
+    *    priority is compared first, then string length, then alphabetic order.
+    *</p>
     *
     *@param QueueNode a
     *@param Queuenode b

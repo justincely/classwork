@@ -1,4 +1,4 @@
-/** Custom exception to catch invalid huffman encoding
+/** Custom exception to catch invalid huffman decoding
   *
   */
 

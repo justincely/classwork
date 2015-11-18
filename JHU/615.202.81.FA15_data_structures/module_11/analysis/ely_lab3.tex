@@ -57,16 +57,25 @@ The design of the tree structure is very straightforward, where every node is im
 
 The minimum queue created here is a very specialized structure for the application.  It only keeps track of the minimum priority element, and relies on the linked nodes to track the rest.  New elements, when inserted, are inserted at the correct order specifically for the huffman tree.  The method goesBefore() determines the order first by priority, then by length, then alphabetically.  Additionally, the queue nodes hold the value of the element, the priority, as well as an associated tree.  Keeping the tree inside the queue was another example of tailoring this structure for this application.
 
+\subsection{Enhancements}
+As mentioned before, in addition to the requirement of a pre-order traversal, post and in order tree traversal methods were implemented.  
+
+On the user interface side, a simple enhancement was done to improve useability.  Since non-alpha characters
 
 
 \subsection{Limitations}
+The current frequency table intrinsically limits the scope of this program to alphabetic encoding and decoding.  In many applications, numbers, special characters, and white space would be necessary to effectively communicate. 
 
-\subsection{Enhancements}
-As mentioned before, in addition to the requirement of a pre-order traversl, post and in order tree traversal methods were implemented.
+This limitation also extends past the frequency table.  Since certain characters can't be encoded, code needed to be put in place to ignore such characters while parsing.  This means that even with a new frequency table, the entire application still wouldn't be able to work with other characters until the special handling functionality were removed.
+
+Though the main driver will choose encoding or decoding based on the input string, this does lead to a not insignificant ambigiuity.  An illustrative example would be an input like 0101110Hello.  Does this represent an improper coded message or a plaintext message with non-acceptable characters?  As there is no unambiguous way to determine which it is, an assumption simply has to be made.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Efficiency}
+The minimum queue, implemented as a linked structure, has O(n) insertion efficiency.  However, as only the elements of lower priority need to be traversed, real-world application will average out to O(n/2) as $\sim$half of the queue is traversed.  Deletion from the minimum queue is O(1), as the lowest priority element is always at the top and nothing needs to be searched.
+
+Encoding or decoding a single letter has a maximum cost of the height of the tree, but what that cost is will be different based on the frequency table that is used to build the encoding tree.  Encoding or decoding an entire message is of O(n), though there will be variations as each letter will traverse a different height through the tree.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

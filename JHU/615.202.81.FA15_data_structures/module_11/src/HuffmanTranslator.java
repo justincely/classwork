@@ -1,6 +1,13 @@
+/**HuffmanTranslator
+  *
+  *<p> All the methods for building the huffman tree, encoding and deconding
+  *    messages are contained here.
+  *</p>
+  */
+
+
 import java.util.Hashtable;
 import java.util.Enumeration;
-
 //Used just for sorting strings of nodes - prettier output
 import java.util.Arrays;
 
@@ -10,7 +17,7 @@ public class HuffmanTranslator{
 
   /**Default constructor
     *
-    *<p> Frequencies are initialized to given lab inputs. </p>
+    *<p> Frequencies are initialized to given lab inputs.</p>
     */
   public HuffmanTranslator() {
     frequencies.put("A", 19);
@@ -40,7 +47,6 @@ public class HuffmanTranslator{
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
   }
-
 
   /**Print frequency content to STDOUT
     *
@@ -72,6 +78,11 @@ public class HuffmanTranslator{
     encoder.preOrderTraverse();
   }
 
+  /**Print encoding to STDOUT
+    *
+    *<p> Convenience function to display letter encoding.
+    *</p>
+    */
   public void printCode() {
     String alpha = "abcdefghijklmnopqrstuvwxyz";
 
@@ -82,6 +93,12 @@ public class HuffmanTranslator{
 
   }
 
+  /**Assemble the huffman encoder tree from the frequency table
+    *
+    *<p> Using the priorities in the frequency table, build a binary huffman
+    *    tree to use in later encoding and decoding messages.
+    *</p>
+    */
   public void buildEncoderTree() {
     Enumeration names;
     String str;
@@ -128,8 +145,13 @@ public class HuffmanTranslator{
 
   /**Main decoder function.
     *
-    *<p>
+    *<p>Loop over the string, traversing the encoder tree until a leaf node
+    *   is found.  Once a leaf is hit, append the letter at that leaf to the
+    *   output message.  A 0 on input moves to the left child, a 1 moves to the
+    *   right child.
     *</p>
+    *@param String input
+    *@returns String message
     */
   public String decode(String input){
     String message = "";
@@ -155,8 +177,13 @@ public class HuffmanTranslator{
 
   /**Main decoder function.
     *
-    *<p>
+    *<p>Loop over the string, traversing the encoder tree until a leaf node
+    *   is found with only the letter as content.  After each step to a right
+    *   child, append 1 to output.  After each stop to a left child, append a 0
+    *   to output.
     *</p>
+    *@param String input
+    *@returns String message
     */
   public String encode(String input) {
     String message = "";
@@ -180,7 +207,6 @@ public class HuffmanTranslator{
         }
       }
 
-      //more Error handling
       if (tmpTree.data.toLowerCase().equals(letter)) {
         tmpTree = encoder;
       } else {
@@ -191,6 +217,13 @@ public class HuffmanTranslator{
     return message;
   }
 
+  /**Calculate compression percent achieved
+    *<p> Assuming 8-bit ASCII encoding, calculated what percentage of bits
+    *    where saved due to the huffman encoding.
+    *</p>
+    *@param String plaintext
+    *@param String codedtext
+    */
   public double compression(String plaintext, String codedtext) {
     return 100 * ((float) (8*plaintext.length() - codedtext.length())) / (8*plaintext.length());
   }

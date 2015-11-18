@@ -1,10 +1,8 @@
-
-/** A generic Tree structure.
+/** A generic Binary Tree structure.
   *
   * <p> This is a linked tree structure, and supports generic typing.
-  * </p>
-  * <p>Methods to determine the minor and determinate of the
-  *    matrix are included as methods on the object itself.
+  *     Each tree has data, a parent, and left and right children. Each node
+  *     will have at max 2 children, which enforces the binary tree structure.
   * </p>
   *
   * @author Justin Ely
@@ -28,6 +26,7 @@ public class Tree<T> {
     /**Constructor with value
       *
       *<p> data attribute is set to value, all others are unll </p>
+      *@param T value
       */
     public Tree(T value) {
         this.data = value;
@@ -35,7 +34,8 @@ public class Tree<T> {
 
     /**Constructor with value and priority.
       *
-      *<p> </p>
+      *@param T value
+      *@param int priority
       */
     public Tree(T value, int priority) {
         this.data = value;
@@ -45,6 +45,10 @@ public class Tree<T> {
     /**Constructor with value, priority, and both childs
       *
       *<p>Children's parents will be set appropriately to the created node.</p>
+      *@param T value
+      *@param int priority
+      *@param Tree rightChild
+      *@param Tree leftChild
       */
     public Tree(T value, int priority, Tree<T> rightChild, Tree<T> leftChild) {
       this.data = value;
@@ -59,8 +63,9 @@ public class Tree<T> {
 
     /**Check whether current node is a leaf
       *
-      *<p>Tests whether both children are null</p>
-      *@return true/false
+      *<p>Tests whether node has no children.</p>
+      *
+      *@return boolean true/false
       */
     public boolean isLeaf() {
       if ((right == null) && (left == null)) {
@@ -71,7 +76,7 @@ public class Tree<T> {
 
     /**Check whether current node is the root
       *
-      *<p>Tests whether the parent is null</p>
+      *<p>Tests whether the current node has no parent.</p>
       *@returns true/false
       */
     public boolean isRoot() {
@@ -85,7 +90,7 @@ public class Tree<T> {
       *
       *<p>Visit left child recursively, then current node,
       *   then right child recursively.  Values will be printed
-      *   to STDOUT
+      *   to STDOUT.
       *</p>
       */
     public void inOrderTraverse() {
@@ -102,7 +107,7 @@ public class Tree<T> {
       *
       *<p>Visit current node first, then the left child recursively,
       *   followed by the right child recursively. Values will be printed
-      *   to STDOUT
+      *   to STDOUT.
       *</p>
       */
     public void preOrderTraverse() {
@@ -120,7 +125,7 @@ public class Tree<T> {
       *<p>Visit the left child recursively,
       *   followed by the right child recursively,
       *   lastly visit the current node. Values will be printed
-      *   to STDOUT
+      *   to STDOUT.
       *</p>
       */
     public void postOrderTraverse() {
@@ -132,5 +137,4 @@ public class Tree<T> {
 
       System.out.println(this.data + ": " + this.priority);
     }
-
 }

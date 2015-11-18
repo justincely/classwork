@@ -1,6 +1,6 @@
-all: clean compile doc unittest test lab
+all: clean compile doc unittest lab
 
-nounittest: clean compile_no_junit test lab
+nounittest: clean compile_no_junit lab
 
 clean:
 	rm -f *.class
@@ -10,6 +10,8 @@ compile:
 	javac *.java
 
 compile_no_junit:
+	javac BadEncoding.java
+	javac EncodingError.java
 	javac Tree.java
 	javac MinQueue.java
 	javac QueueNode.java
@@ -18,9 +20,7 @@ compile_no_junit:
 
 lab:
 	java Driver ../input/LabInput.txt > ../output/LabOutput.txt
-
-test:
-
+	java Driver ../input/AdditionalInput.txt > ../output/AdditionalOutput.txt
 
 unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt

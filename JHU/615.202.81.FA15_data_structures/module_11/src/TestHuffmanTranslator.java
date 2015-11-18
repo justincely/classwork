@@ -46,7 +46,6 @@ public class TestHuffmanTranslator {
     public void testEncoder() {
       HuffmanTranslator translator = new HuffmanTranslator();
       translator.buildEncoderTree();
-
       translator.encode("EIEIOH");
     }
 

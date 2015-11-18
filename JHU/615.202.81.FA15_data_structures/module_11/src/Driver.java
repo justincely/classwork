@@ -1,11 +1,16 @@
 /**Driver
   *
+  *Main program to drive encoding and decoding of messages.  Input must be
+  *from named files supplied via STDIN.
+  */
+
+
   */
 
 import java.util.Scanner;
 import java.io.File;
 
-/**Parse matrices and calculate determinates.
+/**Build encoder tree, parse files and translate messages.
   */
 public class Driver{
 
