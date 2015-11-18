@@ -61,6 +61,8 @@ The minimum queue created here is a very specialized structure for the applicati
 \subsection{Enhancements}
 As mentioned before, in addition to the requirement of a pre-order traversal, post and in-order tree traversal methods were implemented.  Though this lab required the pre-order, each of the various traversal methods are useful for different applications, so building them into the tree can have utility in the future.
 
+To clearly show the effect of the encoding, the translator has a method to calculate the fractional decrease in size between the encoded and decoded messages.  Th savings are printed along the messages when using the main driver. 
+
 Additionally, documentation and unittests were added to the package.  However, due to possible non-standard libraries, these options can be turned off in the given makefile.
 
 On the user interface side, a simple enhancement was done to improve usability.  Since non-alpha characters cannot be encoded, a O or 1 in the input string is an indicator that the input is a coded message that needs to be decoded.  Because of this, the parser simply checks if the first element of each input line is a 0 or a 1, and then chooses whether to encode or decode the line.  This means the user doesn't have to specify for the program to perform one or the other.  Rather, simply supplying their message will cause the appropriate action to be taken.
