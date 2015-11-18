@@ -17,15 +17,14 @@ Makefile usage is outlined below.
 make             # run the entire suite
 make nounittest  # run the entire suite without the JUnit unittest framework
 make compile     # compile the source
-make test        # compile and run the tests with supplied input files
 make unittest    # compile and tun the unit tests with the JUnit framework
 make doc         # generate documentation
-make lab         # run the code against the input file specified in the lab
+make lab         # run the code against the input files
 ```
 
 Individual Usage
 -----
-```java
+```java Driver File1.txt
 ```
 
 Output
@@ -35,6 +34,3 @@ standard output.  Writing to a file can be done using redirection:
 ```java
 java Driver File1.txt >> simple_out.txt
 ```
-
-Limitations
------------
