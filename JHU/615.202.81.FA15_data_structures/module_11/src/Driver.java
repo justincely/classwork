@@ -28,17 +28,24 @@ public class Driver{
        System.out.println("#-----------------------#");
        while(scanner.hasNext()){
          String phrase = scanner.nextLine();
+         String translated;
          if (phrase.length() == 0) {
            continue;
          }
 
          if ((phrase.substring(0, 1).equals("0")) || (phrase.substring(0, 1).equals("1"))){
            System.out.println("Encoded message found: " + phrase);
-           System.out.println("Decoded version is   : " + translator.decode(phrase));
+           translated = translator.decode(phrase);
+           System.out.println("Decoded version is   : " + translated);
          } else {
            System.out.println("Plain-text message found: " + phrase);
-           System.out.println("Encoded version is      : " + translator.encode(phrase));
+           translated = translator.encode(phrase);
+           System.out.println("Encoded version is      : " + translated);
          }
+         double compRatio = translator.compression(phrase, translated);
+         System.out.println("Ecoding was " + compRatio + "% smaller than plaintext.");
+         System.out.println();
+
        }
 
      } catch (java.io.FileNotFoundException e){

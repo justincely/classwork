@@ -111,7 +111,10 @@ public class HuffmanTranslator{
         tmpTree = tmpTree.left;
       } else if (input.charAt(i) == '1') {
         tmpTree = tmpTree.right;
-      } // Error checking here
+      } else {
+        throw new BadEncoding("Non-zero found in encoded message");
+      }
+
       if (tmpTree.isLeaf()) {
         message = message + tmpTree.data;
         tmpTree = encoder;
@@ -157,6 +160,10 @@ public class HuffmanTranslator{
 
     }
     return message;
+  }
+
+  public double compression(String plaintext, String codedtext) {
+    return (100 * (float) codedtext.length() - (8*plaintext.length())) / (8*plaintext.length());
   }
 
 }
