@@ -1,10 +1,29 @@
+
+/** A specialized Queue for use in huffman encoding
+  *
+  * <p> This is a linked minimum queue.
+  * </p>
+  *
+  * @author Justin Ely
+  * @version 0.0.1
+  * @license BSD 3-clause
+  */
 public class MinQueue {
   public int count = 0;
   public QueueNode top = null;
 
+  /**Default constructor
+    *
+    *<p> top will be initialized to null, count to 0</p>
+    */
   public MinQueue(){
   }
 
+  /**Test if the queue is empty
+    *
+    *<p> test emptiness by checking if top == null </p>
+    *@returns true/false
+    */
   public boolean isEmpty(){
     if (top == null) {
       return true;
@@ -12,6 +31,14 @@ public class MinQueue {
     return false;
   }
 
+  /**Insert a new node into queue
+    *
+    *<p></p>
+    *
+    *@param String element
+    *@param int priority
+    *@param Tree tree
+    */
   public void insert(String element, int priority, Tree tree){
     QueueNode node = new QueueNode(element, priority, tree);
     count++;
@@ -35,6 +62,12 @@ public class MinQueue {
     }
   }
 
+  /**Enforce rules for precedence in queue
+    *
+    *@param QueueNode a
+    *@param Queuenode b
+    *@returns boolean true/false
+    */
   private boolean goesBefore(QueueNode a, QueueNode b) {
     if (a.priority < b.priority) {
       return true;
@@ -48,8 +81,10 @@ public class MinQueue {
     return false;
   }
 
-
-
+  /**Return top element with lowest priority
+    *
+    *returns QueueNode top
+    */
   public QueueNode pop() {
     QueueNode tmp = top;
     top = tmp.next;
@@ -57,6 +92,8 @@ public class MinQueue {
     return tmp;
   }
 
+  /**Convenience function for printing the content of the queue
+    */
   public void print() {
     QueueNode current = top;
     while (current.next != null) {
