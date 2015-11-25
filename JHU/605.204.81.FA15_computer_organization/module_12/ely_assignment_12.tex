@@ -1,0 +1,54 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 12}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.204.81.FA15 Computer Organization\\}
+\vspace{0.5cm}
+% Date here below
+23 November, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{RAID systems rely on redundancy to achieve high availability.}
+This statement is true.  By adding redundancy with a RAID array, the stored data will remain available to the users even after the failure of a single (or in some cases, multiple) disk.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{RAID 1 (mirroring) has the highest check disk overhead.}
+This statement is true.  RAID 1 uses an extra check disk for every disk in the array, which results in n check disks for a raid array of size n.  This means the number of check disks required grows linearly with the array size.  RAID 3, 4, 5, 6 each have constant cost check disk overhead.  Raid 3, 4, and 5 each require a single check disk, while Raid 6 requires two.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{For small writes, RAID 3 (bit-interleaved parity) has the worst throughput.}
+This statement is true.  Raid 3 stripes bits across the various disks, which means that only a single read operation can be performed at a time.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{For large writes, RAID 3, 4, and 5 have the same throughput.}
+This statement is false.  RAID 3 is limited by the necessary for spindle synchronization, and RAID 4 is bottlenecked by the single parity disk.  RAID 5, on the other hand, has both the data and parity information spread across disks and thus has higher throughput.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
