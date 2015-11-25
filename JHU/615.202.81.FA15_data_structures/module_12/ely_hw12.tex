@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 12}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{615.202.81.FA15 Data Structures \\}
+\vspace{0.5cm}
+% Date here below
+24 November, 2015
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1)}
+Assuming this question means: assuming a tree is constructed at random, show that balanced trees are more probable to be assembled than straight-line trees, then the likely hood of a given tree being constructed comes from the number of possible states that tree could take.  For straight-line trees, there is only a single physical configuration that satisfies the straight-line requirement.  For a balanced tree, there are numerous ways it could be constructed - making it more probable to occur.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2)}
+
+\begin{verbatim}
+def delete(key1, key2):
+    for node in inOrderTraverse(Tree):
+        while key1 <= node.value <= key2:
+            tmp = node
+            del node
+            node = tmp.inOrderSuccessor()
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3)}
+
+\begin{verbatim}
+def delete(record, node):    
+    if node.isleaf():
+        del record
+    else:
+        del record
+        rebalanceTree()
+        
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4)}
+Approximating the uniform spread of the hash with a random process, each key has a 50\% chance to have collided with any of the filled spaces.  Representing the filled space as the load factor, a key has a $.5 (lf)$  chance of having collided.  Since there will be n keys, but the first could not have collided, the total number of average collisions is: $(n-1)\frac{lf}{2}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5)}
+The maximum number of comparisons performed will be 1 for each possible space in the table, plus 1 for that last check that determines there is no more room available: $(tablesize + 1)$.  Dividing this value by the number of open spots in the table then gives the value of the likely number of comparisons performed, plus 1 as a single check is always performed.  With the substitution $n_{open} = tablesize - n$, the desired equation is found  
+
+
+\begin{equation}
+n_{comp} = \frac{(tablesize + 1)}{(tablesize - n + 1)}
+\end{equation}
+
+Linear probing doesn't satisfy this condition because it breaks from the randomness of the probability, and instead simply steps linearly through the table until a new position is found.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
