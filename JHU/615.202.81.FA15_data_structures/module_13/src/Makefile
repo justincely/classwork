@@ -10,9 +10,13 @@ compile:
 	javac *.java
 
 compile_no_junit:
+	javac Driver.java
+	javac Heap.java
 	javac InsertionSort.java
+	javac QuickSort.java
 
 lab:
+	
 
 unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt
