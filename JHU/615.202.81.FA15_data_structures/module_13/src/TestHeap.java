@@ -15,35 +15,35 @@ import static org.junit.Assert.assertArrayEquals;
   *    Final output of false indicates a failing test.
   * </p>
   */
-public class TestInsertionSort {
+public class TestHeap {
     int[] refData = {1, 2, 3, 4, 5};
 
     @Test
     public void testSortOrder() {
       int[] inData = {1, 2, 3, 4, 5};
-      InsertionSort.sort(inData);
+      Heap testHeap = new Heap(inData);
       assertArrayEquals(inData, refData);
     }
 
     @Test
     public void testReverseOrder() {
       int[] inData = {5, 4, 3, 2, 1};
-      InsertionSort.sort(inData);
+      Heap testHeap = new Heap(inData);
       assertArrayEquals(inData, refData);
     }
 
     @Test
     public void testNoOrder() {
-      int[] inData = {3, 2, 5, 1, 4};
-      InsertionSort.sort(inData);
+      int[] inData = {2, 5, 4, 3, 1};
+      Heap testHeap = new Heap(inData);
       assertArrayEquals(inData, refData);
     }
 
     @Test
     public void testUniq() {
-      int[] inData = {1, 3, 1, 2, 2};
       int[] refData = {1, 1, 2, 2, 3};
-      InsertionSort.sort(inData);
+      int[] inData = {1, 2, 1, 3, 2};
+      Heap testHeap = new Heap(inData);
       assertArrayEquals(inData, refData);
     }
 
