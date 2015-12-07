@@ -25,6 +25,10 @@ public class Driver{
    String inFile = args[0];
    String outFile = args[1];
    String method = args[2];
+   int k = 0;
+   if (args.length > 4) {
+     k = Integer.parseInt(args[3]);
+   }
 
    try{
      Scanner scanner = new Scanner(new File(inFile));
@@ -62,6 +66,14 @@ public class Driver{
        InsertionSort.sort(data);
      } else if (method.equalsIgnoreCase("heap")) {
        Heap testHeap = new Heap(data);
+     } else if (method.equalsIgnoreCase("quick")) {
+       if (k > 0) {
+         QuickSort.sort(data, k);
+       } else {
+         QuickSort.sort(data);
+       }
+     } else {
+       System.out.println("method not understood, please try again.");
      }
 
      writeData(data, outFile);
