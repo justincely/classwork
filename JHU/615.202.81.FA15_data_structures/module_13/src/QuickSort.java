@@ -3,6 +3,10 @@ public class QuickSort {
     sort(data, 0, data.length-1);
   }
 
+  public static void sort(int[] data, int k) {
+    sort(data, 0, data.length-1, k);
+  }
+
   public static void sort(int[] data, int start, int stop) {
     if (start < stop) {
       int p = getPivot(data, start, stop);
@@ -10,6 +14,15 @@ public class QuickSort {
       sort(data, p+1, stop);
     }
   }
+
+  public static void sort(int[] data, int start, int stop, int k){
+    if (data.length <= k) {
+      InsertionSort.sort(data);
+    } else {
+      sort(data, 0, data.length-1);
+    }
+  }
+
 
   private static int getPivot(int[] data, int start, int stop) {
     int pivot = data[stop];
