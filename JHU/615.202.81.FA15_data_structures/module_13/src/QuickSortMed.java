@@ -1,4 +1,4 @@
-public class QuickSort {
+public class QuickSortMed {
   public static void sort(int[] data){
     sort(data, 0, data.length-1);
   }
@@ -24,25 +24,43 @@ public class QuickSort {
   }
 
 
-  private static int getPivot(int[] data, int start, int stop) {
-    int pivot = data[stop];
-    int i = start;
+  private static int median(int[] data, int start, int stop)
+  {
+    int mid = ((stop + start) / 2);
 
-    for (int j=start; j<=stop-1; j++) {
-      if (data[j] <= pivot) {
-        swap(data, i, j);
-        i++;
-      }
+    if (data[stop] < data[start]) {
+      QuickSort.swap(data, stop, start);
     }
-    swap(data, i, stop);
 
-    return i;
+    if (data[mid] < data[start]) {
+      QuickSort.swap(data, mid, start);
+    }
+
+    if (data[stop] < data[mid]) {
+      QuickSort.swap(data, stop, mid);
+    }
+
+    return data[mid];
   }
 
-  public static void swap(int[] data, int i, int j){
-    int tmp = data[i];
-    data[i] = data[j];
-    data[j] = tmp;
+
+  private static int getPivot(int[] data, int start, int stop) {
+    int pivot = median(data, start, stop);
+    int i = start;
+    int j = stop;
+
+    while (i < j) {
+      if (data[j] > pivot) {
+        j--;
+      }
+      if (data[i] < pivot) {
+        i++;
+      }
+
+      QuickSort.swap(data, i, j);
+    }
+
+    return j;
   }
 
 }

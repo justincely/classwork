@@ -33,9 +33,9 @@ public class Heap {
 
   public void siftDown(int start, int end) {
     int root = start;
-    while (root*2 + 1 <= end) {
+    while (2*root + 1 <= end) {
 
-      int child = root * 2 + 1;
+      int child = 2*root + 1;
       int swap = root;
       if (heapdata[swap] < heapdata[child]) {
         swap = child;
@@ -55,7 +55,6 @@ public class Heap {
   }
 
   private void swap(int i, int j){
-    //System.out.println("Exchanging " + heapdata[i] + " with " + heapdata[j]);
     int tmp = heapdata[i];
     heapdata[i] = heapdata[j];
     heapdata[j] = tmp;

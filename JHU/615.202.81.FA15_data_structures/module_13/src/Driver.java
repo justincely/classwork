@@ -39,11 +39,8 @@ public class Driver{
      int size = 200;
      int[] data = new int[size];
 
-     /* Loop over tokens in the input file.  The first integer is
-      * interpreted as the order (n) of the subsequent matrix data.
-      * The next n*n integers are parsed and used as input data
-      * to the matrix.  Any non-int (such as float, char) found in
-      * the data will cause the entire matrix to not be evaluated.
+     /* Loop over tokens in the input file.  Any non-int (such as float, char)
+      * found in the data will be ignored.
       */
      int count = 0;
      while (scanner.hasNextInt()){
@@ -86,6 +83,10 @@ public class Driver{
          QuickSort.sort(data);
          estimatedTime = System.nanoTime() - startTime;
        }
+     } else if (method.equalsIgnoreCase("quickmed")){
+       startTime = System.nanoTime();
+       QuickSortMed.sort(data);
+       estimatedTime = System.nanoTime() - startTime;
      } else {
        System.out.println("ERROR: method not understood, please try again.");
        return;

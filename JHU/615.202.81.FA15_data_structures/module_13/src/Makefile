@@ -24,11 +24,11 @@ lab:
 	echo "Running all heap sorts";
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile heap >> ../analysis/heap_times.txt; done; }
 	echo "Running all quick sorts";
-	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss10m Driver $$infile $$outfile quick >> ../analysis/quick_times.txt; done; }
-	echo "Running all quick sorts with a 50 size partition";
-	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss10m Driver $$infile $$outfile quick 50 >> ../analysis/quick_50_times.txt; done; }
-	echo "Running all quick sorts with a 100 size partition";
-	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss10m Driver $$infile $$outfile quick 100 >> ../analysis/quick_100_times.txt; done; }
+	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quick; done; }
+	echo "Running all quick sorts with a 50 size minimum partition";
+	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quick 50; done; }
+	echo "Running all quick sorts with a 100 size minimum partition";
+	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quick 100; done; }
 
 
 unittest: compile
