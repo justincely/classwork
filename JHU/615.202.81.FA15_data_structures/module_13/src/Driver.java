@@ -34,7 +34,7 @@ public class Driver{
    String method = args[2];
    /* Use default minimum quick partition size is 0, unless specified */
    int k = 0;
-   if (args.length > 4) {
+   if (args.length == 4) {
      k = Integer.parseInt(args[3]);
    }
 

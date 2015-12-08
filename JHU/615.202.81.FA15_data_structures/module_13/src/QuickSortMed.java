@@ -16,10 +16,12 @@ public class QuickSortMed {
   }
 
   public static void sort(int[] data, int start, int stop, int k){
-    if (data.length <= k) {
-      InsertionSort.sort(data);
+    if ((stop-start) <= k) {
+      InsertionSort.sort(data, start, stop);
     } else {
-      sort(data, 0, data.length-1);
+      int p = getPivot(data, start, stop);
+      sort(data, start, p-1, k);
+      sort(data, p+1, stop, k);
     }
   }
 
