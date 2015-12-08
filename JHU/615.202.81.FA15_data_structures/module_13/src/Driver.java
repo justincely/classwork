@@ -50,13 +50,13 @@ public class Driver{
          size = size * 2;
          data = new int[size];
          backFill(data, tmp);
-         //System.out.println(data.length);
        }
 
        data[count] = scanner.nextInt();
        count++;
      }
 
+     /* Shrink oversiezed array down to input size */
      int[] tmp = data;
      data = new int[count];
      backFill(data, tmp);
@@ -72,10 +72,14 @@ public class Driver{
      } else if (method.equalsIgnoreCase("heap")) {
        startTime = System.nanoTime();
        Heap testHeap = new Heap(data);
+       testHeap.heapify();
+       testHeap.sort();
        estimatedTime = System.nanoTime() - startTime;
      } else if (method.equalsIgnoreCase("heaprecursive")){
        startTime = System.nanoTime();
-       HeapRecursive testHeap = new HeapRecursive(data);
+       Heap testHeap = new Heap(data);
+       testHeap.heapifyRecursive();
+       testHeap.sortRecursive();
        estimatedTime = System.nanoTime() - startTime;
      } else if (method.equalsIgnoreCase("quick")) {
        if (k > 0) {

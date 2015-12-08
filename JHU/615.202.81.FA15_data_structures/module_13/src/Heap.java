@@ -8,8 +8,6 @@ public class Heap {
   public Heap(int[] inData) {
       size = inData.length;
       heapdata = inData;
-      heapify();
-      sort();
   }
 
   public void sort() {
@@ -22,11 +20,30 @@ public class Heap {
     }
   }
 
+  public void sortRecursive() {
+    int end = size-1;
+
+    while (end > 0) {
+      swap(end, 0);
+      end--;
+      siftDownRecursive(0, end);
+    }
+  }
+
   public void heapify() {
     int start = (size-2)/2;
 
     while (start >= 0) {
       siftDown(start, size-1);
+      start--;
+    }
+  }
+
+  public void heapifyRecursive() {
+    int start = (size)/2;
+
+    while (start >= 0) {
+      siftDownRecursive(start, size-1);
       start--;
     }
   }
@@ -52,6 +69,25 @@ public class Heap {
         root = swap;
       }
     }
+  }
+
+  public void siftDownRecursive(int start, int end) {
+    int left = 2*start;
+    int right = left + 1;
+
+    if (left > end) {
+      return;
+    }
+
+    int mc = (right > end) ? left : (heapdata[left] > heapdata[right]) ? left : right;
+
+    if (heapdata[start] >= heapdata[mc]) {
+      return;
+    }
+
+    swap(start, mc);
+    siftDownRecursive(mc, end);
+
   }
 
   private void swap(int i, int j){
