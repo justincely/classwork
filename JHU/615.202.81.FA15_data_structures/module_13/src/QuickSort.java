@@ -27,18 +27,33 @@ public class QuickSort {
 
 
   private static int getPivot(int[] data, int start, int stop) {
-    int pivot = data[stop];
+    int p = start;
+    int partition = data[p];
     int i = start;
+    int j = stop;
 
-    for (int j=start; j<=stop-1; j++) {
-      if (data[j] <= pivot) {
-        swap(data, i, j);
+    swap(data, p, i);
+
+    while (i < stop) {
+      while (i < j && data[i] <= partition) {
         i++;
       }
-    }
-    swap(data, i, stop);
 
-    return i;
+      while (data[j] > partition) {
+        j--;
+      }
+
+      if (i < j) {
+        swap(data, i, j);
+      } else {
+        break;
+      }
+
+    }
+
+    swap(data, start, j);
+    return j;
+
   }
 
   public static void swap(int[] data, int i, int j){

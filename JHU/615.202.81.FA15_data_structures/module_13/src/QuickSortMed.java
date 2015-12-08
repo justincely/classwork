@@ -47,17 +47,14 @@ public class QuickSortMed {
 
 
   private static int getPivot(int[] data, int start, int stop) {
-    //int p = median(data, start, stop);
-    int p = (start + stop) / 2;
+    int p = median(data, start, stop);
+    //int p = (start + stop) / 2;
     int partition = data[p];
     int i = start;
     int j = stop;
     QuickSort.swap(data, p, i);
 
-    int count = 0;
-
-    while (i <= stop && count++ < 1000) {
-
+    while (i < stop) {
       while (i < j && data[i] <= partition) {
         i++;
       }
@@ -68,6 +65,8 @@ public class QuickSortMed {
 
       if (i < j) {
         QuickSort.swap(data, i, j);
+      } else {
+        break;
       }
 
     }
