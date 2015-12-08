@@ -7,7 +7,7 @@ nounittest: clean compile_no_junit lab
 clean:
 	rm -f *.class
 	rm -f ../output/*.txt
-	rm -f ../analysis/*_times.txt
+	rm -f ../analysis/*_timing.txt
 
 compile:
 	javac *.java
@@ -44,8 +44,8 @@ timing:
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile heaprecursive >> ../analysis/heaprecursive_timing.txt; done; }
 	echo "Running all quick sorts";
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quick >> ../analysis/quick_timing.txt; done; }
-	echo "Running all quick sorts with median partition";
-	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quickmed >> ../analysis/quickmed_timing.txt; done; }
+	# echo "Running all quick sorts with median partition";
+	# { for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quickmed >> ../analysis/quickmed_timing.txt; done; }
 	echo "Running all quick sorts with a 50 size minimum partition";
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java -Xss90m Driver $$infile $$outfile quick 50 >> ../analysis/quick50_timing.txt; done; }
 	echo "Running all quick sorts with a 100 size minimum partition";

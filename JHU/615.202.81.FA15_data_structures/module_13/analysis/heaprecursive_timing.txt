@@ -1,0 +1,252 @@
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_1000000.txt
+  Found 1000000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_1000000.txt with 1000000 items took 91801463ns to calculate
+  Writing output to file: ../output/fewunique_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_100000.txt
+  Found 100000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_100000.txt with 100000 items took 16950739ns to calculate
+  Writing output to file: ../output/fewunique_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_10000.txt
+  Found 10000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_10000.txt with 10000 items took 17104620ns to calculate
+  Writing output to file: ../output/fewunique_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_1000.txt
+  Found 1000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_1000.txt with 1000 items took 1524172ns to calculate
+  Writing output to file: ../output/fewunique_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_2000.txt
+  Found 2000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_2000.txt with 2000 items took 2647341ns to calculate
+  Writing output to file: ../output/fewunique_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_50000.txt
+  Found 50000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_50000.txt with 50000 items took 12020441ns to calculate
+  Writing output to file: ../output/fewunique_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_5000.txt
+  Found 5000 items to be sorted.
+  heaprecursivesort on ../input/fewunique_5000.txt with 5000 items took 3272234ns to calculate
+  Writing output to file: ../output/fewunique_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_500.txt
+  Found 500 items to be sorted.
+  heaprecursivesort on ../input/fewunique_500.txt with 500 items took 882167ns to calculate
+  Writing output to file: ../output/fewunique_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_50.txt
+  Found 50 items to be sorted.
+  heaprecursivesort on ../input/fewunique_50.txt with 50 items took 252842ns to calculate
+  Writing output to file: ../output/fewunique_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_1000000.txt
+  Found 1000000 items to be sorted.
+  heaprecursivesort on ../input/order_1000000.txt with 1000000 items took 64917549ns to calculate
+  Writing output to file: ../output/order_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_100000.txt
+  Found 100000 items to be sorted.
+  heaprecursivesort on ../input/order_100000.txt with 100000 items took 15959849ns to calculate
+  Writing output to file: ../output/order_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_10000.txt
+  Found 10000 items to be sorted.
+  heaprecursivesort on ../input/order_10000.txt with 10000 items took 17625875ns to calculate
+  Writing output to file: ../output/order_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_1000.txt
+  Found 1000 items to be sorted.
+  heaprecursivesort on ../input/order_1000.txt with 1000 items took 1622032ns to calculate
+  Writing output to file: ../output/order_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_2000.txt
+  Found 2000 items to be sorted.
+  heaprecursivesort on ../input/order_2000.txt with 2000 items took 3178912ns to calculate
+  Writing output to file: ../output/order_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_50000.txt
+  Found 50000 items to be sorted.
+  heaprecursivesort on ../input/order_50000.txt with 50000 items took 12519946ns to calculate
+  Writing output to file: ../output/order_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_5000.txt
+  Found 5000 items to be sorted.
+  heaprecursivesort on ../input/order_5000.txt with 5000 items took 4135522ns to calculate
+  Writing output to file: ../output/order_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_500.txt
+  Found 500 items to be sorted.
+  heaprecursivesort on ../input/order_500.txt with 500 items took 898571ns to calculate
+  Writing output to file: ../output/order_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_50.txt
+  Found 50 items to be sorted.
+  heaprecursivesort on ../input/order_50.txt with 50 items took 258547ns to calculate
+  Writing output to file: ../output/order_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_1000000.txt
+  Found 1000000 items to be sorted.
+  heaprecursivesort on ../input/random_1000000.txt with 1000000 items took 115109439ns to calculate
+  Writing output to file: ../output/random_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_100000.txt
+  Found 100000 items to be sorted.
+  heaprecursivesort on ../input/random_100000.txt with 100000 items took 15165901ns to calculate
+  Writing output to file: ../output/random_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_10000.txt
+  Found 10000 items to be sorted.
+  heaprecursivesort on ../input/random_10000.txt with 10000 items took 16773763ns to calculate
+  Writing output to file: ../output/random_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_1000.txt
+  Found 1000 items to be sorted.
+  heaprecursivesort on ../input/random_1000.txt with 1000 items took 1559881ns to calculate
+  Writing output to file: ../output/random_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_2000.txt
+  Found 2000 items to be sorted.
+  heaprecursivesort on ../input/random_2000.txt with 2000 items took 2893117ns to calculate
+  Writing output to file: ../output/random_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_50000.txt
+  Found 50000 items to be sorted.
+  heaprecursivesort on ../input/random_50000.txt with 50000 items took 9586244ns to calculate
+  Writing output to file: ../output/random_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_5000.txt
+  Found 5000 items to be sorted.
+  heaprecursivesort on ../input/random_5000.txt with 5000 items took 3538806ns to calculate
+  Writing output to file: ../output/random_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_500.txt
+  Found 500 items to be sorted.
+  heaprecursivesort on ../input/random_500.txt with 500 items took 861359ns to calculate
+  Writing output to file: ../output/random_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_50.txt
+  Found 50 items to be sorted.
+  heaprecursivesort on ../input/random_50.txt with 50 items took 256079ns to calculate
+  Writing output to file: ../output/random_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_1000000.txt
+  Found 1000000 items to be sorted.
+  heaprecursivesort on ../input/reverse_1000000.txt with 1000000 items took 67870214ns to calculate
+  Writing output to file: ../output/reverse_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_100000.txt
+  Found 100000 items to be sorted.
+  heaprecursivesort on ../input/reverse_100000.txt with 100000 items took 13184438ns to calculate
+  Writing output to file: ../output/reverse_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_10000.txt
+  Found 10000 items to be sorted.
+  heaprecursivesort on ../input/reverse_10000.txt with 10000 items took 16488256ns to calculate
+  Writing output to file: ../output/reverse_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_1000.txt
+  Found 1000 items to be sorted.
+  heaprecursivesort on ../input/reverse_1000.txt with 1000 items took 1435553ns to calculate
+  Writing output to file: ../output/reverse_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_2000.txt
+  Found 2000 items to be sorted.
+  heaprecursivesort on ../input/reverse_2000.txt with 2000 items took 2975382ns to calculate
+  Writing output to file: ../output/reverse_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_50000.txt
+  Found 50000 items to be sorted.
+  heaprecursivesort on ../input/reverse_50000.txt with 50000 items took 10025143ns to calculate
+  Writing output to file: ../output/reverse_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_5000.txt
+  Found 5000 items to be sorted.
+  heaprecursivesort on ../input/reverse_5000.txt with 5000 items took 5041868ns to calculate
+  Writing output to file: ../output/reverse_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_500.txt
+  Found 500 items to be sorted.
+  heaprecursivesort on ../input/reverse_500.txt with 500 items took 815482ns to calculate
+  Writing output to file: ../output/reverse_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_50.txt
+  Found 50 items to be sorted.
+  heaprecursivesort on ../input/reverse_50.txt with 50 items took 252758ns to calculate
+  Writing output to file: ../output/reverse_50.txt

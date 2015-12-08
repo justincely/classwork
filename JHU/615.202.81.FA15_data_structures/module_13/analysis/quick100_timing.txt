@@ -1,0 +1,252 @@
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_1000000.txt
+  Found 1000000 items to be sorted.
+  quicksort on ../input/fewunique_1000000.txt with 1000000 items took 33079817714ns to calculate
+  Writing output to file: ../output/fewunique_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_100000.txt
+  Found 100000 items to be sorted.
+  quicksort on ../input/fewunique_100000.txt with 100000 items took 343005856ns to calculate
+  Writing output to file: ../output/fewunique_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_10000.txt
+  Found 10000 items to be sorted.
+  quicksort on ../input/fewunique_10000.txt with 10000 items took 22190923ns to calculate
+  Writing output to file: ../output/fewunique_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_1000.txt
+  Found 1000 items to be sorted.
+  quicksort on ../input/fewunique_1000.txt with 1000 items took 2603169ns to calculate
+  Writing output to file: ../output/fewunique_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_2000.txt
+  Found 2000 items to be sorted.
+  quicksort on ../input/fewunique_2000.txt with 2000 items took 3144586ns to calculate
+  Writing output to file: ../output/fewunique_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_50000.txt
+  Found 50000 items to be sorted.
+  quicksort on ../input/fewunique_50000.txt with 50000 items took 94072075ns to calculate
+  Writing output to file: ../output/fewunique_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_5000.txt
+  Found 5000 items to be sorted.
+  quicksort on ../input/fewunique_5000.txt with 5000 items took 4822836ns to calculate
+  Writing output to file: ../output/fewunique_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_500.txt
+  Found 500 items to be sorted.
+  quicksort on ../input/fewunique_500.txt with 500 items took 1325422ns to calculate
+  Writing output to file: ../output/fewunique_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/fewunique_50.txt
+  Found 50 items to be sorted.
+  quicksort on ../input/fewunique_50.txt with 50 items took 239713ns to calculate
+  Writing output to file: ../output/fewunique_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_1000000.txt
+  Found 1000000 items to be sorted.
+  quicksort on ../input/order_1000000.txt with 1000000 items took 75693605229ns to calculate
+  Writing output to file: ../output/order_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_100000.txt
+  Found 100000 items to be sorted.
+  quicksort on ../input/order_100000.txt with 100000 items took 765026838ns to calculate
+  Writing output to file: ../output/order_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_10000.txt
+  Found 10000 items to be sorted.
+  quicksort on ../input/order_10000.txt with 10000 items took 25584726ns to calculate
+  Writing output to file: ../output/order_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_1000.txt
+  Found 1000 items to be sorted.
+  quicksort on ../input/order_1000.txt with 1000 items took 2723678ns to calculate
+  Writing output to file: ../output/order_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_2000.txt
+  Found 2000 items to be sorted.
+  quicksort on ../input/order_2000.txt with 2000 items took 3472342ns to calculate
+  Writing output to file: ../output/order_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_50000.txt
+  Found 50000 items to be sorted.
+  quicksort on ../input/order_50000.txt with 50000 items took 196858958ns to calculate
+  Writing output to file: ../output/order_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_5000.txt
+  Found 5000 items to be sorted.
+  quicksort on ../input/order_5000.txt with 5000 items took 5740160ns to calculate
+  Writing output to file: ../output/order_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_500.txt
+  Found 500 items to be sorted.
+  quicksort on ../input/order_500.txt with 500 items took 2687569ns to calculate
+  Writing output to file: ../output/order_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/order_50.txt
+  Found 50 items to be sorted.
+  quicksort on ../input/order_50.txt with 50 items took 295322ns to calculate
+  Writing output to file: ../output/order_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_1000000.txt
+  Found 1000000 items to be sorted.
+  quicksort on ../input/random_1000000.txt with 1000000 items took 75245845ns to calculate
+  Writing output to file: ../output/random_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_100000.txt
+  Found 100000 items to be sorted.
+  quicksort on ../input/random_100000.txt with 100000 items took 12452452ns to calculate
+  Writing output to file: ../output/random_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_10000.txt
+  Found 10000 items to be sorted.
+  quicksort on ../input/random_10000.txt with 10000 items took 9586525ns to calculate
+  Writing output to file: ../output/random_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_1000.txt
+  Found 1000 items to be sorted.
+  quicksort on ../input/random_1000.txt with 1000 items took 852996ns to calculate
+  Writing output to file: ../output/random_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_2000.txt
+  Found 2000 items to be sorted.
+  quicksort on ../input/random_2000.txt with 2000 items took 1856103ns to calculate
+  Writing output to file: ../output/random_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_50000.txt
+  Found 50000 items to be sorted.
+  quicksort on ../input/random_50000.txt with 50000 items took 8888181ns to calculate
+  Writing output to file: ../output/random_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_5000.txt
+  Found 5000 items to be sorted.
+  quicksort on ../input/random_5000.txt with 5000 items took 3411010ns to calculate
+  Writing output to file: ../output/random_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_500.txt
+  Found 500 items to be sorted.
+  quicksort on ../input/random_500.txt with 500 items took 455218ns to calculate
+  Writing output to file: ../output/random_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/random_50.txt
+  Found 50 items to be sorted.
+  quicksort on ../input/random_50.txt with 50 items took 289335ns to calculate
+  Writing output to file: ../output/random_50.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_1000000.txt
+  Found 1000000 items to be sorted.
+  quicksort on ../input/reverse_1000000.txt with 1000000 items took 244969556828ns to calculate
+  Writing output to file: ../output/reverse_1000000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_100000.txt
+  Found 100000 items to be sorted.
+  quicksort on ../input/reverse_100000.txt with 100000 items took 2386604456ns to calculate
+  Writing output to file: ../output/reverse_100000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_10000.txt
+  Found 10000 items to be sorted.
+  quicksort on ../input/reverse_10000.txt with 10000 items took 40768036ns to calculate
+  Writing output to file: ../output/reverse_10000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_1000.txt
+  Found 1000 items to be sorted.
+  quicksort on ../input/reverse_1000.txt with 1000 items took 2730043ns to calculate
+  Writing output to file: ../output/reverse_1000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_2000.txt
+  Found 2000 items to be sorted.
+  quicksort on ../input/reverse_2000.txt with 2000 items took 4840655ns to calculate
+  Writing output to file: ../output/reverse_2000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_50000.txt
+  Found 50000 items to be sorted.
+  quicksort on ../input/reverse_50000.txt with 50000 items took 606426719ns to calculate
+  Writing output to file: ../output/reverse_50000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_5000.txt
+  Found 5000 items to be sorted.
+  quicksort on ../input/reverse_5000.txt with 5000 items took 9388691ns to calculate
+  Writing output to file: ../output/reverse_5000.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_500.txt
+  Found 500 items to be sorted.
+  quicksort on ../input/reverse_500.txt with 500 items took 2473359ns to calculate
+  Writing output to file: ../output/reverse_500.txt
+#--------------------------#
+#-- Starting file sorter --#
+#--------------------------#
+  Reading file ../input/reverse_50.txt
+  Found 50 items to be sorted.
+  quicksort on ../input/reverse_50.txt with 50 items took 265035ns to calculate
+  Writing output to file: ../output/reverse_50.txt
