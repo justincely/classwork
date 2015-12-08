@@ -73,6 +73,10 @@ public class Driver{
        startTime = System.nanoTime();
        Heap testHeap = new Heap(data);
        estimatedTime = System.nanoTime() - startTime;
+     } else if (method.equalsIgnoreCase("heaprecursive")){
+       startTime = System.nanoTime();
+       HeapRecursive testHeap = new HeapRecursive(data);
+       estimatedTime = System.nanoTime() - startTime;
      } else if (method.equalsIgnoreCase("quick")) {
        if (k > 0) {
          startTime = System.nanoTime();
