@@ -30,9 +30,12 @@ public class Driver{
      k = Integer.parseInt(args[3]);
    }
 
+   System.out.println("#--------------------------#");
+   System.out.println("#-- Starting file sorter --#");
+   System.out.println("#--------------------------#");
    try{
      Scanner scanner = new Scanner(new File(inFile));
-     System.out.println("Reading file " + inFile);
+     System.out.println("  Reading file " + inFile);
      int size = 200;
      int[] data = new int[size];
 
@@ -61,25 +64,40 @@ public class Driver{
      data = new int[count];
      backFill(data, tmp);
 
-     //System.out.println(data.length);
+     long startTime = 0;
+     long estimatedTime = 0;
+
+     System.out.println("  Found " + data.length + " items to be sorted.");
      if (method.equalsIgnoreCase("insertion")) {
+       startTime = System.nanoTime();
        InsertionSort.sort(data);
+       estimatedTime = System.nanoTime() - startTime;
      } else if (method.equalsIgnoreCase("heap")) {
+       startTime = System.nanoTime();
        Heap testHeap = new Heap(data);
+       estimatedTime = System.nanoTime() - startTime;
      } else if (method.equalsIgnoreCase("quick")) {
        if (k > 0) {
+         startTime = System.nanoTime();
          QuickSort.sort(data, k);
+         estimatedTime = System.nanoTime() - startTime;
        } else {
+         startTime = System.nanoTime();
          QuickSort.sort(data);
+         estimatedTime = System.nanoTime() - startTime;
        }
      } else {
-       System.out.println("method not understood, please try again.");
+       System.out.println("ERROR: method not understood, please try again.");
+       return;
      }
 
+     System.out.println("  " + method + " on " + data.length + " items took " + estimatedTime + "ns to calculate");
+
+     System.out.println("  Writing output to file: " + outFile);
      writeData(data, outFile);
 
    } catch (java.io.FileNotFoundException e){
-     System.out.println("Cannot find file: " + inFile);
+     System.out.println("ERROR: Cannot find file: " + inFile);
      return;
    }
  }
