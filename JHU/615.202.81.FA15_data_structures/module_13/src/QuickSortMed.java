@@ -18,7 +18,7 @@ public class QuickSortMed {
   public static void sort(int[] data, int start, int stop, int k){
     if ((stop-start) <= k) {
       InsertionSort.sort(data, start, stop);
-    } else {
+    } else if (start < stop) {
       int p = getPivot(data, start, stop);
       sort(data, start, p-1, k);
       sort(data, p+1, stop, k);
@@ -42,50 +42,38 @@ public class QuickSortMed {
       QuickSort.swap(data, stop, mid);
     }
 
-    System.out.print("median: " + data[start] + " " + data[mid] + " " + data[stop] + "\n");
-    //QuickSort.swap(data, mid, stop);
     return mid;
   }
 
 
   private static int getPivot(int[] data, int start, int stop) {
-    int p = median(data, start, stop);
+    //int p = median(data, start, stop);
+    int p = (start + stop) / 2;
+    int partition = data[p];
     int i = start;
     int j = stop;
-    System.out.println(start + " --> " + stop);
+    QuickSort.swap(data, p, i);
+
     int count = 0;
-    int size = stop-start;
 
-    while (count++ < 40) {
+    while (i <= stop && count++ < 1000) {
 
-      for (int k=0; k<data.length; k++) {
-        System.out.print(data[k] + " ");
-      }
-      //System.out.println(data[i] + " " + pivot + " " + data[j]);
-
-      //if (data[i] == pivot && data[j] == pivot) {
-      //  return j;
-      //}
-
-      while (data[j] > data[p]) {
-        j--;
-      }
-
-      while (data[i] < data[p]) {
+      while (i < j && data[i] <= partition) {
         i++;
       }
 
-      System.out.print("start: " + data[i] + " stop: " + data[j] + " pivot: " + data[p] + " size: " + size + "\n");
-      System.out.println(i + " " + j);
+      while (data[j] > partition) {
+        j--;
+      }
+
       if (i < j) {
         QuickSort.swap(data, i, j);
-      } else if (data[j] < data[p]) {
-        QuickSort.swap(data, j, p);
       }
 
     }
-    QuickSort.swap(data, i, stop-1);
-    return i;
+
+    QuickSort.swap(data, start, j);
+    return j;
 
   }
 

@@ -18,7 +18,7 @@ public class QuickSort {
   public static void sort(int[] data, int start, int stop, int k){
     if ((stop-start) <= k) {
       InsertionSort.sort(data, start, stop);
-    } else {
+    } else if (start < stop) {
       int p = getPivot(data, start, stop);
       sort(data, start, p-1, k);
       sort(data, p+1, stop, k);
