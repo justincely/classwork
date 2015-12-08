@@ -40,27 +40,51 @@ public class QuickSortMed {
       QuickSort.swap(data, stop, mid);
     }
 
-    return data[mid];
+    System.out.print("median: " + data[start] + " " + data[mid] + " " + data[stop] + "\n");
+    //QuickSort.swap(data, mid, stop);
+    return mid;
   }
 
 
   private static int getPivot(int[] data, int start, int stop) {
-    int pivot = median(data, start, stop);
+    int p = median(data, start, stop);
     int i = start;
     int j = stop;
+    System.out.println(start + " --> " + stop);
+    int count = 0;
+    int size = stop-start;
 
-    while (i < j) {
-      if (data[j] > pivot) {
+    while (count++ < 40) {
+
+      for (int k=0; k<data.length; k++) {
+        System.out.print(data[k] + " ");
+      }
+      //System.out.println(data[i] + " " + pivot + " " + data[j]);
+
+      //if (data[i] == pivot && data[j] == pivot) {
+      //  return j;
+      //}
+
+      while (data[j] > data[p]) {
         j--;
       }
-      if (data[i] < pivot) {
+
+      while (data[i] < data[p]) {
         i++;
       }
 
-      QuickSort.swap(data, i, j);
-    }
+      System.out.print("start: " + data[i] + " stop: " + data[j] + " pivot: " + data[p] + " size: " + size + "\n");
+      System.out.println(i + " " + j);
+      if (i < j) {
+        QuickSort.swap(data, i, j);
+      } else if (data[j] < data[p]) {
+        QuickSort.swap(data, j, p);
+      }
 
-    return j;
+    }
+    QuickSort.swap(data, i, stop-1);
+    return i;
+
   }
 
 }
