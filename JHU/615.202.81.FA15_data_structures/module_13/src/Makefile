@@ -37,8 +37,8 @@ lab:
 
 timing:
 	echo "Running all insertion sorts";
-	# { for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile insertion >> ../analysis/insertion_timing.txt; done; }
-	# echo "Running all heap sorts";
+	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile insertion >> ../analysis/insertion_timing.txt; done; }
+	echo "Running all heap sorts";
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile heap >> ../analysis/heap_timing.txt; done; }
 	echo "Running all recursive heap sorts";
 	{ for infile in ../input/*.txt; do replace=output; outfile=$${infile/input/$$replace}; java Driver $$infile $$outfile heaprecursive >> ../analysis/heaprecursive_timing.txt; done; }

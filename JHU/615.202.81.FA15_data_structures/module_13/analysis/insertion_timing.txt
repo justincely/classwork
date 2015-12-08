@@ -3,250 +3,250 @@
 #--------------------------#
   Reading file ../input/fewunique_1000000.txt
   Found 1000000 items to be sorted.
-  insertionsort on ../input/fewunique_1000000.txt with 1000000 items took 259352003426ns to calculate
+  insertionsort on ../input/fewunique_1000000.txt with 1000000 items took 256994102673ns to calculate
   Writing output to file: ../output/fewunique_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_100000.txt
   Found 100000 items to be sorted.
-  insertionsort on ../input/fewunique_100000.txt with 100000 items took 696447730ns to calculate
+  insertionsort on ../input/fewunique_100000.txt with 100000 items took 794128109ns to calculate
   Writing output to file: ../output/fewunique_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_10000.txt
   Found 10000 items to be sorted.
-  insertionsort on ../input/fewunique_10000.txt with 10000 items took 24208983ns to calculate
+  insertionsort on ../input/fewunique_10000.txt with 10000 items took 25703089ns to calculate
   Writing output to file: ../output/fewunique_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_1000.txt
   Found 1000 items to be sorted.
-  insertionsort on ../input/fewunique_1000.txt with 1000 items took 2871190ns to calculate
+  insertionsort on ../input/fewunique_1000.txt with 1000 items took 3206121ns to calculate
   Writing output to file: ../output/fewunique_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_2000.txt
   Found 2000 items to be sorted.
-  insertionsort on ../input/fewunique_2000.txt with 2000 items took 3195627ns to calculate
+  insertionsort on ../input/fewunique_2000.txt with 2000 items took 3674129ns to calculate
   Writing output to file: ../output/fewunique_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_50000.txt
   Found 50000 items to be sorted.
-  insertionsort on ../input/fewunique_50000.txt with 50000 items took 197074721ns to calculate
+  insertionsort on ../input/fewunique_50000.txt with 50000 items took 201452630ns to calculate
   Writing output to file: ../output/fewunique_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_5000.txt
   Found 5000 items to be sorted.
-  insertionsort on ../input/fewunique_5000.txt with 5000 items took 5934386ns to calculate
+  insertionsort on ../input/fewunique_5000.txt with 5000 items took 6440671ns to calculate
   Writing output to file: ../output/fewunique_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_500.txt
   Found 500 items to be sorted.
-  insertionsort on ../input/fewunique_500.txt with 500 items took 1215953ns to calculate
+  insertionsort on ../input/fewunique_500.txt with 500 items took 1276341ns to calculate
   Writing output to file: ../output/fewunique_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_50.txt
   Found 50 items to be sorted.
-  insertionsort on ../input/fewunique_50.txt with 50 items took 207553ns to calculate
+  insertionsort on ../input/fewunique_50.txt with 50 items took 206868ns to calculate
   Writing output to file: ../output/fewunique_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_1000000.txt
   Found 1000000 items to be sorted.
-  insertionsort on ../input/order_1000000.txt with 1000000 items took 2985354ns to calculate
+  insertionsort on ../input/order_1000000.txt with 1000000 items took 4226979ns to calculate
   Writing output to file: ../output/order_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_100000.txt
   Found 100000 items to be sorted.
-  insertionsort on ../input/order_100000.txt with 100000 items took 2544921ns to calculate
+  insertionsort on ../input/order_100000.txt with 100000 items took 1756505ns to calculate
   Writing output to file: ../output/order_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_10000.txt
   Found 10000 items to be sorted.
-  insertionsort on ../input/order_10000.txt with 10000 items took 514676ns to calculate
+  insertionsort on ../input/order_10000.txt with 10000 items took 1432131ns to calculate
   Writing output to file: ../output/order_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_1000.txt
   Found 1000 items to be sorted.
-  insertionsort on ../input/order_1000.txt with 1000 items took 245037ns to calculate
+  insertionsort on ../input/order_1000.txt with 1000 items took 305396ns to calculate
   Writing output to file: ../output/order_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_2000.txt
   Found 2000 items to be sorted.
-  insertionsort on ../input/order_2000.txt with 2000 items took 303522ns to calculate
+  insertionsort on ../input/order_2000.txt with 2000 items took 311948ns to calculate
   Writing output to file: ../output/order_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_50000.txt
   Found 50000 items to be sorted.
-  insertionsort on ../input/order_50000.txt with 50000 items took 1370123ns to calculate
+  insertionsort on ../input/order_50000.txt with 50000 items took 1532315ns to calculate
   Writing output to file: ../output/order_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_5000.txt
   Found 5000 items to be sorted.
-  insertionsort on ../input/order_5000.txt with 5000 items took 402162ns to calculate
+  insertionsort on ../input/order_5000.txt with 5000 items took 405471ns to calculate
   Writing output to file: ../output/order_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_500.txt
   Found 500 items to be sorted.
-  insertionsort on ../input/order_500.txt with 500 items took 248100ns to calculate
+  insertionsort on ../input/order_500.txt with 500 items took 272799ns to calculate
   Writing output to file: ../output/order_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_50.txt
   Found 50 items to be sorted.
-  insertionsort on ../input/order_50.txt with 50 items took 239884ns to calculate
+  insertionsort on ../input/order_50.txt with 50 items took 298499ns to calculate
   Writing output to file: ../output/order_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_1000000.txt
   Found 1000000 items to be sorted.
-  insertionsort on ../input/random_1000000.txt with 1000000 items took 70007879439ns to calculate
+  insertionsort on ../input/random_1000000.txt with 1000000 items took 81490019101ns to calculate
   Writing output to file: ../output/random_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_100000.txt
   Found 100000 items to be sorted.
-  insertionsort on ../input/random_100000.txt with 100000 items took 682780545ns to calculate
+  insertionsort on ../input/random_100000.txt with 100000 items took 812087353ns to calculate
   Writing output to file: ../output/random_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_10000.txt
   Found 10000 items to be sorted.
-  insertionsort on ../input/random_10000.txt with 10000 items took 23102573ns to calculate
+  insertionsort on ../input/random_10000.txt with 10000 items took 25110896ns to calculate
   Writing output to file: ../output/random_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_1000.txt
   Found 1000 items to be sorted.
-  insertionsort on ../input/random_1000.txt with 1000 items took 2927089ns to calculate
+  insertionsort on ../input/random_1000.txt with 1000 items took 3326566ns to calculate
   Writing output to file: ../output/random_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_2000.txt
   Found 2000 items to be sorted.
-  insertionsort on ../input/random_2000.txt with 2000 items took 6512311ns to calculate
+  insertionsort on ../input/random_2000.txt with 2000 items took 3891139ns to calculate
   Writing output to file: ../output/random_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_50000.txt
   Found 50000 items to be sorted.
-  insertionsort on ../input/random_50000.txt with 50000 items took 170864514ns to calculate
+  insertionsort on ../input/random_50000.txt with 50000 items took 194280818ns to calculate
   Writing output to file: ../output/random_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_5000.txt
   Found 5000 items to be sorted.
-  insertionsort on ../input/random_5000.txt with 5000 items took 5306821ns to calculate
+  insertionsort on ../input/random_5000.txt with 5000 items took 6121951ns to calculate
   Writing output to file: ../output/random_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_500.txt
   Found 500 items to be sorted.
-  insertionsort on ../input/random_500.txt with 500 items took 1262513ns to calculate
+  insertionsort on ../input/random_500.txt with 500 items took 1350264ns to calculate
   Writing output to file: ../output/random_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_50.txt
   Found 50 items to be sorted.
-  insertionsort on ../input/random_50.txt with 50 items took 204695ns to calculate
+  insertionsort on ../input/random_50.txt with 50 items took 207447ns to calculate
   Writing output to file: ../output/random_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_1000000.txt
   Found 1000000 items to be sorted.
-  insertionsort on ../input/reverse_1000000.txt with 1000000 items took 140858910227ns to calculate
+  insertionsort on ../input/reverse_1000000.txt with 1000000 items took 155514205332ns to calculate
   Writing output to file: ../output/reverse_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_100000.txt
   Found 100000 items to be sorted.
-  insertionsort on ../input/reverse_100000.txt with 100000 items took 1407044154ns to calculate
+  insertionsort on ../input/reverse_100000.txt with 100000 items took 1511342887ns to calculate
   Writing output to file: ../output/reverse_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_10000.txt
   Found 10000 items to be sorted.
-  insertionsort on ../input/reverse_10000.txt with 10000 items took 31623458ns to calculate
+  insertionsort on ../input/reverse_10000.txt with 10000 items took 32003954ns to calculate
   Writing output to file: ../output/reverse_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_1000.txt
   Found 1000 items to be sorted.
-  insertionsort on ../input/reverse_1000.txt with 1000 items took 2877741ns to calculate
+  insertionsort on ../input/reverse_1000.txt with 1000 items took 2956343ns to calculate
   Writing output to file: ../output/reverse_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_2000.txt
   Found 2000 items to be sorted.
-  insertionsort on ../input/reverse_2000.txt with 2000 items took 4964522ns to calculate
+  insertionsort on ../input/reverse_2000.txt with 2000 items took 4887875ns to calculate
   Writing output to file: ../output/reverse_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_50000.txt
   Found 50000 items to be sorted.
-  insertionsort on ../input/reverse_50000.txt with 50000 items took 352484684ns to calculate
+  insertionsort on ../input/reverse_50000.txt with 50000 items took 380363184ns to calculate
   Writing output to file: ../output/reverse_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_5000.txt
   Found 5000 items to be sorted.
-  insertionsort on ../input/reverse_5000.txt with 5000 items took 10139983ns to calculate
+  insertionsort on ../input/reverse_5000.txt with 5000 items took 7711163ns to calculate
   Writing output to file: ../output/reverse_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_500.txt
   Found 500 items to be sorted.
-  insertionsort on ../input/reverse_500.txt with 500 items took 2369405ns to calculate
+  insertionsort on ../input/reverse_500.txt with 500 items took 2470036ns to calculate
   Writing output to file: ../output/reverse_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_50.txt
   Found 50 items to be sorted.
-  insertionsort on ../input/reverse_50.txt with 50 items took 240081ns to calculate
+  insertionsort on ../input/reverse_50.txt with 50 items took 219922ns to calculate
   Writing output to file: ../output/reverse_50.txt

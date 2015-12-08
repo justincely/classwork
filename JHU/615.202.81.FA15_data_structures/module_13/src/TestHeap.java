@@ -66,9 +66,6 @@ public class TestHeap {
       Heap testHeap = new Heap(inData);
       testHeap.heapifyRecursive();
       testHeap.sortRecursive();
-      for (int i=0; i<inData.length; i++) {
-        System.out.println(inData[i]);
-      }
       assertArrayEquals(inData, refData);
     }
 

@@ -3,250 +3,250 @@
 #--------------------------#
   Reading file ../input/fewunique_1000000.txt
   Found 1000000 items to be sorted.
-  heapsort on ../input/fewunique_1000000.txt with 1000000 items took 87504855ns to calculate
+  quickmedsort on ../input/fewunique_1000000.txt with 1000000 items took 49452777ns to calculate
   Writing output to file: ../output/fewunique_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_100000.txt
   Found 100000 items to be sorted.
-  heapsort on ../input/fewunique_100000.txt with 100000 items took 13635645ns to calculate
+  quickmedsort on ../input/fewunique_100000.txt with 100000 items took 18831303ns to calculate
   Writing output to file: ../output/fewunique_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_10000.txt
   Found 10000 items to be sorted.
-  heapsort on ../input/fewunique_10000.txt with 10000 items took 12571207ns to calculate
+  quickmedsort on ../input/fewunique_10000.txt with 10000 items took 9783031ns to calculate
   Writing output to file: ../output/fewunique_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_1000.txt
   Found 1000 items to be sorted.
-  heapsort on ../input/fewunique_1000.txt with 1000 items took 1044500ns to calculate
+  quickmedsort on ../input/fewunique_1000.txt with 1000 items took 1012948ns to calculate
   Writing output to file: ../output/fewunique_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_2000.txt
   Found 2000 items to be sorted.
-  heapsort on ../input/fewunique_2000.txt with 2000 items took 2063198ns to calculate
+  quickmedsort on ../input/fewunique_2000.txt with 2000 items took 2019091ns to calculate
   Writing output to file: ../output/fewunique_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_50000.txt
   Found 50000 items to be sorted.
-  heapsort on ../input/fewunique_50000.txt with 50000 items took 10123871ns to calculate
+  quickmedsort on ../input/fewunique_50000.txt with 50000 items took 9385147ns to calculate
   Writing output to file: ../output/fewunique_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_5000.txt
   Found 5000 items to be sorted.
-  heapsort on ../input/fewunique_5000.txt with 5000 items took 3105593ns to calculate
+  quickmedsort on ../input/fewunique_5000.txt with 5000 items took 4312079ns to calculate
   Writing output to file: ../output/fewunique_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_500.txt
   Found 500 items to be sorted.
-  heapsort on ../input/fewunique_500.txt with 500 items took 603654ns to calculate
+  quickmedsort on ../input/fewunique_500.txt with 500 items took 673701ns to calculate
   Writing output to file: ../output/fewunique_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/fewunique_50.txt
   Found 50 items to be sorted.
-  heapsort on ../input/fewunique_50.txt with 50 items took 239782ns to calculate
+  quickmedsort on ../input/fewunique_50.txt with 50 items took 417616ns to calculate
   Writing output to file: ../output/fewunique_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_1000000.txt
   Found 1000000 items to be sorted.
-  heapsort on ../input/order_1000000.txt with 1000000 items took 65365276ns to calculate
+  quickmedsort on ../input/order_1000000.txt with 1000000 items took 29614765ns to calculate
   Writing output to file: ../output/order_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_100000.txt
   Found 100000 items to be sorted.
-  heapsort on ../input/order_100000.txt with 100000 items took 13348832ns to calculate
+  quickmedsort on ../input/order_100000.txt with 100000 items took 12742295ns to calculate
   Writing output to file: ../output/order_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_10000.txt
   Found 10000 items to be sorted.
-  heapsort on ../input/order_10000.txt with 10000 items took 13202949ns to calculate
+  quickmedsort on ../input/order_10000.txt with 10000 items took 5241495ns to calculate
   Writing output to file: ../output/order_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_1000.txt
   Found 1000 items to be sorted.
-  heapsort on ../input/order_1000.txt with 1000 items took 1061226ns to calculate
+  quickmedsort on ../input/order_1000.txt with 1000 items took 710393ns to calculate
   Writing output to file: ../output/order_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_2000.txt
   Found 2000 items to be sorted.
-  heapsort on ../input/order_2000.txt with 2000 items took 2362457ns to calculate
+  quickmedsort on ../input/order_2000.txt with 2000 items took 970310ns to calculate
   Writing output to file: ../output/order_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_50000.txt
   Found 50000 items to be sorted.
-  heapsort on ../input/order_50000.txt with 50000 items took 9149079ns to calculate
+  quickmedsort on ../input/order_50000.txt with 50000 items took 8279809ns to calculate
   Writing output to file: ../output/order_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_5000.txt
   Found 5000 items to be sorted.
-  heapsort on ../input/order_5000.txt with 5000 items took 4649971ns to calculate
+  quickmedsort on ../input/order_5000.txt with 5000 items took 2565613ns to calculate
   Writing output to file: ../output/order_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_500.txt
   Found 500 items to be sorted.
-  heapsort on ../input/order_500.txt with 500 items took 660522ns to calculate
+  quickmedsort on ../input/order_500.txt with 500 items took 519598ns to calculate
   Writing output to file: ../output/order_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/order_50.txt
   Found 50 items to be sorted.
-  heapsort on ../input/order_50.txt with 50 items took 245703ns to calculate
+  quickmedsort on ../input/order_50.txt with 50 items took 372650ns to calculate
   Writing output to file: ../output/order_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_1000000.txt
   Found 1000000 items to be sorted.
-  heapsort on ../input/random_1000000.txt with 1000000 items took 108647081ns to calculate
+  quickmedsort on ../input/random_1000000.txt with 1000000 items took 91611501ns to calculate
   Writing output to file: ../output/random_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_100000.txt
   Found 100000 items to be sorted.
-  heapsort on ../input/random_100000.txt with 100000 items took 15296543ns to calculate
+  quickmedsort on ../input/random_100000.txt with 100000 items took 14661867ns to calculate
   Writing output to file: ../output/random_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_10000.txt
   Found 10000 items to be sorted.
-  heapsort on ../input/random_10000.txt with 10000 items took 12950529ns to calculate
+  quickmedsort on ../input/random_10000.txt with 10000 items took 7445165ns to calculate
   Writing output to file: ../output/random_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_1000.txt
   Found 1000 items to be sorted.
-  heapsort on ../input/random_1000.txt with 1000 items took 1035701ns to calculate
+  quickmedsort on ../input/random_1000.txt with 1000 items took 894841ns to calculate
   Writing output to file: ../output/random_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_2000.txt
   Found 2000 items to be sorted.
-  heapsort on ../input/random_2000.txt with 2000 items took 2213577ns to calculate
+  quickmedsort on ../input/random_2000.txt with 2000 items took 1364675ns to calculate
   Writing output to file: ../output/random_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_50000.txt
   Found 50000 items to be sorted.
-  heapsort on ../input/random_50000.txt with 50000 items took 11190870ns to calculate
+  quickmedsort on ../input/random_50000.txt with 50000 items took 9256621ns to calculate
   Writing output to file: ../output/random_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_5000.txt
   Found 5000 items to be sorted.
-  heapsort on ../input/random_5000.txt with 5000 items took 2997123ns to calculate
+  quickmedsort on ../input/random_5000.txt with 5000 items took 3555962ns to calculate
   Writing output to file: ../output/random_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_500.txt
   Found 500 items to be sorted.
-  heapsort on ../input/random_500.txt with 500 items took 615250ns to calculate
+  quickmedsort on ../input/random_500.txt with 500 items took 687384ns to calculate
   Writing output to file: ../output/random_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/random_50.txt
   Found 50 items to be sorted.
-  heapsort on ../input/random_50.txt with 50 items took 246022ns to calculate
+  quickmedsort on ../input/random_50.txt with 50 items took 399445ns to calculate
   Writing output to file: ../output/random_50.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_1000000.txt
   Found 1000000 items to be sorted.
-  heapsort on ../input/reverse_1000000.txt with 1000000 items took 71607609ns to calculate
+  quickmedsort on ../input/reverse_1000000.txt with 1000000 items took 34295139ns to calculate
   Writing output to file: ../output/reverse_1000000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_100000.txt
   Found 100000 items to be sorted.
-  heapsort on ../input/reverse_100000.txt with 100000 items took 14268158ns to calculate
+  quickmedsort on ../input/reverse_100000.txt with 100000 items took 8650079ns to calculate
   Writing output to file: ../output/reverse_100000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_10000.txt
   Found 10000 items to be sorted.
-  heapsort on ../input/reverse_10000.txt with 10000 items took 13200585ns to calculate
+  quickmedsort on ../input/reverse_10000.txt with 10000 items took 5502799ns to calculate
   Writing output to file: ../output/reverse_10000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_1000.txt
   Found 1000 items to be sorted.
-  heapsort on ../input/reverse_1000.txt with 1000 items took 949340ns to calculate
+  quickmedsort on ../input/reverse_1000.txt with 1000 items took 764731ns to calculate
   Writing output to file: ../output/reverse_1000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_2000.txt
   Found 2000 items to be sorted.
-  heapsort on ../input/reverse_2000.txt with 2000 items took 2002446ns to calculate
+  quickmedsort on ../input/reverse_2000.txt with 2000 items took 1029495ns to calculate
   Writing output to file: ../output/reverse_2000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_50000.txt
   Found 50000 items to be sorted.
-  heapsort on ../input/reverse_50000.txt with 50000 items took 10823716ns to calculate
+  quickmedsort on ../input/reverse_50000.txt with 50000 items took 6532749ns to calculate
   Writing output to file: ../output/reverse_50000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_5000.txt
   Found 5000 items to be sorted.
-  heapsort on ../input/reverse_5000.txt with 5000 items took 2915287ns to calculate
+  quickmedsort on ../input/reverse_5000.txt with 5000 items took 2771339ns to calculate
   Writing output to file: ../output/reverse_5000.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_500.txt
   Found 500 items to be sorted.
-  heapsort on ../input/reverse_500.txt with 500 items took 615190ns to calculate
+  quickmedsort on ../input/reverse_500.txt with 500 items took 586505ns to calculate
   Writing output to file: ../output/reverse_500.txt
 #--------------------------#
 #-- Starting file sorter --#
 #--------------------------#
   Reading file ../input/reverse_50.txt
   Found 50 items to be sorted.
-  heapsort on ../input/reverse_50.txt with 50 items took 262710ns to calculate
+  quickmedsort on ../input/reverse_50.txt with 50 items took 373835ns to calculate
   Writing output to file: ../output/reverse_50.txt
