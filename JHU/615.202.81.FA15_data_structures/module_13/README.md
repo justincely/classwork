@@ -29,4 +29,4 @@ Individual Usage
 ```java 
 java Driver inputFile outputFile sortingMethod
 ```
-
+Sorting method can be any of: insertion, heap, heaprecursive, quick, quickmed.  For quick and quickmed, a 4th optional arguemtn can be supplied to indicate the minumum partition size to employ insertion sort.
