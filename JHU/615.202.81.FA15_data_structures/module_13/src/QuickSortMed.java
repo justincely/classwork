@@ -1,12 +1,26 @@
+/**quickSortMed
+  *
+  * Quick sort with the pivot as the median of 3
+  */
+
 public class QuickSortMed {
   public static void sort(int[] data){
     sort(data, 0, data.length-1);
   }
 
+  /**Constructor specifying minimum partition size
+    *@param data - data array
+    *@param k - minimum partition size
+    */
   public static void sort(int[] data, int k) {
     sort(data, 0, data.length-1, k);
   }
 
+  /**Constructor specifying start and stop indexes of current partition
+    *@param data - data array
+    *@param start - starting index
+    *@param end - ending index
+    */
   public static void sort(int[] data, int start, int stop) {
     if (start < stop) {
       int p = getPivot(data, start, stop);
@@ -15,6 +29,11 @@ public class QuickSortMed {
     }
   }
 
+  /**Constructor with all arguements
+    *@param data - data array
+    *@param start - starting index
+    *@param stop - ending index
+    */
   public static void sort(int[] data, int start, int stop, int k){
     if ((stop-start) <= k) {
       InsertionSort.sort(data, start, stop);
@@ -45,7 +64,11 @@ public class QuickSortMed {
     return mid;
   }
 
-
+  /**Perform the quicksort and partition algorithm
+    *@param data - data array
+    *@param start - starting index
+    *@param stop - stopping index
+    */
   private static int getPivot(int[] data, int start, int stop) {
     int p = median(data, start, stop);
     //int p = (start + stop) / 2;
