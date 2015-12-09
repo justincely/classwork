@@ -132,6 +132,8 @@ public class Driver{
         scripts.
       */
      System.out.println("  " + method + "sort on " + inFile + " with "+ data.length + " items took " + estimatedTime + "ns to calculate");
+
+     printData(data);
      System.out.println("  Writing output to file: " + outFile);
      writeData(data, outFile);
 

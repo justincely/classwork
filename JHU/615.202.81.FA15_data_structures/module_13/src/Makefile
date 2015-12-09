@@ -17,7 +17,7 @@ compile_no_junit:
 	javac Heap.java
 	javac InsertionSort.java
 	javac QuickSort.java
-	javac quickSortMed.java
+	javac QuickSortMed.java
 
 lab:
 	echo "Running all insertion sorts";
