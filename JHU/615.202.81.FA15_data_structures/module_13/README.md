@@ -30,3 +30,10 @@ Individual Usage
 java Driver inputFile outputFile sortingMethod
 ```
 Sorting method can be any of: insertion, heap, heaprecursive, quick, quickmed.  For quick and quickmed, a 4th optional arguemtn can be supplied to indicate the minumum partition size to employ insertion sort.
+
+Example Usage
+------
+```java
+java Driver ../inputs/random_50.txt ../output/random_50.txt heap
+java Driver ../inputs/order_500.txt ../output/tmp.txt quick 50
+```
