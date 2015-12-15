@@ -63,6 +63,7 @@ The correct answer is C) 2's complement.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{5}
+This statement is false.  Though there is a good deal of ambiguity to this question, compilers these days are written and optimized by very experienced developers to produce very efficient compiled code.  Though a specific program written directly in assembly by a highly skilled developer could be more efficient than it's high-level, compiled, equivalent, in general this is not the case.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -73,14 +74,30 @@ The correct answer is B) Terabyte.  1 Terabtye is $10^{12}$ bytes.  This means $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{7}
+The correct answer is A) less than zero.  The binary representation of {\bf D49B} is 1101 0100 1001 1011.  The leading 1 in two's compliment arithmetic means that this value is less than zero.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \section*{8}
+\begin{itemize}
+    \item Alan Turing: C) - computing theory
+    \item Joseph Jacquard: D) - control program on punch cards
+    \item J. Presper Eckert:  A) - ENIAC
+    \item Vinton G. Cerf: B) -TCP/IP
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{9}
+\begin{itemize}
+    \item .text - Signifies to the assembler that the following section is assembly code.
+    \item .asciiz - Stores the following should be stored in memory as a null-terminated string.
+    \item .word - Stores the following values as words in memory
+    \item .globl - Tells the assembler that the following label is considered global and is able to be referenced from other files
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -89,6 +106,7 @@ The correct answer is B) Terabyte.  1 Terabtye is $10^{12}$ bytes.  This means $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{11}
+The {\bf PROLOG} code exists to save the state of the registers before a subroutine call so that data isn't lost.  The end code to restore registers back to their initial state is called the {\bf EPILOG}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,6 +119,11 @@ The correct answer is B) Terabyte.  1 Terabtye is $10^{12}$ bytes.  This means $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{14}
+\begin{itemize}
+  \item A) {\bf Addition of two positive numbers will never overflow.}  This statement is false.  An easy example would be to add the largest possible integer to the largest possible integer of a given precision.  This result is too large, and overflow will occur.
+  \item B) {\bf Addition of a positive and a negative number will never overflow.}  This statement is true.  The largest positive integer added to the largest negative number can be, at most, 0.  Thus, this situation can never underflow.
+  \item C) {\bf Multiplication of a positive and negative number will never overflow.}  This statement is false.  The resulting value can be incredibly large, and outside the allowable number range on either the positive or negative side.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -122,10 +145,17 @@ Overflow is when the result of a computation is too large to fit in the availabl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{19}
-
+The MIPS language has to subtract immediate because the add immediate instruction can be used with a negative value to achieve the same result.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{20}
+\begin{itemize}
+  \item {\bf Register: } jr
+  \item {\bf Base: } lw
+  \item {\bf Program Counter: } beq
+  \item {\bf Immediate: } addi
+  \item {\bf Pseudo Direct:}  j
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -161,6 +191,7 @@ The first "killer app" was email.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{27}
+No, MIPS only uses 32 bit operands.  (Check initial lectures)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -175,6 +206,12 @@ This statement is true.  While a mouse with a track ball doesn't require an embe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{30}
+\begin{itemize}
+  \item Guard Bit:  is the first bit past the truncated mantissa, and is used to keep higher precision after the operands have been aligned.
+  \item Round Bit: is the second bit past the truncated mantissa, and is used to keep higher precision after the operands have been aligned.
+  \item Sticky Bit: is the third bit past the truncated mantissa, and is used as an indication of bits past it.
+  \item NaN: is a reserved binary representation that means Not a Number.  This value is used as the result of invalid operations such as the square root of a negative number.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -189,17 +226,24 @@ RAID stands for Redundant Array of Inexpensive Disks and is an umbrella term for
 
 \section*{33}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{34}
+This statement is True.  An example of a blocked program is one that is waiting for a memory resource that another program is actively using.  Once the other program releases the memory, then the blocked program can resume.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{35}
+In this situation, program  Lecture 13b
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{36}
+\begin{itemize}
+  \item A) One priority scheme is First-Come-First-Served (FCFS).  In this scheme, each process is immediately added in to the queue.  The queue is processed sequentially, where the process that has waited the longest is always the next to execute.  This scheme doesn't take any other criteria into account, such as program execution time or memory usage.
+  \item B) Another priority scheme is Round-Robin.  This scheme gives each running process a set amount of time before a context switch occurs.  This scheme also doesn't take into account any other criteria such as individual program execution time or memory usage.  This strategy favors short-running programs.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -236,6 +280,8 @@ The other main task is to provide the user-interface to the computer.  This make
 
 
 \section*{44}
+The major flaw with BGP is that it automatically trusts users.  Data packets can be sent and received by anyone, with no encryption and no user verification.  This makes the information sent on the internet very insecure, where the only real protection from malicious eavesdropping is the sheer volume of information to process.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -244,10 +290,23 @@ The other main task is to provide the user-interface to the computer.  This make
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{46}
+\begin{enumerate}
+  \item Channel Program: D) Set of instructions for special i/o.
+  \item Context Switching: G) Saving/restoring registers by Interrupt Processor.
+  \item Dead-Lock:  A) Set of programs in a Circular Wait.
+  \item Dispatching:  E) Select next program to process by CPU.
+  \item Storage Protection Key:  H) Half byte used for memory access control.
+  \item Inhibit Interrupt:  B) Set mase to prevent Interrupt Processing.
+  \item Page table map:  F) Data area used by the Memory Manager.
+  \item Program status word:  C) Register containing interrupt mask.
+\end{enumerate}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{47}
+The Timer Interrupt often has a lower priority than the Operating System Service Request (OSSR) because a direct request from the OS often cannot wait for a program to finish.  The Timer Interrupt is part of program scheduling, where programs are only allowed to run for a certain time before a context switch happens and another program is loaded.  If the OSSR had a lower priority than the Timer, then an OS request could only execute in-between running programs.  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -255,12 +314,19 @@ The other main task is to provide the user-interface to the computer.  This make
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section*{49}
+\begin{itemize}
+  \item A) The OS can abort all deadlock processes.  This will resolve the deadlock situation, and when the programs are restarted there should be enough of a difference in start time to avoid the same deadlock on the next run.  
+  \item B) The OS can successively abort deadlocked processes until the deadlock is resolved.  This terminates some programs and leaves others running, but eliminates fewer running jobs that shutting down all-offending jobs.  
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{50}
+\begin{itemize}
+  \item First, the OS must store all register values so that the currently running program can proceed once the interrupt has been processed.
+  \item Second, the OS mush transfer control to the interrupt handler.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -270,6 +336,8 @@ No, it is never safe for a MIPS user program to use the {\bf \$k0 or \$k1} regis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{52}
+Assembly Languages should be avoided for general application development because they don't contain sufficient abstraction for most problems.  Assembly languages are very close to the machines and require explicit handling of every register to perform any operation.  This process requires a great deal of effort and is prone to human error.  Additionally, the built-in instruction set is incredibly limited when compared to a high-level programming language.  This makes the computation of most common tasks very time-consuming and costly.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
