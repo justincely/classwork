@@ -53,28 +53,28 @@ Justin Ely
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{3}
-The correct answer is D) 32 bits.  MIPS machines have 32 32-bit registers.
+The correct answer is {\bf D) 32 bits}.  MIPS machines have 32 32-bit registers, and this is the size of a word.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{4}
-The correct answer is C) 2's complement.  
+The correct answer is {\bf C) 2's complement}.   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{5}
-This statement is false.  Though there is a good deal of ambiguity to this question, compilers these days are written and optimized by very experienced developers to produce very efficient compiled code.  Though a specific program written directly in assembly by a highly skilled developer could be more efficient than it's high-level, compiled, equivalent, in general this is not the case.
+This statement is {\bf false}.  Though there is a good deal of ambiguity to this question, compilers these days are written and optimized by very experienced developers to produce very efficient compiled code.  Though a specific program written directly in assembly by a highly skilled developer could be more efficient than it's high-level, compiled, equivalent, in general this is not the case.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{6}
 
-The correct answer is B) Terabyte.  1 Terabtye is $10^{12}$ bytes.  This means $1,099,511,627,776$ bytes $* \frac{1 TB}{10^{12}  bytes} = 1.099$ TB $\sim$ 1 TB.
+The correct answer is {\bf  B) Terabyte}.  1 Terabtye is $10^{12}$ bytes.  This means $1,099,511,627,776$ bytes $* \frac{1 TB}{10^{12}  bytes} = 1.099$ TB $\sim$ 1 TB.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{7}
-The correct answer is A) less than zero.  The binary representation of {\bf D49B} is 1101 0100 1001 1011.  The leading 1 in two's compliment arithmetic means that this value is less than zero.
+The correct answer is {\bf A) less than zero}.  The binary representation of {\bf D49B} is 1101 0100 1001 1011.  The leading 1 in two's compliment arithmetic means that this value is negative.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -92,16 +92,17 @@ The correct answer is A) less than zero.  The binary representation of {\bf D49B
 
 \section*{9}
 \begin{itemize}
-    \item .text - Signifies to the assembler that the following section is assembly code.
-    \item .asciiz - Stores the following should be stored in memory as a null-terminated string.
-    \item .word - Stores the following values as words in memory
-    \item .globl - Tells the assembler that the following label is considered global and is able to be referenced from other files
+    \item .text: signifies to the assembler that the following section is assembly code.
+    \item .asciiz: stores the following in memory as a null-terminated string.
+    \item .word: stores the following values as words in memory.
+    \item .globl: tells the assembler that the following label is considered global and is able to be referenced from other files.
 \end{itemize}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{10}
+The closest this value can come in 8 bits is 0.1101 0111, which evaluates to 0.83984.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -111,6 +112,7 @@ The {\bf PROLOG} code exists to save the state of the registers before a subrout
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{12}
+Having the HI register be -1, thus the last 16 bits are -1, means the result of the calculation was NaN.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -123,8 +125,8 @@ The correct answer is {\bf C)}, assign machine memory addresses to symbol labels
 \section*{14}
 \begin{itemize}
   \item A) {\bf Addition of two positive numbers will never overflow.}  This statement is false.  An easy example would be to add the largest possible integer to the largest possible integer of a given precision.  This result is too large, and overflow will occur.
-  \item B) {\bf Addition of a positive and a negative number will never overflow.}  This statement is true.  The largest positive integer added to the largest negative number can be, at most, 0.  Thus, this situation can never underflow.
-  \item C) {\bf Multiplication of a positive and negative number will never overflow.}  This statement is false.  The resulting value can be incredibly large, and outside the allowable number range on either the positive or negative side.
+  \item B) {\bf Addition of a positive and a negative number will never overflow.}  This statement is true.  The largest positive integer added to the largest negative number can be, at most, 0.  Thus, this situation can never overflow.
+  \item C) {\bf Multiplication of a positive and negative number will never overflow.}  This statement is false.  The resulting exponent can be incredibly large, regardless of the sign, and outside the allowable number range on either the positive or negative side.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,7 +137,7 @@ The main reason a two-pass assembler is necessary is because, {\bf C)}, symbols 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{16}
-Overflow is when the result of a computation is too large to fit in the available registers. 
+Overflow is when the result of a computation is larger than the largest representable value. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -158,7 +160,7 @@ Overflow is when the result of a computation is too large to fit in the availabl
            & ADDI & \$t0 & \$t0 & 1 &  \\ \hline
         \multicolumn{6}{|c|}{2108 0000}  \\ \hline
            & J & loop &  &  &  \\ \hline
-       \multicolumn{6}{|c|}{}  \\ \hline
+       \multicolumn{6}{|c|}{0800 001C}  \\ \hline
 finish: & JR & \$ra &  &  & \  \\ \hline
        \multicolumn{6}{|c|}{03E0 0008}   \\ \hline
 \end{tabular}
@@ -193,33 +195,34 @@ The MIPS language has to subtract immediate because the add immediate instructio
 \section*{21}
 
 \begin{enumerate}
-  \item Normalization is the standard representation of exponential numbers
-  \item It allows the simplification of the algorithms and hardware
-  \item It allows for higher accuracy in the represented values
+  \item Normalization is the standard representation of exponential numbers.
+  \item It allows the simplification of the algorithms and hardware.
+  \item It allows for higher accuracy in the represented values.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{22}
-The first "killer app" was email.
+The first "killer app" was email.  In it's first year it accounted for 75\% of the ARPANET's traffic.  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{23}
-0's in every bit represents exactly 0 in IEEE 754 format.
+0's in every bit represents exactly 0 in IEEE 754 format, specifically positive 0 (+0), as the sign bit indicates a positive value.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{24}
-The first bit encodes the sign, which a 1 means the value is negative.  The next 8 bits represent the exponent.  Here, 127 is subtracted from the exponent value of 138, $138 - 127 = 11$, to encode to $2^{11}$.  The last 23 bits represent the mantissa, which has the value 1.968017578125.  Thus, sign * exponent * mantissa yields $-1 * 2^{11} *  1.968017578125 = -4030.5$.
+The first bit encodes the sign, which a 1 means the value is negative.  The next 8 bits represent the exponent.  Here, 127 is subtracted from the exponent value of 138, $138 - 127 = 11$, to encode to $2^{11}$.  The last 23 bits represent the mantissa, which has the value 1.968017578125.  Thus, sign * exponent * mantissa yields $-1 * 2^{11} *  1.968017578125 = {\bf -4030.5}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{25}
 \begin{itemize}
-  \item {\bf Translate mnemonic operation codes to machine codes} is performed in pass two.
-  \item {\bf Save addresses assigned to labels} is performed in pass one. 
-  \item {\bf Scan for label definitions} is performed in pass one.
-  \item {\bf Write object file} is performed in pass two.
+  \item Translate mnemonic operation codes to machine codes is performed in pass {\bf two}.
+  \item Save addresses assigned to labels is performed in pass {\bf one}. 
+  \item Scan for label definitions is performed in pass {\bf one}.
+  \item Write object file is performed in pass {\bf two}.
 \end{itemize}
 
 
@@ -238,24 +241,25 @@ The first bit encodes the sign, which a 1 means the value is negative.  The next
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{27}
+{\bf Yes}, MIPS does allow arithmetic with 1-byte and 2-byte operands, albeit indirectly.  The load byte and load halfword instructions can be used to load 1-byte and 2-byte operands into registers, upon which arithmetic operations can be performed. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{28}
-This statement is false.  Natrual languages are ambiguous and verbose, which make them very unsuitable to use as programming languages.
+This statement is {\bf false}.  Natural languages are ambiguous and verbose, which make them very unsuitable to use as programming languages.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{29}
-This statement is true.  While a mouse with a track ball doesn't require an embedded processor, an optical mouse does require an embedded processor to perform real-time computation of the optical image. 
+This statement is {\bf true}.  While a mouse with a track ball doesn't require an embedded processor, an optical mouse does require an embedded processor to perform real-time computation of the optical image. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{30}
 \begin{itemize}
-  \item Guard Bit:  is the first bit past the truncated mantissa, and is used to keep higher precision after the operands have been aligned.
-  \item Round Bit: is the second bit past the truncated mantissa, and is used to keep higher precision after the operands have been aligned.
-  \item Sticky Bit: is the third bit past the truncated mantissa, and is used as an indication of bits past it.
+  \item Guard Bit:  is an extra bit used in arithmetic calculations. It is used to reduce round-off error after the operands have been aligned.
+  \item Round Bit: is another extra bit used in arithmetic calculations.   It is used to reduce round-off error after the operands have been aligned.
+  \item Sticky Bit: is a bit used in arithmetic calculations to indicate the presence of less-significant digits that have been truncated.  
   \item NaN: is a reserved binary representation that means Not a Number.  This value is used as the result of invalid operations such as the square root of a negative number.
 \end{itemize}
 
@@ -267,7 +271,7 @@ RAID stands for Redundant Array of Inexpensive Disks and is an umbrella term for
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{32}
-The correct answer is C) Supports the operation of a specific computer.  System Software includes thinks like the OS and hardware drivers that interface with specific hardware.  Though it can be translated to many machines of different architectures, it is not innately machine independent.  
+The correct answer is {\bf C)} Supports the operation of a specific computer.  System Software includes thinks like the OS and hardware drivers that interface with specific hardware.  Though it can be translated to many machines of different architectures, it is not innately machine independent.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -277,12 +281,12 @@ Booth's algorithm is a technique for multiplying two's compliment integers that 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{34}
-This statement is True.  An example of a blocked program is one that is waiting for a memory resource that another program is actively using.  Once the other program releases the memory, then the blocked program can resume.
+This statement is {\bf true}.  An example of a blocked program is one that is waiting for a memory resource that another program is actively using.  Once the other program releases the memory, then the blocked program can resume.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{35}
-In this situation, program  Lecture 13b
+In this situation, {\bf program 2} should be given priority.  By the time of dispatch, all I/O operations have been performed.  Therefore, the program with a smaller CPU requirement should have priority.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -300,12 +304,12 @@ The Grammar describes the {\bf (B) SYNTAX} of the programming language.  The Sem
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{38}
-This statement is False.  The I/O channel would cause an interrupt when the I/O process is requested and started, and would return from the interrupt when the process in completed.
+This statement is {\bf false}.  The I/O channel would cause an interrupt when the I/O process is requested and started, and would return from the interrupt when the process in completed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{39}
-The correct answer is C).   The main purpose of Interrupts is to allow more efficient processing of multiple concurrent tasks.  A simple example would be trying to type in the terminal while a computation algorithm is executing.  Without interrupts to process the keystrokes, and input would need to wait until the, potentially long, running programs finishes executing. 
+The correct answer is {\bf C)}.   The main purpose of Interrupts is to allow more efficient processing of multiple concurrent tasks.  A simple example would be trying to type in the terminal while a computation algorithm is executing.  Without interrupts to process the keystrokes, and input would need to wait until the, potentially long, running programs finishes executing. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -313,10 +317,12 @@ The correct answer is C).   The main purpose of Interrupts is to allow more effi
  \begin{tabular}{| c | c | c | c |}
   \hline	
   op code & source register & destination & constant or address\\  \hline  		
-  100011 & 00010 & 00001 & 0000000000000100 \\ \hline
-  35 & 9 & 10 & 32  \\ \hline
-  lw & \$at & \$v0 & 4 \\ \hline
+  100011 & 01001 & 01000 & 0000010010110000 \\ \hline
+  35 & 9 & 8 & 1200  \\ \hline
+  lw & \$t1 & \$t0 & 1200 \\ \hline
 \end{tabular} \\
+
+The MIPS instruction is for this binary pattern is: {\bf lw, \$t0 1200(\$t1)}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -381,26 +387,27 @@ Two additional optimization methods are:
 
 \section*{46}
 \begin{enumerate}
-  \item Channel Program: D) Set of instructions for special i/o.
-  \item Context Switching: G) Saving/restoring registers by Interrupt Processor.
-  \item Dead-Lock:  A) Set of programs in a Circular Wait.
-  \item Dispatching:  E) Select next program to process by CPU.
-  \item Storage Protection Key:  H) Half byte used for memory access control.
-  \item Inhibit Interrupt:  B) Set mase to prevent Interrupt Processing.
-  \item Page table map:  F) Data area used by the Memory Manager.
-  \item Program status word:  C) Register containing interrupt mask.
+  \item Channel Program: {\bf D)} Set of instructions for special i/o.
+  \item Context Switching: {\bf G)} Saving/restoring registers by Interrupt Processor.
+  \item Dead-Lock:  {\bf A)} Set of programs in a Circular Wait.
+  \item Dispatching:  {\bf E)} Select next program to process by CPU.
+  \item Storage Protection Key:  {\bf H)} Half byte used for memory access control.
+  \item Inhibit Interrupt:  {\bf B)} Set mask to prevent Interrupt Processing.
+  \item Page table map:  {\bf F)} Data area used by the Memory Manager.
+  \item Program status word:  {\bf C)} Register containing interrupt mask.
 \end{enumerate}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{47}
-The Timer Interrupt often has a lower priority than the Operating System Service Request (OSSR) because a direct request from the OS often cannot wait for a program to finish.  The Timer Interrupt is part of program scheduling, where programs are only allowed to run for a certain time before a context switch happens and another program is loaded.  If the OSSR had a lower priority than the Timer, then an OS request could only execute in-between running programs.  
-
+{\bf Yes}, although a Virtual memory management system is in-place, some level of the machine still needs to access physical memory.  At the level of physical-memory interaction, memory-protection hardware will be needed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{48}
+The Timer Interrupt often has a lower priority than the Operating System Service Request (OSSR) because a direct request from the OS often cannot wait for a program to finish.  The Timer Interrupt is part of program scheduling, where programs are only allowed to run for a certain time before a context switch happens and another program is loaded.  If the OSSR had a lower priority than the Timer, then an OS request could only execute in-between running programs.  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -415,13 +422,13 @@ The Timer Interrupt often has a lower priority than the Operating System Service
 \section*{50}
 \begin{itemize}
   \item First, the OS must store all register values so that the currently running program can proceed once the interrupt has been processed.
-  \item Second, the OS mush transfer control to the interrupt handler.
+  \item Second, the OS must transfer control to the interrupt handler.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{51}
-No, it is never safe for a MIPS user program to use the {\bf \$k0 or \$k1} registers.  These two registers are reserved, by convention, for the OS to use in the event of an exception.  All other registers are saved and restored when control is given back to the program, but the data in these two registers could be lost or changed at any time.
+{\bf No}, it is never safe for a MIPS user program to use the {\bf \$k0 or \$k1} registers.  These two registers are reserved, by convention, for the OS to use in the event of an exception.  All other registers are saved and restored when control is given back to the program, but the data in these two registers could be lost or changed at any time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -432,7 +439,19 @@ Assembly Languages should be avoided for general application development because
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{53}
-Module 10A
+
+To support exponentiation, an additional class needs to be added (exponent), and the exponent class needs to be another type of term.  This looks like:
+
+\begin{verbatim}
+< stmt-list > ::= < stmt > { ; < stmt > }
+< stmt > ::= < assign > | < read > | < write > | < for >
+< assign > ::= id : = < exp >
+< exp > ::= < term > { + < term > | - < term > }
+< term > ::= < factor > { * < factor > | DIV < factor > } | exponent
+< exponent > ::=  exponent ^ factor | factor
+< factor > ::= id | int | ( < exp > )
+
+\end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -452,14 +471,13 @@ Module 10A
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{55}
-Module 13 lecture D.
 \begin{enumerate}
-  \item  Access Control
-  \item  Information flow control
-  \item  Certification
-  \item  Secure building
-  \item  Encryption
-  \item
+  \item  file access control
+  \item  passwords required for user accounts
+  \item  memory access protection
+  \item  supervisor modes
+  \item  privileged accounts
+  \item  privileged I/O channels
 \end{enumerate}
 
 
