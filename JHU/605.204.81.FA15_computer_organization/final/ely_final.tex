@@ -141,6 +141,28 @@ Overflow is when the result of a computation is too large to fit in the availabl
 
 \section*{17}
 
+\begin{tabular}{  | c | c | c | c | c | c |  }
+  \hline
+  strcpy: & ADD & \$t0 & \$zero & \$zero&   \\ \hline
+           \multicolumn{6}{|c|}{0000 4020}  \\ \hline
+ loop: & ADD & \$t1 & \$t0 & \$a1 &  \\ \hline
+         \multicolumn{6}{|c|}{0105 4820} \\ \hline
+           & LB & \$t2 & 0 & \$t1 &   \\ \hline
+        \multicolumn{6}{|c|}{812A 0000}  \\ \hline
+           & ADD & \$t3 & \$t0 & \$a0 & \\ \hline
+       \multicolumn{6}{|c|}{0104 5820}  \\ \hline
+           & SB & \$t2 & 0 & \$t3 &  \\ \hline
+          \multicolumn{6}{|c|}{A16A 0000}  \\ \hline
+           & BEQ & \$t2 & \$zero & finish &  \\ \hline
+       \multicolumn{6}{|c|}{1140 000C}  \\ \hline
+           & ADDI & \$t0 & \$t0 & 1 &  \\ \hline
+        \multicolumn{6}{|c|}{2108 0000}  \\ \hline
+           & J & loop &  &  &  \\ \hline
+       \multicolumn{6}{|c|}{}  \\ \hline
+finish: & JR & \$ra &  &  & \  \\ \hline
+       \multicolumn{6}{|c|}{03E0 0008}   \\ \hline
+\end{tabular}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{18}
@@ -188,6 +210,7 @@ The first "killer app" was email.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{24}
+The first bit encodes the sign, which a 1 means the value is negative.  The next 8 bits represent the exponent.  Here, 127 is subtracted from the exponent value of 138, $138 - 127 = 11$, to encode to $2^{11}$.  The last 23 bits represent the mantissa, which has the value 1.968017578125.  Thus, sign * exponent * mantissa yields $-1 * 2^{11} *  1.968017578125 = -4030.5$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -215,7 +238,6 @@ The first "killer app" was email.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{27}
-No, MIPS only uses 32 bit operands.  (Check initial lectures)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -288,6 +310,14 @@ The correct answer is C).   The main purpose of Interrupts is to allow more effi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{40}
+ \begin{tabular}{| c | c | c | c |}
+  \hline	
+  op code & source register & destination & constant or address\\  \hline  		
+  100011 & 00010 & 00001 & 0000000000000100 \\ \hline
+  35 & 9 & 10 & 32  \\ \hline
+  lw & \$at & \$v0 & 4 \\ \hline
+\end{tabular} \\
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -297,6 +327,30 @@ The other main task is to provide the user-interface to the computer.  This make
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{42}
+\begin{tabular}{ | c | c | r | r | r |}
+  \hline
+    LC & Operation & Op1 & Op2 & Result  \\ \hline
+    (1) & := & \#1 &  & Indx \\ \hline
+    (2) & * & \#2 & KLM & t3 \\ \hline
+    (3) & - & t3 & \#1 & t4 \\ \hline
+    (4) & JGT & Indx & \#25 & (16) \\ \hline
+    (5) & - & Indx & \#1 & t1 \\ \hline
+    (6) & * & t1 & \#10 & t2 \\ \hline
+    (7) & - & t4 & \#1 & t5 \\ \hline
+    (8) & + & t2 & t5 & t6 \\ \hline
+    (9) & * & t6 & \#4 & t7 \\ \hline
+    (10) & + & t2 & t4 & t8 \\ \hline
+    (11) & * & t8 & \#4 & t9 \\ \hline
+    (12) & := & XYZ[t9] &  & ABC[t7] \\ \hline
+    (13) & + & \#1 & Indx & t10 \\ \hline
+    (14) & := & t10 &   & Indx \\ \hline
+    (15) & JMP &  &   & (4) \\ \hline
+    (16) &   &    &    &    \\ \hline
+\end{tabular} \\
+
+To optimize the given code, lines 10, 11, 12, and 13 were removed as duplicate operations.  The values calculated were already available from operations performed in previous lines.  Additionally, lines 5 and 6 do not require the Indx variable to calculate, and could thus be moved outside the loop to avoid repeated calculation.  
+
+The optimization methods used here were eliminating common sub-expressions and moving loop invariants.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -317,6 +371,11 @@ The major flaw with BGP is that it automatically trusts users.  Data packets can
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{45}
+Two additional optimization methods are:
+\begin{enumerate}
+  \item Folding, where computations involving multiple constants are combined into a single expression.
+  \item Loop jamming, where multiple loops that go over the same index are combined into a single loop.
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -378,7 +437,6 @@ Module 10A
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{54}
-
 \begin{tabular}{ | c | c | r | r | r |}
   \hline
     LC & Operation & Op1 & Op2 & Result  \\ \hline
