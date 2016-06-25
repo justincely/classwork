@@ -1,9 +1,9 @@
-/** Original code was provided by "Introduction to Java Programming" 
+/** Original code was provided by "Introduction to Java Programming"
  * 8th Edition by Y. Daniel Liang, pages 858 - 869
  *
  *  This code is used for educational purposes only
- *  in 605.421 Foundations of Algorithms. 
- * 
+ *  in 605.421 Foundations of Algorithms.
+ *
  */
 
 public class TestBinaryTree {
@@ -28,19 +28,25 @@ public class TestBinaryTree {
     System.out.print("\nThe number of nodes is " + tree.getSize());
 
     // Search for an element
-    System.out.print("\nIs Peter in the tree? " + 
+    System.out.print("\nIs Peter in the tree? " +
       tree.search("Peter"));
 
     // Get a path from the root to Peter
     System.out.print("\nA path from the root to Peter is: ");
-    java.util.ArrayList<BinaryTree.TreeNode<String>>  path 
+    java.util.ArrayList<BinaryTree.TreeNode<String>>  path
       = tree.path("Peter");
     for (int i = 0; path != null && i < path.size(); i++)
       System.out.print(path.get(i).element + " ");
 
-    Integer[] numbers = {2, 4, 3, 1, 8, 5, 6, 7};
+    Integer[] numbers = {10, 5, 15, 1, 7, 13, 17};
     BinaryTree<Integer> intTree = new BinaryTree<Integer>(numbers);
     System.out.print("\nInorder (sorted): ");
     intTree.inorder();
+    System.out.print("\nPostorder: ");
+    intTree.postorder();
+    System.out.print("\nHeight of this tree: ");
+    System.out.print(intTree.height());
+
+    System.out.println();
   }
 }

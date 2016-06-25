@@ -1,9 +1,9 @@
-/** Original code was provided by "Introduction to Java Programming" 
+/** Original code was provided by "Introduction to Java Programming"
  * 8th Edition by Y. Daniel Liang, pages 858 - 869
  *
  *  This code is used for educational purposes only
- *  in 605.421 Foundations of Algorithms. 
- * 
+ *  in 605.421 Foundations of Algorithms.
+ *
  */
 
 public class BinaryTree<E extends Comparable<E>>
@@ -212,7 +212,7 @@ public class BinaryTree<E extends Comparable<E>>
         parentOfRightMost.right = rightMost.left;
       else
         // Special case: parentOfRightMost == current
-        parentOfRightMost.left = rightMost.left;     
+        parentOfRightMost.left = rightMost.left;
     }
 
     size--;
@@ -232,8 +232,7 @@ public class BinaryTree<E extends Comparable<E>>
   // Inner class InorderIterator
   class InorderIterator implements java.util.Iterator {
     // Store the elements in a list
-    private java.util.ArrayList<E> list =
-      new java.util.ArrayList<E>();
+    private java.util.ArrayList<E> list = new java.util.ArrayList<E>();
     private int current = 0; // Point to the current element in list
 
     public InorderIterator() {
@@ -279,15 +278,15 @@ public class BinaryTree<E extends Comparable<E>>
     root = null;
     size = 0;
   }
-  
+
   public Object clone() {
     BinaryTree<E> tree1 = new BinaryTree<E>();
-    
+
     copy(root, tree1);
-    
+
     return tree1;
   }
-  
+
   private void copy(TreeNode<E> root, BinaryTree<E> tree) {
     if (root != null) {
       tree.insert(root.element);
@@ -295,4 +294,17 @@ public class BinaryTree<E extends Comparable<E>>
       copy(root.right, tree);
     }
   }
+
+  public int height() {
+    return height(root);
+  }
+
+  public int height(TreeNode<E> node) {
+      if (node == null) {
+        return 0;
+      } else {
+        return java.lang.Math.max(height(node.left), height(node.right)) + 1;
+      }
+  }
+
 }
