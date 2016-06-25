@@ -307,4 +307,25 @@ public class BinaryTree<E extends Comparable<E>>
       }
   }
 
+
+  public int nonleaves() {
+    return nonleaves(root);
+  }
+
+  public int nonleaves(TreeNode<E> node) {
+    if (node.right == null && node.left == null) {
+      return 0;
+    } else {
+      int cnt = 1;
+      if (node.left != null) {
+        cnt = cnt + nonleaves(node.left);
+      }
+
+      if (node.right != null) {
+        cnt = cnt + nonleaves(node.right);
+      }
+      return cnt;
+    }
+  }
+
 }
