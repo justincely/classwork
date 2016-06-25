@@ -328,4 +328,26 @@ public class BinaryTree<E extends Comparable<E>>
     }
   }
 
+  public int leaves() {
+    return leaves(root);
+  }
+
+  public int leaves(TreeNode<E> node) {
+    if (node.right == null && node.left == null) {
+      return 1;
+    } else {
+      int cnt = 0;
+      if (node.left != null) {
+        cnt = cnt + leaves(node.left);
+      }
+
+      if (node.right != null) {
+        cnt = cnt + leaves(node.right);
+      }
+
+      return cnt;
+    }
+    
+  }
+
 }

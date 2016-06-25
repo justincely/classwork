@@ -38,17 +38,21 @@ public class TestBinaryTree {
     for (int i = 0; path != null && i < path.size(); i++)
       System.out.print(path.get(i).element + " ");
 
-    Integer[] numbers = {10, 5, 15, 1, 7, 13, 17};
-    //Integer[] numbers = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+    //Integer[] numbers = {10, 5, 15, 1, 7, 13, 17};
+    Integer[] numbers = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
     BinaryTree<Integer> intTree = new BinaryTree<Integer>(numbers);
     System.out.print("\nInorder (sorted): ");
     intTree.inorder();
     System.out.print("\nPostorder: ");
     intTree.postorder();
+    System.out.print("\nSize of this tree: ");
+    System.out.print(intTree.getSize());
     System.out.print("\nHeight of this tree: ");
     System.out.print(intTree.height());
     System.out.print("\nLeaves in this tree; ");
     System.out.print(intTree.nonleaves());
+    System.out.print("\nNonleaves in this tree; ");
+    System.out.print(intTree.leaves());
 
 
     System.out.println();
