@@ -1,0 +1,30 @@
+#--------------------------#
+#--Starting tree creation--#
+#--------------------------#
+  Reading file ../input/sample_input.txt
+#-- Finding the tree height from: 1
+following path through 2, 
+following path through 3, 
+following path through 4, 
+following path through 5, 
+following path through 6, 
+path terminated at: 6
+This tree's height is: 5
+#-- Finding the leaf nodes from: 1
+Found path to 2
+Found path to 3
+Found path to 4
+Found path to 5
+Found path to 6
+Found 6 to be a leaf.
+The number of leaves is: 1
+#-- Finding the nonleaf nodes from: 1
+1 is found to not be a leaf.
+2 is found to not be a leaf.
+3 is found to not be a leaf.
+4 is found to not be a leaf.
+5 is found to not be a leaf.
+6 is a leaf.
+The number of non-leaves is: 5
+And the post-order traversal is: 
+6 5 4 3 2 1 

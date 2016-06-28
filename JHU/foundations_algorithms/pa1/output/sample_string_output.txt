@@ -1,0 +1,32 @@
+#--------------------------#
+#--Starting tree creation--#
+#--------------------------#
+  Reading file ../input/sample_string_input.txt
+#-- Finding the tree height from: bob
+following path through apple, fish, 
+path terminated at: apple
+following path through face, zebra, 
+path terminated at: face
+following path through swashbuckling, 
+path terminated at: swashbuckling
+This tree's height is: 3
+#-- Finding the leaf nodes from: bob
+Found path to apple
+Found apple to be a leaf.
+Found path to fish
+Found path to face
+Found face to be a leaf.
+Found path to zebra
+Found path to swashbuckling
+Found swashbuckling to be a leaf.
+The number of leaves is: 3
+#-- Finding the nonleaf nodes from: bob
+bob is found to not be a leaf.
+apple is a leaf.
+fish is found to not be a leaf.
+face is a leaf.
+zebra is found to not be a leaf.
+swashbuckling is a leaf.
+The number of non-leaves is: 3
+And the post-order traversal is: 
+apple face swashbuckling zebra fish bob 

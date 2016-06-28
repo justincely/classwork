@@ -19,8 +19,8 @@ test:
 	java -ea TestRunner >& ../output/tree_testing.txt
 
 run:
-	java Driver ../input/sample_input.txt
-	java Driver ../input/sample_string_input.txt
+	java Driver ../input/sample_input.txt >> ../output/sample_output.txt
+	java Driver ../input/sample_string_input.txt >> ../output/sample_string_output.txt
 
 doc:
 	javadoc *.java -d docs

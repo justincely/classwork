@@ -47,8 +47,8 @@ public class Driver{
        BinaryTree<Integer> intTree = new BinaryTree<Integer>(treedata);
 
        System.out.println("This tree's height is: " + intTree.height());
-       System.out.println("The number of leaves is: " + intTree.leaves());
-       System.out.println("The number of non-leaves is: " + intTree.nonleaves());
+       System.out.println("The number of leaves is: " + intTree.getNumberOfLeaves());
+       System.out.println("The number of non-leaves is: " + intTree.getNumberOfNonLeaves());
        System.out.println("And the post-order traversal is: ");
        intTree.postorder();
        System.out.println();
@@ -62,8 +62,8 @@ public class Driver{
        BinaryTree<String> intTree = new BinaryTree<String>(treedata);
 
        System.out.println("This tree's height is: " + intTree.height());
-       System.out.println("The number of leaves is: " + intTree.leaves());
-       System.out.println("The number of non-leaves is: " + intTree.nonleaves());
+       System.out.println("The number of leaves is: " + intTree.getNumberOfLeaves());
+       System.out.println("The number of non-leaves is: " + intTree.getNumberOfNonLeaves());
        System.out.println("And the post-order traversal is: ");
        intTree.postorder();
        System.out.println();

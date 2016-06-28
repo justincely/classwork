@@ -10,7 +10,7 @@
  *  The solutions to the homework problems begin on line 303,
  *  and continue to the end of the file.  Note that the solution to
  *  problem 2 was supplied with the given source, and remains in it's
- *  initial implementation location.
+ *  initial implementation location; names as postorder().
  *
  *  print statements to show algorithm process are included.  They can
  *  be commented out from the above mentioned lines if not desired.
@@ -348,12 +348,12 @@ public class BinaryTree<E extends Comparable<E>>
 
   /**Default nonleaves method
     */
-  public int nonleaves() {
+  public int getNumberOfNonLeaves() {
     System.out.println("#-- Finding the nonleaf nodes from: " + getRoot().element);
-    return nonleaves(getRoot());
+    return getNumberOfNonLeaves(getRoot());
   }
 
-  /**Call nonleaves function specifying a starting node.
+  /**Call getNumberOfNonLeaves function specifying a starting node.
     *
     * Recursively count the non-leaves in the subtree starting
     * at the specified node.  Nodes with null left and right pointers
@@ -362,7 +362,7 @@ public class BinaryTree<E extends Comparable<E>>
     *
     *@param node - tree node to start with
     */
-  public int nonleaves(TreeNode<E> node) {
+  public int getNumberOfNonLeaves(TreeNode<E> node) {
     if (node.right == null && node.left == null) {
       System.out.println(node.element + " is a leaf.");
       return 0;
@@ -370,24 +370,24 @@ public class BinaryTree<E extends Comparable<E>>
       int cnt = 1;
       System.out.println(node.element + " is found to not be a leaf.");
       if (node.left != null) {
-        cnt = cnt + nonleaves(node.left);
+        cnt = cnt + getNumberOfNonLeaves(node.left);
       }
 
       if (node.right != null) {
-        cnt = cnt + nonleaves(node.right);
+        cnt = cnt + getNumberOfNonLeaves(node.right);
       }
       return cnt;
     }
   }
 
-  /**Default nonleaves method
+  /**Default getNumberOfLeaves method
     */
-  public int leaves() {
+  public int getNumberOfLeaves() {
     System.out.println("#-- Finding the leaf nodes from: " + getRoot().element);
-    return leaves(getRoot());
+    return getNumberOfLeaves(getRoot());
   }
 
-  /**Call leaves function specifying a starting node.
+  /**Call getNumberOfLeaves function specifying a starting node.
     *
     *  Recursively find the leaves of the tree starting
     *  at the supplied node.  Recursion terminates, and the
@@ -396,7 +396,7 @@ public class BinaryTree<E extends Comparable<E>>
     *
     *@param node - tree node to start with
     */
-  public int leaves(TreeNode<E> node) {
+  public int getNumberOfLeaves(TreeNode<E> node) {
     if (node.right == null && node.left == null) {
       System.out.println("Found " + node.element + " to be a leaf.");
       return 1;
@@ -404,12 +404,12 @@ public class BinaryTree<E extends Comparable<E>>
       int cnt = 0;
       if (node.left != null) {
         System.out.println("Found path to " + node.left.element);
-        cnt = cnt + leaves(node.left);
+        cnt = cnt + getNumberOfLeaves(node.left);
       }
 
       if (node.right != null) {
         System.out.println("Found path to " + node.right.element);
-        cnt = cnt + leaves(node.right);
+        cnt = cnt + getNumberOfLeaves(node.right);
       }
 
       return cnt;

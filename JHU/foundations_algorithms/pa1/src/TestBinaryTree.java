@@ -36,16 +36,16 @@ public class TestBinaryTree {
 
    @Test
    public void testFindLeaves() {
-     assertEquals(intTree.leaves(), 1);
-     assertEquals(rootTree.leaves(), 1);
-     assertEquals(twoTree.height(), 1);
+     assertEquals(intTree.getNumberOfLeaves(), 1);
+     assertEquals(rootTree.getNumberOfLeaves(), 1);
+     assertEquals(twoTree.getNumberOfLeaves(), 1);
    }
 
    @Test
    public void testFindNonleaves() {
-     assertEquals(intTree.nonleaves(), 9);
-     assertEquals(rootTree.nonleaves(), 0);
-     assertEquals(twoTree.nonleaves(), 1);
+     assertEquals(intTree.getNumberOfNonLeaves(), 9);
+     assertEquals(rootTree.getNumberOfNonLeaves(), 0);
+     assertEquals(twoTree.getNumberOfNonLeaves(), 1);
    }
 
    @Test

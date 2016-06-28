@@ -33,9 +33,9 @@ Found path to 1
 Found 1 to be a leaf.
 #-- Finding the leaf nodes from: 1
 Found 1 to be a leaf.
-#-- Finding the tree height from: 2
-following path through 1, 
-path terminated at: 1
+#-- Finding the leaf nodes from: 2
+Found path to 1
+Found 1 to be a leaf.
 #-- Finding the tree height from: 10
 following path through 9, 
 following path through 8, 
