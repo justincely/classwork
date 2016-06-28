@@ -19,6 +19,15 @@ Directory Contents
 *  ./src/: raw and compiled source java code, long with Makefile for testing, compilation, documentation
 *  ./src/docs/: java autodoc output
 
+SRC Files
+---------
+*  AbstractTree.java:  classes for an abstract tree structure.  
+*  BinaryTree.java:  classes for a binary tree and operations.  
+*  Driver.java:  classes to parse input, run algorithms, and print stdout.  
+*  Tree.java:  classes for generic tree.  
+*  TestRunner.java:  junit unit test runner class.
+*  TestBinaryTree.java:  junit unit tests for binary tree.
+
 Compilation/Batch Running
 -------------------------
 The src directory contains a Makefile to clean the directory, run the compile the code, run the tests, produce documentation, and finally pass the available input through the evaluator.

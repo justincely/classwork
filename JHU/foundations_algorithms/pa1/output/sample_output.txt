@@ -2,6 +2,8 @@
 #--Starting tree creation--#
 #--------------------------#
   Reading file ../input/sample_input.txt
+Data input to tree:
+1 2 3 4 5 6 
 #-- Finding the tree height from: 1
 following path through 2, 
 following path through 3, 

@@ -2,6 +2,8 @@
 #--Starting tree creation--#
 #--------------------------#
   Reading file ../input/sample_string_input.txt
+Data input to tree:
+bob fish face apple zebra swashbuckling 
 #-- Finding the tree height from: bob
 following path through apple, fish, 
 path terminated at: apple
