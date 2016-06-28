@@ -300,13 +300,12 @@ public class BinaryTree<E extends Comparable<E>>
   }
 
   public int height(TreeNode<E> node) {
-      if (node == null) {
+      if (node.left == null && node.right == null) {
         return 0;
       } else {
         return java.lang.Math.max(height(node.left), height(node.right)) + 1;
       }
   }
-
 
   public int nonleaves() {
     return nonleaves(root);
@@ -347,7 +346,7 @@ public class BinaryTree<E extends Comparable<E>>
 
       return cnt;
     }
-    
+
   }
 
 }
