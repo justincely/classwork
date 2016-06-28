@@ -4,6 +4,16 @@
  *  This code is used for educational purposes only
  *  in 605.421 Foundations of Algorithms.
  *
+ *  This code has been modified by Justin Ely for Programming
+ *  assignment 1.
+ *
+ *  The solutions to the homework problems begin on line 303,
+ *  and continue to the end of the file.  Note that the solution to
+ *  problem 2 was supplied with the given source, and remains in it's
+ *  initial implementation location.
+ *
+ *  print statements to show algorithm process are included.  They can
+ *  be commented out from the above mentioned lines if not desired.
  */
 
 public class BinaryTree<E extends Comparable<E>>
@@ -295,27 +305,70 @@ public class BinaryTree<E extends Comparable<E>>
     }
   }
 
+
+  /**Default height method
+    *
+    *Call height from the root node of the tree.
+    */
   public int height() {
-    return height(root);
+    System.out.println("#-- Finding the tree height from: " + getRoot().element);
+    return height(getRoot());
   }
 
+
+  /**Height method specifying a tree
+    *
+    *  Recursively find the maximum distance between the rootval
+    *  and the trees.  Termination happens when all nodes are traversed,
+    *  indicated by the state of a null node or a node with left and right
+    *  null nodes.
+    *
+    *@param node - tree node to start with
+    */
   public int height(TreeNode<E> node) {
-      if (node.left == null && node.right == null) {
+      if (node == null) {
+        return 0;
+      }
+      else if (node.left == null && node.right == null) {
+        System.out.println("path terminated at: " + node.element);
         return 0;
       } else {
+        String msg = "following path through ";
+        if (node.left != null){
+          msg = msg + node.left.element + ", " ;
+        }
+
+        if (node.right != null) {
+          msg = msg + node.right.element + ", ";
+        }
+        System.out.println(msg);
         return java.lang.Math.max(height(node.left), height(node.right)) + 1;
       }
   }
 
+  /**Default nonleaves method
+    */
   public int nonleaves() {
-    return nonleaves(root);
+    System.out.println("#-- Finding the nonleaf nodes from: " + getRoot().element);
+    return nonleaves(getRoot());
   }
 
+  /**Call nonleaves function specifying a starting node.
+    *
+    * Recursively count the non-leaves in the subtree starting
+    * at the specified node.  Nodes with null left and right pointers
+    * do not count, as they are leaves, and terminate the recursion.
+    * left and right paths that are not nulls are followed.
+    *
+    *@param node - tree node to start with
+    */
   public int nonleaves(TreeNode<E> node) {
     if (node.right == null && node.left == null) {
+      System.out.println(node.element + " is a leaf.");
       return 0;
     } else {
       int cnt = 1;
+      System.out.println(node.element + " is found to not be a leaf.");
       if (node.left != null) {
         cnt = cnt + nonleaves(node.left);
       }
@@ -327,20 +380,35 @@ public class BinaryTree<E extends Comparable<E>>
     }
   }
 
+  /**Default nonleaves method
+    */
   public int leaves() {
-    return leaves(root);
+    System.out.println("#-- Finding the leaf nodes from: " + getRoot().element);
+    return leaves(getRoot());
   }
 
+  /**Call leaves function specifying a starting node.
+    *
+    *  Recursively find the leaves of the tree starting
+    *  at the supplied node.  Recursion terminates, and the
+    *  count increases, when the left and right null pointers
+    *  are null: indicating a leaf has been found.
+    *
+    *@param node - tree node to start with
+    */
   public int leaves(TreeNode<E> node) {
     if (node.right == null && node.left == null) {
+      System.out.println("Found " + node.element + " to be a leaf.");
       return 1;
     } else {
       int cnt = 0;
       if (node.left != null) {
+        System.out.println("Found path to " + node.left.element);
         cnt = cnt + leaves(node.left);
       }
 
       if (node.right != null) {
+        System.out.println("Found path to " + node.right.element);
         cnt = cnt + leaves(node.right);
       }
 

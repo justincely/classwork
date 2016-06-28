@@ -1,0 +1,55 @@
+Calling postorder;
+1 2 3 4 5 6 7 8 9 10 
+Calling postorder;
+1 
+Calling postorder;
+1 2 
+#-- Finding the nonleaf nodes from: 10
+10 is found to not be a leaf.
+9 is found to not be a leaf.
+8 is found to not be a leaf.
+7 is found to not be a leaf.
+6 is found to not be a leaf.
+5 is found to not be a leaf.
+4 is found to not be a leaf.
+3 is found to not be a leaf.
+2 is found to not be a leaf.
+1 is a leaf.
+#-- Finding the nonleaf nodes from: 1
+1 is a leaf.
+#-- Finding the nonleaf nodes from: 2
+2 is found to not be a leaf.
+1 is a leaf.
+#-- Finding the leaf nodes from: 10
+Found path to 9
+Found path to 8
+Found path to 7
+Found path to 6
+Found path to 5
+Found path to 4
+Found path to 3
+Found path to 2
+Found path to 1
+Found 1 to be a leaf.
+#-- Finding the leaf nodes from: 1
+Found 1 to be a leaf.
+#-- Finding the tree height from: 2
+following path through 1, 
+path terminated at: 1
+#-- Finding the tree height from: 10
+following path through 9, 
+following path through 8, 
+following path through 7, 
+following path through 6, 
+following path through 5, 
+following path through 4, 
+following path through 3, 
+following path through 2, 
+following path through 1, 
+path terminated at: 1
+#-- Finding the tree height from: 1
+path terminated at: 1
+#-- Finding the tree height from: 2
+following path through 1, 
+path terminated at: 1
+All Unittests passed

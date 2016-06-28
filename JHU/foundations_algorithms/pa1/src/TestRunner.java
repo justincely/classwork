@@ -14,6 +14,14 @@ public class TestRunner {
       for (Failure failure : result.getFailures()) {
          System.out.println(failure.toString());
       }
-      System.out.println(result.wasSuccessful());
-   }
+
+      if (result.wasSuccessful() == true) {
+        System.out.println("All Unittests passed");
+      } else {
+        System.out.println("#######################################");
+        System.out.println("#         Unittest suite failed       #");
+        System.out.println("#######################################");
+      }
+
+  }
 }
