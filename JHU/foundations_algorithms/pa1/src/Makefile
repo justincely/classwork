@@ -6,7 +6,6 @@ notest: clean compile doc run
 
 clean:
 	rm -f *.class
-	rm -f ../output/*.txt
 
 compile:
 	javac AbstractTree.java
