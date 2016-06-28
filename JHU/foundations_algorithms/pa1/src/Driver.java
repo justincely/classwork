@@ -44,6 +44,11 @@ public class Driver{
          data.add(scanner.nextInt());
        }
        Integer[] treedata = data.toArray(new Integer[0]);
+       System.out.println("Data input to tree:");
+       for (int i=0; i<treedata.length; i++){
+         System.out.print(treedata[i] + " ");
+       }
+       System.out.println();
        BinaryTree<Integer> intTree = new BinaryTree<Integer>(treedata);
 
        System.out.println("This tree's height is: " + intTree.height());
@@ -59,6 +64,11 @@ public class Driver{
          data.add(scanner.next());
        }
        String[] treedata = data.toArray(new String[0]);
+       System.out.println("Data input to tree:");
+       for (int i=0; i<treedata.length; i++){
+         System.out.print(treedata[i] + " ");
+       }
+       System.out.println();
        BinaryTree<String> intTree = new BinaryTree<String>(treedata);
 
        System.out.println("This tree's height is: " + intTree.height());

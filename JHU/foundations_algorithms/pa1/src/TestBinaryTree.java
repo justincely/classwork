@@ -50,6 +50,9 @@ public class TestBinaryTree {
 
    @Test
    public void testPostorder() {
+     //exact test doesn't work well with text output
+     //so test that the function runs instead.
+     //output was verified by hand.
       System.out.println("Calling postorder;");
       intTree.postorder();
       System.out.println();
