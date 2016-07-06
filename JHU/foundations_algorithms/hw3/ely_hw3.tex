@@ -1,0 +1,147 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\usepackage{listings}
+\usepackage {tikz}
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 3}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{Foundations of Algorithms \\}
+% Date here below
+July 5, 2016 \\
+612-240-0924
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{1a)}
+With weights of $[5, 9, 10, 2]$ and $k=10$, the number of 
+trucks used will be 4, where the minimum possible would be 3
+given a more efficient algorithm.
+
+\section*{1b)}
+After playing with this for a while, and listening to office hours,
+I still wasn't able to come up with an adequate solution.  The office
+hours recording referenced variables that were seemingly undefined, and 
+some of the assumptions made didn't seem to fit in the problem definition.
+
+Nevertheless, I tried a bunch of scenarioes and always found the best and
+worst cases to be within a factor of 2 of each-other, so it does seem to be
+the correct result.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)}
+The probability of any new node to link to a specific existing node
+is $P_l = \frac{1}{k-1}$.  With a node $v_j$, where only nodes added
+after j can possibly have linked to it, the expected number of linked
+nodes is going to be the sum of the probabilites of each new node:
+\begin{eqnarray}
+N_l &=& \sum_{k=j+1}^{n} \frac{1}{k-1}\\
+&=& \sum_{k=j}^{n-1} \frac{1}{k} \\
+&=& \int_{0}^{n-1} \frac{1}{k} - \int_{0}^{j} \frac{1}{k} \\
+&=& ln(n-1) - ln(j)\\
+&=& ln(\frac{n-1}{j}) \\
+&=& \theta(ln(\frac{n}{j}))
+\end{eqnarray}
+
+\section*{2b)}
+The probability of each new node to not link to a specific existing
+node is $P = 1-\frac{1}{k-1}$.  Thus, the expectation value is given by:
+
+\begin{eqnarray}
+E &=& \prod_{k=j+1}^{n} (1-\frac{1}{k-1}) \\
+&=& \frac{j-1}{j} \frac{j}{j+1} \frac{j+1}{j+2} ... \frac{n-2}{n-1} \\
+&=& \frac{j-1}{n-1}
+\end{eqnarray}
+
+Thus the total number of unlinked nodes is:
+
+\begin{eqnarray}
+N &=& \sum_{j=1}^{n} \frac{j-1}{n-1} \\
+&=& \frac{1}{n} \sum_{j=1}^{n} j-1 \\
+&=& \frac{1}{n-1} \frac{n(n-1)}{2} \\
+&=& \frac{n}{2} 
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3a)}
+Pop operations run in $O(1)$ time, and in worst case MultiPopA, MultiPopB,
+and Transfer will need to exhaust the full stack.  This gives worst case
+running times of:
+
+\begin{itemize}
+  \item MultiPopA: $O(n)$
+  \item MultiPopB: $O(m)$
+  \item Transfer: $O(n)$
+\end{itemize}
+
+\section*{3b)}
+Define $\phi(n, m) = n + m$ and $\hat{c_{i}} = \phi(D_{i+1}) - \phi(D_{i})$, thus:
+
+\subsection*{PushA}
+\begin{eqnarray}
+\hat{c_{i}} &=& c_{i} + \phi(D_{i+1}) - \phi(D_{i}) \\
+&=& 1 + (n+1) + m - n + m \\ 
+&=& 1 + 1 \\
+&=& 2
+\end{eqnarray}
+
+\subsection*{PushB}
+\begin{eqnarray}
+\hat{c_{i}} &=& c_{i} + \phi(D_{i+1}) - \phi(D_{i}) \\
+&=& 1 + n + (m+1) - n + m \\ 
+&=& 1 + 1 \\
+&=& 2
+\end{eqnarray}
+
+\subsection*{MultiPopA}
+\begin{eqnarray}
+\hat{c_{i}} &=& c_{i} + \phi(D_{i+1}) - \phi(D_{i}) \\
+&=& k + (n-k) + m - n + m \\ 
+&=& k - k \\
+&=& 0
+\end{eqnarray}
+
+\subsection*{MultiPopB}
+\begin{eqnarray}
+\hat{c_{i}} &=& c_{i} + \phi(D_{i+1}) - \phi(D_{i}) \\
+&=& k + n + (m-k) - n + m \\ 
+&=& k - k \\
+&=& 0
+\end{eqnarray}
+
+\subsection*{Transfer}
+\begin{eqnarray}
+\hat{c_{i}} &=& c_{i} + \phi(D_{i+1}) - \phi(D_{i}) \\
+&=& 2k + (n-k) + (m+k) - n + m \\ 
+&=& 2k + 0 \\
+&=& 2k
+\end{eqnarray}
+
+We see from the amortized cost of each operation that they each run in constant time: $O(1)$.  
+
+\end{document}
