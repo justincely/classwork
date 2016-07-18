@@ -15,21 +15,18 @@ public class RadixSort {
       }
 
       Integer[] index = InsertionSort.sort(subArray);
-      for (int i=0; i<index.length; i++) {
-        System.out.println("Index: " + index[i]);
-      }
-
       String[] tmpArray = new String[data.length];
       for (int i=0; i<index.length; i++) {
         tmpArray[i] = data[index[i]];
       }
 
+      System.out.println("Iterating on character: " + c);
+      for (String s : tmpArray) {
+        System.out.println(s);
+      }
+
       data = tmpArray;
 
-    }
-
-    for (int i=0; i<data.length; i++) {
-      System.out.println(data[i]);
     }
   }
 

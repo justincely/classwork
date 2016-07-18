@@ -24,7 +24,6 @@ public class InsertionSort {
       int cursor = index;
 
       while(cursor > start && data[cursor-1].compareTo(val) > 0) {
-        System.out.println(data[cursor-1] + " " + val);
         data[cursor] = data[cursor-1];
         outData[cursor] = outData[cursor-1];
         cursor--;
@@ -34,10 +33,6 @@ public class InsertionSort {
       outData[cursor] = indexVal;
     }
 
-    System.out.println("data looks like");
-    for (int i=0; i<data.length; i++) {
-      System.out.println(data[i]);
-    }
     return outData;
   }
 
