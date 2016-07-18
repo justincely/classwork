@@ -19,8 +19,9 @@ compile_no_junit:
 	javac HuffmanTranslator.java
 
 lab:
-	java Driver ../input/LabInput.txt > ../output/LabOutput.txt
-	java Driver ../input/AdditionalInput.txt > ../output/AdditionalOutput.txt
+	java Driver -i ../input/plaintextinput.txt -o ../output/compressedoutput.txt -c
+	java Driver -i ../input/AdditionalInput.txt -o ../output/AdditionalOutput.txt -c
+	java Driver -i ../input/encryptedinput.txt -o ../output/plaintextoutput.txt -x
 
 unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt

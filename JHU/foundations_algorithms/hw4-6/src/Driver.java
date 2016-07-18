@@ -1,7 +1,5 @@
 /**Driver
   *
-  *Main program to drive encoding and decoding of messages.  Input must be
-  *from named files supplied via STDIN.
   */
 
 
@@ -12,8 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**Build encoder tree, parse files and translate messages.
-  */
 public class Driver{
 
 /**Main driver to open files
@@ -38,7 +34,14 @@ public class Driver{
        case "--help":
        case "-h":
         System.out.println("Usage: ");
-        break;
+        System.out.println("--help, -h: Print this helpfile and exit.");
+        System.out.println("--input, -i: Filename to read input text from.");
+        System.out.println("--output, -o: Filename to send output to.  If omitted, STDOUT will be used.");
+        System.out.println("--compress, -c: Flag to run compression algorithm.");
+        System.out.println("--extract, -x: Flag to decompress the text.");
+        System.out.println("--encrypt, -e: Flag to encrypt the text.");
+        System.out.println("--decrypt, -d: Flag to decrypt the text.");
+        return;
 
        case "--input":
        case "-i":
@@ -72,6 +75,7 @@ public class Driver{
      }
    }
 
+   //Exit if invalid flags are supplied.
    if (compress & extract) {
      System.out.println("Incompatible arguments supplied: --compress, --extract");
      return;

@@ -1,16 +1,15 @@
-Directory Contents  
+### Directory Contents  
 ------------------
-*  ./analysis/: Lab write-up  
-*  ./input/: input text files to be evaluated
-*  ./output/: output text files from runs against the included input
+*  ./input/: sample input text files to be evaluated
+*  ./output/: sample output text files from runs against the included input
 *  ./src/: raw and compiled source java code, long with Makefile for testing, compilation, documentation
 *  ./src/docs/: java autodoc output
 
-Compilation/Batch Running
--------------------------
+### Compilation/Installation
+------------------------
 The src directory contains a Makefile to clean the directory, run the compile the code, run the tests, produce documentation, and finally pass the available input through the evaluator.
 
-Note that the JUnit library is required to run the unittests.  If JUnit is not installed, "make nounittest" should be run to avoid that section of the code. 
+Note that the JUnit library is required to run the unittests.  If JUnit is not installed, "make nounittest" should be run to avoid that section of the code.
 
 Makefile usage is outlined below.
 ```bash
@@ -22,16 +21,31 @@ make doc         # generate documentation
 make lab         # run the code against the input files
 ```
 
-Individual Usage
------
-```java 
-java Driver File1.txt
+### Usage
+---------
+
+All optional arguments are outlined below.  Note that some argument pairs are
+mutually exclusive, such as --compress and --extract.  If any mutually exclusive
+pair is issued, the program will end.  
+
+```bash
+$ java Driver -h
+Usage:
+--help, -h: Print this helpfile and exit.
+--input, -i: Filename to read input text from.
+--output, -o: Filename to send output to.  If omitted, STDOUT will be used.
+--compress, -c: Flag to run compression algorithm.
+--extract, -x: Flag to decompress the text.
+--encrypt, -e: Flag to encrypt the text.
+--decrypt, -d: Flag to decrypt the text.
+
+
 ```
 
-Output
-------
-The program prints the instructions to
-standard output.  Writing to a file can be done using redirection:
-```java
-java Driver File1.txt >> simple_out.txt
+An example of a valid command sequence is given below.  This would read from
+the given file, compress the text via Huffman Encoding, and then write to the
+specified output file.
+```bash
+java Driver --input sample_input.txt --output sample_output.txt --compress
+java Driver --i sample_input.txt -o sample_output.txt -c
 ```
