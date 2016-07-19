@@ -9,9 +9,7 @@ public class InsertionSort {
     return sort(data, 0, data.length-1);
   }
 
-  /** sort input data
-    *@param data - input array to be sorted in-place
-    */
+
   public static Integer[] sort(String[] data, int start, int end){
     Integer[] outData = new Integer[data.length];
     for (int i=0; i<data.length; i++) {

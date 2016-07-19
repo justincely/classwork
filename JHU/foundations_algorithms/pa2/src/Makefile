@@ -16,7 +16,7 @@ test:
 	java -ea TestRunner >& ../output/testing_output.txt
 
 run:
-	java Driver >> ../output/problem_1a.txt
+	java Driver >> ../output/problem_output.txt
 
 doc:
 	javadoc *.java -d docs

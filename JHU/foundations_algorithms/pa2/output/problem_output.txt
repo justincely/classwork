@@ -1,0 +1,74 @@
+#---- Running problem 1a ----#
+Iterating on character: 3
+SEA
+TEA
+MOB
+TAB
+DOG
+RUG
+DIG
+BIG
+BAR
+EAR
+TAR
+COW
+ROW
+NOW
+BOX
+FOX
+Iterating on character: 2
+TAB
+BAR
+EAR
+TAR
+SEA
+TEA
+DIG
+BIG
+MOB
+DOG
+COW
+ROW
+NOW
+BOX
+FOX
+RUG
+Iterating on character: 1
+BAR
+BIG
+BOX
+COW
+DIG
+DOG
+EAR
+FOX
+MOB
+NOW
+ROW
+RUG
+SEA
+TAB
+TAR
+TEA
+#---- Running samples from problem 2 ----#
+Adding {1, 2, 3, 4, 5} to A
+Adding {6, 7, 8, 9, 10} to B
+MultiPopping 3 elements from A
+Popping 3 values
+5
+4
+3
+MultiPopping 3 elements from B
+Popping 3 values
+10
+9
+8
+Transferring all remaining items from A to B
+Moving 2 to b
+Moving 1 to b
+B now contains:
+Popping 4 values
+1
+2
+7
+6

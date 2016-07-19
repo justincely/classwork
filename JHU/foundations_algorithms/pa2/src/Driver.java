@@ -15,9 +15,9 @@ import java.util.ArrayList;
   */
 public class Driver{
 
-/**Main driver to open files, parse data, sort data, and write to output.
+/**Main driver to display output from .
   *
-  *@param args[]   Holds command line arguments: input file, output file, sorting method
+  *@param args[]   Holds command line arguments
   */
  public static void main(String[]args){
 
@@ -29,7 +29,34 @@ public class Driver{
      System.out.println("Exception hit");
      System.out.println(error);
    }
-   
+
+   System.out.println("#---- Running samples from problem 2 ----#");
+   MultiStack stacks = new MultiStack();
+   System.out.println("Adding {1, 2, 3, 4, 5} to A");
+   stacks.PushA(1);
+   stacks.PushA(2);
+   stacks.PushA(3);
+   stacks.PushA(4);
+   stacks.PushA(5);
+
+   System.out.println("Adding {6, 7, 8, 9, 10} to B");
+   stacks.PushB(6);
+   stacks.PushB(7);
+   stacks.PushB(8);
+   stacks.PushB(9);
+   stacks.PushB(10);
+
+   System.out.println("MultiPopping 3 elements from A");
+   stacks.MultiPopA(3);
+
+   System.out.println("MultiPopping 3 elements from B");
+   stacks.MultiPopB(3);
+
+   System.out.println("Transferring all remaining items from A to B");
+   stacks.Transfer(5);
+
+   System.out.println("B now contains:");
+   stacks.MultiPopB(100);
  }
 
 }

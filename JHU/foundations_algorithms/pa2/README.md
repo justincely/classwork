@@ -14,14 +14,13 @@ all running on Ubuntu 16.04.
 
 Directory Contents  
 ------------------
-*  ./input/: input text files to be evaluated
 *  ./output/: output text files from the unit tests and test runs
 *  ./src/: raw and compiled source java code, long with Makefile for testing, compilation, documentation
 *  ./src/docs/: java autodoc output
 
 SRC Files
 ---------
-*  Driver.java:  Program to run problem 1A on the specified input.
+*  Driver.java:  Program to illustrate problems 1a and 2 on the specified input.
 *  InsertionSort.java:  insertion sort functions.  
 *  MultiStack.java:  Multistack class to implement PushA, PushB, MultiPopA,...
 *  RadixSort.java:  Radix sort functions
@@ -46,5 +45,5 @@ Problem sets
 Problem 1a is illustrated via the Driver.java, which uses the RadixSort function
 on the input given in the assignment.
 
-Problem 2 is solved in the MultiStack.java class.  Where each of the functions
-needed have been implemented. 
+Problem 2 is illustrated via the Driver.java, which usesthe MultiStack.java class
+where each of the functions needed have been implemented.

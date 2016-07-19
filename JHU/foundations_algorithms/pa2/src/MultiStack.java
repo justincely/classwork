@@ -1,17 +1,35 @@
 import java.util.Stack;
 import java.util.EmptyStackException;
 
+/** Clas to hold two stacks and operate between them
+  */
 public class MultiStack<T> {
   private Stack<T> a = new Stack();
   private Stack<T> b = new Stack();
 
   /** Push onto the A Stack
+    *
+    * @param item
     */
   public void PushA(T item) {
     a.push(item);
   }
 
+  /** check if a is empty
+    */
+  public boolean AEmpty() {
+    return a.empty();
+  }
+
+  /** check if a is empty
+    */
+  public boolean BEmpty() {
+    return b.empty();
+  }
+
   /** Push onto the B Stack
+    *
+    *@param item
     */
   public void PushB(T item) {
     b.push(item);
@@ -30,18 +48,22 @@ public class MultiStack<T> {
   }
 
   /** Pop multiple from A
+    *
+    *@param k
     */
   public void MultiPopA(int k) {
     MultiPop(a, k);
   }
 
   /** Pop multiple from B
+    *
+    *@param k
     */
   public void MultiPopB(int k) {
     MultiPop(b, k);
   }
 
-  /** perform multiple pops on given stack
+  /** perform multiple (min(k, stack.size) pops on given stack
     */
   private void MultiPop(Stack currentStack, int k) {
     int endIter = java.lang.Math.min(k, currentStack.size());
@@ -52,7 +74,7 @@ public class MultiStack<T> {
     }
   }
 
-  /** Transfer items from A onto B
+  /** Transfer min(k, A.size) items from A onto B
     */
   public void Transfer(int k) {
     for (int i=1; i<=k; i++) {

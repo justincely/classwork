@@ -24,12 +24,28 @@ public class TestMultiStack {
   }
 
   @Test
+  public void testPushB() {
+    MultiStack stacks = new MultiStack();
+    stacks.PushB(5);
+    stacks.PeekB();
+  }
+
+  @Test
   public void TestMultiPopA() {
     MultiStack stacks = new MultiStack();
     stacks.PushA(5);
     stacks.PushA(7);
     stacks.PushA(9);
     stacks.MultiPopA(5);
+  }
+
+  @Test
+  public void TestMultiPopB() {
+    MultiStack stacks = new MultiStack();
+    stacks.PushB(5);
+    stacks.PushB(7);
+    stacks.PushB(9);
+    stacks.MultiPopB(5);
   }
 
   @Test
