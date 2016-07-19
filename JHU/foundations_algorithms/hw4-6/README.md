@@ -1,3 +1,14 @@
+# Summary
+This package contains the solution to HW4; compression and cryptography track.  
+A Command Line Interface (CLI) has been chosen for the UI.  Specific usage options
+and examples are given in the Usage section below.
+
+Note that initial work on Huffman encoding and decoding has already been
+implemented, so sample input/output has also been provided to test the compression
+and extraction using a default frequency table.  Input/ouput is supplied, and
+the ouput can be re-generated using the Makefile.
+
+
 ### Directory Contents  
 ------------------
 *  ./input/: sample input text files to be evaluated
@@ -38,8 +49,6 @@ Usage:
 --extract, -x: Flag to decompress the text.
 --encrypt, -e: Flag to encrypt the text.
 --decrypt, -d: Flag to decrypt the text.
-
-
 ```
 
 An example of a valid command sequence is given below.  This would read from
