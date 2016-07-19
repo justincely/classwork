@@ -21,16 +21,15 @@ Directory Contents
 
 SRC Files
 ---------
-*  AbstractTree.java:  classes for an abstract tree structure.  
-*  BinaryTree.java:  classes for a binary tree and operations.  
-*  Driver.java:  classes to parse input, run algorithms, and print stdout.  
-*  Tree.java:  classes for generic tree.  
-*  TestRunner.java:  junit unit test runner class.
-*  TestBinaryTree.java:  junit unit tests for binary tree.
+*  Driver.java:  Program to run problem 1A on the specified input.
+*  InsertionSort.java:  insertion sort functions.  
+*  MultiStack.java:  Multistack class to implement PushA, PushB, MultiPopA,...
+*  RadixSort.java:  Radix sort functions
+*  Test*.java: junit unit tests for
 
-Compilation/Batch Running
--------------------------
-The src directory contains a Makefile to clean the directory, run the compile the code, run the tests, produce documentation, and finally pass the available input through the evaluator.
+Compilation
+-----------
+The src directory contains a Makefile to clean the directory, run the compile the code, run the tests.
 
 Makefile usage is outlined below.
 ```bash
@@ -39,23 +38,13 @@ make notest   # run the entire suite without unittests
 make compile  # compile the source
 make test     # compile and run the tests
 make doc      # generate documentation
-make run      # run the code against the two files supplied in the inputs directory
+make run      # run the main driver
 ```
 
-Driver
-------
-After compilation, the main driver can be run to:  
-1.  Create a tree from an input file  
-2.  Calculate and print the height  
-3.  Calculate and print the number of leaves  
-4.  Calcualte and print the number of nonleaves  
-5.  Print the post-order traversal of the tree  
+Problem sets
+------------
+Problem 1a is illustrated via the Driver.java, which uses the RadixSort function
+on the input given in the assignment.
 
-Input files must simple be space separated integers or strings (no mixing within a file).  All contents of a given file will be read into a single tree.
-
-The driver can be called on separate intput files as shown below.  Output will be displayed to STDOUT.
-
-```bash
-java Driver ../input/sample_input.txt
-java Driver ../input/sample_string_input.txt
-```
+Problem 2 is solved in the MultiStack.java class.  Where each of the functions
+needed have been implemented. 

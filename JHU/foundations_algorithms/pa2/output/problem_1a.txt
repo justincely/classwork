@@ -1,0 +1,52 @@
+#---- Running problem 1a ----#
+Iterating on character: 3
+SEA
+TEA
+MOB
+TAB
+DOG
+RUG
+DIG
+BIG
+BAR
+EAR
+TAR
+COW
+ROW
+NOW
+BOX
+FOX
+Iterating on character: 2
+TAB
+BAR
+EAR
+TAR
+SEA
+TEA
+DIG
+BIG
+MOB
+DOG
+COW
+ROW
+NOW
+BOX
+FOX
+RUG
+Iterating on character: 1
+BAR
+BIG
+BOX
+COW
+DIG
+DOG
+EAR
+FOX
+MOB
+NOW
+ROW
+RUG
+SEA
+TAB
+TAR
+TEA

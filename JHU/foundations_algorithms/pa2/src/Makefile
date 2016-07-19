@@ -13,11 +13,10 @@ compile:
 
 test:
 	javac *.java
-	java -ea TestRunner >& ../output/tree_testing.txt
+	java -ea TestRunner >& ../output/testing_output.txt
 
 run:
-	java Driver ../input/sample_input.txt >> ../output/sample_output.txt
-	java Driver ../input/sample_string_input.txt >> ../output/sample_string_output.txt
+	java Driver >> ../output/problem_1a.txt
 
 doc:
 	javadoc *.java -d docs

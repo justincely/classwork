@@ -1,0 +1,64 @@
+#-- Testing Transfer function --#
+Moving 9 to b
+Moving 8 to b
+Moving 7 to b
+Moving 6 to b
+Moving 5 to b
+Last value pushed to B: 5
+5
+Popping 3 values
+9
+7
+5
+Iterating on character: 3
+SEA
+TEA
+MOB
+TAB
+DOG
+RUG
+DIG
+BIG
+BAR
+EAR
+TAR
+COW
+ROW
+NOW
+BOX
+FOX
+Iterating on character: 2
+TAB
+BAR
+EAR
+TAR
+SEA
+TEA
+DIG
+BIG
+MOB
+DOG
+COW
+ROW
+NOW
+BOX
+FOX
+RUG
+Iterating on character: 1
+BAR
+BIG
+BOX
+COW
+DIG
+DOG
+EAR
+FOX
+MOB
+NOW
+ROW
+RUG
+SEA
+TAB
+TAR
+TEA
+All Unittests passed
