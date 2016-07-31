@@ -25,15 +25,17 @@ public class Driver{
    Boolean extract = false;
    Boolean encrypt = false;
    Boolean decrypt = false;
+   int cypherShiftVal = 0;
 
    ArrayList<String> text = new ArrayList<String>();
    ArrayList<String> outText = new ArrayList<String>();
 
    // regex pattern match for encryption
-   Pattern p = Pattern.compile("^(-{1,2}[a-z]+)[0-9]+$");
+   Pattern p = Pattern.compile("(^-{1,2}[a-zA-Z]+)[0-9]*$");
 
    for (int i=0; i<args.length; i++) {
      Matcher m = p.matcher(args[i]);
+
      String inputArg = "";
      if (m.find()) {
        inputArg = m.group(1);
@@ -76,12 +78,13 @@ public class Driver{
        case "-e":
         Pattern e_pattern = Pattern.compile("^-{1,2}[a-z]+([0-9]+)$");
         Matcher e_match = e_pattern.matcher(args[i]);
-        Integer shift_val = 0;
-        //String shift_val = "0";
+
         if (e_match.find()) {
-          shift_val = Integer.parseInt(e_match.group(1));
+          cypherShiftVal = Integer.parseInt(e_match.group(1));
         }
-        System.out.println("Found simple shift of value " + shift_val);
+        System.out.println("Found simple shift of value " + cypherShiftVal);
+
+
 
         encrypt = true;
         break;
@@ -113,6 +116,14 @@ public class Driver{
      }
    }
 
+
+   //encrypt or not
+   if (encrypt) {
+     outtext = text;
+     Encryption.ceasarShift(outtext, cypherShiftVal);
+   }
+
+   System.out.println(text);
 
    // begin compression
    if (compress | extract) {
