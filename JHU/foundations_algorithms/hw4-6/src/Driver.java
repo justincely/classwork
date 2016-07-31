@@ -84,13 +84,19 @@ public class Driver{
         }
         System.out.println("Found simple shift of value " + cypherShiftVal);
 
-
-
         encrypt = true;
         break;
 
        case "--decrypt":
        case "-d":
+         Pattern d_pattern = Pattern.compile("^-{1,2}[a-z]+([0-9]+)$");
+         Matcher d_match = d_pattern.matcher(args[i]);
+
+         if (d_match.find()) {
+           cypherShiftVal = Integer.parseInt(d_match.group(1));
+         }
+         System.out.println("Found simple shift of value " + cypherShiftVal);
+
         decrypt = true;
         break;
      }
@@ -116,14 +122,10 @@ public class Driver{
      }
    }
 
-
-   //encrypt or not
-   if (encrypt) {
-     outtext = text;
-     Encryption.ceasarShift(outtext, cypherShiftVal);
+   // decrypt text first?
+   if (decrypt) {
+     Encryption.ceasarShift(text, -1*cypherShiftVal);
    }
-
-   System.out.println(text);
 
    // begin compression
    if (compress | extract) {
@@ -140,7 +142,18 @@ public class Driver{
        }
      }
 
+   } else {
+     for (String s : text) {
+       outText.add(s);
+     }
    }
+
+   //encrypt or not
+   if (encrypt) {
+     Encryption.ceasarShift(outText, cypherShiftVal);
+   }
+
+   System.out.println(outText);
 
    //Output information: either to stdout or a filename
    if (outputFile != "") {
@@ -166,8 +179,8 @@ public class Driver{
    System.out.println("Reading file " + filename);
    System.out.println("#-----------------------#");
 
-   while(scanner.hasNext()){
-     words.add(scanner.next());
+   while(scanner.hasNextLine()){
+     words.add(scanner.nextLine());
    }
 
    return words;
