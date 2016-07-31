@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Driver{
 
@@ -27,8 +29,15 @@ public class Driver{
    ArrayList<String> text = new ArrayList<String>();
    ArrayList<String> outText = new ArrayList<String>();
 
+   // regex pattern match for encryption
+   Pattern p = Pattern.compile("^(-{1,2}[a-z]+)[0-9]+$");
+
    for (int i=0; i<args.length; i++) {
-     String inputArg = args[i];
+     Matcher m = p.matcher(args[i]);
+     String inputArg = "";
+     if (m.find()) {
+       inputArg = m.group(1);
+     }
 
      switch (inputArg) {
        case "--help":
@@ -65,6 +74,15 @@ public class Driver{
 
        case "--encrypt":
        case "-e":
+        Pattern e_pattern = Pattern.compile("^-{1,2}[a-z]+([0-9]+)$");
+        Matcher e_match = e_pattern.matcher(args[i]);
+        Integer shift_val = 0;
+        //String shift_val = "0";
+        if (e_match.find()) {
+          shift_val = Integer.parseInt(e_match.group(1));
+        }
+        System.out.println("Found simple shift of value " + shift_val);
+
         encrypt = true;
         break;
 
