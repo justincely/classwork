@@ -7,6 +7,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -25,6 +28,9 @@ public class Driver{
    Boolean extract = false;
    Boolean encrypt = false;
    Boolean decrypt = false;
+   Boolean readAsBytes = false;
+   Boolean writeAsBytes = false;
+   ArrayList<String> huffmanfiles = new ArrayList<String>();
    int cypherShiftVal = 0;
 
    ArrayList<String> text = new ArrayList<String>();
@@ -47,8 +53,11 @@ public class Driver{
         System.out.println("Usage: ");
         System.out.println("--help, -h: Print this helpfile and exit.");
         System.out.println("--input, -i: Filename to read input text from.");
+        System.out.println("--readbytes, -rb: Read input as bytes.");
         System.out.println("--output, -o: Filename to send output to.  If omitted, STDOUT will be used.");
+        System.out.println("--writebytes, -wb: Write output as bytes.");
         System.out.println("--compress, -c: Flag to run compression algorithm.");
+        System.out.println("--huffmanfiles: Files from which to build huffman tree.");
         System.out.println("--extract, -x: Flag to decompress the text.");
         System.out.println("--encrypt, -e: Flag to encrypt the text.");
         System.out.println("--decrypt, -d: Flag to decrypt the text.");
@@ -59,14 +68,34 @@ public class Driver{
         inputFile = args[i+1];
         break;
 
+       case "--readbytes":
+       case "-rb":
+        readAsBytes = true;
+        break;
+
        case "--output":
        case "-o":
         outputFile = args[i+1];
         break;
 
+       case "--writebytes":
+       case "-wb":
+        writeAsBytes = true;
+        break;
+
        case "--compress":
        case "-c":
         compress = true;
+        break;
+
+       case "--huffmanfiles":
+        for (int k=i+1; k<args.length; k++) {
+          if (args[k].startsWith("-")) {
+            break;
+          } else {
+            huffmanfiles.add(args[k]);
+          }
+        }
         break;
 
        case "--extract":
@@ -116,7 +145,11 @@ public class Driver{
    if (inputFile != "") {
      File buffer = new File(inputFile);
      if (buffer.exists() && !buffer.isDirectory()) {
-       text = ReadFile(inputFile);
+       if (readAsBytes) {
+         text = readFileInputStream(inputFile);
+       } else {
+         text = ReadFile(inputFile);
+       }
      } else {
        System.out.println("Input file not found on disk: " + inputFile);
      }
@@ -129,7 +162,13 @@ public class Driver{
 
    // begin compression
    if (compress | extract) {
-     HuffmanTranslator translator = new HuffmanTranslator();
+     HuffmanTranslator translator = null;
+     if (huffmanfiles.size() == 0) {
+       translator = new HuffmanTranslator();
+     } else{
+       translator = new HuffmanTranslator(huffmanfiles);
+     }
+
      translator.buildEncoderTree();
 
      for (int i=0; i<text.size(); i++) {
@@ -148,6 +187,20 @@ public class Driver{
      }
    }
 
+   int rawsize = 0;
+   for (String s : text) {
+     rawsize = rawsize + s.length();
+   }
+
+   int outsize = 0;
+   for (String s : outText) {
+     outsize = outsize + s.length();
+   }
+
+   System.out.println("Raw character length: " + 8*rawsize);
+   System.out.println("Compressed character length: " + outsize);
+   System.out.println("Compression ratio of " + (8*rawsize - outsize)/(float) (8.0 * rawsize));
+
    //encrypt or not
    if (encrypt) {
      Encryption.ceasarShift(outText, cypherShiftVal);
@@ -160,11 +213,19 @@ public class Driver{
      System.out.println("#-----------------------#");
      System.out.println("Writing file " + outputFile);
      System.out.println("#-----------------------#");
-     WriteToFile(outText, outputFile);
+     if (writeAsBytes) {
+       WriteToFile(outText, outputFile, writeAsBytes);
+     } else {
+       WriteToFile(outText, outputFile);
+     }
    } else {
      System.out.println("No output file supplied, redirecting to STDOUT");
      for (int i=0; i<outText.size(); i++) {
-       System.out.println(outText.get(i));
+       if (writeAsBytes) {
+         System.out.println(outText.get(i).getBytes());
+       } else {
+         System.out.println(outText.get(i));
+       }
      }
    }
 
@@ -186,6 +247,31 @@ public class Driver{
    return words;
  }
 
+ private static ArrayList readFileInputStream(String filename) throws IOException {
+  String sContent=null;
+  byte[] buffer =null;
+  File a_file = new File(filename);
+
+  try
+  {
+  FileInputStream fis = new FileInputStream(filename);
+  int length = (int)a_file.length();
+  buffer = new byte [length];
+  fis.read(buffer);
+  fis.close();
+  }
+  catch(IOException e)
+  {
+  e.printStackTrace();
+  }
+  sContent = new String(buffer);
+
+  ArrayList<String> text = new ArrayList<String>();
+  text.add(sContent);
+
+  return text;
+  }
+
  private static void WriteToFile(ArrayList text, String outName) {
    PrintWriter pw = null;
 
@@ -195,7 +281,7 @@ public class Driver{
       pw = new PrintWriter(fw);
 
       for (int i=0; i<text.size(); i++) {
-        pw.println(text.get(i));
+          pw.println(text.get(i));
       }
 
    } catch (IOException e) {
@@ -207,4 +293,28 @@ public class Driver{
    }
  }
 
+ private static void WriteToFile(ArrayList<String> text, String outName, Boolean bytes) {
+   OutputStream output = null;
+
+   try {
+     File file = new File(outName);
+     output = new FileOutputStream(outName);
+
+     for (int i=0; i<text.size(); i++) {
+       byte[] outBytes = text.get(i).getBytes();
+       output.write(outBytes);
+     }
+
+   } catch (IOException e) {
+      e.printStackTrace();
+   }  finally {
+       try{
+         if (output != null) {
+            output.close();
+         }
+       } catch (IOException e) {
+         e.printStackTrace();
+     }
+   }
+ }
 }

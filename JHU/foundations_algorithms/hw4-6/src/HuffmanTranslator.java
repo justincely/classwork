@@ -10,6 +10,9 @@ import java.util.Hashtable;
 import java.util.Enumeration;
 //Used just for sorting strings of nodes - prettier output
 import java.util.Arrays;
+import java.util.Scanner;
+import java.io.File;
+import java.util.ArrayList;
 
 public class HuffmanTranslator{
   private Hashtable<String, Integer> frequencies = new Hashtable<String, Integer>();
@@ -46,6 +49,37 @@ public class HuffmanTranslator{
     frequencies.put("X", 2);
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
+  }
+
+  /**Default constructor
+    *
+    *<p> Frequencies are initialized to given lab inputs.</p>
+    */
+  public HuffmanTranslator(ArrayList<String> filenames) throws java.io.FileNotFoundException {
+    for (String fname: filenames) {
+      Scanner scanner = new Scanner(new File(fname));
+
+      ArrayList<String> words = new ArrayList<String>();
+
+      System.out.println("#-----------------------#");
+      System.out.println("Reading file " + fname);
+      System.out.println("#-----------------------#");
+
+      while(scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        for (int i=0; i<line.length(); i++) {
+          String s = line.substring(i, i+1);
+          if (frequencies.containsKey(s)) {
+            frequencies.put(s, frequencies.get(s)+1);
+          } else {
+            frequencies.put(s, 1);
+          }
+        }
+      }
+    }
+
+    printFrequencies();
+
   }
 
   /**Print frequency content to STDOUT
