@@ -49,6 +49,33 @@ public class HuffmanTranslator{
     frequencies.put("X", 2);
     frequencies.put("Y", 8);
     frequencies.put("Z", 3);
+    frequencies.put("a", 19);
+    frequencies.put("b", 16);
+    frequencies.put("c", 17);
+    frequencies.put("d", 11);
+    frequencies.put("e", 42);
+    frequencies.put("f", 12);
+    frequencies.put("g", 14);
+    frequencies.put("h", 17);
+    frequencies.put("i", 16);
+    frequencies.put("j", 5);
+    frequencies.put("k", 10);
+    frequencies.put("l", 20);
+    frequencies.put("m", 19);
+    frequencies.put("n", 24);
+    frequencies.put("o", 18);
+    frequencies.put("p", 13);
+    frequencies.put("q", 1);
+    frequencies.put("r", 25);
+    frequencies.put("s", 35);
+    frequencies.put("t", 25);
+    frequencies.put("u", 15);
+    frequencies.put("v", 5);
+    frequencies.put("w", 21);
+    frequencies.put("x", 2);
+    frequencies.put("y", 8);
+    frequencies.put("z", 3);
+    frequencies.put(" ", 1);
   }
 
   /**Default constructor
@@ -78,7 +105,7 @@ public class HuffmanTranslator{
       }
     }
 
-    printFrequencies();
+    //printFrequencies();
 
   }
 
@@ -223,25 +250,26 @@ public class HuffmanTranslator{
     String message = "";
     Tree<String> tmpTree = encoder;
     for (int i=0; i<input.length(); i++) {
-      String letter = input.substring(i, i+1).toLowerCase();
+      String letter = input.substring(i, i+1);
       char c = letter.charAt(0);
-      if (Character.isLetter(c) == false) {
-        continue;
-      }
+      //if (Character.isLetter(c) == false) {
+      //  continue;
+      //}
 
       while (tmpTree.isLeaf() == false) {
-        if (tmpTree.left.data.toLowerCase().contains(letter)) {
+        if (tmpTree.left.data.contains(letter)) {
           tmpTree = tmpTree.left;
           message = message + "0";
-        } else if (tmpTree.right.data.toLowerCase().contains(letter)) {
+        } else if (tmpTree.right.data.contains(letter)) {
           tmpTree = tmpTree.right;
           message = message + "1";
         } else {
+          System.out.println(letter + " " + tmpTree.left.data + " " +tmpTree.right.data);
           throw new EncodingError("No child contains letter: " + letter);
         }
       }
 
-      if (tmpTree.data.toLowerCase().equals(letter)) {
+      if (tmpTree.data.equals(letter)) {
         tmpTree = encoder;
       } else {
         throw new EncodingError("Found leaf, but does not contain: " + letter);

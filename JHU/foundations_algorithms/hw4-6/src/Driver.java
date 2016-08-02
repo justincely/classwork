@@ -155,9 +155,9 @@ public class Driver{
      }
    }
 
-   // decrypt text first?
-   if (decrypt) {
-     Encryption.ceasarShift(text, -1*cypherShiftVal);
+   //encrypt or not
+   if (encrypt) {
+     Encryption.ceasarShift(outText, cypherShiftVal);
    }
 
    // begin compression
@@ -201,12 +201,10 @@ public class Driver{
    System.out.println("Compressed character length: " + outsize);
    System.out.println("Compression ratio of " + (8*rawsize - outsize)/(float) (8.0 * rawsize));
 
-   //encrypt or not
-   if (encrypt) {
-     Encryption.ceasarShift(outText, cypherShiftVal);
+   // decrypt text first?
+   if (decrypt) {
+     Encryption.ceasarShift(text, -1*cypherShiftVal);
    }
-
-   System.out.println(outText);
 
    //Output information: either to stdout or a filename
    if (outputFile != "") {
@@ -252,24 +250,22 @@ public class Driver{
   byte[] buffer =null;
   File a_file = new File(filename);
 
-  try
-  {
+  try {
   FileInputStream fis = new FileInputStream(filename);
   int length = (int)a_file.length();
   buffer = new byte [length];
   fis.read(buffer);
   fis.close();
-  }
-  catch(IOException e)
-  {
-  e.printStackTrace();
-  }
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
+
   sContent = new String(buffer);
 
   ArrayList<String> text = new ArrayList<String>();
   text.add(sContent);
 
-  return text;
+    return text;
   }
 
  private static void WriteToFile(ArrayList text, String outName) {

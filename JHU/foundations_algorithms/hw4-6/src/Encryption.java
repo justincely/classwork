@@ -9,7 +9,7 @@ public class Encryption {
 
       for (int j=0; j<characters.length; j++){
         char newChar = (char) newAscii((int) characters[j], shift);
-        System.out.println(characters[j] + " --> " + newChar);
+        //System.out.println(characters[j] + " --> " + newChar);
         characters[j] = newChar;
       }
 
@@ -19,7 +19,7 @@ public class Encryption {
   }
 
   private static int newAscii(int current, int shift) {
-    return  32 + mod(current-32 + shift, 95);
+    return  mod(current + shift, 256);
   }
 
   private static int mod(int x, int y)

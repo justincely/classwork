@@ -19,10 +19,10 @@ compile_no_junit:
 	javac HuffmanTranslator.java
 
 lab:
-	java Driver -i ../input/plaintextinput.txt -o ../output/compressedoutput.txt -c
-	java Driver -i ../input/AdditionalInput.txt -o ../output/AdditionalOutput.txt -c
-	java Driver -i ../input/encryptedinput.txt -o ../output/plaintextoutput.txt -x
-	java Driver -i ../input/rawinput.txt -o ../output/ceaserout.txt -e3
+	java Driver -i ../input/plaintextinput.txt -o ../output/plaintext_compressed_ouput.txt -c --huffmanfiles ../input/qwerty.txt
+	java Driver -i ../output/plaintext_compressed_ouput.txt -o ../output/plaintext_extracted_ouput.txt -x --huffmanfiles ../input/qwerty.txt
+	java Driver -i ../input/plaintextinput.txt --huffmanfiles ../input/huffman*.txt --compress -e3 -o ../output/plaintext_huffman_compressed_shift3.txt
+	java Driver -i ../output/plaintext_huffman_compressed_shift3.txt --huffmanfiles ../input/huffman*.txt --extract -d3 -o ../output/plaintext_huffman_extracted_shift3.txt
 
 unittest: compile
 	java -ea TestRunner &> ../output/unitTestOut.txt
