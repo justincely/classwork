@@ -28,10 +28,11 @@ public class Driver{
    Boolean extract = false;
    Boolean encrypt = false;
    Boolean decrypt = false;
+   String encryptArg = "";
+   String keyFile = "";
    Boolean readAsBytes = false;
    Boolean writeAsBytes = false;
    ArrayList<String> huffmanfiles = new ArrayList<String>();
-   int cypherShiftVal = 0;
 
    ArrayList<String> text = new ArrayList<String>();
    ArrayList<String> outText = new ArrayList<String>();
@@ -105,28 +106,19 @@ public class Driver{
 
        case "--encrypt":
        case "-e":
-        Pattern e_pattern = Pattern.compile("^-{1,2}[a-z]+([0-9]+)$");
-        Matcher e_match = e_pattern.matcher(args[i]);
-
-        if (e_match.find()) {
-          cypherShiftVal = Integer.parseInt(e_match.group(1));
-        }
-        System.out.println("Found simple shift of value " + cypherShiftVal);
-
+        encryptArg = args[i+1];
         encrypt = true;
         break;
 
        case "--decrypt":
        case "-d":
-         Pattern d_pattern = Pattern.compile("^-{1,2}[a-z]+([0-9]+)$");
-         Matcher d_match = d_pattern.matcher(args[i]);
-
-         if (d_match.find()) {
-           cypherShiftVal = Integer.parseInt(d_match.group(1));
-         }
-         System.out.println("Found simple shift of value " + cypherShiftVal);
-
+        encryptArg = args[i+1];
         decrypt = true;
+        break;
+
+      case "--keyfile":
+      case "-k":
+        keyFile = args[i+1];
         break;
      }
    }
@@ -157,7 +149,13 @@ public class Driver{
 
    //encrypt or not
    if (encrypt) {
-     Encryption.ceasarShift(outText, cypherShiftVal);
+     if (encryptArg.equals("RSA")) {
+       Encryption.RSAEncrypt(text);
+     } else if (encryptArg.equals("ElGamal")) {
+       System.out.println("NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!");
+     } else {
+       Encryption.ceasarShift(text, Integer.parseInt(encryptArg));
+     }
    }
 
    // begin compression
@@ -201,9 +199,15 @@ public class Driver{
    System.out.println("Compressed character length: " + outsize);
    System.out.println("Compression ratio of " + (8*rawsize - outsize)/(float) (8.0 * rawsize));
 
-   // decrypt text first?
+   // Decrypt or not
    if (decrypt) {
-     Encryption.ceasarShift(text, -1*cypherShiftVal);
+     if (encryptArg.equals("RSA")) {
+       Encryption.RSADecrypt(outText, keyFile);
+     } else if (encryptArg.equals("ElGamal")) {
+       System.out.println("NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!");
+     } else {
+       Encryption.ceasarShift(outText, -1*Integer.parseInt(encryptArg));
+     }
    }
 
    //Output information: either to stdout or a filename

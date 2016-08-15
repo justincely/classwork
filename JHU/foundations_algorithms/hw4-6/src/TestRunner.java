@@ -12,7 +12,8 @@ public class TestRunner {
    public static void main(String[] args) {
       Result result = JUnitCore.runClasses(TestTree.class,
                                            TestHuffmanTranslator.class,
-                                           TestLZW.class);
+                                           TestLZW.class,
+                                           TestEncryption.class);
       for (Failure failure : result.getFailures()) {
          System.out.println(failure.toString());
       }
