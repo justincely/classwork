@@ -25,6 +25,7 @@ public class Driver{
    String inputFile = "";
    String outputFile = "";
    Boolean compress = false;
+   String compressAlg = "";
    Boolean extract = false;
    Boolean encrypt = false;
    Boolean decrypt = false;
@@ -86,6 +87,7 @@ public class Driver{
 
        case "--compress":
        case "-c":
+        compressAlg = args[i+1];
         compress = true;
         break;
 
@@ -101,6 +103,7 @@ public class Driver{
 
        case "--extract":
        case "-x":
+         compressAlg = args[i+1];
          extract = true;
          break;
 
@@ -159,7 +162,7 @@ public class Driver{
    }
 
    // begin compression
-   if (compress | extract) {
+   if ((compress | extract) & (compressAlg.equals("huffman"))) {
      HuffmanTranslator translator = null;
      if (huffmanfiles.size() == 0) {
        translator = new HuffmanTranslator();
@@ -179,6 +182,27 @@ public class Driver{
        }
      }
 
+   } else if ((compress | extract) & (compressAlg.equals("lzw"))) {
+     if (compress) {
+       String allText = "";
+       for (String s : text) {
+         allText = allText + s;
+       }
+
+       ArrayList<Integer> LZWVals = LZW.compress(allText);
+
+       for (Integer val : LZWVals) {
+          outText.add(String.valueOf(val));
+       }
+
+     } else if (extract) {
+       System.out.println("Extracting LZW");
+       ArrayList<Integer> LZWVals = new ArrayList<Integer>();
+       for (String s: text) {
+         LZWVals.add(Integer.parseInt(s));
+       }
+       outText.add(LZW.decompress(LZWVals));
+     }
    } else {
      for (String s : text) {
        outText.add(s);
