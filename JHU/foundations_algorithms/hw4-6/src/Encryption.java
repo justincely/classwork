@@ -14,6 +14,7 @@ import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidKeyException;
 import java.security.spec.X509EncodedKeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.SecureRandom;
 
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -87,7 +88,9 @@ public class Encryption {
     try {
       // Get an instance of the RSA key generator
       KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-      //kpg.initialize(2048);
+      SecureRandom random = new SecureRandom();
+      random.setSeed(random.generateSeed(51));
+      kpg.initialize(2048, random);
       // Generate the keys — might take sometime on slow computers
       KeyPair myPair = kpg.generateKeyPair();
 
@@ -107,16 +110,24 @@ public class Encryption {
       d.init(Cipher.DECRYPT_MODE, myPair.getPrivate());
       System.out.println("Private key: " + myPair.getPrivate());
 
+      for (int i=0; i<plaintext.size(); i++) {
+        String word = plaintext.get(i);
+      }
 
-      // Create a secret message
-      //String myMessage = new String("Secret Message");
-      // Encrypt that message using a new SealedObject and the Cipher we created before
-      //SealedObject myEncryptedMessage = new SealedObject(myMessage, c);
 
       for (int i=0; i<plaintext.size(); i++) {
         String word = plaintext.get(i);
         String outWord = "";
 
+        System.out.println(word);
+        System.out.println("-------------------");
+
+        byte[] text = word.getBytes();
+        byte[] textEncrypted = c.doFinal(text);
+        plaintext.set(i, new String(textEncrypted));
+        System.out.println(textEncrypted);
+
+        /**
         for (int j=0; j<word.length(); j++) {
           byte[] text = word.substring(j, j+1).getBytes();
           System.out.println(new String(text));
@@ -132,7 +143,7 @@ public class Encryption {
         }
 
         plaintext.set(i, new String(outWord));
-
+        */
       }
     } catch(NoSuchAlgorithmException e){
 			e.printStackTrace();
@@ -150,20 +161,49 @@ public class Encryption {
 
   public static void RSADecrypt(ArrayList<String> codedtext, String keyfile) throws Exception {
     System.out.println("#  Starting RSA Decryption using key from filname: ." + keyfile);
-    Key privKey = RSAKeyFromFile(keyfile);
+    //Key privKey = RSAKeyFromFile(keyfile);
+
+    // Get an instance of the RSA key generator
+    KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+    SecureRandom random = new SecureRandom();
+    random.setSeed(random.generateSeed(51));
+    kpg.initialize(2048, random);
+    // Generate the keys — might take sometime on slow computers
+    KeyPair myPair = kpg.generateKeyPair();
+    Key privKey = myPair.getPrivate();
+
 
     System.out.println(privKey);
 
         try {
+
           Cipher d = Cipher.getInstance("RSA");
           d.init(Cipher.DECRYPT_MODE, privKey);
 
           System.out.println("Private key: " + privKey);
 
+          String allText = "";
+          for (int i=0; i<codedtext.size(); i++) {
+            allText = allText + codedtext.get(i);
+          }
+
+          byte[] ntext = allText.getBytes();
+          //byte[] textDecrypted = d.doFinal(text);
+          System.out.println(d.doFinal(ntext));
+
+
           for (int i=0; i<codedtext.size(); i++) {
             String word = codedtext.get(i);
+            System.out.println(word);
+            System.out.println("-------------------");
+
             String outWord = "";
 
+            byte[] text = word.getBytes();
+            byte[] textDecrypted = d.doFinal(text);
+            //codedtext.set(i, new String(textDecrypted));
+
+            /**
             for (int j=0; j<word.length(); j++) {
               byte[] text = word.substring(j, j+1).getBytes();
               System.out.println("Text original " + new String(text));
@@ -178,7 +218,7 @@ public class Encryption {
             }
 
             codedtext.set(i, outWord);
-
+            */
           }
         } catch(NoSuchAlgorithmException e){
     			e.printStackTrace();

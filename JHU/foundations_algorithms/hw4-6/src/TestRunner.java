@@ -1,12 +1,12 @@
 /**TestRunner
   *
-  * Run all unittests
+  * Run all unittests with the JUnit testing framework
   */
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-/**Run all tests in the TestTree and TestHuffmanTranslator classes
+/**Run all tests in the available test-case classes
   */
 public class TestRunner {
    public static void main(String[] args) {
