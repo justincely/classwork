@@ -8,7 +8,6 @@
 
 import java.util.Hashtable;
 import java.util.Enumeration;
-//Used just for sorting strings of nodes - prettier output
 import java.util.Arrays;
 import java.util.Scanner;
 import java.io.File;
@@ -20,7 +19,7 @@ public class HuffmanTranslator{
 
   /**Default constructor
     *
-    *<p> Frequencies are initialized to given lab inputs.</p>
+    *<p> Frequencies are initialized to default.</p>
     */
   public HuffmanTranslator() {
     frequencies.put("A", 19);
@@ -80,7 +79,7 @@ public class HuffmanTranslator{
 
   /**Default constructor
     *
-    *<p> Frequencies are initialized to given lab inputs.</p>
+    *<p> Frequencies are initialized to content of text files.</p>
     */
   public HuffmanTranslator(ArrayList<String> filenames) throws java.io.FileNotFoundException {
     for (String fname: filenames) {
@@ -104,8 +103,6 @@ public class HuffmanTranslator{
         }
       }
     }
-
-    //printFrequencies();
 
   }
 

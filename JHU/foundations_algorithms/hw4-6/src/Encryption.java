@@ -1,13 +1,20 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.lang.Math;
 import java.math.BigInteger;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.spec.IvParameterSpec;
 import java.security.KeyPairGenerator;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import java.security.KeyPair;
 import java.security.KeyFactory;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.InvalidAlgorithmParameterException;
+import java.io.UnsupportedEncodingException;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -23,7 +30,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.io.IOException;
 
-
+import javax.xml.bind.DatatypeConverter;
 
 public class Encryption {
 
@@ -46,104 +53,56 @@ public class Encryption {
     }
   }
 
+  /** Provide new, shifted ascii character mod 256
+    */
   private static int newAscii(int current, int shift) {
     return  mod(current + shift, 256);
   }
 
+  /** Modulo function
+    */
   private static int mod(int x, int y)
   {
       int result = x % y;
       return result < 0 ? result + y : result;
   }
 
-  /** ElGamal encryption
-  public static void ElGamalEncrypt(ArrayList<String> plaintext, int base, int secretKey, BigInteger publicKey, int modVal) {
-    BigInteger bigBase = BigInteger.valueOf(base);
-    //BigInteger bigSecretKey = BigInteger.valueOf(secretKey);
-
-
-    Integer kMine = mod(bigBase.pow(secretKey), modVal);
-    Integer code = mod(BigInteger.pow(kMine, publicKey), modVal);
-
-    for (int i=0; i<plaintext.size(); i++) {
-      String substring = plaintext.get(i);
-      char[] characters = substring.toCharArray();
-
-      for (int j=0; j<characters.length; j++){
-        char newChar = (char) ((int) characters[j]) * code;
-        //System.out.println(characters[j] + " --> " + newChar);
-        characters[j] = newChar;
-      }
-
-      substring = String.valueOf(characters);
-      plaintext.set(i, substring);
-    }
-
-
-  }
-  */
-
+  /** RSA encryption function
+    */
   public static void RSAEncrypt(ArrayList<String> plaintext) {
 
     try {
+      System.out.println("Running RSA Encryption");
+
       // Get an instance of the RSA key generator
       KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
       SecureRandom random = new SecureRandom();
+      // Set seed for rebeatable results - not to be used in a production system.
       random.setSeed(random.generateSeed(51));
       kpg.initialize(2048, random);
-      // Generate the keys — might take sometime on slow computers
       KeyPair myPair = kpg.generateKeyPair();
 
       // Get an instance of the Cipher for RSA encryption/decryption
       Cipher c = Cipher.getInstance("RSA");
-      // Initiate the Cipher, telling it that it is going to Encrypt, giving it the public key
       c.init(Cipher.ENCRYPT_MODE, myPair.getPublic());
 
-      //System.out.println("Public key: " + myPair.getPublic());
+      System.out.println("Public key generated: ");
+      System.out.println(myPair.getPublic().getEncoded());
+      System.out.println("Private key generated: ");
+      System.out.println(myPair.getPrivate().getEncoded());
 
-      // dump key to file
-      RSAKeyDump("publicKey", myPair.getPublic().getEncoded());
-      RSAKeyDump("privateKey", myPair.getPrivate().getEncoded());
-
-
-      Cipher d = Cipher.getInstance("RSA");
-      d.init(Cipher.DECRYPT_MODE, myPair.getPrivate());
-      System.out.println("Private key: " + myPair.getPrivate());
+      // dump keys to file for later use
+      KeyDump("RSApublicKey", myPair.getPublic().getEncoded());
+      KeyDump("RSAprivateKey", myPair.getPrivate().getEncoded());
 
       for (int i=0; i<plaintext.size(); i++) {
         String word = plaintext.get(i);
-      }
-
-
-      for (int i=0; i<plaintext.size(); i++) {
-        String word = plaintext.get(i);
-        String outWord = "";
-
-        System.out.println(word);
-        System.out.println("-------------------");
 
         byte[] text = word.getBytes();
         byte[] textEncrypted = c.doFinal(text);
-        plaintext.set(i, new String(textEncrypted));
-        System.out.println(textEncrypted);
 
-        /**
-        for (int j=0; j<word.length(); j++) {
-          byte[] text = word.substring(j, j+1).getBytes();
-          System.out.println(new String(text));
-
-          //Do encryption
-          byte[] textEncrypted = c.doFinal(text);
-          System.out.println("Text Encrypted " + textEncrypted);
-
-          outWord = outWord + new String(textEncrypted);
-
-          //byte[] textDecrypted = d.doFinal(textEncrypted);
-          //System.out.println("Text Decrypted " + new String(textDecrypted));
-        }
-
-        plaintext.set(i, new String(outWord));
-        */
+        // output as hex to avoid String removal of characters.
+        plaintext.set(i, DatatypeConverter.printHexBinary(textEncrypted));
       }
     } catch(NoSuchAlgorithmException e){
 			e.printStackTrace();
@@ -179,46 +138,14 @@ public class Encryption {
 
           Cipher d = Cipher.getInstance("RSA");
           d.init(Cipher.DECRYPT_MODE, privKey);
-
           System.out.println("Private key: " + privKey);
-
-          String allText = "";
-          for (int i=0; i<codedtext.size(); i++) {
-            allText = allText + codedtext.get(i);
-          }
-
-          byte[] ntext = allText.getBytes();
-          //byte[] textDecrypted = d.doFinal(text);
-          System.out.println(d.doFinal(ntext));
-
 
           for (int i=0; i<codedtext.size(); i++) {
             String word = codedtext.get(i);
-            System.out.println(word);
-            System.out.println("-------------------");
 
-            String outWord = "";
-
-            byte[] text = word.getBytes();
+            byte[] text = DatatypeConverter.parseHexBinary(word);
             byte[] textDecrypted = d.doFinal(text);
-            //codedtext.set(i, new String(textDecrypted));
-
-            /**
-            for (int j=0; j<word.length(); j++) {
-              byte[] text = word.substring(j, j+1).getBytes();
-              System.out.println("Text original " + new String(text));
-
-              byte[] textDecrypted = d.doFinal(text);
-              System.out.println("Text Decrypted " + new String(textDecrypted));
-
-              outWord = outWord + new String(textDecrypted);
-
-              //byte[] textDecrypted = d.doFinal(textEncrypted);
-              //System.out.println("Text Decrypted " + new String(textDecrypted));
-            }
-
-            codedtext.set(i, outWord);
-            */
+            codedtext.set(i, new String(textDecrypted));
           }
         } catch(NoSuchAlgorithmException e){
     			e.printStackTrace();
@@ -234,7 +161,7 @@ public class Encryption {
 
   }
 
-  public static void RSAKeyDump(String outName, byte[] keyBytes) {
+  public static void KeyDump(String outName, byte[] keyBytes) {
     OutputStream output = null;
 
     try {
@@ -258,8 +185,7 @@ public class Encryption {
     }
   }
 
-  public static Key RSAKeyFromFile(String fileName) throws Exception {
-      Key pk = null;
+  public static Key KeyFromFile(String fileName, String algo) throws Exception {
       File f = new File(fileName);
       FileInputStream fis = new FileInputStream(f);
       DataInputStream dis = new DataInputStream(fis);
@@ -267,12 +193,85 @@ public class Encryption {
       dis.readFully(keyBytes);
       dis.close();
 
-      PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
-      KeyFactory kpg = KeyFactory.getInstance("RSA");
-      //kpg.initialize(2048);
-      pk = kpg.generatePrivate(spec);
+      SecretKey pk = new SecretKeySpec(keyBytes, algo);
 
       return pk;
   }
+
+  /** AES encryption function
+    */
+  public static void AESEncrypt(ArrayList<String> plaintext) {
+
+    try {
+      System.out.println("Running AES Encryption");
+
+      // Get an instance of the RSAkey generator
+      KeyGenerator kpg = KeyGenerator.getInstance("AES");
+      kpg.init(128);
+
+      SecretKey SecKey = kpg.generateKey();
+
+      KeyDump("AESKey", SecKey.getEncoded());
+
+      // Get cipher instance for encryption
+      Cipher c = Cipher.getInstance("AES");
+      c.init(Cipher.ENCRYPT_MODE,SecKey);
+
+      System.out.println("Private key generated: ");
+      System.out.println(SecKey);
+
+      for (int i=0; i<plaintext.size(); i++) {
+        String word = plaintext.get(i);
+
+        byte[] text = word.getBytes();
+        byte[] textEncrypted = c.doFinal(text);
+
+        // output as hex to avoid String removal of characters.
+        plaintext.set(i, DatatypeConverter.printHexBinary(textEncrypted));
+      }
+    } catch(NoSuchAlgorithmException e){
+			e.printStackTrace();
+		} catch(NoSuchPaddingException e){
+			e.printStackTrace();
+		} catch(InvalidKeyException e){
+			e.printStackTrace();
+		} catch(IllegalBlockSizeException e){
+			e.printStackTrace();
+		} catch(BadPaddingException e){
+			e.printStackTrace();
+		}
+
+  }
+
+  public static void AESDecrypt(ArrayList<String> codedtext, String keyfile) throws Exception {
+    System.out.println("Running AES Decryption");
+
+    Key SecKey = KeyFromFile(keyfile, "AES");
+
+    System.out.println("Private key used: ");
+    System.out.println(SecKey);
+
+    // Get cipher instance for encryption
+    Cipher d = Cipher.getInstance("AES");
+    d.init(Cipher.DECRYPT_MODE,SecKey);
+
+
+        try {
+
+          for (int i=0; i<codedtext.size(); i++) {
+            String word = codedtext.get(i);
+
+            byte[] text = DatatypeConverter.parseHexBinary(word);
+            byte[] textDecrypted = d.doFinal(text);
+            codedtext.set(i, new String(textDecrypted));
+          }
+        } catch(IllegalBlockSizeException e){
+    			e.printStackTrace();
+    		} catch(BadPaddingException e){
+    			e.printStackTrace();
+    		}
+
+  }
+
 
 }

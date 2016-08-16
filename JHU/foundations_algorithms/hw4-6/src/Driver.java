@@ -179,8 +179,8 @@ public class Driver{
    if (encrypt) {
      if (encryptArg.equals("RSA")) {
        Encryption.RSAEncrypt(text);
-     } else if (encryptArg.equals("ElGamal")) {
-       System.out.println("NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!");
+     } else if (encryptArg.equals("AES")) {
+       Encryption.AESEncrypt(text);
      } else {
        Encryption.ceasarShift(text, Integer.parseInt(encryptArg));
      }
@@ -261,8 +261,8 @@ public class Driver{
    if (decrypt) {
      if (encryptArg.equals("RSA")) {
        Encryption.RSADecrypt(outText, keyFile);
-     } else if (encryptArg.equals("ElGamal")) {
-       System.out.println("NOT IMPLEMENTED!!!!!!!!!!!!!!!!!!");
+     } else if (encryptArg.equals("AES")) {
+       Encryption.AESDecrypt(outText, keyFile);
      } else {
        Encryption.ceasarShift(outText, -1*Integer.parseInt(encryptArg));
      }
