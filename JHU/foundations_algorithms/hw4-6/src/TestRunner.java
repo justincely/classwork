@@ -1,5 +1,7 @@
 /**TestRunner
   *
+  * Justin Ely
+  *
   * Run all unittests with the JUnit testing framework
   */
 import org.junit.runner.JUnitCore;

@@ -1,5 +1,5 @@
 /** Custom exception to catch invalid huffman encoding
-  *
+  * Justin Ely
   */
 
 /** Extends the <code>Error</code> class to cause a

@@ -1,3 +1,8 @@
+/** main encryption class to support shift cypher, AES, and RSA
+  *
+  * Justin Ely
+  */
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.Math;
@@ -33,7 +38,6 @@ import java.io.IOException;
 import javax.xml.bind.DatatypeConverter;
 
 public class Encryption {
-
 
   /** Simple ceasar shift cypher
     */
@@ -118,6 +122,8 @@ public class Encryption {
 
   }
 
+  /** RSA decryption
+    */
   public static void RSADecrypt(ArrayList<String> codedtext, String keyfile) throws Exception {
     System.out.println("#  Starting RSA Decryption using key from filname: ." + keyfile);
     //Key privKey = RSAKeyFromFile(keyfile);
@@ -161,6 +167,8 @@ public class Encryption {
 
   }
 
+  /** Dump key to text File
+    */
   public static void KeyDump(String outName, byte[] keyBytes) {
     OutputStream output = null;
 
@@ -185,6 +193,8 @@ public class Encryption {
     }
   }
 
+  /** Read encryption key from fileName
+    */
   public static Key KeyFromFile(String fileName, String algo) throws Exception {
       File f = new File(fileName);
       FileInputStream fis = new FileInputStream(f);
@@ -216,6 +226,7 @@ public class Encryption {
       // Get cipher instance for encryption
       Cipher c = Cipher.getInstance("AES");
       c.init(Cipher.ENCRYPT_MODE,SecKey);
+      //c.init(Cipher.ENCRYPT_MODE, SecKey, iv);
 
       System.out.println("Private key generated: ");
       System.out.println(SecKey);
@@ -243,6 +254,8 @@ public class Encryption {
 
   }
 
+  /** Run AES decryption
+    */
   public static void AESDecrypt(ArrayList<String> codedtext, String keyfile) throws Exception {
     System.out.println("Running AES Decryption");
 
@@ -254,7 +267,6 @@ public class Encryption {
     // Get cipher instance for encryption
     Cipher d = Cipher.getInstance("AES");
     d.init(Cipher.DECRYPT_MODE,SecKey);
-
 
         try {
 

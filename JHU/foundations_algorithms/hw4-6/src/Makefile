@@ -17,6 +17,8 @@ compile_no_junit:
 	javac QueueNode.java
 	javac Driver.java
 	javac HuffmanTranslator.java
+	javac Encryption.java
+	javac LZW.java
 
 lab:
 	java Driver -i ../input/plaintextinput.txt -o ../output/plaintext_compressed_ouput.txt -c --huffmanfiles ../input/qwerty.txt

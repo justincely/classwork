@@ -1,5 +1,6 @@
-/**Driver
+/**Driver that allows running of algorithms on text input
   *
+  * Justin Ely
   */
 
 
@@ -61,14 +62,25 @@ public class Driver{
         System.out.println("Usage: ");
         System.out.println("--help, -h: Print this helpfile and exit.");
         System.out.println("--input, -i: Filename to read input text from.");
-        System.out.println("--readbytes, -rb: Read input as bytes.");
+        System.out.println("--readbytes, -rb: Read input as binary.");
         System.out.println("--output, -o: Filename to send output to.  If omitted, STDOUT will be used.");
-        System.out.println("--writebytes, -wb: Write output as bytes.");
-        System.out.println("--compress, -c: Flag to run compression algorithm.");
+        System.out.println("--writebytes, -wb: Write output as binary.");
+        System.out.println("--compress, -c: Flag to run compression.");
+        System.out.println("  -c huffman: to run huffman compression");
+        System.out.println("  -c lzw: to run LZW compression.");
         System.out.println("--huffmanfiles: Files from which to build huffman tree.");
+        System.out.println("  only used if huffman compression is run.");
         System.out.println("--extract, -x: Flag to decompress the text.");
+        System.out.println("  -x huffman: decompress with Huffman");
+        System.out.println("  -x lzw: decompress with LZW.");
         System.out.println("--encrypt, -e: Flag to encrypt the text.");
+        System.out.println("  -e INT: encrypt with simple shift cypher of INT.");
+        System.out.println("  -e RSA: run RSA encryption");
+        System.out.println("  -e AES: run AES encruption");
         System.out.println("--decrypt, -d: Flag to decrypt the text.");
+        System.out.println("  -d INT: decrypt with simple shift cypher of INT.");
+        System.out.println("  -d RSA: decrypt with RSA.");
+        System.out.println("  -d AES: decrypt with AES.");
         return;
 
         // File to take input text from

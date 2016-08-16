@@ -1,5 +1,7 @@
 /**HuffmanTranslator
   *
+  * Justin Ely
+  *
   *<p> All the methods for building the huffman tree, encoding and deconding
   *    messages are contained here.
   *</p>

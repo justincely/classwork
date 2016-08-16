@@ -21,17 +21,6 @@ import java.util.Arrays;
 public class TestEncryption {
 
     @Test
-    public void testElGamalEncrypt() {
-      ArrayList<String> words = new ArrayList<String>();
-      words.add("Hello");
-      words.add("World");
-
-      //String encrypted = Encrption.ElGamalEncrypt(words, 5, 8, 1220703125, 89);
-      //System.out.println(encrypted);
-
-    }
-
-    @Test
     public void TestRSAEncrypt() {
       ArrayList<String> words = new ArrayList<String>();
       words.add("Hello");
