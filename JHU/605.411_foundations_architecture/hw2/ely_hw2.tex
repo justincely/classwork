@@ -8,7 +8,7 @@
 
 \vspace{1.1cm}
 
-{\bf\Huge Problem Set 1}
+{\bf\Huge Problem Set 2}
 
 \rule{0.25\linewidth}{0.5pt}
 
@@ -21,115 +21,137 @@ Justin Ely
 \footnotesize{605.411 Foundations of Computer Architecture \\}
 \vspace{0.5cm}
 % Date here below
-08 September, 2016
+13 September, 2016
 \end{flushright}
 
 \noindent\rule{\linewidth}{1.0pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{1a)}
-The clock rate is the inverse of the clock cycle.  Thus, the clock rate for this implementation is $\frac{1}{t_{cycle}} = \frac{1}{250e-12} = 4GHz$.
+\section*{1)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Hex & 7 & 1 & 5 & 4 & 0 & 0 & 0 & 0 \\  \hline  		
+  Bin & 0111 & 0001 & 0101 & 0100 & 0000 & 0000 & 0000 & 0000 \\ \hline
+\end{tabular} \\
 
-\section*{1b)}
-The total number of clock cycles consumed is calculated by the total number of instructions multipled by the weighted sum of the cycles per instruction.\\
-
-\noindent $N_{cycles} = 20e6 (.1 \times 12 + .9 \times 5) = 1.14E8 $ 
-
-\section*{1c)}
-Making the divide instruction twice as fast means cutting the number of cycles in half from 12 to 6. \\
-
-\noindent $N_{cycles\_new} = 20e6 (.1 \times 6 + .9 \times 5) = 1.02E8 $  \\
-
-Thus, the speedup is the ratio between the new and old number of cycles required. \\
-
-\noindent $speedup = \frac{N_{cycles}}{N_{cycles\_new}} = 1.12$ or $12\%$. 
+\noindent  In IEEE 754 single precision, this binary value represents 1.05E30.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{2a)} 
-$CPI = time \times \frac{rate}{n_{inst}} = 1.1 \times \frac{1e-9}{1e-9} = 1.1$
+\section*{2)} 
+Using the unsigned representation of 12 = 00001100:
 
-\section*{2b)} 
-$T2 = 1.1 \times \frac{6e8}{\frac{1}{1e-9}} = .66$
+\section*{a)}
+The excess-128 representation gives the signed value as 128 higher than the negative value.  Thus -12 = 128-12 = 116 = 01110100 or 0x74.
 
-\noindent Thus the speedup is: $\frac{T1}{T2} = \frac{1.1}{.66} = 1.67$ or $67\%$. 
+\section*{b)} 
+1's complement representation of -12 can be found simply by taking the complement of every bit: 11110011 or 0xf3.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{c)} 
+The sign and magnitude representation simply uses the first bit as the sign, and the remaining 7 bits as the magnitude: 10001100 or 0x8c.
 
-\section*{3a)}
-Ignoring constant terms, which cancel, and taking the fraction of multiply instructions and other instructions to be $x$ and $y$ respectively,
-
-\begin{eqnarray}
-t_1 &=& 4x + 4y \\ 
-2.85 &=& 4x + 4y 
-\end{eqnarray}
-
-\begin{eqnarray}
-t_2 &=& 3x + 4y \\
-2.28 &=& 3x + 4y
-\end{eqnarray}
-
-Re-ordering (3) and (4), and substituting variables gives us:
-
-\begin{eqnarray}
-2.85 - 4x &=& 2.28 - 3x \\
-2.85 &=& 2.28 + x \\
-.57 &=& x
-\end{eqnarray}
-
-The multiply instruction accounts for 57\% of the executed instructions.
-
-\section*{3b)}
-Since speedup is $\frac{t1}{t2}$, constant-terms can again be ignored.
-
-\begin{eqnarray}
-t_1 &=& (12 \times .22 + 4 \times .78) \\
-t_2 &=& (3 \times .22 + 4 \times .78)
-\end{eqnarray}
-
-Combining (8) and (9) gives $\frac{t_1}{t_2} = 1.52$, which is the speedup factor.
+\section*{d)} 
+Two's complement is found by taking the complement of every bit and then adding 1.  The complement being 11110011, with 1 added: -12 = 11110100 or 0xf4.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{4a)}
-The total clock cycles for each mode will be the weighted sum of the CPI * instruction count.
-
-\begin{itemize}
-	\item P1: $1E6 (1 \times .1 + 2 \times .2 + 2 \times .5 + 3 \times .2) = 2.1e6$ cycles.
-	\item P1: $1E6 (2 \times .1 + 2 \times .2 + 2 \times .5 + 2 \times .2) = 2.0e6$ cycles.
-\end{itemize}
-
-\section*{4b)}
-The total running time will be the number of cycles times the clock cycle time ($\frac{1}{rate}$).
-
-\begin{itemize}
-	\item P1: $2.1e6 \times \frac{1}{2.5e9} = .00084$ seconds.
-	\item P2: $2.0e6 \times \frac{1}{3e9} = .00067$ seconds.
-\end{itemize}
-
-
-\section*{4c)}
-The CPI for each implementation is the weighted sum of the CPIs of the individual instruction classes.
-
-\begin{itemize}
-	\item P1: $1 \times .1 + 2 \times .2 + 2 \times .5 + 3 \times .2 = 2.1$ CPI.
-	\item P1: $2 \times .1 + 2 \times .2 + 2 \times .5 + 2 \times .2 = 2.0$ CPI.
-\end{itemize}
+\section*{3)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+   Sign & Expoent & Fraction \\  \hline  		
+   0 & 10000100 & 11111010000000000000000  \\ \hline
+\end{tabular} \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{5a)}
-The initial running time is 250s, which consists of 70s on FP, 85s on L/S, 40s on branching, and 55s on other instructions.
-
-If FP instructions are reduced by 20\%, the FP instructions will then take $70 * .8 = 56$.  Thus, the new total time will be $56 + 85 + 40 + 55 = 236$, which is a reduction of 14 seconds from the original.
-
-\section*{5b)}
-
-To reduce the total time by 20\%, we would need to cut off $250 \times .2 = 50$ seconds.  Since branching instructions currently only take 40 seconds, even if they took 0 seconds the goal time could not be reached.
+\section*{4)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+   Sign & Exponent & Fraction \\  \hline  		
+   0 & 10000100000 & 1111101000000000000000000000000000000000000000000000  \\ \hline
+\end{tabular} \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section*{5)}
+\begin{tabular}{| c | c | c | c | c | c |}
+  \hline	
+  Iteration & Step & Multiplier & Multiplicand & Product  \\  \hline  		
+  0 & Init & 01100010 & 0000000000010010 & 0000000000000000   \\ \hline
+  0 & 1: 0: nothing & 01100010 & 0000000000010010 & 0000000000000000   \\ \hline
+  0 & 2: shift m-and left & 01100010 & 0000000000100100 & 0000000000000000   \\ \hline
+  0 & 3: shift m-er right & 00110001 & 0000000000100100 & 0000000000000000   \\ \hline
+  1 & 1: 1: add & 00110001 & 0000000000100100 & 0000000000100100   \\ \hline
+  1 & 2: shift m-and left & 00110001 & 0000000001001000 & 0000000000100100   \\ \hline
+  1 & 3: shift m-er right & 00011000 & 0000000001001000 & 0000000000100100   \\ \hline
+  2 & 1: 0: nothing & 00011000 & 0000000001001000 & 0000000000100100   \\ \hline
+  2 & 2: shift m-and left & 00011000 & 0000000010010000 & 0000000000100100   \\ \hline
+  2 & 3: shift m-er right & 00001100 & 0000000010010000 & 0000000000100100   \\ \hline
+  3 & 1: 0: nothing & 00001100 & 0000000010010000 & 0000000000100100   \\ \hline
+  3 & 2: shift m-and left & 00001100 & 0000000100100000 & 0000000000100100   \\ \hline
+  3 & 3: shift m-er right & 00000110 & 0000000100100000 & 0000000000100100   \\ \hline
+  4 & 1: 0: nothing & 00000110 & 0000000100100000 & 0000000000100100   \\ \hline
+  4 & 2: shift m-and left & 00000110 & 0000001001000000 & 0000000000100100   \\ \hline
+  4 & 3: shift m-er right & 00000011 & 0000001001000000 & 0000000000100100   \\ \hline
+  5 & 1: 1: add & 00000011 & 0000001001000000 & 0000001001100100   \\ \hline
+  5 & 2: shift m-and left & 00000011 & 0000010010000000 & 0000001001100100   \\ \hline
+  5 & 3: shift m-er right & 00000001 & 0000010010000000 & 0000001001100100   \\ \hline
+  6 & 1: 1: add & 00000001 & 0000010010000000 & 0000011011100100   \\ \hline
+  6 & 2: shift m-and left & 00000001 & 0000100100000000 & 0000011011100100   \\ \hline
+  6 & 3: shift m-er right & 00000000 & 0000100100000000 & 0000011011100100   \\ \hline
+  7 & 1: 0: nothing & 00000000 & 0000100100000000 & 0000011011100100   \\ \hline
+  7 & 2: shift m-and left & 00000000 & 0001001000000000 & 0000011011100100   \\ \hline
+  7 & 3: shift m-er right & 00000000 & 0001001000000000 & 0000011011100100   \\ \hline
+  8 & 1: 0: nothing & 00000000 & 0001001000000000 & 0000011011100100   \\ \hline
+  8 & 2: shift m-and left & 00000000 & 0010010000000000 & 0000011011100100   \\ \hline
+  8 & 3: shift m-er right & 00000000 & 0010010000000000 & 0000011011100100   \\ \hline
+  
+\end{tabular} \\
 
+The value left in the Product register evaluates to 1764, which is equal to the product of 0x62 (98) and 0x12 (18).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{6)}
+
+\begin{tabular}{| c | c | c | c | c | c |}
+  \hline	
+  op code & source register & second source & dest. register & shift amount & function \\  \hline  		
+  000000 & 01000 & 01001 & 10001 & 00000 & 100000  \\ \hline
+  0 & 8 & 9 & 17 & 0 & 32 \\ \hline
+  R-type & \$t0 & \$t1 & \$s1 & 0 & add \\\hline
+\end{tabular} \\
+
+\noindent  In HEX, this translates to:
+
+\noindent \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Bin & 0000 & 0001 & 0000 & 1001 & 1000 & 1000 & 0010 & 0000 \\ \hline
+  Hex & 0 & 1 & 0 & 9 & 8 & 8 & 2 & 0 \\  \hline  		
+\end{tabular} \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{7)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  Hex & 1 & 2 & 0 & F & 0 & 0 & 0 & 8 \\  \hline  		
+  Bin & 0001 & 0010 & 0000 & 1111 & 0000 & 0000 & 0000 & 1000 \\ \hline
+\end{tabular} \\
+
+\noindent The first 6 bits signify an opcode of 4, which makes this an I-type.  \\
+
+\noindent \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+  opcode & rs & rt & immediate  \\  \hline  		
+  000100 & 10000 & 01111 & 0000000000001000  \\ \hline
+  beq & \$s0 & \$t7 & 8  \\ \hline
+\end{tabular} \\
+
+\noindent This translates into a MIPS command of "beq \$t7, \$s0, 8".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
