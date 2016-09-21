@@ -29,22 +29,36 @@ Justin Ely
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{1)}
+For this, and following solutions, (n) represents column n in the table.  This is used to reduce errors in typing when doing
+arithmetic with derived columns. \\
+
 \begin{tabular}{| l | c | c | c | c | c | c | c | c |}
   \hline	
     1 & 2 & 3 & 4 & 5 & 6 & 7  \\  \hline \hline
-    a & b & (ab)' & A'(3 )& B'(3) & ((4)(5))' & ((6)(6))'  \\  \hline \hline
+    a & b & (ab)' & A'(3) & B'(3) & ((4)(5))' & ((6)(6))'  \\  \hline \hline
     0 & 0 & 1 & 1 & 1 & 0 & 1  \\  \hline 
     1 & 0 & 1 & 0 & 1 & 1 & 0  \\  \hline 
     0 & 1 & 1 & 1 & 0 & 1 & 0  \\  \hline 
     1 & 1 & 0 & 1 & 1 & 0 & 1  \\  \hline 
 \end{tabular} \\
 
-\noindent  The result (last column) has the same truth table as a XNOR gate.
+\noindent  The result (column 7) has the same truth table as a XNOR gate.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{2)} 
-
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+    ROW & A & B & C & Y & Maxterm & Minterm  \\  \hline \hline
+    0 & 0 & 0 & 0 & 1 &  &   A'B'C' \\  \hline 
+    1 & 0 & 0 & 1 & 0 & A + B + C' &   \\  \hline 
+    2 & 0 & 1 & 0 & 1 &  & A'BC'  \\  \hline 
+    3 & 0 & 1 & 1 & 1 &  &  A'BC \\  \hline 
+    4 & 1 & 0 & 0 & 0 & A' + B + C &   \\  \hline 
+    5 & 1 & 0 & 1 & 0 & A' + B + C' &   \\  \hline 
+    6 & 1 & 1 & 0 & 1 &  &  ABC' \\  \hline 
+    7 & 1 & 1 & 1 & 0 & A' + B' + C' &   \\  \hline 
+\end{tabular} \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -84,7 +98,16 @@ AB + BC + AC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{5)}
+From the circuit diagram shown:
 
+\begin{enumerate}
+  \item $o_3 = S`I_2$
+  \item $o_2 = SI_3 + S`I_1$
+  \item $o_1 = I_2S + S`I_0$
+  \item $o_0 = I_1S$
+\end{enumerate}
+
+\noindent Thus, by setting $S=1$, and $I_3, I_2 , I_1, I_0 = 1011$, the circuit comes out as: $o_3, o_2, o_1, o_0 = 0101$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -102,11 +125,45 @@ would look like that shown in the figure below.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{7)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9  \\  \hline \hline
+    A & B & A`B & AB` & A`B + AB' & C & (5)`C & C'(5) & R  \\  \hline \hline
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\  \hline 
+    0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1  \\  \hline 
+    0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1  \\  \hline 
+    0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0  \\  \hline 
+    1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1  \\  \hline 
+    1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0  \\  \hline 
+    1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\  \hline 
+    1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1  \\  \hline 
 
+\end{tabular} \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{8)}
+\section*{8a)}
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |}
+  \hline	
+    A & B & C & Z & Minterm \\  \hline \hline
+    0 & 0 & 0 & 1 & A'B'C'  \\  \hline
+    0 & 0 & 1 & 0 & A'B'C  \\  \hline
+    0 & 1 & 0 & 0 & A'BC'  \\  \hline
+    0 & 1 & 1 & 1 & A'BC  \\  \hline
+    1 & 0 & 0 & 1 & AB'C'  \\  \hline
+    1 & 0 & 1 & 0 & AB'C  \\  \hline
+    1 & 1 & 0 & 0 & ABC'  \\  \hline
+    1 & 1 & 1 & 1 & ABC  \\  \hline
+\end{tabular} \\
+
+The function Z is then built of the minterms on rows where Z=1:  $Z = A'B'C' + A'BC + AB'C' + ABC$.
+
+\section*{8b)}
+\begin{eqnarray}
+Z &=& A'B'C' + A'BC + AB'C' + ABC \\
+Z &=& B'C'(A' + A) + BC(A' + A) \\
+Z &=& B'C' + BC 
+\end{eqnarray}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
