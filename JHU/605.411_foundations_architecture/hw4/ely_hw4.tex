@@ -1,0 +1,137 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 4}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.411 Foundations of Computer Architecture \\}
+\vspace{0.5cm}
+% Date here below
+27 September, 2016
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1)}
+The BEQ instruction is performed using {\bf c: subtraction}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2)} 
+The ALU control bits 0110 signify {\bf b: subtract}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3)}
+The 4-bit ALU control pattern for add is {\bf 0010}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4)}
+If the zero flag is 1, then the branch will be taken.  Thus, the PC will be set to 0x08000000, incremented by 4, plus 0xAA shifted two bits 
+to the left.  \\
+
+\begin{tabular}{| l | c | c | c | c | c | c | c | c | c |}
+  \hline	
+  PC  & 0000 & 1000 & 0000 & 0000 & 0000 & 0000 & 0000 & 0000 \\  \hline
+  +4  & 0000 & 0000 & 0000 & 0000 & 0000 & 0000 & 0000 & 0100 \\  \hline
+  +(0xAA\textless \textless 2)  & 0000 & 0000 & 0000 & 0000 & 0000 & 0010 & 1010 & 1000 \\  \hline
+  result & 0000 & 1000 & 0000 & 0000 & 0000 & 0010 & 1010 & 1100 \\  \hline
+\end{tabular} \\
+
+Thus, the PC will be set to {\bf 0x80002AC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5)}
+From the slides in the lecture:\\
+
+\begin{tabular}{| c | c | c |}
+  \hline	
+        & Memory? & Sing-extend? \\  \hline
+   add & No & No \\  \hline
+   addi & No & Yes \\  \hline
+   not & NA & NA \\  \hline
+   beq & No & Yes \\  \hline
+   lw & Yes & Yes \\  \hline
+   sw & Yes & Yes \\  \hline
+\end{tabular} \\
+
+\section*{5a)}
+Data memory is used in lw and sw, which account for $25\% + 10\% = {\bf 35\%}$ of cycles in a single-cycle datapath.
+
+\section*{5b)}
+The sign extend circuit is needed in addi, beq, lw, and sw, which account for $20\% + 25\% + 25\% + 10\% = {\bf 80\%}$ of cycles in a 
+single-cycle datapath.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{6a)}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c |}
+  \hline	
+  RegDst & ALUSrc & MemtoReg & RegWrt & MemRead & MemWrt & Branch & ALUOp1 & ALUp0 \\  \hline
+  1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\  \hline
+\end{tabular} \\
+
+\section*{6b)}
+\begin{itemize}
+  \item Main control
+  \item ALU 
+  \item ALUControl
+  \item Register block
+  \item PC count incrementer
+\end{itemize}
+
+\section*{6c)}
+\begin{itemize}
+  \item Sign extend
+  \item Branch ALU
+\end{itemize}
+
+\section*{6d)}
+\begin{itemize}
+  \item Memory
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{7)}
+The SW instruction access the register file, the ALU, memory, and the register file again.  This totals $2 + 6 + 12 + 2 = {\bf 22ns}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{8)}
+\begin{tabular}{| c | c | c | c |}
+  \hline	
+       101011 & 10011 & 00010 & 0000000000010100 \\  \hline
+       43 & 19 & 2 & 20 \\  \hline
+       sw & \$s3 & \$v0 & 20 \\  \hline
+\end{tabular} \\
+
+\section*{8a)}
+The control unit's inputs are the ALUOp and the function code.  The ALUOp for the SW instruction is 00, and the function code is
+ignored.
+
+\section*{8b)}
+The input values to the ALU are the contents of the two registers, the offset (immediate value), and the ALU control code for SW: 0010.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
