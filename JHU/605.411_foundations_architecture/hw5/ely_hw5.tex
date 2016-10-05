@@ -29,6 +29,20 @@ Justin Ely
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{1)}
+An r-type instruction goes through the states: 0, 1, 6, 7, before returning back to 0.  From the values given in the slides, 
+the control values and next step codes in sequence are shown below. \\
+
+\begin{tabular}{| c | c | c |}
+  \hline	
+       Step & Control & Next  \\  \hline
+       0 & 1001010000001000 & 0001  \\  \hline
+       1 & 0000000000011000 & 0110  \\  \hline
+       6 & 0000000001000100 & 0111  \\  \hline
+       7 & 0000000000000011 & 0000  \\  \hline
+\end{tabular} \\
+
+\noindent In hex, this sequence would be:  0x94081, 0x00186, 0x00447, 0x00030.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,7 +50,6 @@ Justin Ely
 \begin{itemize}
  \item r-type
  \item load word
- \item branch (since it does a subtract)?
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,9 +65,9 @@ Justin Ely
 \end{tabular} \\
 
 \begin{figure}[h]
-\caption{PLA.}
+\caption{PLA for problem 3.}
 \centering
-\includegraphics[width=.8\textwidth]{problem_3_pla.png}
+\includegraphics[width=.7\textwidth]{problem_3_pla.png}
 \end{figure}
 
 
@@ -66,19 +79,32 @@ Justin Ely
    000100 & 00000 & 00100 & 0000000000001010 \\  \hline
 \end{tabular} \\
 
-The op-code says this is a BEQ instruction.  This goes through states 0, 1, 8 on the state diagram.
+The op-code says this is a BEQ (I-type) instruction.  BEQ goes through states 0, 1, 8 on the state diagram.
 
 \section*{4b)}
 0, 1, 2, 6, 8
 
 \section*{4c)}
-
+\begin{itemize}
+  \item Step 0: ALUSrcA = 0, ALUSrcB = 01, ALUOp = 00
+  \item Step 1: ALUSrcA = 0, ALUSrcB = 11, ALUOp = 00
+  \item Step 2: ALUSrcA = 1, ALUSrcB = 10, ALUOp = 00
+  \item Step 6: ALUSrcA = 1, ALUSrcB = 00, ALUOp = 10
+  \item Step 8: ALUSrcA = 1, ALUSrcB = 00, ALUOp = 01
+\end{itemize}
 
 \section*{4d)}
-
+\begin{itemize}
+  \item Step 0: ALU1 = PC, ALU2 = 4
+  \item Step 1: ALU1 = PC, ALU2 = shift-by-two unit output
+  \item Step 2: ALU1 = Register A, ALU2 = sign-extension unit output
+  \item Step 6: ALU1 = Register A, ALU2 = Register B
+  \item Step 8: ALU1 = Register A, ALU2 = Register B
+\end{itemize}
 
 \section*{4e)}
-The branch is comparing register \$0 to register \$4.  Since \$0 = \$4 = 0, the branch is taken.  
+The branch is comparing register \$0 to register \$4.  Since \$0 = \$4 = 0, the branch is taken.  The new PC value will be
+PC + 4 + (I-value $<$ $<$ 2) = 0000 0000 0100 0000 0000 0000 0010 1100.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,7 +138,13 @@ X = (X2X1`X0`) + (X2X1X0`) + (X2X1`X0) + (X2X1X0)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{6)}
+See figure below.
 
+\begin{figure}[h!]
+\caption{PLAs for problem 6.  Top to bottom: 5a, 5b, 5c, 5d}
+\centering
+\includegraphics[width=.7\textwidth]{hw4_p6.png}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,7 +167,12 @@ From the state diagram given in the lectures:\\
 
 \section*{8)}
 \begin{itemize}
-  \item lw \$2,40(\$4):  Uses the memory system when it is retrieving the specified word, the ALU to calculate the address, and the register file to see in which register to write the loaded word.  \item add \$3,\$6,\$7: Uses the ALU do perform the arithmetic, and the register file to read operands and write result.  \item slt \$5,\$6,\$7:  Uses the ALU to check if one register is less than another, and the register file to read operands and set the result.  \item sw \$6,44(\$4):  Uses the register file and ALU to retrieve and calculate the address in memory to put the register value.  \item and \$9,\$11,\$10:  Uses the ALU to perform the AND operation, and the register file to read operands and write result.  \item or \$21,\$27,\$8: USes the ALU to perform the OR operation, and the register file to read operands and write result.
+  \item lw \$2,40(\$4):  Uses the memory system when it is retrieving the specified word, the ALU to calculate the address, and the register file to see in which register to write the loaded word.
+  \item add \$3,\$6,\$7: Uses the ALU do perform the arithmetic, and the register file to read operands and write result.
+  \item slt \$5,\$6,\$7:  Uses the ALU to check if one register is less than another, and the register file to read operands and set the result.
+  \item sw \$6,44(\$4):  Uses the register file and ALU to retrieve and calculate the address in memory to put the register value.
+  \item and \$9,\$11,\$10:  Uses the ALU to perform the AND operation, and the register file to read operands and write result.
+  \item or \$21,\$27,\$8: USes the ALU to perform the OR operation, and the register file to read operands and write result.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
