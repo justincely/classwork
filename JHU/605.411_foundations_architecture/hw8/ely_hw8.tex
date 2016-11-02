@@ -1,0 +1,128 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 8}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.411 Foundations of Computer Architecture \\}
+\vspace{0.5cm}
+% Date here below
+31 October, 2016
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+To select chip b, the chip selector bit will be 0, so cell 74 stays
+as 74, and 0xD132 = 53554. \\
+
+\noindent li \$t1, 74 \\
+\noindent li \$t2, 53554
+
+
+\section*{1b)}
+To select chip a, the chip selector bit will be 1, so cell 43 becomes 
+2147483691, and 0xB133 = 45363. \\
+
+\noindent li \$t1, 2147483691 \\
+\noindent li \$t2 45363
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)} 
+The time for each read will be $5ns + 25ns = 30ns$.  The amount
+of data transferred per read will be 64 bits = 8 bytes.  Thus the 
+bandwidth will be $\frac{8 bytes}{30e-9 seconds} = 2.667e8 \frac{bytes}{second}$ or .266 Gigbytes per second.
+
+
+\section*{2b)}
+LW retrieves 1 word, which is 32 bits or 4 bytes.  Thus, LW would need only
+1 read which would take a minimum of 30ns.  The LW, in practice, would take more 
+time depending on the architecture of the pipeline and the time required
+for the other 4 stages. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3)}
+  
+\begin{itemize}
+  \item a) 1
+  \item b) 1
+  \item c) 0
+  \item d) 0
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4a)}
+{\bf Presuming you mean problem 3 instead of problem 1:}\\
+
+\noindent This is best characterized by a latch as the output changes in
+response to the input, not in response to a clock. 
+
+
+\section*{4b)}
+This is best characterized by S-R, as the output state can be set or reset
+based on which input is triggered, and remembers that state when the inputs
+are turned off.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5Ia)}
+$15e9 = \frac{4 \times N}{10e-9} = 37.5$.  Thus, 38 memory banks would be
+required to provide 15 billion bytes per second.
+
+\section*{5Ib)}
+22 bits are required to address the bytes on a given chip, and 4 bits are 
+required to select the chip, so the total number of bits is 26.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5IIa)}
+Longest stage = 20ns, so clock rate = $\frac{1}{20e-9} = .05GHz$.
+
+\section*{5IIb)}
+
+Width = word size = 32 bits = 4 bytes.  Depth = $\frac{2^30}{4} = 268435456 = 2^{28}$ bytes.  
+
+\section*{5IIc)}
+This pipeline would need 1 new
+instruction every 20 ns, for a bandwidth of $\frac{4}{20e-9} = 2e8 \frac{bytes}{second}$.  However, DDRAM transfers twice the data with each read, so the bandwith could be halved to 1e8 $\frac{bytes}{second}$.
+
+\section*{5IId)}
+$128e6 \frac{bytes}{second} = \frac{width}{cycle time} = \frac{4 \frac{bytes}{cycle}}{cycle time}$.  Thus the cycle time is 3.125e-8 seconds/cycle.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{6)}
+\begin{tabular}{| c | c | c |}
+  \hline	
+  	CMD & Big-Endian & Little-Endian \\ \hline \hline
+	lw \$t0,0(\$t1) & 0x89875543 & 0x43558789 \\ \hline
+	lh \$t0,0(\$t1) & 0x00008987 & 0x87890000 \\ \hline
+	lb \$t0,3(\$t1) & 0x00000043 & 0x43000000\\ \hline
+	lh \$t0,2(\$t1) & 0x00005543 & 0x43550000 \\ \hline
+\end{tabular} \\
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
