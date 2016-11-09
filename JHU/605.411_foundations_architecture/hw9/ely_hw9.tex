@@ -1,0 +1,146 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 9}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.411 Foundations of Computer Architecture \\}
+\vspace{0.5cm}
+% Date here below
+08 November, 2016
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+For direct mapping, $log_2(128) = 7$ is the number of bits in the offset field and $log_2(131072) = 17$ is the number of
+bits in the line field.  \\
+
+\begin{tabular}{| l | c | c | c |}
+  \hline	
+      & Line & Offset  \\  \hline \hline
+      1000 0010 & 0101 0001 1100 1010 1 & 100 1100 \\ \hline
+\end{tabular} \\
+
+\section*{1b)}
+For a 2-way set associative, there will be 2 lines per set.  For this, the offset stays at 7 bits, and the set becomes $log_2(\frac{131072}{2}) = 16$.
+
+\begin{tabular}{| l | c | c | c |}
+  \hline	
+      & Set & Offset  \\  \hline \hline
+      1000 0010  0 & 101 0001 1100 1010 1 & 100 1100 \\ \hline
+\end{tabular} \\
+
+\section*{1c)}
+For 4-way set associative, there will be 4 lines per set.  With a 64-bit line, the offset will be $log_2(64) = 6$.  The set will be
+$log_2(\frac{131072}{4}) = 15$. 
+
+\begin{tabular}{| l | c | c | c |}
+  \hline	
+      & Set & Offset  \\  \hline \hline
+      1000 0010  010 & 1 0001 1100 1010 11 & 00 1100 \\ \hline
+\end{tabular} \\
+
+\section*{1d)}
+A 1024-byte line size results in an offset which is $log_2(1024) = 10$ bits.  For fully associative, the rest of the address becomes the tag:
+
+\begin{tabular}{| l | c | c | c |}
+  \hline	
+      Tag & Offset  \\  \hline \hline
+      1000 0010  0101 0001 1100 10 & 10 1100 1100 \\ \hline
+\end{tabular} \\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)} 
+According to the table in lecture: if the bits are currently 001, a miss will result in replacing way 2.
+
+\section*{2b)} 
+Startin with 001, a hit on way 2 will cause:
+
+\begin{itemize}
+  \item Bit 2 to be set to 1
+  \item Bit 1 to remain unchanged at 0
+  \item Bit 0 to be set to 0
+\end{itemize}
+
+\noindent Which will result in bits 100.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3a)}
+$ Ave = .9 \times .5ns + .1 (.5 \times (.5ns + 50ns)) = 5.5 ns$.
+ 
+\section*{3b)}
+$ Ave = .9 \times .5ns + .1 (.6 \times (.5ns + 5ns) + .4 \times (.5ns + 5ns + 50ns)) = 3 ns$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4a)}
+\begin{eqnarray}
+10 &=& h \times 8 + (1-h) \times 60 \\
+10 &=& 8 h + 60 - 60 h \\
+-50 &=& 8 h - 60 h \\
+-50 &=& -52 h \\
+.9625 &=& h
+\end{eqnarray}
+
+\section*{4b)}
+\begin{eqnarray}
+10 &=& h \times 8 + (1-h) \times (60 + 8) \\
+10 &=& 8 h + 68 - 68 h \\
+-58 &=& 8 h - 68 h \\
+-58 &=& -60 h \\
+.9666 &=& h
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4)}
+c) access time/address space
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5a)}
+The virtual address will be 4 bits for the page number and 128 bits (64 bytes) for the offset, which totals 132 bits.
+
+\section*{5b)}
+The physical address will be 3 bites for the frame number and 128 bits (64 bytes) for the offset, which totals 131 bits.
+
+\section*{5c)}
+{\it The value 0x97 doesn't seem like enough bits to give an address for this problem, so i may not be completely understanding this, however:}
+
+The leftmost 4 bits (1001) will be used to 
+index the page table.  If the frame at that index does exist, then the bits (001) will be used to find the correct frame.  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{6a)}
+$ Ave = .9 \times .6ns + .1 (.6 + 70ns) = 7.6 ns$.
+
+\section*{6b)}
+$ Ave = .9 \times .6ns + .1 (.1 \times (.6 + 6) + .9 \times (.6 + 6 + 70)) = 7.5 ns$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
