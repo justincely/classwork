@@ -1,0 +1,76 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 10}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.411 Foundations of Computer Architecture \\}
+\vspace{0.5cm}
+% Date here below
+15 November, 2016
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+\begin{itemize}
+  \item A: $time = 5s + \frac{3145728 \, bytes \times s^{-1}}{5120s} = 619.4s$
+  \item B: $time = 4s + \frac{3145728 \, bytes \times s^{-1}}{3072s} = 1028s$
+\end{itemize}
+
+
+\section*{1b)}
+\begin{eqnarray}
+5 + \frac{N}{5120} &=& 4 + \frac{N}{3072} \\
+\frac{N}{5120} &=& -1 + \frac{N}{3072} \\
+N &=& -5120 + \frac{5N}{3} \\
+ \frac{-2N}{3}  &=& -5120 \\
+ N  &=& 7680 \, bytes
+\end{eqnarray} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)} 
+With a device generating 150 requests per second, and each request requiring 12,000 cycles to handle, the total number of 
+cycles per second spent handling interrupts and processing requests will be: \\
+
+$150 \, \frac{requests}{second} \times 12,000 \, cycles = 1,800,000 \frac{cycles}{second}$. 
+
+\section*{2b)} 
+For just a polling scenario, the CPU will use 500 cycles once every .5ms.  \\
+
+$ \frac{1 \, poll}{5e^{-4} \, seconds} \times 500 \, cycles= 1,000,000 \frac{cycles}{second}$
+
+\section*{2c)} 
+
+$ \frac{1 \, poll}{N \, seconds} \times (500 + 12000)\, cycles = 1800000 $, thus N = .0069s or 6.9ms.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3a)}
+Memory-mapping implements I/O by allowing peripheral device access through the same address bus as normal memory.  This has the benefit of not needing special I/O commands; rather the same load instruction can be used to access system memory or an external device, at the cost of decreasing the amount of addresses reserved for memory.  Consequently, CPUs are allowed to remain simpler, cheaper, smaller, and faster without the overhead of the extra logic. 
+
+\section*{3b)}
+DMA is an improvement over CPU programmed I/O because it requires fewer active CPU cycles to complete memory access.  CPU Programmed I/O requires the CPU to be active during the entire read or write sequence.  With DMA, a device is allowed to directly access memory and bypass the need for the CPU to act as middleman.  In this scheme the CPU is only need at the beginning and end of an access, the rest of the time it is free to perform other functions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
