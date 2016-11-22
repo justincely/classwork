@@ -1,0 +1,98 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Problem Set 11}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.411 Foundations of Computer Architecture \\}
+\vspace{0.5cm}
+% Date here below
+22 November, 2016
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{1a)}
+$P_{0-3}` = B0 \oplus B1 \oplus B2` \oplus B3$
+
+\section*{1b)}
+\begin{eqnarray}
+P_{0-3}` = B0 \oplus B1 \oplus B2` \oplus B3 \\
+P_{0-3}` \oplus B2` = B0 \oplus B1 \oplus B3 
+\end{eqnarray}
+
+\begin{eqnarray}
+P_{0-3} = B0 \oplus B1 \oplus B2  \oplus B3 \\
+P_{0-3} \oplus B2 = B0 \oplus B1 \oplus B3 
+\end{eqnarray}
+
+\begin{eqnarray}
+P_{0-3} \oplus B2 = B0 \oplus B1 \oplus B3  = P_{0-3}` \oplus B2` \\
+P_{0-3} \oplus B2  = P_{0-3}` \oplus B2` \\
+P_{0-3} \oplus B2 \oplus B2` = P_{0-3}`  
+\end{eqnarray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{2a)} 
+This system is a RAID5: striping with single parity shared across disks.
+
+\section*{2b)} 
+To write new content to block 8, we also need to write a new parity block, so W=2.  Writing a new parity block requires reading the 4 data blocks, 
+so R = 4.  Computing the new parity is $P_{8-11} = B8 \, xor  \, B9  \, xor  \, B10  \, xor  \, B11 $ so N = 3.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{3a)}
+RAID 4 strips data with a single parity disk, so $N_{disks} = 4T + 1$.
+
+\section*{3b)}
+RAID 5 also strips data with the equivalent of 1 parity disk striped across the volumes, so $N_{disks} = 4T + 1$.
+
+\section*{3c)}
+RAID 6 also strips data with the equivalent of 2 parity disk striped across the volumes, so $N_{disks} = 4T + 2$.
+
+\section*{3d)}
+RAID 1 mirrors all the data with no parity, so $N_{disks} = 2 \times 4T = 8T$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{4a)}
+N = 2: 
+
+\section*{4b)}
+N = 2.
+
+\section*{4c)}
+If disks 2 and 6 fail, only the RAID10 system will operate.  In the RIAD01 system, strips 1, 5, 9, 13 would no longer
+be accessible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{5a)}
+D, A, B, C
+
+\section*{5b)}
+Device B would then not be able to have requests granted.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
