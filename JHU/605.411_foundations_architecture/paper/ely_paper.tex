@@ -22,7 +22,7 @@ Justin Ely
 \footnotesize{605.411 Foundations of Computer Architecture \\}
 \vspace{0.5cm}
 % Date here below
-18 October, 2016
+6 December, 2016
 \end{flushright}
 
 \noindent\rule{\linewidth}{1.0pt}
@@ -33,8 +33,9 @@ Justin Ely
 \section{Contents}
 \begin{itemize}
 \item Introduction %(page \pageref{sec:Introduction})
-\item Instruction Set
+\item Architecture and Overview
 \item Data representation and Data Path
+\item Instruction Set
 \item Memory
 \item Summary
 \item References
@@ -42,11 +43,71 @@ Justin Ely
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
+\section{Introduction and Overview}
+
+The entirety of the command and lunar module software for all 6 lunar landings would easily fit on a single floppy disk.  
+
+The physical dimensions of the APG was a modest 12.5x13x6 inches but weighed an impressive 70 pounds.  It used approx 55 watts of power which is comparable to a modern laptop.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Architecture}
+In this system, instructions and data were stored in the same memory, thus making the APG a Von Neumann Architecture (REF MIT pdf).  
+The APG also has many instructions which perform both load/store and arithmetic operations. (give example) This behavior is an aspect of complex instruction set  architecture (CISC).  Words were 16 bits (15 + 1 parity) for reasons that will be explained in later sections.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data Representation and Data Path}
+The data representation scheme used comes from the mission requirements to perform accurately evaluate equations for navigational computations.  This need for precise calculations was balanced against the waste that comes from too large of a word size.  Engineers determined that a word size of 16 bits (15 + 1 parity) was sufficient for instructions and gave enough precision for the mission.  This would allow two words to be read for 28 bits of precision (2 parity and 2 sign).  This gave approximated 8 decimals of precision and translated to distances of approx........ in the lunar missions.
+The APG contained only integer arithmetic units.  
+With only integer units, the APG contained no units for representing, or performing arithmetic, on floating point numbers.   Instead, an alternative system was used to do calculations on real numbers.  This was called fractional notation.  
+
+Of curious note is the mathematical units used in the computations.  Internally to the APG, the units were metric.  However, the astronauts wanted to read and input values in Imperial, so conversions were employed in the layer between the core and the UI.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Instruction Set}
+41 distinct instructions.
+
+first 3 bits were the op-code, rest were nominally the operand address. 
+
+\section*{1a)}
+\begin{center}
+\begin{tabular}{| c | c |}
+  \hline	
+  	Command & Meaning \\ \hline \hline
+	or & 4 \\ \hline
+	and & 4 \\ \hline
+	sub & 4 \\ \hline
+	sw & 4 \\ \hline
+	lw & 5 \\ \hline
+	add & 4 \\ \hline
+	bne & 3 \\ \hline \hline
+	Total & 28 \\ \hline
+\end{tabular} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Memory}
+
+24 total registers...(Explain the various ones - kinda interesting)
+These registers are addressable just like memory locations.  In fact, the first 48 words are central registers.  This allows the same instructions to be used for memory and register access. 
+
+(Insert appendix C diagram?)
+
+The memory system itself holds 38K words of memory.  Of this, the first 2K is capable of both reads and writes where the final 36K is read-only.  
+
+The read-only memory is made of magnetic core rope.  (Explain)  Magnetic memory was very important for space based applications as it was immune to most radiation-induced errors and would persist after removal of the power source. 
+
+The contents of read-only memory were physically written during fabrication.  
+
+This read-only memory held some programs, but also kept mathematical constants to prevent overwrite.  Ex. star locations, etc.
+
+It may have been apparent that the 12-bit addresses in the instruction set can only reference 4K of storage and are not sufficient to address all locations in the 38K memory space.  At this time in history, memory was relatively cheap and allowed systems to have far more memory than was physically addressable with a reasonable word-size.  Contrast this today, where modern 64-bit word-sizes can address far more memory than can be included with the system.  
+Virtual memory management wasn't yet in a mature form at this time in computing history. 
+
+To combat this, a "memory banking" scheme was used. Bank registers.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
