@@ -66,24 +66,33 @@ Though the AGC represented some of the most cutting edge technology for the time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data Representation and Data Path}
-The data representation scheme used comes from the mission requirements to perform accurately evaluate equations for navigational computations.  This need for precise calculations was balanced against the waste that comes from too large of a word size.  Engineers determined that a word size of 16 bits (15 + 1 parity) was sufficient for instructions and gave enough precision for the mission.  This would allow two words to be read for 28 bits of precision (2 parity and 2 sign).  This gave approximated 8 decimals of precision and translated to distances of approx........ in the lunar missions.
-The APG contained only integer arithmetic units.
-
-Words were 16 bits (15 + 1 parity) for reasons that will be explained in later sections.  
+The data representation scheme used in the APG was a direct result of balancing the speed and efficiency of small word sizes against the accuracy of calculations.  A large word size would give better precision to numerical values, but would require larger registers, bigger buses, and more memory.  In the end, engineers concluded that a word size of 16 bits (15 + 1 parity) was sufficient for instructions and provided enough precision for the equations used in navigation and control. This would allow a double-precision value of 28 bits to give approximately 9 decimals digits of precision.  This translated into distances of about 1 foot and velocities below 1 foot per second.  
 
 \subsection{Integers}
-The APG represents integers using a modified version of one's complement. As in the standard one's complement, 15 bits uses the first bit for the sign and the remaining 14 bits for the value.  This allows representation of values from -16383 to 16383 with both positive and negative zeros. Over flow is a problem with this scheme.
+The APG represents integers using a modified version of one's complement. As in the standard implimentation, the first bit is used for the sign with the remaining 14 bits for the value (ignoring the leading parity bit).  This allows representation of values from -16383 to 16383 with both positive and negative zeros.
 
-The modified scheme combats overflow by adding special detection of sign bit flips.  When doing calculations, the 15 bit value is loaded into a 16-bit accumulator, where the 16th bit is a copy of the sign bit from the operand.  This last bit is not accesible to the programmer; instead the AGC determines when an overflow occurs and alters programming accordingly.  
+The modification to the standard one's compliment is to handle overflow.   scheme combats overflow by adding special detection of sign bit flips.  When doing calculations, the 15 bit value is loaded into a 16-bit accumulator, where the 16th bit is a copy of the sign bit from the operand.  This last bit is not accessible to the programmer; instead the AGC determines when an overflow occurs and alters programming accordingly.  
 
 Namely, interrupts are temporarily prevented in the AGC (as the overflow detection bit would not be preserved accross an interrupt) until the overflow condition has been cleared.  Such as by loading a new value into the accumulator or clearing the content.  
 
 Interestingly, when overflow does occur, the original sign bit (not the computed sign bit) is left in the register.  This keeps the value of the same sign, instead of opposite sign, but changes the actual magnitude.  
 
 \subsection{Real Numbers}
-With only integer units, the APG contained no units for representing, or performing arithmetic, on floating point numbers.   Instead, an alternative system was used to do calculations on real numbers.  This was called fractional notation.  
+Real numbers are incredibly important in the sort of mathematical calculations that the APG needed to perform.  From inputs and results of calculations
+With only integer units, the APG contained no units for representing or performing arithmetic, on floating point numbers.   Instead, an alternative system was used to do calculations on real numbers.  This was called fractional notation.  
+
+\begin{figure}[h!]
+\caption{Apollo Guidance Computer (AGC) {\it (left)} next to the DSKY (Display and Keyboard) interface {\it (right)}.} 
+\centering
+\includegraphics[width=.8\textwidth]{apg_numbers.png} 
+\end{figure}
+\vspace{0.02cm}
+
+This system can only represent numbers between 0 and .9999.
 
 $\frac{1}{3} = .33331298828125$ in this fractional notation.  
+
+
 
 Put burden on programmer to arrange programs to only need a single order of magnitude at a time so that only a fractional part (and not an exponent) is needed.
 
@@ -98,6 +107,13 @@ The memory system of the APG differs significantly from the systems we're used t
 Ferrite-core?
 
 magnetic core rope: The contents of read-only memory were physically written during fabrication.  This read-only memory held some programs, but also kept mathematical constants to prevent overwrite.  Ex. star locations, etc.  This memory was compact, reliable, had random access, and was extremely inexpensive.  Each bit cost between \$.05 and \$.07 to produce when most comparable solutions were a factor of 10 higher. (MIT) The main detractor to rope memory came from it's characteristic of being programmed during production.  This meant that any desired change, due to changing requirements or simple mistakes in programming or manufacture, couldn't be implemented without re-wiring the core.  Due to their complexity, this usually meant entire modules needed to be replaced for any change.  (MIT)
+
+\begin{figure}[h!]
+\caption{Apollo Guidance Computer (AGC) {\it (left)} next to the DSKY (Display and Keyboard) interface {\it (right)}.} 
+\centering
+\includegraphics[width=.8\textwidth]{core_rope.png} 
+\end{figure}
+\vspace{0.02cm}
 
 Of the 38K words in total system memory, the first 48 words belonged to the central registers.  (FIXME, Explain the various ones?)  The next 2K were the writable memory, and the remaining 36K were ROM.  Furthering the departments from current trends, the registers were addressable just like the other memory locations.  This allows the same instructions to be used for memory and register access.  
 
@@ -123,24 +139,13 @@ The basic format for instructions in the AGC is shown below.  The first bit prov
 
 A 3-bit opcode allows for a total of 8 unique instructions.  Clearly, trying to work the entire operation of a complicated spacecraft with only 8 instructions would present significant challenges.  More instructions were necessary, but even as the mission requirements progressed it would be too costly to re-design the system around a larger word size.  The engineers created some unique solutions to get more instructions within the existing limitations.
 
-The first addition to the instruction set came from exploiting existing commands that could utilize smaller operand fields.  In particular, instructions that write to memory don't need to access the higher addresses of the ROM, and will only ever use the lower 10 bits of the operand field. By combining the two left-over bits, called quarter-codes, with the opcodes for this subset of commands yields an entirely new suite of available instructions.  
+The first addition to the instruction set came from exploiting existing commands that could utilize smaller operand fields.  In particular, instructions that write to memory don't need to access the higher addresses of the ROM, and will only ever use the lower 10 bits of the operand field. By combining the two left-over bits, called quarter-codes, with the opcodes for this subset of commands yields an entirely new suite of available instructions.  This provided additional instructions by re-purposing the opcodes from (TS, ADS, INCR, XCH) (001, 010, 101 and 110).
 
 The quarter codes expanded the instruction set considerably, and added efficiency to the system by giving useful meaning to commands and addresses that wouldn't work with the memory system, but still more were needed.  To further add to the available commands, the engineers repurposed nonsensical (though valid) instructions.  One example of this would be using the TC command to transfer control to the EBANK register.  This register was only 3 bits wide and would never contain valid instructions or data.  Instead, the AGC turned TC to EBANK into a brand new instruction: RELINT (Enable Interrupts).  Similarly, this was done for TC commands to 3 other registers that would never be valid.  This strategy served not only to expand the available commands, but to also serve as protection against programmer error.  If TC to EBANK ever was accidently entered, without the protection of the special commanding, the effects could be very difficult to debug.
 
+Lastly, when these commands still proved insufficient, a brute-force software solution was employed.  One of the special cases described above, TC to BBANK, was changed to instruct the AGC to interpret the subsequent command using an entirely new set of opcodes.  This effectively created a second instruction set, complete with quarter codes and special cases like the original.  Though this nearly doubled the possible instruction set, it comes at the cost of increased software overhead to processing the extended set.  This was mitigated as much as possible by placing the most often used opcodes in the standard set, and the less-frequently used ones in the extended.
+
 Similarly, a 12-bit address also presents a problem.  12 bits is sufficient only to address 4K of memory; far short of the 38K necessary. 
-
-\subsection{Quarter-codes, special cases, extend}
-quarter codes: commands that modify writable memory (TS, ADS, INCR, XCH) all need to have 0's in bits 11 and 12. 
-
-op-code 000 links to many special instructions (I/O)
-
-op-code 011, 100, 111 are all single instructions. 
-The four remaining binary opcodes
-(001, 010, 101 and 110) use quarter codes to varying degree
-
-Special cases:  Pg 84.  Used invalid TC commands as entirely new commands.
-
-EXTEND set
 
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -193,16 +198,6 @@ EXTEND set
 	& EXTEND & Set Extracode Flag \\ \hline
 	& EDRUPT & Ed Smally's Interrupt \\ \hline	
 	& RESUME & Resume Interrupted Program \\ \hline	
-
-
-	Involuntary & RUPT & Interrupt \\ \hline
-	& PINC & Counter Increment \\ \hline
-	& MINC & Counter Decrement \\ \hline
-	& DINC & Diminish Absolute Value by 1 \\ \hline
-	& PCDU & CDU Increment \\ \hline
-	& MCDU & CDU Decrement \\ \hline
-	& SHINC & Counter Shift \\ \hline
-	& SHANC & Counter Shift and Add 1 \\ \hline
 	
 \end{tabular} \\
 \end{center}
