@@ -1,0 +1,65 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[margin=1.25in]{geometry}
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Correlating Hubble Telescope Dark-Rates with Solar Activity}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+\newline
+%Put Author's affiliations
+\footnotesize{605.462 Data Visualization \\}
+\vspace{0.5cm}
+% Date here below
+27 March, 2017
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Description}
+The Hubble Space Telescope (HST) collects large volumes of data every day.  In addition to scientific observations of stars and galaxies, the spacecraft also regularly gathers engineering data from the instruments on-board and a variety of internal sensors.  This data is used by analysts and scientists to identify anomalies and improve performance of the telescope overall.  
+
+One of the instruments, the Cosmic Origins Spectrograph (COS), is particularly sensitive to interference from high-energy radiation in space.  This interference often takes the form of a low-level of radiation detected even when the telescope's shutter is closed; commonly referred to as a dark-rate.  In addition, the particular COS detectors permit measuring the exact arrival time of each detected photon.  This millisecond-scale data stream can be combined with other measurement information to identify interesting behaviors and trends. 
+
+We hypothesis here that fluctuations in the observed dark-rate in the COS detectors is caused predominantly from direct solar radiation.  Though dark-rate fluctuations can be caused by temperature fluctuations, distant supernovae, or eath's radiation belts, we believe that a thorough investigation of all available data will lead to the conclusion that the varying solar output is the leading factor. 
+
+\section{Plan}
+To answer this question we will need to find possible physical causes, collect and reduce the relevant data, and create visualization tools to permit investigation.  Finding physical underpinnings is a critical first step as observed trends mean little on their own.  Though correlations and trends can be informative, physical understanding of a root cause provides validation.  We will look through HST technical reports, scientific literature, and astronomy textbooks for possible sources. 
+
+The raw data will come from two sources.  NASA, through STScI and the HST archive, will provide the entire suite of COS data taken with a closed shutter.  This data focuses on the dark-rate without the added noise of a scientific observation.  NOAA, through it's open data portal, will provide measurements of the solar flux and particle density measurements.  
+
+From the data, analytic visualizations will be put together to explore the collated dataset.  From initial looks, correlations of the various detectors against attributes like time, orbital position, solar activity, and temperature will all need to be investigated.  The investigation will focus on an interactive approach, as the high-dimensional data will be hard to summarize in just a few static charts.  The visualization will be hosted online to permit exploration and investigation by the community at-large.
+
+\section{Timeline}
+
+\begin{center}
+\begin{tabular}{| l | l | }
+  \hline	
+      Week Ending & Work  \\  \hline \hline
+      April 03 &  Locate, retrieve, and combine datasets \\ \hline
+      April 10 &  Locate relevant literature and turn in revised proposal \\ \hline
+      April 17 &  Perform exploratory analysis, turn in bibliographic report \\ \hline
+      April 24 &  Prototype visualizations, investigate visualization hosting \\ \hline
+      May 01 &  Begin final report writing  \\ \hline
+      May 08 &  Finalize report and visualization, turn in project\\ \hline
+\end{tabular} \\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
