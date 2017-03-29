@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Justin Ely">
+    <meta name="author" content="Justin Ely">
+
+    <title>Baltimore Public Salaries</title>
+
+    <!-- Style sheets -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+
+<style>
+svg {
+  font: 10px sans-serif;
+  padding: 10px;
+}
+
+.axis,
+.frame {
+  shape-rendering: crispEdges;
+}
+
+.axis line {
+  stroke: #ddd;
+}
+
+.axis path {
+  display: none;
+}
+
+.cell text {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.frame {
+  fill: none;
+  stroke: #aaa;
+}
+
+circle {
+  fill-opacity: .3;
+}
+
+circle.hide {
+  fill: #ffff00
+}
+
+.extent {
+  fill: #000;
+  fill-opacity: .125;
+  stroke: #fff;
+}
+</style>
+
+</head>
+
+<body>
+  <!-- scripts -->
+  <script src="../JS/jquery.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="../JS/bootstrap.min.js"></script>
+
+    <div class="brand">Show me the MONEY!!</div>
+    <div class="address-bar">Exploring Baltimore City Salaries with D3</div>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>The data displayed below is public Baltimore City salaries
+                      from the 2015 fiscal year, which spans
+                      from July 1, 2014 through June 30, 2015.  The raw source data can be found at
+                      <a href="https://data.baltimorecity.gov/City-Government/Baltimore-City-Employee-Salaries-FY2015/nsfe-bg53"?>the baltimore open data portal</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">
+                        <strong>Scatterplot Matrix</strong>
+                    </h2>
+                    <hr>
+
+                    <p>Scatterplot matrices help to discover correlations and
+                      groupings between large numbers of variables.  Here we have
+                      displayed the matrix of gross-pay, annual salary, and hire
+                      date for Baltimore positions.
+                    </p>
+
+                    <p>Clicking and dragging in any of the subplots will select
+                      just a subset of the data to plot in all figures.  Refreshing
+                      the browser will reset this selection.
+                    </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/scatterplot.js"></script>
+
+
+</body>
+
+</html>
