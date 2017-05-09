@@ -3,6 +3,7 @@
 \usepackage{enumerate}
 \usepackage[usenames, dvipsnames]{color}
 \usepackage[margin=1.25in]{geometry}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -40,9 +41,9 @@ We hypothesis here that fluctuations in the observed dark-rate in the COS detect
 \section{Plan}
 To answer this question we will need to find possible physical causes, collect and reduce the relevant data, and create visualization tools to permit investigation.  Finding physical underpinnings is a critical first step as observed trends mean little on their own.  Though correlations and trends can be informative, physical understanding of a root cause provides validation.  We will look through HST technical reports, scientific literature, and astronomy textbooks for possible sources. 
 
-The raw data will come from two sources.  NASA, through STScI and the HST archive, will provide the entire suite of COS data taken with a closed shutter.  This data focuses on the dark-rate without the added noise of a scientific observation.  NOAA, through it's open data portal, will provide measurements of the solar flux and particle density measurements.  
+The raw data will come from two sources.  NASA, through STScI and the HST archive, will provide the entire suite of COS data taken with a closed shutter.  This data focuses on the dark-rate without the added noise of a scientific observation.  Since this data doesn't exist in the archive in the needed form, it will need to be first collected and collated.  A single example dataset can be found at the following url: \url{https://archive.stsci.edu/cgi-bin/hst_preview_search?ne=on&imfmt=fits&name=LA7803FIQ}, though the entire dataset will contain thousands of such files.  NOAA, through it's open data portal, will provide measurements of the solar flux and particle density measurements.  Specifically, these measurements will come from the Daily Solar Density $(*\_DSD.txt)$ and Daily Particle Density $(*\_DPD.txt)$ files found at \url{ftp://ftp.swpc.noaa.gov/pub/indices/old_indices/}.  All necessary datasets will be collected, collated, and cleaned in Python before use in the visualizations
 
-From the data, analytic visualizations will be put together to explore the collated dataset.  From initial looks, correlations of the various detectors against attributes like time, orbital position, solar activity, and temperature will all need to be investigated.  The investigation will focus on an interactive approach, as the high-dimensional data will be hard to summarize in just a few static charts.  The visualization will be hosted online to permit exploration and investigation by the community at-large.
+From the combined data, analytic visualizations will be put together to explore the collated dataset.  From initial looks, correlations of the various detectors against attributes like time, orbital position, solar activity, and temperature will all need to be investigated.  The investigation will focus on an interactive approach, as the high-dimensional data will be hard to summarize in just a few static charts.  The visualizations will be done in Javascript and D3, and will focus on overlaying the data on the world in various transformations, selective 1D plots with regressions and correlations, and hovering to dig deeper on each individual point.  The total suite will be hosted through Github Pages in an HTML/bootstrap webpage.  
 
 \section{Timeline}
 
@@ -58,6 +59,7 @@ From the data, analytic visualizations will be put together to explore the colla
       May 08 &  Finalize report and visualization, turn in project\\ \hline
 \end{tabular} \\
 \end{center}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
