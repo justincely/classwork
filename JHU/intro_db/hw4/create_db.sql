@@ -1,9 +1,15 @@
--- make sure i have write permissions
+-- This section was needed to address permissions in the database during
+-- creation and deletion.  These make sure there is a public schema to put
+-- the tables in.
 CREATE SCHEMA public;
 grant usage on schema public to public;
 grant create on schema public to public;
 
--- remove underscores for compat with insertions
+-- To be consistent with the provided insertion statements, underscores where
+-- removed from any column names.
+
+-- This table needs to be created without the foreign key constraint because the
+-- other table doesn't yet exist.
 CREATE TABLE employee (
   Fname VARCHAR(15) NOT NULL,
   Minit CHAR,
@@ -17,7 +23,8 @@ CREATE TABLE employee (
   Dno INT NOT NULL
 );
 
--- Perform inserts before adding foreign key constraints
+-- Perform inserts before adding the recursive foreign key.  Without this, each
+-- insert fails as the superviser needs to already be in the table.
 INSERT INTO EMPLOYEE(FNAME, MINIT,LNAME,SSN,BDATE,ADDRESS,SEX,SALARY,SUPERSSN,DNO) VALUES
 ('John', 'B', 'Smith', 123456789, '09-JAN-65', '731 Fondren, Houston, TX', 'M', 30000, 333445555,5);
 
@@ -42,12 +49,15 @@ INSERT INTO EMPLOYEE(FNAME, MINIT,LNAME,SSN,BDATE,ADDRESS,SEX,SALARY,SUPERSSN,DN
 INSERT INTO EMPLOYEE(FNAME, MINIT,LNAME,SSN,BDATE,ADDRESS,SEX,SALARY,SUPERSSN,DNO) VALUES
 ('Alicia','J','Zelaya',999887777,'19-JAN-68','3321 Castle, Spring','F',25000,987654321,4);
 
--- now add self-referential foreign key on ssn
+-- After inserts, the recursive foreign key from ssn to superssn can be added.
 ALTER TABLE employee
   ADD CONSTRAINT superssn_fkey FOREIGN KEY (superssn)
     REFERENCES employee (ssn);
 
--- remove underscores for compat with insertions
+-- remove underscores for compatibility with provided insertion statements
+
+-- No foreign keys are initially included to prevent errors from the non-existent
+-- foreign tables.
 CREATE TABLE department (
   Dname VARCHAR(15) UNIQUE NOT NULL,
   Dnumber INT NOT NULL PRIMARY KEY,
@@ -55,7 +65,7 @@ CREATE TABLE department (
   Mgrstartdate DATE
 );
 
- -- insert departments to allow employee <-> foreign keys
+-- insert departments to allow employee <-> foreign keys
 INSERT INTO DEPARTMENT(DNAME,DNUMBER,MGRSSN,MGRSTARTDATE) VALUES
 ('Headquarters',1,888665555,'19-JUN-81');
 
@@ -65,23 +75,25 @@ INSERT INTO DEPARTMENT(DNAME,DNUMBER,MGRSSN,MGRSTARTDATE) VALUES
 INSERT INTO DEPARTMENT(DNAME,DNUMBER,MGRSSN,MGRSTARTDATE) VALUES
 ('Research',5,333445555,'22-MAY-88');
 
--- Address circular reference
+-- Now that both tables exist, include employee foreign key from department table.
 ALTER TABLE employee
   ADD CONSTRAINT dno_fkey FOREIGN KEY (Dno)
     REFERENCES department (Dnumber);
 
--- Address circular reference
+-- Now that both tables exist, include department foreign key from employee table.
 ALTER TABLE department
   ADD CONSTRAINT mgrssn_fkey FOREIGN KEY (Mgrssn)
     REFERENCES employee (Ssn);
 
-
+-- Dept_locations table can be created with foreign keys as the other
+-- referenced table already exists.
 CREATE TABLE dept_locations (
   Dnumber INT NOT NULL REFERENCES department (Dnumber),
   Dlocation VARCHAR(15) NOT NULL,
   PRIMARY KEY (Dnumber, Dlocation)
 );
 
+-- Insert locations
 INSERT INTO DEPT_LOCATIONS(DNUMBER,DLOCATION) VALUES
 (1,'Houston');
 
@@ -98,6 +110,8 @@ INSERT INTO DEPT_LOCATIONS(DNUMBER,DLOCATION) VALUES
 INSERT INTO DEPT_LOCATIONS(DNUMBER,DLOCATION) VALUES
 (5,'Houston');
 
+-- The rest can all be Created and inserted without issue, as the referenced
+-- foreign keys all exist.
 
 CREATE TABLE project (
   Pname VARCHAR(15) UNIQUE NOT NULL,
