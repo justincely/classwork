@@ -1,0 +1,123 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{setspace}
+\doublespacing
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Hubble Space Telescope Spectra Database}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+%Put Author's affiliations
+\footnotesize{605.411. Principles of Database Systems \\}
+% Date here below
+11 August, 2017
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%------------------------------------------------------------------------------
+
+\section{Introduction}
+The Hubble Space Telescope (HST) is one of the most productive scientific instruments of all time, taking many observations each day and producing large quantities of data.  Unfortunately, the data storage for these archives grew organically over more than 25 years of operations.  This means the data is stored in a collection of ASCII files, binary files, and distributed databases with a large amount of redundancy and inneficiency.  This project aims to take a fresh look at storing this rich archive with a focus on efficiency, integrity, and speed of access to help speed up operations and make the entire thing more useful to the community. 
+
+\subsection{Scope and Purpose of Document}
+
+
+\subsection{Project Objective}
+The objective of this project is to design and implement an improved database for the Specral datasets taken by HST.  
+
+
+%------------------------------------------------------------------------------
+\section{System Requirements}
+
+\subsection{Hardware Requirements}
+Hardware?  Min CPU, min memory for DB final size?
+
+\subsection{Software Requirements}
+OSX or linux (get reqs from postgres?)
+\subsection{Functional Requirements}
+\subsection{Database Requirements}
+Postgres was chosen as the DBMS for this project.  The version used was v9.5.7.
+
+%------------------------------------------------------------------------------
+\section{Database Design Description}
+
+\subsection{Design Rationale}
+
+
+\subsection{E/R Model}
+
+\subsubsection{Entities}
+\subsubsection{Relationships}
+\subsubsection{E/R Diagram}
+
+\subsection{Relational Model}
+
+\subsubsection{Data Dictionary}
+\subsubsection{Integrity Rules}
+\subsubsection{Operational Rules}
+\subsubsection{Operations}
+
+\subsection{Security}
+For this implementation, security is a minor concern.  All data used is public-domain.
+
+\subsection{Database Backup and Recovery}
+MIRRORING?  
+
+PG\_DUMP (time it to give some more information?)
+
+\subsection{Using Database Design or CASE Tool}
+
+\subsection{Other Possible E/R Relationships}
+
+investigator to institution (but i don't have that information)
+
+%------------------------------------------------------------------------------
+\section{Implementation Description}
+
+\subsection{Data Dictionary}
+\subsection{Advanced Features}
+\subsection{Queries}
+
+\subsubsection{Query1}
+\subsubsection{Query2-8 or so}
+
+%------------------------------------------------------------------------------
+\section{CRUD Matrix}
+
+\subsection{List of Entity Types}
+\subsection{List of Functions}
+
+%------------------------------------------------------------------------------
+\section{Concluding Remarks}
+
+
+
+\pagebreak
+
+\appendix
+%------------------------------------------------------------------------------
+\section{DDL, INSERT, SELECT Statements}
+
+%------------------------------------------------------------------------------
+\section{Data Dictionary Index}
+
+
+
+
+\end{document}
