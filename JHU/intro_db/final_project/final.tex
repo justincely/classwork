@@ -46,11 +46,17 @@ The objective of this project is to design and implement an improved database fo
 \section{System Requirements}
 
 \subsection{Hardware Requirements}
-Hardware?  Min CPU, min memory for DB final size?
+PostgreSQL supports many architectures includeing x86, ARM, PowerPC, SPARC, and many others.
+
+INSERT MINIMUM AMOUNT OF MEMORY NECESSARY TO HOLD THE DB.
 
 \subsection{Software Requirements}
-OSX or linux (get reqs from postgres?)
+The DBMS for this project is PostgreSQL, which drives the software requirements.  However, this DBMS is well established and well supported.  It will run on Linux, OSX, and Windows, as well as many other UNIX varieties.  
+
+Installing PostgreSQL requires GNU make, and an ISO/ANSI C compiler.
 \subsection{Functional Requirements}
+This application supports the
+
 \subsection{Database Requirements}
 Postgres was chosen as the DBMS for this project.  The version used was v9.5.7.
 
@@ -63,7 +69,33 @@ Postgres was chosen as the DBMS for this project.  The version used was v9.5.7.
 \subsection{E/R Model}
 
 \subsubsection{Entities}
+Investigator is an entity that represents a person with an accepted scientific proposal to use the telescope.  This entity gives each investigator a unique integer ID, and tracks their firstname, middlename, and lastname.  
+
+Proposal stores an accepted proposal for the telescope.  Each proposal has an integer unique ID, as well as a title and the proposal cycle in which it was accepted.  A foreign key that references an Investigator ID tracks which proposals were submitted by which Investigator.  
+
+Target is an entity which holds each unique astronomical target that has been observed.  Each has a unique ID, as well as its common name and position in right ascension and declination (ra and dec).  It is important to not use name or position by themselves as the unique identifier, as objects can move (i.e. jupiter) and will need multiple positions, and a particular lines of sight (ra and dec) may look at different objects.  These could be objects at different distances from the telescope, or objects at different wavelengths.  
+
+Description holds individual descriptions that can pertain to various astronomical observations.  Each entry has an ID and a description.  Descriptions can be any string description of an observed target or objects in the field.  Examples include, but are not limited to, planet, star, galaxy, nebule, bright, dim, etc.
+
+The instrument entity holds entries for the scientific instruments that can be used in an observation.  This entity uses the instrument's name as a unique primary key, and holds pertinent metadata about the instrument such as sensitivity, manufacturer, installation date, and status.  
+
+A child entity of instrument is the detector entity.  Each scientific instrument can have multiple detectors.  This entity contains a compound primary key made of the detector name and the foreign key instrument ID.  The entity also contains detector-level metadata like the number of pixels and detector type.
+
+An Exposure entity represents a unique activation of a detector on the telescope.  This entity represents a particular atomic "measurement" and the settings used.  Each exposure implementation was a unique ID, the date and time of the observation, as well has settings and measurements.  It also includes 3 foreign keys that linke to the IDs for the instrument, detector and parent observation.
+
+An Observation entity is a parent to the exposure entitiy. This entity is needed to group together many individual exposures and link them to proposals.  This grouping is needed as the proposal specified measurement (observation) may in practice be broken up into multiple sub measurements (exposures).  
+
+The file entity links each exposure to the physical file on disk that contains measurements and metadata. 
+
+Reference\_file entity tracks various permutable calibration switches that con control how the exposure data is reduced into it's final form.  
+
 \subsubsection{Relationships}
+Observes is a relationship that links targets to proposals.  This relationship is necessary because a proposal may have multiple targets, and a target may be observed in multiple proposals.  
+
+Describes is a relationship that maps targets to descriptions with their respective IDs.  This relationship is necessary to resolve the many-to-many relationship that applies between these two entities.  
+
+Applies\_to 
+
 \subsubsection{E/R Diagram}
 
 \subsection{Relational Model}
@@ -74,28 +106,47 @@ Postgres was chosen as the DBMS for this project.  The version used was v9.5.7.
 \subsubsection{Operations}
 
 \subsection{Security}
-For this implementation, security is a minor concern.  All data used is public-domain.
+For this implementation, security is a minor concern.  All data used is public-domain, so access control is not required.  In addition, the database is an abstract layer on top of existing data products designed to be more efficient and easy-to-use, but it is not the sole point of truth.  Therefore, the database can easily be re-created from the source should any data be lost.
 
 \subsection{Database Backup and Recovery}
-MIRRORING?  
-
-PG\_DUMP (time it to give some more information?)
+Backup will be accomplished through the PG\_DUMP task.  This is a utility included with PostgreSQL that dumps the entire database contains into plaintext suitable to re-create the entire state of the database.  
 
 \subsection{Using Database Design or CASE Tool}
+Entities and the ERD were created with draw.io, and database administration was done through the command-line tools provided by PostgreSQL.  While many more fully-featured tools may have made these tasks easier, I prefer to learn directly with the tools themselves.  This meant installing the DBMS, creating users, adding tables, inserting data, and all other activities were done by hand. 
 
 \subsection{Other Possible E/R Relationships}
+An additional E/R relationship that could be useful to implement would be to add an INSTITUTION entity and a WORKS\_FOR relationship to the existing INVESTIGATOR entity.  This would allow additional reporting like which institutions around the world were more or less successful at proposing in a given year. 
 
-investigator to institution (but i don't have that information)
+I also considered a completely different ERD where the tables much more closely resembled the existing file structures as produced by the mission.  This then produced an ERD centered almost entirely on observations, and suffered from a great deal of data redundancy and difficult queries. 
 
 %------------------------------------------------------------------------------
 \section{Implementation Description}
 
 \subsection{Data Dictionary}
+\begin{verbatim}
+\d+ <tablename>
+\end{verbatim}
+
 \subsection{Advanced Features}
 \subsection{Queries}
 
 \subsubsection{Query1}
-\subsubsection{Query2-8 or so}
+select all descriptions of a given target.
+
+\subsubsection{Query2}
+select all reference files used for a given exposure.
+
+\subsubsection{3}
+Which target has the most exposure time.
+
+\subsubsection{4}
+Which detector of which instrument has been used the most.
+
+\subsubsection{5}
+Retrieve the spectrum from all observations of TARGETX
+
+\subsubsection{6}
+Rank the investigators by the number of successful proposals.
 
 %------------------------------------------------------------------------------
 \section{CRUD Matrix}

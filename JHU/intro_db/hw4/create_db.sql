@@ -1,3 +1,4 @@
+m
 -- This section was needed to address permissions in the database during
 -- creation and deletion.  These make sure there is a public schema to put
 -- the tables in.
