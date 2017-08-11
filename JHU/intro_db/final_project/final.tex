@@ -63,7 +63,11 @@ Postgres is an ORDBMS that has been in use for more than 20 years, and has wide 
 %------------------------------------------------------------------------------
 \section{Database Design Description}
 \subsection{Design Rationale}
-BECAUSE I SAID SO.
+The design for the following ER model comes largely from a top-down approach; taking the existing largely flat archive of data and breaking it into smaller logical units to reduce duplication and increase performance.
+
+The intent of this database is to present the information in as usefull a manner as possible; one that can be extended into many other uses.  To this end, as many entities as possible are non-identifying.  This lets each one stand a little better on it's own, and allow useful information retrieval without understanding another table.  Fortunately, this is possible for nearly all tables, with the notable exception of the detector entity, which needs its parent entity for unique identification.  Most entities also contained a unique attribute without needing to add a unique id using the DBMS.  The exceptions to this were the investigator, target, and description entities.
+
+The entity with the most keys is the exposure, which maps most closely to the original source of data.  Many of the other entities are chunks of data that repeat for many exposure occurances, which is also why it has the most links to or from other entities.  
 
 \subsection{E/R Model}
 \subsubsection{Entities}
@@ -105,7 +109,6 @@ Applies\_to relates reference files and exposures.  Many reference files will ap
 \end{figure}
 
 \subsection{Relational Model}
-
 \subsubsection{Data Dictionary}
 \hrulefill
 APPLIES\_TO entity definition:
@@ -362,8 +365,15 @@ Referenced by:
 \hrulefill
 
 \subsubsection{Integrity Rules}
+Integrity rules for this database are enforced with on the tables themselves, with primary and foreign keys, unique/not null constraints, and specific data constraints. Much of the concern with this database is keeping referential integrity between all the linked entities.  A strong set of primary and foreign keys keeps this together by ensuring that the linkages will exist with each insertion.  
+
+Additionally, specific column constraints were used throughout for individual data integrity.  Typical examples are constraining columns to a few known values, like in the detector.type attribute.  Other constraints simply make sure the data is within known ranges, like enforcing non-negative values for exposure.exptime.  Since a negtive exposure time is physically impossible, and this attribute is often used in calculations, catching an improper value early is very valuable. 
+
 \subsubsection{Operational Rules}
+Operational rules are rather permitting for this application, as it's designed to be flexible and permit the aggregation of disparate, but linked, data.  As such, operations are permitted so long as the do not violate the data integrity rules built into the table.  I.e. a proposal may not be added into the system either creating a new or linking to an existing investigator, due to the foreign key constraint. Similarly, an exposure cannot be inserted without a linked observation which can't be inserted without an existing proposal.  The hierarchy of keys and constraints enforce the operational rules, but anything else is permitted. 
+
 \subsubsection{Operations}
+A common operation that will be performed on this database is the insertion of the proposals from a recent round of approvals.  This operation involves inserting any new investigators, inserting new proposals, then reading the target table and linking or inserting as needed.   
 
 \subsection{Security}
 For this database, security is a minor concern.  All data used is public-domain, so access control is not required.  In addition, the database is an abstract layer on top of existing data products designed to be more efficient and easy-to-use, but it is not the sole point of truth.  Therefore, the database can easily be re-created from the source should any data be lost.  In addition, the database is not currently hosted, so preventing malicious access is a minor concern.
@@ -381,7 +391,6 @@ I also considered a completely different ERD where the tables much more closely 
 
 %------------------------------------------------------------------------------
 \section{Implementation Description}
-
 \subsection{Data Dictionary}
 \begin{verbatim}
 spec=# \dt+
@@ -529,14 +538,64 @@ spec=# SELECT * FROM exptime_count ORDER BY count DESC LIMIT 1;
 
 %------------------------------------------------------------------------------
 \section{CRUD Matrix}
+\begin{center}
+ \begin{tabular}{||c c c c c c||} 
+ \hline
+ & applies\_to & description & detector & exposure & exptime\_count \\ [0.5ex] 
+ \hline\hline
+ F1 & & & & & \\ 
+ \hline
+ F2 & R &  & R & C & U \\  
+ \hline
+ F3 & & & & D & U \\  
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+ \begin{tabular}{||c c c c c c c||} 
+ \hline
+ & file & instrument & investigator & observation & proposal & reference\_file \\ [0.5ex] 
+ \hline\hline
+ F1 & & & R & & C & \\
+ \hline
+ F2 & C & R & & R & & RC \\
+ \hline
+ F3 & D & & & & & \\ 
+ \hline
+\end{tabular}
+\end{center}
 
 \subsection{List of Entity Types}
+\begin{itemize}
+	\item applies\_to
+ 	\item description
+ 	\item detector
+ 	\item exposure
+ 	\item exptime\_count
+ 	\item file
+ 	\item instrument
+ 	\item investigator
+ 	\item observation
+ 	\item proposal
+ 	\item reference\_file
+ 	\item targ\_map 
+ 	\item target 
+\end{itemize}
 \subsection{List of Functions}
+\begin{itemize}
+	\item F1: Insert a new proposal.
+ 	\item F2: Insert a new exposure.
+ 	\item F3: Delete an exposure.
+\end{itemize}
 
 %------------------------------------------------------------------------------
 \section{Concluding Remarks}
+This project was an interesting exploration into how to re-organize and optimize an existing collection of data into a new database format.  I learned much from this project in regards to actual SQL capabilities and DBMS peculiarities.
 
+The capabilities of triggers and stored procedures was new for me, but the usefulness was immediately obvious.  Especially for a project like this, where many derived attributes can be calculated on the fly as things are inserted.  This can save outside users from having to learn too much syntax, if common calculations can be automatic.  This can also help performance in large DB by "pre-calculating" certain things that are more intensive.  Unfortunately, I didn't implement very many in this project, but that would be a key expansion to a follow-up on this topic.  
 
+PostgreSQL is a powerful database, and I found no issues when using it for typical SQL like INSERT, UPDATE, SELECT, etc.  However, I find that I don't as much like the DBA tools built-in.  The syntax very much breaks from typical SQL, and if feels far more like switching languages than the corresponding tasks in tools like MySQL or Sqlite.  Though it's good to be exposed to other tools, in the future I will likely stick more to MySQL if possible, as I vastly prefer the DBA syntax.  
 
 \pagebreak
 
@@ -545,8 +604,6 @@ spec=# SELECT * FROM exptime_count ORDER BY count DESC LIMIT 1;
 \section{DDL, INSERT, SELECT Statements}
 The DDL, INSERT, SELECT statements necessary to create the database are over 2000 lines long. This would make the report unnecessarily long, so they have been hosted in a public Github repository for viewing. They can be found at \href{https://github.com/justincely/hst\_db\_project}{https://github.com/justincely/hst\_db\_project}.
 
-%------------------------------------------------------------------------------
-\section{Data Dictionary Index}
 
 
 \end{document}
