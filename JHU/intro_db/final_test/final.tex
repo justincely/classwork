@@ -1,0 +1,85 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{hyperref}
+
+\usepackage{setspace}
+\doublespacing
+
+\begin{document}
+
+\begin{flushright}
+
+\vspace{1.1cm}
+
+{\bf\Huge Final Exam}
+
+\rule{0.25\linewidth}{0.5pt}
+
+\vspace{0.5cm}
+%Put Authors
+Justin Ely
+\linebreak
+%Put Author's affiliations
+\footnotesize{605.411. Principles of Database Systems \\}
+% Date here below
+15 August, 2017
+\end{flushright}
+
+\noindent\rule{\linewidth}{1.0pt}
+
+%------------------------------------------------------------------------------
+
+\section{DB Short Answer}
+\subsection*{i)}
+A major challenge of implementing an EER with a superclass/subclass relationship is choosing the design pattern.  In particular; how many entities are created and where do the needed attributes go.  When implementing, the overall complexity of the tables as well as operational performance will be considered.  
+
+One way to implement a superclass/subclass is to create the superclass and subclasses first, and migrate the PK of the superclass into each subclass.  Another option is to not create the superclass at all, but create the subclasses with all the superclass attributes.  A third option is to create only a single relation with has all of the attributes from all subclasses and an additional type attribute which specifies the class of each row.  A fourth option is similar to the previous, but instead adds an array of boolean attribute flags that specify whether a tuple belongs to each type.
+
+\subsection*{ii)}
+The important factor when performing normalization is to complete the forms in order: 1NF, 2NF, 3NF.  Performing the steps in a different order can produce an incorrect final product that is not in normal form.  In practice, 3NF is typically considered a "normalized" design.  4NF and 5NF are normally not reached because a top-down database design eliminates the typical problems they are required to solve, such as multi-valued dependencies.
+
+
+\subsection*{iii}
+1NF solves the problem of tuples containing non-atomic values.  1NF breaks apart the repeating information into separate rows which atomic values, breaking the implicit one-to-many relationships.  2NF separates a relation into multiple where each attribute is functionality dependent on the entire primary key.   This resolves the one-to-many identifying relationships.  3NF removes transitive dependencies in non-key attributes.  This resolves one-to-many non-identifying relationships.
+
+Normalization in some forms addresses actual data redundancy, but in other forms it reduces redundancy of information in terms of updates/deletions.  In this case with 5NF, the total size of the database increased to create more mappings in order to compartmentalize information.  For example, the function of adding a new part to Project X (a screw) takes a single insertion instead of 3.  
+
+\subsection*{iv}
+No, I would not create an ordered file sorted on the primary key while also using an index on the same key.  This is because updating and inserting new records is very costly.  These operations often involve re-ordering large chunks of the table, which then also forces large sections of the index to be updated. 
+
+In a B Tree, data pointers are stored throughout the structure, while in a B+ Tree, they're only stored in the leafs.  Both trees act as search trees to provide fast and accurate indexing, and they both have constraints to keep them balanced.   B+ Trees, due to their compact nature, typically result in fewer I/O when searching for an item.
+
+\subsection*{iv}
+Joins and subqueries are both SQL methods that can combine data from multiple relations.  A join takes two relations and combines them based on matching columns to create a new relation.  They can join in various ways such as natural joins, inner joins, etc depending on the need of the new relation.  Subqueries instead utilize a secondary query inside of an initial query.  Subqueries that are un-correlated do not use data from the outer query in the inner query.  Correlated subqueries are just the opposite; where the inner query needs to reference data from the outer query.   The latter can often be inefficient as the subquery needs to be performed for each element of the outer query.  Joins and un-correlated queries, by contrast, are very efficient thanks to RDBMS optimizers.  Subqueries must be used when an aggregate column is needed in the operation.
+
+SQL Injection is a malicious technique that attempts to insert SQL statements through improperly secured entry forms.  Often this technique targets web-forms that don't perform sufficient validation of the input data, and something like an unanticipated string pattern or compound SQL statement can be used to let the attacker gain access or information in the system.  Rigorous form sanitization and validation to remove malicious entries can prevent this problem.
+
+\section{Normalization}
+\subsection*{A}
+This relation is in 2NF because each non-key attribute is functionally dependent on the primary key.  However, it is not in 3NF because there are transitive dependencies.  (Note that, without data, we cannot be sure this satisfies 1NF, so for the sake of answering the question we will assume it does)
+
+The rest of the functional dependencies are:
+\begin{enumerate}
+  \item Car\# $\rightarrow$ list\_price
+  \item Date\_sold $\rightarrow$ sold\_price
+\end{enumerate}
+ 
+ So to get this in 3NF we must separate this into more relations to resolve the transitive dependencies:
+ 
+ \begin{enumerate}
+  \item Create a {\bf SALESMAN} entity with Salesman\# (PK) and attributes: Commission\%
+  \item Create a {\bf LISTING} entity with Car\# (PK), Salesman\# (FK), and attributes: List\_price. 
+  \item Create a {\bf CAR\_SALE} entity with {Car\#, Date\_sold} (PK), and attributes: Discount\_amt, Sold\_price.
+\end{enumerate}
+ 
+
+\subsection*{B}
+Based on the business rules and the primary key, this relation is already in 5NF.  This is because the relation is already reduced as far as possible without losing information.  Splitting the table further, into Supplier\_Part, Part\_Project, and Project\_Supplier relations, when joined, would not necessarily return the same information without additional constraints or business rules.
+
+\section{Airplane Implementation}
+See attached file: "airline\_db.sql", "creation.log" and "commands.log".
+
+\end{document}
